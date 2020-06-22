@@ -1,0 +1,3 @@
+set_io -port_name CAN_0_TXBUS_M2F -pin_name B13 -fixed true -DIRECTION OUTPUT 
+
+set_io -port_name CAN_0_RXBUS_F2M -pin_name A16 -fixed true -DIRECTION INPUT

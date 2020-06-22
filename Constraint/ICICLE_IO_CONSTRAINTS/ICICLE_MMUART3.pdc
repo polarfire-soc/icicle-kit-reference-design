@@ -1,0 +1,2 @@
+set_io -port_name MMUART_3_TXD_M2F -pin_name D21 -fixed true -DIRECTION OUTPUT
+set_io -port_name MMUART_3_RXD_F2M -pin_name B21 -fixed true -DIRECTION INPUT

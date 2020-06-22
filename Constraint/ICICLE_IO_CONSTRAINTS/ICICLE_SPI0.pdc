@@ -1,0 +1,4 @@
+set_io -port_name SPI_0_SS_F2M -pin_name A21 -fixed true -DIRECTION INPUT
+set_io -port_name SPI_0_DI_F2M -pin_name F13 -fixed true -DIRECTION INPUT
+set_io -port_name SPI_0_CLK_F2M -pin_name B20 -fixed true -DIRECTION INPUT
+set_io -port_name SPI_0_DO_M2F -pin_name F12 -fixed true -DIRECTION OUTPUT

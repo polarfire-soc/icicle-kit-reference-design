@@ -1,0 +1,2 @@
+set_io -port_name MBUS_RST -pin_name E10 -fixed true -DIRECTION OUTPUT
+set_io -port_name MBUS_PWM -pin_name E11 -fixed true -DIRECTION OUTPUT

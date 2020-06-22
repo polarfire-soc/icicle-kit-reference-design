@@ -1,0 +1,40 @@
+set_iobank -bank_name Bank1  \
+    -vcci 3.30               \
+    -fixed false             \
+    -update_iostd true
+
+set_io -port_name QSPI_CLK	\
+	-pin_name F11 \
+	-fixed true	\
+    -io_std LVCMOS33  \
+	-DIRECTION OUTPUT
+    
+set_io -port_name QSPI_SEL	\
+	-pin_name G17	\
+	-fixed true	\
+    -io_std LVCMOS33  \
+	-DIRECTION OUTPUT
+    
+set_io -port_name QSPI_DATA0	\
+    -pin_name G12	\
+    -fixed true	\
+    -io_std LVCMOS33  \
+    -DIRECTION INOUT
+    
+set_io -port_name QSPI_DATA1	\
+    -pin_name D13	\
+    -fixed true	\
+    -io_std LVCMOS33  \
+    -DIRECTION INOUT
+    
+set_io -port_name QSPI_DATA2 \
+    -pin_name H17	\
+    -fixed true	\
+    -io_std LVCMOS33  \
+    -DIRECTION INOUT    
+    
+set_io -port_name QSPI_DATA3	\
+    -pin_name G15	\
+    -fixed true	\
+    -io_std LVCMOS33  \
+    -DIRECTION INOUT

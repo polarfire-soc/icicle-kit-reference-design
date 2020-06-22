@@ -1,0 +1,1 @@
+set_io -port_name USB_ULPI_RESET -pin_name A5 -fixed true -DIRECTION OUTPUT

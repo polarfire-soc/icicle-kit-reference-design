@@ -68,10 +68,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {PB2} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {USB_ULPI_RESET} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MBUS_RST} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MBUS_PWM} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C0_SCL} -port_direction {INOUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C0_SDA} -port_direction {INOUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C1_SCL} -port_direction {INOUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C1_SDA} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA0} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA1} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA2} -port_direction {INOUT}
@@ -97,6 +93,8 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_RX0_P} -port_directi
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_RX0_N} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_TX0_P} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_TX0_N} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C_1_SCL} -port_direction {INOUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C_1_SDA} -port_direction {INOUT}
 
 sd_create_bus_port -sd_name ${sd_name} -port_name {CA} -port_direction {OUT} -port_range {[5:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQ} -port_direction {INOUT} -port_range {[31:0]}
@@ -111,30 +109,6 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_SEL1} -value
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_EN_N} -value {GND}
 # Add AND3_0 instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {AND3} -instance_name {AND3_0}
-
-
-
-# Add BIBUF_0 instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {BIBUF_0}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {BIBUF_0:D} -value {GND}
-
-
-
-# Add BIBUF_1 instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {BIBUF_1}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {BIBUF_1:D} -value {GND}
-
-
-
-# Add BIBUF_2 instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {BIBUF_2}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {BIBUF_2:D} -value {GND}
-
-
-
-# Add BIBUF_3 instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {BIBUF_3}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {BIBUF_3:D} -value {GND}
 
 
 
@@ -194,6 +168,7 @@ sd_create_pin_slices -sd_name ${sd_name} -pin_name {MSS:QSPI_DATA_OE_M2F} -pin_s
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {MSS:QSPI_DATA_OE_M2F} -pin_slices {[1]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {MSS:QSPI_DATA_OE_M2F} -pin_slices {[2]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {MSS:QSPI_DATA_OE_M2F} -pin_slices {[3]}
+sd_create_pin_group -sd_name ${sd_name} -group_name {I2C_1_0} -instance_name {MSS} -pin_names {"I2C_1_SCL" "I2C_1_SDA" }
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MMUART_0_TXD_OE_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MMUART_1_TXD_OE_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:QSPI_SEL_OE_M2F}
@@ -247,14 +222,10 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {FAB_CCC} -instance
 
 # Add scalar net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:Y" "CORERESET:PLL_LOCK" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_0:Y" "MSS:I2C_0_SCL_F2M" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_1:Y" "MSS:I2C_0_SDA_F2M" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_2:Y" "MSS:I2C_1_SCL_F2M" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_3:Y" "MSS:I2C_1_SDA_F2M" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:QSPI_DATA_F2M[0]" "BIBUF_4:Y" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_4:Y" "MSS:QSPI_DATA_F2M[0]" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:QSPI_DATA_F2M[1]" "BIBUF_5:Y" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:QSPI_DATA_F2M[2]" "BIBUF_6:Y" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:QSPI_DATA_F2M[3]" "BIBUF_7:Y" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_6:Y" "MSS:QSPI_DATA_F2M[2]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_7:Y" "MSS:QSPI_DATA_F2M[3]" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "MSS:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "MSS:CK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CKE" "MSS:CKE" }
@@ -275,12 +246,10 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_RSTN" "MSS:EMMC_RSTN" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_STRB" "MSS:EMMC_STRB" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"EXT_RST_N" "CORERESET:EXT_RST_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FAB_OSC:RCOSC_160MHZ_GL" "PF_CCC:REF_CLK_0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_0:PAD" "I2C0_SCL" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C0_SDA" "BIBUF_1:PAD" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C1_SCL" "BIBUF_2:PAD" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C1_SDA" "BIBUF_3:PAD" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"INIT_MONITOR:DEVICE_INIT_DONE" "CORERESET:INIT_DONE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"INIT_MONITOR:FABRIC_POR_N" "CORERESET:FPGA_POR_N" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:I2C_1_SCL" "I2C_1_SCL" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:I2C_1_SDA" "I2C_1_SDA" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CORERESET:INIT_DONE" "INIT_MONITOR:DEVICE_INIT_DONE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CORERESET:FPGA_POR_N" "INIT_MONITOR:FABRIC_POR_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"LED0" "MSS:GPIO_2_M2F_16" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"LED1" "MSS:GPIO_2_M2F_17" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"LED2" "MSS:GPIO_2_M2F_18" }
@@ -298,20 +267,16 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"MMUART_3_TXD_M2F" "MSS:MMUART_3
 sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_1:B" "MSS:GPIO_2_M2F_26" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_2:B" "MSS:GPIO_2_M2F_27" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_0:B" "MSS:GPIO_2_M2F_28" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_0:E" "MSS:I2C_0_SCL_OE_M2F" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_1:E" "MSS:I2C_0_SDA_OE_M2F" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_2:E" "MSS:I2C_1_SCL_OE_M2F" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_3:E" "MSS:I2C_1_SDA_OE_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:B" "MSS:PLL_CPU_LOCK_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:A" "MSS:PLL_SGMII_LOCK_M2F" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:QSPI_DATA_M2F[0]" "BIBUF_4:D" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:QSPI_DATA_M2F[1]" "BIBUF_5:D" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:QSPI_DATA_M2F[2]" "BIBUF_6:D" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:QSPI_DATA_M2F[3]" "BIBUF_7:D" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:QSPI_DATA_OE_M2F[0]" "BIBUF_4:E" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:QSPI_DATA_OE_M2F[1]" "BIBUF_5:E" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:QSPI_DATA_OE_M2F[2]" "BIBUF_6:E" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:QSPI_DATA_OE_M2F[3]" "BIBUF_7:E" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_4:D" "MSS:QSPI_DATA_M2F[0]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_5:D" "MSS:QSPI_DATA_M2F[1]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_6:D" "MSS:QSPI_DATA_M2F[2]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_7:D" "MSS:QSPI_DATA_M2F[3]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_4:E" "MSS:QSPI_DATA_OE_M2F[0]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_5:E" "MSS:QSPI_DATA_OE_M2F[1]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_6:E" "MSS:QSPI_DATA_OE_M2F[2]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_7:E" "MSS:QSPI_DATA_OE_M2F[3]" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ODT" "MSS:ODT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:MSS_INT_F2M[0]" "OR2_0:Y" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_1:Y" "MSS:GPIO_2_F2M_30" }
@@ -324,7 +289,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:C" "PF_CCC:PLL_LOCK_0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_CLK" "MSS:QSPI_CLK_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA0" "BIBUF_4:PAD" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA1" "BIBUF_5:PAD" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA2" "BIBUF_6:PAD" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_6:PAD" "QSPI_DATA2" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA3" "BIBUF_7:PAD" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_SEL" "MSS:QSPI_SEL_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"REFCLK" "MSS:REFCLK" }

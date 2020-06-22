@@ -168,7 +168,6 @@ sd_create_pin_slices -sd_name ${sd_name} -pin_name {MSS:QSPI_DATA_OE_M2F} -pin_s
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {MSS:QSPI_DATA_OE_M2F} -pin_slices {[1]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {MSS:QSPI_DATA_OE_M2F} -pin_slices {[2]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {MSS:QSPI_DATA_OE_M2F} -pin_slices {[3]}
-sd_create_pin_group -sd_name ${sd_name} -group_name {I2C_1_0} -instance_name {MSS} -pin_names {"I2C_1_SCL" "I2C_1_SDA" }
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MMUART_0_TXD_OE_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MMUART_1_TXD_OE_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:QSPI_SEL_OE_M2F}

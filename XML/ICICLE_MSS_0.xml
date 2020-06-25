@@ -1,11 +1,11 @@
   <mss xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="mpfs_hw_description.xsd">
     <design_information>
-      <libero_version>12.900.0.16-PFSOC_MSS:2.0.106</libero_version>
+      <libero_version>12.900.0.16-PFSOC_MSS:2.0.108</libero_version>
       <design_name>ICICLE_MSS</design_name>
       <mpfs_part_no>MPFS250T_ES</mpfs_part_no>
       <mpfs_package>FCVG484_Eval</mpfs_package>
-      <creation_date_time>06-22-2020_12:14:52</creation_date_time>
-      <xml_format_version>0.3.7</xml_format_version>
+      <creation_date_time>06-25-2020_12:14:49</creation_date_time>
+      <xml_format_version>0.3.8</xml_format_version>
     </design_information>
     <mss_memory_map>
       <map>
@@ -153,144 +153,144 @@
       <pmp_h0>
         <registers>
           <register address="0x000003A0" description="PMP  configuration for 8 adress regions, bit 0 read, bit 1 write, bit 2 execute, bit 7 disable, bits 3,4 address format  (0x18 => NAPOT) " name="CSR_PMPCFG0">
-            <field Type="RW" name="PMP0CFG" offset="0" width="8">0xFFFFFFFFF</field>
+            <field Type="RW" name="PMP0CFG" offset="0" width="8">0x00</field>
             <field Type="RW" name="PMP1CFG" offset="8" width="8">0x0</field>
-            <field Type="RW" name="PMP2CFG" offset="16" width="8">0x1F</field>
-            <field Type="RW" name="PMP3CFG" offset="24" width="8">0xFFFFFFFFF</field>
-            <field Type="RW" name="PMP4CFG" offset="32" width="8">0x0</field>
-            <field Type="RW" name="PMP5CFG" offset="40" width="8">0x1F</field>
-            <field Type="RW" name="PMP6CFG" offset="48" width="8">0xFFFFFFFFF</field>
-            <field Type="RW" name="PMP7CFG" offset="56" width="8">0x0</field>
+            <field Type="RW" name="PMP2CFG" offset="16" width="8">0x00</field>
+            <field Type="RW" name="PMP3CFG" offset="24" width="8">0x00</field>
+            <field Type="RW" name="PMP4CFG" offset="32" width="8">0x00</field>
+            <field Type="RW" name="PMP5CFG" offset="40" width="8">0x00</field>
+            <field Type="RW" name="PMP6CFG" offset="48" width="8">0x00</field>
+            <field Type="RW" name="PMP7CFG" offset="56" width="8">0x00</field>
           </register>
           <register address="0x000003A2" description="PMP  configuration for 8 address regions, bit 0 read, bit 1 write, bit 2 execute, bit 7 disable, bits 3,4 address format  (0x18 => NAPOT) " name="CSR_PMPCFG2">
-            <field Type="RW" name="PMP8CFG" offset="0" width="8">0x1F</field>
-            <field Type="RW" name="PMP9CFG" offset="8" width="8">0xFFFFFFFFF</field>
-            <field Type="RW" name="PMP10CFG" offset="16" width="8">0x0</field>
-            <field Type="RW" name="PMP11CFG" offset="24" width="8">0x1F</field>
-            <field Type="RW" name="PMP12CFG" offset="32" width="8">0xFFFFFFFFF</field>
-            <field Type="RW" name="PMP13CFG" offset="40" width="8">0x0</field>
-            <field Type="RW" name="PMP14CFG" offset="48" width="8">0x1F</field>
-            <field Type="RW" name="PMP15CFG" offset="56" width="8">0xFFFFFFFFF</field>
+            <field Type="RW" name="PMP8CFG" offset="0" width="8">0x00</field>
+            <field Type="RW" name="PMP9CFG" offset="8" width="8">0x00</field>
+            <field Type="RW" name="PMP10CFG" offset="16" width="8">0x00</field>
+            <field Type="RW" name="PMP11CFG" offset="24" width="8">0x00</field>
+            <field Type="RW" name="PMP12CFG" offset="32" width="8">0x00</field>
+            <field Type="RW" name="PMP13CFG" offset="40" width="8">0x00</field>
+            <field Type="RW" name="PMP14CFG" offset="48" width="8">0x00</field>
+            <field Type="RW" name="PMP15CFG" offset="56" width="8">0x00</field>
           </register>
           <register address="0x000003B0" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR0">
-            <field Type="RW" name="CSR_PMPADDR0" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR0" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B1" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR1">
-            <field Type="RW" name="CSR_PMPADDR1" offset="0" width="64">0x1F</field>
+            <field Type="RW" name="CSR_PMPADDR1" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B2" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR2">
-            <field Type="RW" name="CSR_PMPADDR2" offset="0" width="64">0xFFFFFFFFF</field>
+            <field Type="RW" name="CSR_PMPADDR2" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B3" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR3">
-            <field Type="RW" name="CSR_PMPADDR3" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR3" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B4" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR4">
-            <field Type="RW" name="CSR_PMPADDR4" offset="0" width="64">0x1F</field>
+            <field Type="RW" name="CSR_PMPADDR4" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B5" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR5">
-            <field Type="RW" name="CSR_PMPADDR5" offset="0" width="64">0xFFFFFFFFF</field>
+            <field Type="RW" name="CSR_PMPADDR5" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B6" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR6">
-            <field Type="RW" name="CSR_PMPADDR6" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR6" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B7" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR7">
-            <field Type="RW" name="CSR_PMPADDR7" offset="0" width="64">0x1F</field>
+            <field Type="RW" name="CSR_PMPADDR7" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B8" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR8">
-            <field Type="RW" name="CSR_PMPADDR8" offset="0" width="64">0xFFFFFFFFF</field>
+            <field Type="RW" name="CSR_PMPADDR8" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B9" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR9">
-            <field Type="RW" name="CSR_PMPADDR9" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR9" offset="0" width="64">0x00</field>
           </register>
           <register address="0x00003B10" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR10">
-            <field Type="RW" name="CSR_PMPADDR10" offset="0" width="64">0x1F</field>
+            <field Type="RW" name="CSR_PMPADDR10" offset="0" width="64">0x00</field>
           </register>
           <register address="0x00003B11" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR11">
-            <field Type="RW" name="CSR_PMPADDR11" offset="0" width="64">0xFFFFFFFFF</field>
+            <field Type="RW" name="CSR_PMPADDR11" offset="0" width="64">0x00</field>
           </register>
           <register address="0x00003B12" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR12">
-            <field Type="RW" name="CSR_PMPADDR12" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR12" offset="0" width="64">0x00</field>
           </register>
           <register address="0x00003B13" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR13">
-            <field Type="RW" name="CSR_PMPADDR13" offset="0" width="64">0x1F</field>
+            <field Type="RW" name="CSR_PMPADDR13" offset="0" width="64">0x00</field>
           </register>
           <register address="0x00003B14" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR14">
-            <field Type="RW" name="CSR_PMPADDR14" offset="0" width="64">0xFFFFFFFFF</field>
+            <field Type="RW" name="CSR_PMPADDR14" offset="0" width="64">0x00</field>
           </register>
           <register address="0x00003B15" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR15">
-            <field Type="RW" name="CSR_PMPADDR15" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR15" offset="0" width="64">0x00</field>
           </register>
         </registers>
       </pmp_h0>
       <pmp_h1>
         <registers>
           <register address="0x000003A0" description="PMP  configuration for 8 adress regions, bit 0 read, bit 1 write, bit 2 execute, bit 7 disable, bits 3,4 address format  (0x18 => NAPOT) " name="CSR_PMPCFG0">
-            <field Type="RW" name="PMP0CFG" offset="0" width="8">0xFFFFFFFFF</field>
+            <field Type="RW" name="PMP0CFG" offset="0" width="8">0x00</field>
             <field Type="RW" name="PMP1CFG" offset="8" width="8">0x0</field>
-            <field Type="RW" name="PMP2CFG" offset="16" width="8">0x1F</field>
-            <field Type="RW" name="PMP3CFG" offset="24" width="8">0xFFFFFFFFF</field>
-            <field Type="RW" name="PMP4CFG" offset="32" width="8">0x0</field>
-            <field Type="RW" name="PMP5CFG" offset="40" width="8">0x1F</field>
-            <field Type="RW" name="PMP6CFG" offset="48" width="8">0xFFFFFFFFF</field>
-            <field Type="RW" name="PMP7CFG" offset="56" width="8">0x0</field>
+            <field Type="RW" name="PMP2CFG" offset="16" width="8">0x00</field>
+            <field Type="RW" name="PMP3CFG" offset="24" width="8">0x00</field>
+            <field Type="RW" name="PMP4CFG" offset="32" width="8">0x00</field>
+            <field Type="RW" name="PMP5CFG" offset="40" width="8">0x00</field>
+            <field Type="RW" name="PMP6CFG" offset="48" width="8">0x00</field>
+            <field Type="RW" name="PMP7CFG" offset="56" width="8">0x00</field>
           </register>
           <register address="0x000003A2" description="PMP  configuration for 8 address regions, bit 0 read, bit 1 write, bit 2 execute, bit 7 disable, bits 3,4 address format  (0x18 => NAPOT) " name="CSR_PMPCFG2">
-            <field Type="RW" name="PMP8CFG" offset="0" width="8">0x1F</field>
-            <field Type="RW" name="PMP9CFG" offset="8" width="8">0xFFFFFFFFF</field>
-            <field Type="RW" name="PMP10CFG" offset="16" width="8">0x0</field>
-            <field Type="RW" name="PMP11CFG" offset="24" width="8">0x1F</field>
-            <field Type="RW" name="PMP12CFG" offset="32" width="8">0xFFFFFFFFF</field>
-            <field Type="RW" name="PMP13CFG" offset="40" width="8">0x0</field>
-            <field Type="RW" name="PMP14CFG" offset="48" width="8">0x1F</field>
-            <field Type="RW" name="PMP15CFG" offset="56" width="8">0xFFFFFFFFF</field>
+            <field Type="RW" name="PMP8CFG" offset="0" width="8">0x00</field>
+            <field Type="RW" name="PMP9CFG" offset="8" width="8">0x00</field>
+            <field Type="RW" name="PMP10CFG" offset="16" width="8">0x00</field>
+            <field Type="RW" name="PMP11CFG" offset="24" width="8">0x00</field>
+            <field Type="RW" name="PMP12CFG" offset="32" width="8">0x00</field>
+            <field Type="RW" name="PMP13CFG" offset="40" width="8">0x00</field>
+            <field Type="RW" name="PMP14CFG" offset="48" width="8">0x00</field>
+            <field Type="RW" name="PMP15CFG" offset="56" width="8">0x00</field>
           </register>
           <register address="0x000003B0" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR0">
-            <field Type="RW" name="CSR_PMPADDR0" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR0" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B1" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR1">
-            <field Type="RW" name="CSR_PMPADDR1" offset="0" width="64">0x1F</field>
+            <field Type="RW" name="CSR_PMPADDR1" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B2" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR2">
-            <field Type="RW" name="CSR_PMPADDR2" offset="0" width="64">0xFFFFFFFFF</field>
+            <field Type="RW" name="CSR_PMPADDR2" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B3" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR3">
-            <field Type="RW" name="CSR_PMPADDR3" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR3" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B4" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR4">
-            <field Type="RW" name="CSR_PMPADDR4" offset="0" width="64">0x1F</field>
+            <field Type="RW" name="CSR_PMPADDR4" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B5" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR5">
-            <field Type="RW" name="CSR_PMPADDR5" offset="0" width="64">0xFFFFFFFFF</field>
+            <field Type="RW" name="CSR_PMPADDR5" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B6" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR6">
-            <field Type="RW" name="CSR_PMPADDR6" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR6" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B7" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR7">
-            <field Type="RW" name="CSR_PMPADDR7" offset="0" width="64">0x1F</field>
+            <field Type="RW" name="CSR_PMPADDR7" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B8" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR8">
-            <field Type="RW" name="CSR_PMPADDR8" offset="0" width="64">0xFFFFFFFFF</field>
+            <field Type="RW" name="CSR_PMPADDR8" offset="0" width="64">0x00</field>
           </register>
           <register address="0x000003B9" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR9">
-            <field Type="RW" name="CSR_PMPADDR9" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR9" offset="0" width="64">0x00</field>
           </register>
           <register address="0x00003B10" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR10">
-            <field Type="RW" name="CSR_PMPADDR10" offset="0" width="64">0x1F</field>
+            <field Type="RW" name="CSR_PMPADDR10" offset="0" width="64">0x00</field>
           </register>
           <register address="0x00003B11" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR11">
-            <field Type="RW" name="CSR_PMPADDR11" offset="0" width="64">0xFFFFFFFFF</field>
+            <field Type="RW" name="CSR_PMPADDR11" offset="0" width="64">0x00</field>
           </register>
           <register address="0x00003B12" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR12">
-            <field Type="RW" name="CSR_PMPADDR12" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR12" offset="0" width="64">0x00</field>
           </register>
           <register address="0x00003B13" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR13">
-            <field Type="RW" name="CSR_PMPADDR13" offset="0" width="64">0x1F</field>
+            <field Type="RW" name="CSR_PMPADDR13" offset="0" width="64">0x00</field>
           </register>
           <register address="0x00003B14" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR14">
-            <field Type="RW" name="CSR_PMPADDR14" offset="0" width="64">0xFFFFFFFFF</field>
+            <field Type="RW" name="CSR_PMPADDR14" offset="0" width="64">0x00</field>
           </register>
           <register address="0x00003B15" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR15">
-            <field Type="RW" name="CSR_PMPADDR15" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR15" offset="0" width="64">0x00</field>
           </register>
         </registers>
       </pmp_h1>
@@ -1349,7 +1349,7 @@
             <field Type="RW" name="ADDCMD_OFFSET" offset="0" width="3">0x2</field>
             <field Type="RW" name="BCKLSCLK_OFFSET" offset="3" width="3">0x5</field>
             <field Type="RW" name="WRCALIB_WRITE_COUNT" offset="6" width="7"> 0x0</field>
-            <field Type="RW" name="READ_GATE_MIN_READS" offset="13" width="8"> 0x1F</field>
+            <field Type="RW" name="READ_GATE_MIN_READS" offset="13" width="8">0x7F</field>
             <field Type="RW" name="ADDRCMD_WAIT_COUNT" offset="22" width="8"> 0x1F</field>
           </register>
           <register address="10" description="in simulation we need to set this to 2, for hardware it will be dependent on the trace lengths" name="TIP_CONFIG_PARAMS_BCLK_VCOPHS_OFFSET">
@@ -1376,7 +1376,7 @@
             <field Type="RW" name="RPC_ODT_DQS" offset="0" width="32">0x6</field>
           </register>
           <register address="0x00000016" description="Need to be set by software in all modes but OFF mode. Decoding options should follow ODT_STR table, depends on drive STR setting" name="RPC_ODT_ADDCMD">
-            <field Type="RW" name="RPC_ODT_ADDCMD" offset="0" width="32">0x4</field>
+            <field Type="RW" name="RPC_ODT_ADDCMD" offset="0" width="32">0x2</field>
           </register>
           <register address="0x00000020" description="Need to be set by software in all modes but OFF mode. Decoding options should follow ODT_STR table, depends on drive STR setting" name="RPC_ODT_CLK">
             <field Type="RW" name="RPC_ODT_CLK" offset="0" width="32">0x2</field>
@@ -1534,7 +1534,7 @@
             <field Type="RW" name="LOCKED" offset="31" width="1">0x0</field>
           </register>
           <register address="0x00000012" description="Non-Cached access at 0x14_0000_0000" name="SEG1_3">
-            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0xEC00</field>
+            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x6C00</field>
             <field Type="RW" name="RESERVED" offset="15" width="16">0x0</field>
             <field Type="RW" name="LOCKED" offset="31" width="1">0x0</field>
           </register>
@@ -1544,7 +1544,7 @@
             <field Type="RW" name="LOCKED" offset="31" width="1">0x0</field>
           </register>
           <register address="0x00000020" description="Non-Cached WCB  0x18_0000_0000" name="SEG1_5">
-            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0xE800</field>
+            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x6800</field>
             <field Type="RW" name="RESERVED" offset="15" width="6">0x0</field>
             <field Type="RW" name="LOCKED" offset="31" width="1">0x0</field>
           </register>
@@ -1566,7 +1566,7 @@
             <field Type="RW" name="CFG_MANUAL_ADDRESS_MAP" offset="0" width="32">0x0</field>
           </register>
           <register address="0x00002404" description="IP Blk = ADDR_MAP Access=RW " name="CFG_CHIPADDR_MAP">
-            <field Type="RW" name="CFG_CHIPADDR_MAP" offset="0" width="32">0x00001B</field>
+            <field Type="RW" name="CFG_CHIPADDR_MAP" offset="0" width="32">0x00001D</field>
           </register>
           <register address="0x00002408" description="IP Blk = ADDR_MAP Access=RW " name="CFG_CIDADDR_MAP">
             <field Type="RW" name="CFG_CIDADDR_MAP" offset="0" width="32">0x00000000</field>
@@ -1590,7 +1590,7 @@
             <field Type="RW" name="CFG_ROWADDR_MAP_1" offset="0" width="32">0x75955134</field>
           </register>
           <register address="0x00002424" description="IP Blk = ADDR_MAP Access=RW " name="CFG_ROWADDR_MAP_2">
-            <field Type="RW" name="CFG_ROWADDR_MAP_2" offset="0" width="32">0x00069961</field>
+            <field Type="RW" name="CFG_ROWADDR_MAP_2" offset="0" width="32">0x71B69961</field>
           </register>
           <register address="0x00002428" description="IP Blk = ADDR_MAP Access=RW " name="CFG_ROWADDR_MAP_3">
             <field Type="RW" name="CFG_ROWADDR_MAP_3" offset="0" width="32">0x000</field>
@@ -1944,7 +1944,7 @@
             <field Type="RW" name="CFG_FAW" offset="0" width="32">0x20</field>
           </register>
           <register address="0x0000405C" description="IP Blk = MC_BASE2 Access=RW " name="CFG_RFC">
-            <field Type="RW" name="CFG_RFC" offset="0" width="32">0x68</field>
+            <field Type="RW" name="CFG_RFC" offset="0" width="32">0x130</field>
           </register>
           <register address="0x00004060" description="IP Blk = MC_BASE2 Access=RW " name="CFG_RTP">
             <field Type="RW" name="CFG_RTP" offset="0" width="32">0x8</field>
@@ -2013,7 +2013,7 @@
             <field Type="RW" name="CFG_DLL_DISABLE" offset="0" width="32">0x0</field>
           </register>
           <register address="0x000040CC" description="IP Blk = MC_BASE2 Access=RW " name="CFG_REF_PER">
-            <field Type="RW" name="CFG_REF_PER" offset="0" width="32">0xC30</field>
+            <field Type="RW" name="CFG_REF_PER" offset="0" width="32">0xC34</field>
           </register>
           <register address="0x000040D0" description="IP Blk = MC_BASE2 Access=RW " name="CFG_STARTUP_DELAY">
             <field Type="RW" name="CFG_STARTUP_DELAY" offset="0" width="32">0x27100</field>
@@ -2022,7 +2022,7 @@
             <field Type="RW" name="CFG_MEM_COLBITS" offset="0" width="32">0xA</field>
           </register>
           <register address="0x000040D8" description="IP Blk = MC_BASE2 Access=RW " name="CFG_MEM_ROWBITS">
-            <field Type="RW" name="CFG_MEM_ROWBITS" offset="0" width="32">0xE</field>
+            <field Type="RW" name="CFG_MEM_ROWBITS" offset="0" width="32">0x10</field>
           </register>
           <register address="0x000040DC" description="IP Blk = MC_BASE2 Access=RW " name="CFG_MEM_BANKBITS">
             <field Type="RW" name="CFG_MEM_BANKBITS" offset="0" width="32">0x3</field>
@@ -2214,10 +2214,10 @@
             <field Type="RW" name="CFG_ODT_POWERDOWN" offset="0" width="32">0x00000000</field>
           </register>
           <register address="0x00004224" description="IP Blk = MC_BASE2 Access=RW " name="CFG_WL">
-            <field Type="RW" name="CFG_WL" offset="0" width="32">0x4</field>
+            <field Type="RW" name="CFG_WL" offset="0" width="32">0x8</field>
           </register>
           <register address="0x00004228" description="IP Blk = MC_BASE2 Access=RW " name="CFG_RL">
-            <field Type="RW" name="CFG_RL" offset="0" width="32">0x6</field>
+            <field Type="RW" name="CFG_RL" offset="0" width="32">0xE</field>
           </register>
           <register address="0x0000422C" description="IP Blk = MC_BASE2 Access=RW " name="CFG_CAL_READ_PERIOD">
             <field Type="RW" name="CFG_CAL_READ_PERIOD" offset="0" width="32">0x0</field>

@@ -1,1 +1,1 @@
-create_and_configure_core -core_vlnv {Microsemi:SgCore:PFSOC_MSS:2.0.106} -component_name {ICICLE_MSS} -params $ICICLE_MSS_param 
+create_and_configure_core -core_vlnv {Microsemi:SgCore:PFSOC_MSS:2.0.108} -component_name {ICICLE_MSS} -params $ICICLE_MSS_param 

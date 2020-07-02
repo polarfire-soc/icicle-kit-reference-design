@@ -43,6 +43,13 @@ download_core -vlnv {Actel:SgCore:PF_CCC:2.2.100} -location {www.actel-ip.com/re
 download_core -vlnv {Actel:DirectCore:CORERESET_PF:2.2.107} -location {www.actel-ip.com/repositories/DirectCore}
 download_core -vlnv {Microsemi:SgCore:PFSOC_MSS:2.0.100} -location {www.microchip-ip.com/repositories/SgCore} 
 download_core -vlnv {Microsemi:SgCore:PFSOC_INIT_MONITOR:1.0.101} -location {www.microchip-ip.com/repositories/SgCore} 
+download_core -vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -location {www.actel-ip.com/repositories/DirectCore}
+download_core -vlnv {Actel:SgCore:PF_CLK_DIV:1.0.103} -location {www.microchip-ip.com/repositories/SgCore} 
+download_core -vlnv {Actel:SgCore:PF_DRI:1.0.102} -location {www.actel-ip.com/repositories/DirectCore} 
+download_core -vlnv {Actel:SgCore:PF_NGMUX:1.0.101} -location {www.microchip-ip.com/repositories/SgCore} 
+download_core -vlnv {Actel:SgCore:PF_PCIE:2.0.104} -location {www.microchip-ip.com/repositories/SgCore} 
+download_core -vlnv {Actel:SgCore:PF_TX_PLL:2.0.202} -location {www.microchip-ip.com/repositories/SgCore} 
+download_core -vlnv {Actel:SgCore:PF_XCVR_REF_CLK:1.0.103} -location {www.microchip-ip.com/repositories/SgCore} 
 
 source ./script_support/MPFS_ICICLE_eMMC_recursive.tcl
 set_root -module {MPFS_ICICLE_eMMC::work} 

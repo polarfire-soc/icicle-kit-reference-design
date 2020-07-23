@@ -59,6 +59,10 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_AXI_1_S_ARREADY} -p
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_AXI_1_S_RLAST} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_AXI_1_S_RVALID} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_AXI_1_S_RREADY} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIE_ROOTPORT_INTERRUPT} -port_direction {OUT}
+
+
+
 
 sd_create_bus_port -sd_name ${sd_name} -port_name {PADDR} -port_direction {IN} -port_range {[28:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {PRDATA} -port_direction {OUT} -port_range {[31:0]}
@@ -195,7 +199,7 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {PF_PCIE_C0} -insta
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PF_PCIE_C0_0:PCIE_1_M_RDERR} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PF_PCIE_C0_0:PCIE_1_S_WDERR} -value {GND}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PF_PCIE_C0_0:PCIE_1_LTSSM}
-sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PF_PCIE_C0_0:PCIE_1_INTERRUPT_OUT}
+# sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PF_PCIE_C0_0:PCIE_1_INTERRUPT_OUT}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PF_PCIE_C0_0:PCIE_1_M_WDERR}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PF_PCIE_C0_0:PCIE_1_S_RDERR}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PF_PCIE_C0_0:PCIE_1_L2_EXIT}
@@ -238,6 +242,9 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE_TXD2_N
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE_TXD2_P" "PCIESS_LANE_TXD2_P" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE_TXD3_N" "PCIESS_LANE_TXD3_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE_TXD3_P" "PCIESS_LANE_TXD3_P" }
+
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIE_1_INTERRUPT_OUT" "PCIE_ROOTPORT_INTERRUPT" }
+
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_CLK_DIV_C0_0:CLK_OUT" "PF_NGMUX_C0_0:CLK0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_NGMUX_C0_0:CLK_OUT" "PF_PCIE_C0_0:PCIE_1_TL_CLK_125MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_NGMUX_C0_0:CLK1" "PF_TX_PLL_C0_0:CLK_125" }

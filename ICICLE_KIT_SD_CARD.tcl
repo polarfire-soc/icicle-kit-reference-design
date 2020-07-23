@@ -1,11 +1,7 @@
-# Microsemi Tcl Script
-# libero
-# Date: Tue Apr 21 19:01:22 2020
-# Directory C:\PROJECTS\Scripts\v0.3
-# File C:\PROJECTS\Scripts\v0.3\exported.tcl
+# Icicle Kit SD card Libero design
 
-# source ./GENERATED_TCL_PARAMETERS.tcl
-source ./TCL_PARAMETERS_eMMC.tcl
+# source ./GENERATED_TCL_PARAMETERS_SD_CARD.tcl
+source ./TCL_PARAMETERS_SD_CARD.tcl
 source ./TCL_PARAMETERS_BASE_DESIGN.tcl
 
 if { $::argc > 0 } {
@@ -38,7 +34,8 @@ set PF_XCVR_REF_CLK_C0_param "$ENABLE_FAB_CLK_0 $ENABLE_FAB_CLK_1 $ENABLE_REF_CL
 # set constraint_path ../../../Constraint
 set constraint_path ./constraints
 
-new_project -location {./MPFS_ICICLE_eMMC} -name {MPFS_ICICLE_eMMC} -project_description {} -block_mode 0 -standalone_peripheral_initialization 0 -instantiate_in_smartdesign 1 -ondemand_build_dh 1 -use_relative_path 0 -linked_files_root_dir_env {} -hdl {VERILOG} -family {PolarFireSoC} -die {MPFS250T_ES} -package {FCG1152_Eval} -speed {STD} -die_voltage {1.0} -part_range {EXT} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {SYSTEM_CONTROLLER_SUSPEND_MODE:0} -adv_options {TEMPR:EXT} -adv_options {VCCI_1.2_VOLTR:EXT} -adv_options {VCCI_1.5_VOLTR:EXT} -adv_options {VCCI_1.8_VOLTR:EXT} -adv_options {VCCI_2.5_VOLTR:EXT} -adv_options {VCCI_3.3_VOLTR:EXT} -adv_options {VOLTR:EXT} 
+
+new_project -location {./MPFS_ICICLE_SD_CARD} -name {MPFS_ICICLE_SD_CARD} -project_description {} -block_mode 0 -standalone_peripheral_initialization 0 -instantiate_in_smartdesign 1 -ondemand_build_dh 1 -use_relative_path 0 -linked_files_root_dir_env {} -hdl {VERILOG} -family {PolarFireSoC} -die {MPFS250T_ES} -package {FCG1152_Eval} -speed {STD} -die_voltage {1.0} -part_range {EXT} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {SYSTEM_CONTROLLER_SUSPEND_MODE:0} -adv_options {TEMPR:EXT} -adv_options {VCCI_1.2_VOLTR:EXT} -adv_options {VCCI_1.5_VOLTR:EXT} -adv_options {VCCI_1.8_VOLTR:EXT} -adv_options {VCCI_2.5_VOLTR:EXT} -adv_options {VCCI_3.3_VOLTR:EXT} -adv_options {VOLTR:EXT} 
 set_device -family {PolarFireSoC} -die {MPFS250T_ES} -package {FCVG484_Eval} -speed {STD} -die_voltage {1.0} -part_range {EXT} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {SYSTEM_CONTROLLER_SUSPEND_MODE:0} -adv_options {TEMPR:EXT} -adv_options {VCCI_1.2_VOLTR:EXT} -adv_options {VCCI_1.5_VOLTR:EXT} -adv_options {VCCI_1.8_VOLTR:EXT} -adv_options {VCCI_2.5_VOLTR:EXT} -adv_options {VCCI_3.3_VOLTR:EXT} -adv_options {VOLTR:EXT} 
 
 download_core -vlnv {Actel:SgCore:PF_OSC:1.0.102} -location {www.actel-ip.com/repositories/SgCore}
@@ -54,8 +51,8 @@ download_core -vlnv {Actel:SgCore:PF_PCIE:2.0.104} -location {www.microchip-ip.c
 download_core -vlnv {Actel:SgCore:PF_TX_PLL:2.0.202} -location {www.microchip-ip.com/repositories/SgCore} 
 download_core -vlnv {Actel:SgCore:PF_XCVR_REF_CLK:1.0.103} -location {www.microchip-ip.com/repositories/SgCore} 
 
-source ./script_support/MPFS_ICICLE_eMMC_recursive.tcl
-set_root -module {MPFS_ICICLE_eMMC::work} 
+source ./script_support/MPFS_ICICLE_SD_CARD_recursive.tcl
+set_root -module {MPFS_ICICLE_SD_CARD::work} 
 build_design_hierarchy 
 run_tool -name {CONSTRAINT_MANAGEMENT} 
 create_links \
@@ -76,7 +73,7 @@ create_links \
 		 -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_SDIO.pdc" \
 		 -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/qspi.pdc"
 
-organize_tool_files -tool {PLACEROUTE} -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/qspi.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MIKROBUS.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_SDIO.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_USB.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MAC.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_PCIE.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART0.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART1.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART3.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART2.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_SPI0.pdc" -module {MPFS_ICICLE_eMMC::work} -input_type {constraint} 
+organize_tool_files -tool {PLACEROUTE} -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/qspi.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MIKROBUS.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_SDIO.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_USB.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MAC.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_PCIE.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART0.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART1.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART3.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART2.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_SPI0.pdc" -module {MPFS_ICICLE_SD_CARD::work} -input_type {constraint} 
 derive_constraints_sdc 
 save_project 
 #run_tool -name {SYNTHESIZE} 

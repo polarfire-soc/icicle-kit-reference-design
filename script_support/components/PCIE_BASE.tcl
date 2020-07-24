@@ -62,6 +62,9 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_AXI_1_S_RREADY} -po
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIE_ROOTPORT_INTERRUPT} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {AXI_CLK_125MHZ} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APB_CLK_62_5MHZ} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIE_PLL_LOCK} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {PRESETN} -port_direction {IN}
+
 
 
 
@@ -207,7 +210,8 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PF_DRI_C0_0:BUSERROR}
 # Add PF_NGMUX_C0_0 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {PF_NGMUX_C0} -instance_name {PF_NGMUX_C0_0}
 
-
+# NGMUX control
+sd_instantiate_macro -sd_name {PCIE_BASE} -macro_name {AND2} -instance_name {AND2_0}
 
 # Add PF_PCIE_C0_0 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {PF_PCIE_C0} -instance_name {PF_PCIE_C0_0}
@@ -225,7 +229,7 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PF_PCIE_C0_0:PCIE_1_DLUP_EXI
 
 # Add PF_TX_PLL_C0_0 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {PF_TX_PLL_C0} -instance_name {PF_TX_PLL_C0_0}
-sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PF_TX_PLL_C0_0:PLL_LOCK}
+#sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PF_TX_PLL_C0_0:PLL_LOCK}
 
 
 
@@ -242,9 +246,16 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_DRI_C0_0:PCLK"  "PF_CLK_DIV_
 #sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_CLK_DIV_C0_0:CLK_IN" "clk_160mhz" }
 sd_connect_pins -sd_name  ${sd_name} -pin_names {"PF_OSC_C0_0:RCOSC_160MHZ_CLK_DIV" "PF_CLK_DIV_C0_0:CLK_IN"}
 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_DRI_C0_0:PRESETN" "PF_PCIE_C0_0:AXI_CLK_STABLE" "DEVICE_INIT_DONE" }
+#sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_DRI_C0_0:PRESETN" "PF_PCIE_C0_0:AXI_CLK_STABLE" "DEVICE_INIT_DONE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:AXI_CLK_STABLE" "DEVICE_INIT_DONE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_DRI_C0_0:PRESETN" "PRESETN" }
+	
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_1_PERST_N" "PF_PCIE_C0_0:PCIE_1_PERST_N" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_NGMUX_C0_0:SEL" "PCIE_INIT_DONE" }
+#sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_NGMUX_C0_0:SEL" "PCIE_INIT_DONE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"AND2_0:Y" "PF_NGMUX_C0_0:SEL" }
+sd_connect_pins -sd_name {PCIE_BASE} -pin_names {"PCIE_INIT_DONE" "AND2_0:A"}
+sd_connect_pins -sd_name {PCIE_BASE} -pin_names {"PF_TX_PLL_C0_0:PLL_LOCK" "AND2_0:B"}
+
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE_RXD0_N" "PCIESS_LANE_RXD0_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE_RXD0_P" "PCIESS_LANE_RXD0_P" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE_RXD1_N" "PCIESS_LANE_RXD1_N" }
@@ -276,6 +287,8 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_NGMUX_C0_0:CLK_OUT" "PF_PCIE
 
 sd_connect_pins -sd_name {PCIE_BASE} -pin_names {"PF_NGMUX_C0_0:CLK_OUT" "PF_CLK_DIV_C0_1:CLK_IN"}
 sd_connect_pins -sd_name {PCIE_BASE} -pin_names {"PF_CLK_DIV_C0_1:CLK_OUT" "APB_CLK_62_5MHZ"}
+sd_connect_pins -sd_name {PCIE_BASE} -pin_names {"PF_TX_PLL_C0_0:PLL_LOCK" "PCIE_PLL_LOCK" }
+
 
 
 

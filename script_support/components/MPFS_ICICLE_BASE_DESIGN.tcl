@@ -159,6 +159,21 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {CORERESET_FIC1_0:PLL_POWERDO
 
 # Add INIT_MONITOR instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {INIT_MONITOR} -instance_name {INIT_MONITOR}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:USRAM_INIT_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:SRAM_INIT_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:BANK_9_CALIB_STATUS}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:XCVR_INIT_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:USRAM_INIT_FROM_SNVM_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:USRAM_INIT_FROM_UPROM_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:USRAM_INIT_FROM_SPI_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:SRAM_INIT_FROM_SNVM_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:SRAM_INIT_FROM_UPROM_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:SRAM_INIT_FROM_SPI_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:AUTOCALIB_DONE}
+
+
+
+
 
 
 
@@ -260,7 +275,11 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_7:Y" "MSS:QSPI_DATA_F2M[3
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "MSS:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "MSS:CK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CKE" "MSS:CKE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CORERESET_FIC1_0:FABRIC_RESET_N" "PCIE_AXI_0_0:ARESETN" "PCIE_AXI_1_0:ARESETN" "PCIE_BASE_0:DEVICE_INIT_DONE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {\
+	"CORERESET_FIC1_0:FABRIC_RESET_N" \
+	"PCIE_AXI_0_0:ARESETN" \
+	"PCIE_AXI_1_0:ARESETN" \
+	"PCIE_BASE_0:PRESETN" }
 #sd_connect_pins -sd_name ${sd_name} -pin_names {"CORERESET:PLL_POWERDOWN_B" "PF_CCC:PLL_POWERDOWN_N_0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CS" "MSS:CS" }
 
@@ -290,8 +309,14 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"MMUART_3_TXD_M2F" "MSS:MMUART_3
 sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_1:B" "MSS:GPIO_2_M2F_26" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_2:B" "MSS:GPIO_2_M2F_27" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_0:B" "MSS:GPIO_2_M2F_28" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:B" "MSS:PLL_CPU_LOCK_M2F" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:A" "MSS:PLL_SGMII_LOCK_M2F" }
+#sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:B" "MSS:PLL_CPU_LOCK_M2F" }
+#sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:A" "MSS:PLL_SGMII_LOCK_M2F" }
+
+sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:C" "PCIE_BASE_0:PCIE_PLL_LOCK" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:B" "MSS:FIC_1_DLL_LOCK_M2F" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:A" "MSS:FIC_0_DLL_LOCK_M2F" }
+
+
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_4:D" "MSS:QSPI_DATA_M2F[0]" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_5:D" "MSS:QSPI_DATA_M2F[1]" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_6:D" "MSS:QSPI_DATA_M2F[2]" }
@@ -414,10 +439,14 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_FIC1_0:BAN
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_FIC1_0:SS_BUSY} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_FIC1_0:FF_US_RESTORE} -value {GND} 
 sd_connect_pins -sd_name ${sd_name} -pin_names {"INIT_MONITOR:FABRIC_POR_N" "CORERESET_FIC1_0:FPGA_POR_N"} 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"INIT_MONITOR:DEVICE_INIT_DONE" "CORERESET_FIC1_0:INIT_DONE"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {\
+	"INIT_MONITOR:DEVICE_INIT_DONE" \
+	"CORERESET_FIC1_0:INIT_DONE" \
+	"PCIE_BASE_0:DEVICE_INIT_DONE" }
 #sd_connect_pins -sd_name {MPFS_ICICLE_eMMC} -pin_names {"PF_CCC:OUT0_FABCLK_0" "CORERESET_FIC1_0:CLK"}
 sd_connect_pins -sd_name {MPFS_ICICLE_eMMC} -pin_names {"PCIE_BASE_0:APB_CLK_62_5MHZ" "CORERESET_FIC1_0:CLK"}
 
+#sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {AND3_0:C} -value {VCC} 
 
 #sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_eMMC} -pin_names {PF_CCC:PLL_POWERDOWN_N_0} -value {VCC}
 

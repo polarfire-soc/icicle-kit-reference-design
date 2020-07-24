@@ -444,7 +444,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {\
 	"CORERESET_FIC1_0:INIT_DONE" \
 	"PCIE_BASE_0:DEVICE_INIT_DONE" }
 #sd_connect_pins -sd_name {MPFS_ICICLE_eMMC} -pin_names {"PF_CCC:OUT0_FABCLK_0" "CORERESET_FIC1_0:CLK"}
-sd_connect_pins -sd_name {MPFS_ICICLE_eMMC} -pin_names {"PCIE_BASE_0:APB_CLK_62_5MHZ" "CORERESET_FIC1_0:CLK"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:APB_CLK_62_5MHZ" "CORERESET_FIC1_0:CLK"}
 
 #sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {AND3_0:C} -value {VCC} 
 

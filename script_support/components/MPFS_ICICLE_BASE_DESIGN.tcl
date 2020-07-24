@@ -6,7 +6,7 @@
 #auto_promote_pad_pins -promote_all 0
 
 # Create top level Ports
-sd_create_scalar_port -sd_name ${sd_name} -port_name {EXT_RST_N} -port_direction {IN}
+#sd_create_scalar_port -sd_name ${sd_name} -port_name {EXT_RST_N} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {REFCLK} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {REFCLK_N} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {USB_CLK} -port_direction {IN}
@@ -153,7 +153,7 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {CORERESET_FIC1_0:PLL_POWERDO
 
 
 # Add FAB_OSC instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {FAB_OSC} -instance_name {FAB_OSC}
+#sd_instantiate_component -sd_name ${sd_name} -component_name {FAB_OSC} -instance_name {FAB_OSC}
 
 
 
@@ -247,7 +247,7 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_BASE_0:PCIE_1_I
 
 
 # Add PF_CCC instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {FAB_CCC} -instance_name {PF_CCC}
+#sd_instantiate_component -sd_name ${sd_name} -component_name {FAB_CCC} -instance_name {PF_CCC}
 
 
 
@@ -267,7 +267,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"CS" "MSS:CS" }
 
 
 #sd_connect_pins -sd_name ${sd_name} -pin_names {"EXT_RST_N" "CORERESET:EXT_RST_N" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FAB_OSC:RCOSC_160MHZ_GL" "PF_CCC:REF_CLK_0" "PCIE_BASE_0:clk_160mhz" }
+#sd_connect_pins -sd_name ${sd_name} -pin_names {"FAB_OSC:RCOSC_160MHZ_GL" "PF_CCC:REF_CLK_0" "PCIE_BASE_0:clk_160mhz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C_1_SCL" "MSS:I2C_1_SCL" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C_1_SDA" "MSS:I2C_1_SDA" }
 #sd_connect_pins -sd_name ${sd_name} -pin_names {"CORERESET:INIT_DONE" "INIT_MONITOR:DEVICE_INIT_DONE" }
@@ -330,9 +330,18 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD2_N" "PCIE_BASE_
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD2_P" "PCIE_BASE_0:PCIESS_LANE_TXD2_P" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD3_N" "PCIE_BASE_0:PCIESS_LANE_TXD3_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD3_P" "PCIE_BASE_0:PCIESS_LANE_TXD3_P" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_CCC:OUT0_FABCLK_0" "MSS:FIC_0_ACLK" "MSS:FIC_1_ACLK" "PCIE_AXI_0_0:ACLK" "PCIE_AXI_1_0:ACLK" "PCIE_BASE_0:clk_125mhz" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_CCC:OUT1_FABCLK_0" "MSS:FIC_3_PCLK" "PCIE_BASE_0:clk_50mhz" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:C" "PF_CCC:PLL_LOCK_0" }
+#sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_CCC:OUT0_FABCLK_0" "MSS:FIC_0_ACLK" "MSS:FIC_1_ACLK" "PCIE_AXI_0_0:ACLK" "PCIE_AXI_1_0:ACLK" "PCIE_BASE_0:clk_125mhz" }
+
+#sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:AXI_CLK_125MHZ" "MSS:FIC_0_ACLK" "MSS:FIC_1_ACLK" "PCIE_AXI_0_0:ACLK" "PCIE_AXI_1_0:ACLK" "PCIE_BASE_0:clk_125mhz" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:AXI_CLK_125MHZ" "MSS:FIC_0_ACLK" "MSS:FIC_1_ACLK" "PCIE_AXI_0_0:ACLK" "PCIE_AXI_1_0:ACLK" }
+
+
+
+	
+#sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_CCC:OUT1_FABCLK_0" "MSS:FIC_3_PCLK" "PCIE_BASE_0:clk_50mhz" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:APB_CLK_62_5MHZ" "MSS:FIC_3_PCLK" }
+
+#sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:C" "PF_CCC:PLL_LOCK_0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_CLK" "MSS:QSPI_CLK_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_4:PAD" "QSPI_DATA0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_5:PAD" "QSPI_DATA1" }
@@ -406,9 +415,11 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_FIC1_0:SS_
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_FIC1_0:FF_US_RESTORE} -value {GND} 
 sd_connect_pins -sd_name ${sd_name} -pin_names {"INIT_MONITOR:FABRIC_POR_N" "CORERESET_FIC1_0:FPGA_POR_N"} 
 sd_connect_pins -sd_name ${sd_name} -pin_names {"INIT_MONITOR:DEVICE_INIT_DONE" "CORERESET_FIC1_0:INIT_DONE"}
-sd_connect_pins -sd_name {MPFS_ICICLE_eMMC} -pin_names {"PF_CCC:OUT0_FABCLK_0" "CORERESET_FIC1_0:CLK"}
+#sd_connect_pins -sd_name {MPFS_ICICLE_eMMC} -pin_names {"PF_CCC:OUT0_FABCLK_0" "CORERESET_FIC1_0:CLK"}
+sd_connect_pins -sd_name {MPFS_ICICLE_eMMC} -pin_names {"PCIE_BASE_0:APB_CLK_62_5MHZ" "CORERESET_FIC1_0:CLK"}
 
-sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_eMMC} -pin_names {PF_CCC:PLL_POWERDOWN_N_0} -value {VCC}
+
+#sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_eMMC} -pin_names {PF_CCC:PLL_POWERDOWN_N_0} -value {VCC}
 
 # Re-enable auto promotion of pins of type 'pad'
 #auto_promote_pad_pins -promote_all 1

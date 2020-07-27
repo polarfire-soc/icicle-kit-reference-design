@@ -5,8 +5,8 @@
 # File C:\PROJECTS\Scripts\v0.3\exported.tcl
 
 # source ./GENERATED_TCL_PARAMETERS.tcl
-source ./TCL_PARAMETERS_eMMC.tcl
-source ./TCL_PARAMETERS_BASE_DESIGN.tcl
+source ./script_support/TCL_PARAMETERS_eMMC.tcl
+source ./script_support/TCL_PARAMETERS_BASE_DESIGN.tcl
 
 if { $::argc > 0 } {
     set i 1

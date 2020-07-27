@@ -1,8 +1,8 @@
 # Icicle Kit SD card Libero design
 
 # source ./GENERATED_TCL_PARAMETERS_SD_CARD.tcl
-source ./TCL_PARAMETERS_SD_CARD.tcl
-source ./TCL_PARAMETERS_BASE_DESIGN.tcl
+source ./script_support/TCL_PARAMETERS_SD_CARD.tcl
+source ./script_support/TCL_PARAMETERS_BASE_DESIGN.tcl
 
 if { $::argc > 0 } {
     set i 1

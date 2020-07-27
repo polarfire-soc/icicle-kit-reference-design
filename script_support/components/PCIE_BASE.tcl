@@ -11,7 +11,7 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {REF_CLK_PAD_N} -port_direc
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIE_INIT_DONE} -port_direction {IN}
 #sd_create_scalar_port -sd_name ${sd_name} -port_name {clk_125mhz} -port_direction {IN}
 #sd_create_scalar_port -sd_name ${sd_name} -port_name {clk_50mhz} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {DEVICE_INIT_DONE} -port_direction {IN}
+#sd_create_scalar_port -sd_name ${sd_name} -port_name {DEVICE_INIT_DONE} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PSEL} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PENABLE} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PWRITE} -port_direction {IN}
@@ -247,7 +247,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_DRI_C0_0:PCLK"  "PF_CLK_DIV_
 sd_connect_pins -sd_name  ${sd_name} -pin_names {"PF_OSC_C0_0:RCOSC_160MHZ_CLK_DIV" "PF_CLK_DIV_C0_0:CLK_IN"}
 
 #sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_DRI_C0_0:PRESETN" "PF_PCIE_C0_0:AXI_CLK_STABLE" "DEVICE_INIT_DONE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:AXI_CLK_STABLE" "DEVICE_INIT_DONE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:AXI_CLK_STABLE" "PF_TX_PLL_C0_0:PLL_LOCK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_DRI_C0_0:PRESETN" "PRESETN" }
 	
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_1_PERST_N" "PF_PCIE_C0_0:PCIE_1_PERST_N" }

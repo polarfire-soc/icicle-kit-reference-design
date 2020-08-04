@@ -7,7 +7,12 @@ build_design_hierarchy
 source script_support/components/CORERESET.tcl 
 source script_support/components/FAB_CCC.tcl 
 source script_support/components/FAB_OSC.tcl 
-source script_support/components/ICICLE_MSS.tcl 
+if {[file isdirectory $local_dir/script_support/components/MSS_eMMC]} {
+	file delete -force $local_dir/script_support/components/MSS_eMMC
+}
+file mkdir $local_dir/script_support/components/MSS_eMMC
+exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/PF_SoC_MSS_Icicle_emmc.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_eMMC
+import_mss_component -file "$local_dir/script_support/components/MSS_eMMC/ICICLE_MSS.cxz"
 source script_support/components/INIT_MONITOR.tcl 
 source script_support/components/PCIE_AXI_0.tcl 
 source script_support/components/PCIE_AXI_1.tcl 

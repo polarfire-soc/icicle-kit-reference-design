@@ -240,7 +240,8 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {\
 	"CORERESET_FIC1_0:FABRIC_RESET_N" \
 	"PCIE_AXI_0_0:ARESETN" \
 	"PCIE_AXI_1_0:ARESETN" \
-	"PCIE_BASE_0:PRESETN" }
+	"PCIE_BASE_0:PRESETN" \
+	"USB_ULPI_RESET"}
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CS" "MSS:CS" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C_1_SCL" "MSS:I2C_1_SCL" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C_1_SDA" "MSS:I2C_1_SDA" }
@@ -339,7 +340,6 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"USB_DATA7" "MSS:USB_DATA7" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"USB_DIR" "MSS:USB_DIR" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"USB_NXT" "MSS:USB_NXT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"USB_STP" "MSS:USB_STP" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"USB_ULPI_RESET" "MSS:GPIO_2_M2F_0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_CMODE3" "MSS:GPIO_2_M2F_6" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_CMODE4" "MSS:GPIO_2_M2F_7" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_CMODE5" "MSS:GPIO_2_M2F_8" }

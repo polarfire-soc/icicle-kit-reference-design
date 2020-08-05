@@ -1,4 +1,4 @@
-#PolarFire SoC Icicle Kit Sample Design
+# PolarFire SoC Icicle Kit Sample Design
 
 To create designs using the scripts:
 1. Clone the repository

@@ -40,14 +40,13 @@ set constraint_path ./constraints
 new_project -location {./MPFS_ICICLE_SD_CARD} -name {MPFS_ICICLE_SD_CARD} -project_description {} -block_mode 0 -standalone_peripheral_initialization 0 -instantiate_in_smartdesign 1 -ondemand_build_dh 1 -use_relative_path 0 -linked_files_root_dir_env {} -hdl {VERILOG} -family {PolarFireSoC} -die {MPFS250T_ES} -package {FCG1152} -speed {STD} -die_voltage {1.0} -part_range {EXT} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {SYSTEM_CONTROLLER_SUSPEND_MODE:0} -adv_options {TEMPR:EXT} -adv_options {VCCI_1.2_VOLTR:EXT} -adv_options {VCCI_1.5_VOLTR:EXT} -adv_options {VCCI_1.8_VOLTR:EXT} -adv_options {VCCI_2.5_VOLTR:EXT} -adv_options {VCCI_3.3_VOLTR:EXT} -adv_options {VOLTR:EXT} 
 set_device -family {PolarFireSoC} -die {MPFS250T_ES} -package {FCVG484} -speed {STD} -die_voltage {1.0} -part_range {EXT} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {SYSTEM_CONTROLLER_SUSPEND_MODE:0} -adv_options {TEMPR:EXT} -adv_options {VCCI_1.2_VOLTR:EXT} -adv_options {VCCI_1.5_VOLTR:EXT} -adv_options {VCCI_1.8_VOLTR:EXT} -adv_options {VCCI_2.5_VOLTR:EXT} -adv_options {VCCI_3.3_VOLTR:EXT} -adv_options {VOLTR:EXT} 
 
-download_core -vlnv {Actel:SgCore:PF_OSC:1.0.102} -location {www.actel-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:SgCore:PF_CCC:2.2.100} -location {www.actel-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:DirectCore:CORERESET_PF:2.2.107} -location {www.actel-ip.com/repositories/DirectCore}
-download_core -vlnv {Microsemi:SgCore:PFSOC_MSS:2.0.100} -location {www.microchip-ip.com/repositories/SgCore} 
+download_core -vlnv {Actel:SgCore:PF_OSC:1.0.102} -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv {Actel:SgCore:PF_CCC:2.2.100} -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv {Actel:DirectCore:CORERESET_PF:2.2.107} -location {www.microchip-ip.com/repositories/DirectCore}
 download_core -vlnv {Microsemi:SgCore:PFSOC_INIT_MONITOR:1.0.101} -location {www.microchip-ip.com/repositories/SgCore} 
-download_core -vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -location {www.actel-ip.com/repositories/DirectCore}
+download_core -vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -location {www.microchip-ip.com/repositories/DirectCore}
 download_core -vlnv {Actel:SgCore:PF_CLK_DIV:1.0.103} -location {www.microchip-ip.com/repositories/SgCore} 
-download_core -vlnv {Actel:SgCore:PF_DRI:1.0.102} -location {www.actel-ip.com/repositories/SgCore} 
+download_core -vlnv {Actel:SgCore:PF_DRI:1.0.102} -location {www.microchip-ip.com/repositories/SgCore} 
 download_core -vlnv {Actel:SgCore:PF_NGMUX:1.0.101} -location {www.microchip-ip.com/repositories/SgCore} 
 download_core -vlnv {Actel:SgCore:PF_PCIE:2.0.104} -location {www.microchip-ip.com/repositories/SgCore} 
 download_core -vlnv {Actel:SgCore:PF_TX_PLL:2.0.202} -location {www.microchip-ip.com/repositories/SgCore} 

@@ -376,4 +376,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {\
 	"CORERESET_FIC1_0:INIT_DONE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:APB_CLK_62_5MHZ" "CORERESET_FIC1_0:CLK"}
 
+#Invert pins
+sd_invert_pins -sd_name ${sd_name} -pin_names {USB_ULPI_RESET}
+
 

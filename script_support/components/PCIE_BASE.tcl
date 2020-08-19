@@ -281,11 +281,11 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_NGMUX_C0_0:CLK1" "PF_TX_PLL_
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE0_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE2_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE3_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE1_CDR_REF_CLK_0" "PF_XCVR_REF_CLK_C0_0:REF_CLK" "PF_TX_PLL_C0_0:REF_CLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"REF_CLK_PAD_N" "PF_XCVR_REF_CLK_C0_0:REF_CLK_PAD_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"REF_CLK_PAD_P" "PF_XCVR_REF_CLK_C0_0:REF_CLK_PAD_P" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_NGMUX_C0_0:CLK_OUT" "AXI_CLK_125MHZ"}
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_NGMUX_C0_0:CLK_OUT" "PF_PCIE_C0_0:AXI_CLK"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_TX_PLL_C0_0:CLK_125" "AXI_CLK_125MHZ"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_TX_PLL_C0_0:CLK_125" "PF_PCIE_C0_0:AXI_CLK"}
 
 
-sd_connect_pins -sd_name {PCIE_BASE} -pin_names {"PF_NGMUX_C0_0:CLK_OUT" "PF_CLK_DIV_C0_1:CLK_IN"}
+sd_connect_pins -sd_name {PCIE_BASE} -pin_names {"PF_TX_PLL_C0_0:CLK_125" "PF_CLK_DIV_C0_1:CLK_IN"}
 sd_connect_pins -sd_name {PCIE_BASE} -pin_names {"PF_CLK_DIV_C0_1:CLK_OUT" "APB_CLK_62_5MHZ"}
 sd_connect_pins -sd_name {PCIE_BASE} -pin_names {"PF_TX_PLL_C0_0:PLL_LOCK" "PCIE_PLL_LOCK" }
 

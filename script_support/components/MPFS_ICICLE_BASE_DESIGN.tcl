@@ -65,9 +65,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA2} -port_directio
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA3} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_SEL} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_CLK} -port_direction {OUT}
-
-
-#
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_RX0_P} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_RX0_N} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_TX0_P} -port_direction {OUT}
@@ -103,32 +100,20 @@ sd_create_bus_port -sd_name ${sd_name} -port_name {DM} -port_direction {OUT} -po
 # Add AND3_0 instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {AND3} -instance_name {AND3_0}
 
-
-
 # Add BIBUF_4 instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {BIBUF_4}
-
-
 
 # Add BIBUF_5 instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {BIBUF_5}
 
-
-
 # Add BIBUF_6 instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {BIBUF_6}
-
-
 
 # Add BIBUF_7 instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {BIBUF_7}
 
-
-
-create_and_configure_core -core_vlnv {Actel:DirectCore:CORERESET_PF:2.2.107} -component_name {CORERESET_FIC1} -params {}
-sd_instantiate_component -sd_name ${sd_name} -component_name {CORERESET_FIC1} -instance_name {CORERESET_FIC1_0} 
-sd_mark_pins_unused -sd_name ${sd_name} -pin_names {CORERESET_FIC1_0:PLL_POWERDOWN_B}
-
+sd_instantiate_component -sd_name ${sd_name} -component_name {CORERESET} -instance_name {CORERESET_0} 
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {CORERESET_0:PLL_POWERDOWN_B}
 
 # Add INIT_MONITOR instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {INIT_MONITOR} -instance_name {INIT_MONITOR}
@@ -143,8 +128,6 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:SRAM_INIT_FROM_
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:SRAM_INIT_FROM_UPROM_DONE}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:SRAM_INIT_FROM_SPI_DONE}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:AUTOCALIB_DONE}
-
-
 
 # Add MSS instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {ICICLE_MSS} -instance_name {MSS}
@@ -191,44 +174,30 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MAC_1_TSU_PDELAY_RESP_RX
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MSS_INT_M2F}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {MSS:MSS_RESET_N_F2M} -value {VCC}
 
-
-
 # Add OR2_0 instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {OR2} -instance_name {OR2_0}
 sd_invert_pins -sd_name ${sd_name} -pin_names {OR2_0:A}
-
-
 
 # Add OR2_1 instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {OR2} -instance_name {OR2_1}
 sd_invert_pins -sd_name ${sd_name} -pin_names {OR2_1:A}
 
-
-
 # Add OR2_2 instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {OR2} -instance_name {OR2_2}
 sd_invert_pins -sd_name ${sd_name} -pin_names {OR2_2:A}
 
-
-
 # Add PCIE_AXI_0_0 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {PCIE_AXI_0} -instance_name {PCIE_AXI_0_0}
 
-
-
 # Add PCIE_AXI_1_0 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {PCIE_AXI_1} -instance_name {PCIE_AXI_1_0}
-
-
 
 # Add PCIE_BASE_0 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {PCIE_BASE} -instance_name {PCIE_BASE_0}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_BASE_0:PCIE_1_INTERRUPT} -value {GND}
 
-
-
 # Add scalar net connections
-sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:Y" "CORERESET_FIC1_0:PLL_LOCK" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"AND3_0:Y" "CORERESET_0:PLL_LOCK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_4:Y" "MSS:QSPI_DATA_F2M[0]" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_5:Y" "MSS:QSPI_DATA_F2M[1]" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_6:Y" "MSS:QSPI_DATA_F2M[2]" }
@@ -237,7 +206,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "MSS:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "MSS:CK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CKE" "MSS:CKE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {\
-	"CORERESET_FIC1_0:FABRIC_RESET_N" \
+	"CORERESET_0:FABRIC_RESET_N" \
 	"PCIE_AXI_0_0:ARESETN" \
 	"PCIE_AXI_1_0:ARESETN" \
 	"PCIE_BASE_0:PRESETN" \
@@ -365,18 +334,16 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:AXI_1_SLAVE" "PCIE_
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_AXI_0_0:AXI4mmaster0" "PCIE_BASE_0:AXI_1_MASTER" }
 
 # Fabric reset
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:MSS_RESET_N_M2F" "CORERESET_FIC1_0:EXT_RST_N"} 
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_FIC1_0:BANK_y_VDDI_STATUS} -value {VCC} 
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_FIC1_0:BANK_x_VDDI_STATUS} -value {VCC} 
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_FIC1_0:SS_BUSY} -value {GND} 
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_FIC1_0:FF_US_RESTORE} -value {GND} 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"INIT_MONITOR:FABRIC_POR_N" "CORERESET_FIC1_0:FPGA_POR_N"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:MSS_RESET_N_M2F" "CORERESET_0:EXT_RST_N"} 
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_0:BANK_y_VDDI_STATUS} -value {VCC} 
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_0:BANK_x_VDDI_STATUS} -value {VCC} 
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_0:SS_BUSY} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_0:FF_US_RESTORE} -value {GND} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"INIT_MONITOR:FABRIC_POR_N" "CORERESET_0:FPGA_POR_N"} 
 sd_connect_pins -sd_name ${sd_name} -pin_names {\
 	"INIT_MONITOR:DEVICE_INIT_DONE" \
-	"CORERESET_FIC1_0:INIT_DONE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:AXI_CLK_125MHZ" "CORERESET_FIC1_0:CLK"}
+	"CORERESET_0:INIT_DONE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:AXI_CLK_125MHZ" "CORERESET_0:CLK"}
 
 #Invert pins
 sd_invert_pins -sd_name ${sd_name} -pin_names {USB_ULPI_RESET}
-
-

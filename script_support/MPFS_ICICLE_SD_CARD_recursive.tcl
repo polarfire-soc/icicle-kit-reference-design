@@ -4,15 +4,13 @@
 build_design_hierarchy
 
 #Sourcing the Tcl files for creating individual components under the top level
-source script_support/components/CORERESET.tcl 
-source script_support/components/FAB_CCC.tcl 
-source script_support/components/FAB_OSC.tcl 
 if {[file isdirectory $local_dir/script_support/components/MSS_SD]} {
 	file delete -force $local_dir/script_support/components/MSS_SD
 }
 file mkdir $local_dir/script_support/components/MSS_SD
 exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/PF_SoC_MSS_Icicle_SD.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_SD
 import_mss_component -file "$local_dir/script_support/components/MSS_SD/ICICLE_MSS.cxz"
+source script_support/components/CORERESET_0.tcl
 source script_support/components/INIT_MONITOR.tcl 
 source script_support/components/PCIE_AXI_0.tcl 
 source script_support/components/PCIE_AXI_1.tcl 

@@ -7,11 +7,9 @@ auto_promote_pad_pins -promote_all 0
 
 source script_support/components/MPFS_ICICLE_BASE_DESIGN.tcl
 
-
 # Create top level Ports
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_SEL0} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_SEL1} -port_direction {OUT}
-
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CLK} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CMD} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA0} -port_direction {INOUT}
@@ -26,21 +24,13 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_VOLT_EN} -port_directio
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_VOLT_SEL} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CD} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_WP} -port_direction {IN}
-
-
-#
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_EN_N} -port_direction {OUT}
 
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_SEL0} -value {VCC}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_SEL1} -value {VCC}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_EN_N} -value {GND}
 
-
-
-
-
 # Add scalar net connections
-
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_CLK" "MSS:SD_CLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_CMD" "MSS:SD_CMD" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_DATA0" "MSS:SD_DATA0" }
@@ -56,11 +46,9 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_SEL" "MSS:SD_VOLT_SEL" 
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_CD" "MSS:SD_CD" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_WP" "MSS:SD_WP" }
 
-
-
 # Re-enable auto promotion of pins of type 'pad'
 auto_promote_pad_pins -promote_all 1
 # Save the smartDesign
 save_smartdesign -sd_name ${sd_name}
-# Generate SmartDesign MPFS_ICICLE_eMMC
+# Generate SmartDesign MPFS_ICICLE_SD_CARD
 generate_component -component_name ${sd_name}

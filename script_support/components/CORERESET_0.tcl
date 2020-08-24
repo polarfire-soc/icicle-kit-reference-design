@@ -1,0 +1,1 @@
+create_and_configure_core -core_vlnv {Actel:DirectCore:CORERESET_PF:2.2.107} -component_name {CORERESET} -params {}

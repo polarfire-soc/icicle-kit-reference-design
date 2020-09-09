@@ -24,7 +24,7 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_TX1_P} -port_directi
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_TX1_N} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MAC_1_MDIO} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MAC_1_MDC} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {VSC_8662_RESET} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {VSC_8662_RESETN} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {VSC_8662_CMODE4} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {VSC_8662_CMODE5} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {VSC_8662_CMODE6} -port_direction {OUT}
@@ -309,15 +309,15 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"USB_DATA7" "MSS:USB_DATA7" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"USB_DIR" "MSS:USB_DIR" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"USB_NXT" "MSS:USB_NXT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"USB_STP" "MSS:USB_STP" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_CMODE3" "MSS:GPIO_2_M2F_6" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_CMODE4" "MSS:GPIO_2_M2F_7" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_CMODE5" "MSS:GPIO_2_M2F_8" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_CMODE6" "MSS:GPIO_2_M2F_9" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_CMODE7" "MSS:GPIO_2_M2F_10" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_OSCEN" "MSS:GPIO_2_M2F_4" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_PLLMODE" "MSS:GPIO_2_M2F_5" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_RESET" "MSS:GPIO_2_M2F_2" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_SRESET" "MSS:GPIO_2_M2F_3" }
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_CMODE3} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_CMODE4} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_CMODE5} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_CMODE6} -value {VCC}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_CMODE7} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_OSCEN} -value {VCC}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_PLLMODE} -value {VCC}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_SRESET} -value {VCC}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_RESETN" "CORERESET_0:FABRIC_RESET_N" }
 
 # Add bus net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CA" "MSS:CA" }

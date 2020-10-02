@@ -20,6 +20,7 @@ source script_support/components/PF_NGMUX_C0.tcl
 source script_support/components/PF_PCIE_C0.tcl 
 source script_support/components/PF_TX_PLL_C0.tcl 
 source script_support/components/PF_XCVR_REF_CLK_C0.tcl 
+source script_support/components/LSRAM_0.tcl 
 source script_support/components/PCIE_BASE.tcl 
 source script_support/components/MPFS_ICICLE_eMMC.tcl 
 build_design_hierarchy

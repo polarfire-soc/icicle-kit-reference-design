@@ -1,7 +1,7 @@
 # PolarFire SoC Icicle Kit Sample Design scripts Libero v12.5
 
 ## Using the scripts
-1. Clone the repository - note the path to this repository can not contain any spaces
+1. Clone the repository - note the path to this repository must not contain any spaces
 2. Open Libero v12.5
 3. Open the execute script dialog (CTRL + U)
 4. Execute the script for the design required (e.g "ICICLE_KIT_eMMC.tcl") - there are no arguments
@@ -12,8 +12,9 @@
 The scripts will automatically import IO constraints and generate timing constraints for the design. The flow can be run by double clicking on a stage in the design flow - selecting an option requiring previous steps to be completed will run the full flow, i.e double clicking "Run Program Action" will run synthesis, place and route, etc and then program the device.
 
 ## MSS Configuration
-The Microprocessor Subsystem (MSS) is configured using a tool called the PolarFire SoC MSS Configurator, it takes user inputs and generates an XML configuration file which is used by the [PolarFire SoC Configuration Generator](https://github.com/polarfire-soc/polarfire-soc-configuration-generator) to generate header files for bare metal applications which provide configuration values to the MSS on system boot along with a Libero component which can be imported into the FPGA design flow.
-A configuration file for the PolarFire SoC MSS Configurator is available for both configurations in the "script_support" folder.
+The Microprocessor Subsystem (MSS) is configured using the PolarFire SoC MSS Configurator. This software tool takes user inputs and generates an XML configuration file along with a Libero component. The XML is used by the PolarFire SoC Configuration Generator to generate configuration header files for bare metal applications. The Libero component can be imported into a design and used in the FPGA design flow.
+
+A saved configuration for the PolarFire SoC MSS Configurator is available for both the eMMC and SD card designs in the "script_support" folder. These configurations will match the MSS configuration used in the design and can be used to regenerate XML and a Libero component.
 
 ## XML
 The FPGA design's configuration, including Microprocessor Subsystem (MSS), is captured in XML files that are then used in the software development flow to generate configuration header files. These header files are compiled as part of the system's startup code or zero stage boot loader to configure the system.

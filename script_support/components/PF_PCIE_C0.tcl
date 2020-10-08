@@ -100,7 +100,7 @@ create_and_configure_core -core_vlnv {Actel:SgCore:PF_PCIE:2.0.104} -component_n
 "UI_PCIE_1_BAR_MODE:Custom"  \
 "UI_PCIE_1_CDR_REF_CLK_NUMBER:1"  \
 "UI_PCIE_1_CDR_REF_CLK_SOURCE:Dedicated"  \
-"UI_PCIE_1_CLASS_CODE:0x060400"  \
+"UI_PCIE_1_CLASS_CODE:0x0604"  \
 "UI_PCIE_1_CONTROLLER_ENABLED:Enabled"  \
 "UI_PCIE_1_DE_EMPHASIS:-3.5 dB"  \
 "UI_PCIE_1_DEVICE_ID:0x1556"  \

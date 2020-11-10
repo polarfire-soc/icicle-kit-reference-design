@@ -66,10 +66,8 @@ create_links \
          -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART4.pdc" \
 		 -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_PCIE.pdc" \
 		 -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_USB.pdc" \
-		 -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_SPI0.pdc"  \
-		 -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_SDIO.pdc" \
-		 -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/qspi.pdc"
+		 -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_SDIO.pdc" 
 
-organize_tool_files -tool {PLACEROUTE} -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/qspi.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MIKROBUS.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_SDIO.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_USB.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MAC.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_PCIE.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART0.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART1.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART3.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART2.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_SPI0.pdc" -module {MPFS_ICICLE_SD_CARD::work} -input_type {constraint} 
+organize_tool_files -tool {PLACEROUTE} -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MIKROBUS.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_SDIO.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_USB.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MAC.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_PCIE.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART0.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART1.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART3.pdc" -file "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART2.pdc" -module {MPFS_ICICLE_SD_CARD::work} -input_type {constraint} 
 derive_constraints_sdc 
 save_project 

@@ -37,9 +37,13 @@ Build the application using the reference XML provided (XML will also be generat
 For jumper configurations to use this design and Linux images for eMMC and SD Cards see: [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md) 
 
 ## Design description
+
+### Block diagram
+
 The diagram below outlines the FPGA fabric configuration used in this design:
 ![Block diagram](./block_diagram.svg)
 
+### MSS peripherals
 MSS peripherals are not shown above, for both the eMMC and SD configurations the following MSS peripherals are enabled:
 
 | Peripheral 	| Routing           	| Notes                                     	|
@@ -58,3 +62,16 @@ MSS peripherals are not shown above, for both the eMMC and SD configurations the
 | CAN 0      	| Fabric            	|                                           	|
 | CAN 1      	| MSS I/Os BANK 2 B 	|                                           	|
 | GPIO 2     	| Fabric            	| See block diagram for enabled GPIOs       	|
+
+### Memory map
+
+| Server                  	| Bus          	| Receiver                	| Address range                 	|
+|-------------------------	|--------------	|-------------------------	|-------------------------------	|
+| MSS: FIC0               	| AXI4_mslave0 	| PF_PCIE_C0_0            	| 0x7000_0000 -> 0x2f_ffff_ffff 	|
+| MSS: FIC0               	| AXI4_mslave1 	| LSRAM_0                 	| 0x6100_0000 -> 0x6fff_ffff    	|
+| MSS: FIC0               	| AXI4_mslave2 	| COREAXI4DMACONTROLLER_0 	| 0x6002_0000 -> 0x6002_ffff    	|
+| MSS: FIC3               	| APBmslave2   	| COREGPIO_C0             	| 0x4200_0000 -> 0x42ff_ffff    	|
+| MSS: FIC3               	| APBmslave3   	| PF_DRI_C0_0             	| 0x4300_0000 -> 0x43ff_ffff    	|
+| PF_PCIE_C0_0            	| AXI4_mslave0 	| MSS: FIC0               	| 0x6000_0000 -> 0xbfff_ffff    	|
+| PF_PCIE_C0_0            	| AXI4_mslave1 	| LSRAM_1                 	| 0x0 -> 0xfff                  	|
+| COREAXI4DMACONTROLLER_0 	| AXI4_mslave0 	| MSS: FIC1               	| 0xc000_0000 -> 0xcfff_ffff    	|

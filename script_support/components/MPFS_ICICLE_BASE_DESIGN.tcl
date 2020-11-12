@@ -86,6 +86,9 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {CAN_0_TXBUS_M2F} -port_dir
 sd_create_scalar_port -sd_name ${sd_name} -port_name {CAN_1_RXBUS} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {CAN_1_TX_EBL_N} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {CAN_1_TXBUS} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_SEL0} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_SEL1} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_EN_N} -port_direction {OUT}
 
 sd_create_bus_port -sd_name ${sd_name} -port_name {CA} -port_direction {OUT} -port_range {[5:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQ} -port_direction {INOUT} -port_range {[31:0]}
@@ -288,6 +291,8 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"CAN_1_RXBUS" "MSS:CAN_1_RXBUS" 
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CAN_1_TX_EBL_N" "MSS:CAN_1_TX_EBL_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CAN_1_TXBUS" "MSS:CAN_1_TXBUS" }
 sd_invert_pins -sd_name ${sd_name} -pin_names {"MSS:CAN_0_TX_EBL_M2F"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SDIO_SW_SEL0" "SDIO_SW_SEL1" "MSS:GPIO_2_M2F_0" }
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_EN_N} -value {GND}
 
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREAXI4DMACONTROLLER_0:INTERRUPT" "MSS:MSS_INT_F2M[2]" }
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_CMODE3} -value {GND}

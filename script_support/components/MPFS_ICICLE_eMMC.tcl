@@ -9,8 +9,6 @@ source script_support/components/MPFS_ICICLE_BASE_DESIGN.tcl
 
 # Create top level Ports
 
-sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_SEL0} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_SEL1} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {EMMC_CLK} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {EMMC_CMD} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {EMMC_DATA0} -port_direction {INOUT}
@@ -23,13 +21,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {EMMC_DATA6} -port_directio
 sd_create_scalar_port -sd_name ${sd_name} -port_name {EMMC_DATA7} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {EMMC_STRB} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {EMMC_RSTN} -port_direction {OUT}
-
-#
-sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_EN_N} -port_direction {OUT}
-
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_SEL0} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_SEL1} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_EN_N} -value {GND}
 
 sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_CLK" "MSS:EMMC_CLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_CMD" "MSS:EMMC_CMD" }

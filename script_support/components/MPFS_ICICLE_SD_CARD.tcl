@@ -8,8 +8,6 @@ auto_promote_pad_pins -promote_all 0
 source script_support/components/MPFS_ICICLE_BASE_DESIGN.tcl
 
 # Create top level Ports
-sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_SEL0} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_SEL1} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CLK} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CMD} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA0} -port_direction {INOUT}
@@ -24,11 +22,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_VOLT_EN} -port_directio
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_VOLT_SEL} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CD} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_WP} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_EN_N} -port_direction {OUT}
-
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_SEL0} -value {VCC}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_SEL1} -value {VCC}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_EN_N} -value {GND}
 
 # Add scalar net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_CLK" "MSS:SD_CLK" }

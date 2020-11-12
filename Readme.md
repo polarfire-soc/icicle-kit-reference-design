@@ -51,7 +51,7 @@ MSS peripherals are not shown above, for both the eMMC and SD configurations the
 |------------	|-------------------	|-------------------------------------------	|
 | eMMC       	| MSS I/Os BANK 4   	| Only enabled using the eMMC configuration 	|
 | USB        	| MSS I/Os BANK 2   	|                                           	|
-| SD/SDIO    	| MSS I/Os BANK 4   	| Only enabled using the eMMC configuration 	|
+| SD/SDIO    	| MSS I/Os BANK 4   	| Only enabled using the SD configuration   	|
 | GEM 0      	| SGMII I/Os BANK 5 	|                                           	|
 | GEM 1      	| SGMII I/Os BANK 5 	| Management through MSS I/Os BANK 2 B      	|
 | SPI 1      	| MSS I/Os BANK 2 B 	|                                           	|

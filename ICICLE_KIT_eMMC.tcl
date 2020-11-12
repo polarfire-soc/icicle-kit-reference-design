@@ -46,6 +46,9 @@ download_core -vlnv {Actel:SgCore:PF_NGMUX:1.0.101} -location {www.microchip-ip.
 download_core -vlnv {Actel:SgCore:PF_PCIE:2.0.104} -location {www.microchip-ip.com/repositories/SgCore} 
 download_core -vlnv {Actel:SgCore:PF_TX_PLL:2.0.202} -location {www.microchip-ip.com/repositories/SgCore} 
 download_core -vlnv {Actel:SgCore:PF_XCVR_REF_CLK:1.0.103} -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv {Actel:DirectCore:CoreAPB3:4.1.100} -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv {Actel:DirectCore:COREAXI4DMACONTROLLER:2.0.100} -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv {Actel:DirectCore:CoreGPIO:3.2.102} -location {www.microchip-ip.com/repositories/DirectCore}
 
 source ./script_support/MPFS_ICICLE_eMMC_recursive.tcl
 

@@ -48,12 +48,12 @@ For jumper configurations to use this design and Linux images for eMMC and SD Ca
 
 ### Block diagram
 
-The diagram below outlines the FPGA fabric configuration used in this design:
+The diagram below outlines the FPGA fabric configuration and shows MSS I/Os used in this design:
 
 ![Block diagram](./block_diagram.svg)
 
 ### MSS peripherals
-MSS peripherals are not shown above, for both the eMMC and SD configurations the following MSS peripherals are enabled:
+The following MSS peripherals are enabled:
 
 | Peripheral 	| Routing           	| Notes                                     	|
 |------------	|-------------------	|-------------------------------------------	|

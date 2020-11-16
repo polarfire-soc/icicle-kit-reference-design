@@ -1,11 +1,11 @@
-# PolarFire SoC Icicle Kit Sample Design scripts Libero v12.5
+# PolarFire SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero v12.5
 
 ## Description
 
-This repository can be used to generate a reference design for the PolarFire SoC Icicle Kit, this reference design will have the same or increased functionality compared to the factory default image programmed onto each kit.
-The provided scripts have been tested using Libero SoC v12.5 and Libero SoC v12.5 SP1.
+This repository can be used to generate a reference design for the PolarFire SoC Icicle Kit. This reference design will have the same or extended functionality compared to the pre-programmed FPGA design on the Icicle Kit.
+Tcl scripts are provided to generate a reference design using Libero SoC, these Tcl scripts have been tested using Libero SoC v12.5 and Libero SoC v12.5 SP1.
 
-## Using the scripts
+## Using the Reference Design Generation Tcl Scripts
 
 A script is provided for both eMMC and SD card configurations, previously eMMC and SD could only be used exclusivly but updates now permit dynamic switching between eMMC and SD card. Both scripts now connect the SDIO SEL signals to MSS GPIO_2 bit 0, by default this bit is low which selects the eMMC MUX conifguration, setting this bit selects the SD card MUX configuraion. Each script will enable its respective configuration in the PolarFire SoC MSS while allowing for dynamic switching, to use the SD card ensure that GPIO_2 bit 0 is set. See the section titled "eMMC and SD card switching" for more information. 
 

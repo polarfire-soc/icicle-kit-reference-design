@@ -103,10 +103,6 @@ sd_instantiate_macro -sd_name ${sd_name} -macro_name {AND4} -instance_name {AND4
 sd_instantiate_component -sd_name ${sd_name} -component_name {CORERESET} -instance_name {CORERESET_0} 
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {CORERESET_0:PLL_POWERDOWN_B}
 
-# Add CORERESET_0 instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {CORERESET} -instance_name {CORERESET_1} 
-sd_mark_pins_unused -sd_name ${sd_name} -pin_names {CORERESET_1:PLL_POWERDOWN_B}
-
 # Add INIT_MONITOR instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {INIT_MONITOR} -instance_name {INIT_MONITOR}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:USRAM_INIT_DONE}
@@ -188,21 +184,12 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {COREAXI4DMACONTROLLE
 # Add AXI4INTERCONNECT instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {AXI4INTERCONNECT} -instance_name {COREAXI4INTERCONNECT_0}
 
-# Add COREAPB3 instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {APB3} -instance_name {COREABP3_C0}
-
-# Add COREGPIO instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {GPIO} -instance_name {COREGPIO_C0}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {COREGPIO_C0:GPIO_IN} -value {GND}
-
 # Add scalar net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"AND4_0:Y" "CORERESET_0:PLL_LOCK"}
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:FIC_3_DLL_LOCK_M2F" "CORERESET_1:PLL_LOCK"}
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "MSS:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "MSS:CK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CKE" "MSS:CKE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CORERESET_0:FABRIC_RESET_N" "PCIE_AXI_0_0:ARESETN" "PCIE_AXI_1_0:ARESETN" "PCIE_BASE_0:PRESETN" "USB_ULPI_RESET" "LSRAM_0:ARESETN" "LSRAM_1:ARESETN" "COREAXI4DMACONTROLLER_0:RESETN" "COREAXI4INTERCONNECT_0:ARESETN" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CORERESET_1:FABRIC_RESET_N" "COREGPIO_C0:PRESETN"}
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CS" "MSS:CS" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C_1_SCL" "MSS:I2C_1_SCL" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C_1_SDA" "MSS:I2C_1_SDA" }
@@ -254,7 +241,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD2_P" "PCIE_BASE_
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD3_N" "PCIE_BASE_0:PCIESS_LANE_TXD3_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD3_P" "PCIE_BASE_0:PCIESS_LANE_TXD3_P" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:AXI_CLK_125MHZ" "MSS:FIC_0_ACLK" "MSS:FIC_1_ACLK" "PCIE_AXI_0_0:ACLK" "PCIE_AXI_1_0:ACLK" "LSRAM_0:ACLK" "LSRAM_1:ACLK" "COREAXI4DMACONTROLLER_0:CLOCK" "COREAXI4INTERCONNECT_0:ACLK"}
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:APB_CLK_62_5MHZ" "MSS:FIC_3_PCLK" "COREGPIO_C0:PCLK" "CORERESET_1:CLK"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:APB_CLK_62_5MHZ" "MSS:FIC_3_PCLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"REF_CLK_PAD_N" "PCIE_BASE_0:REF_CLK_PAD_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"REF_CLK_PAD_P" "PCIE_BASE_0:REF_CLK_PAD_P" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"REFCLK" "MSS:REFCLK" }
@@ -314,7 +301,6 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"DQS_N" "MSS:DQS_N" }
 
 # Add bus interface net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:FIC_0_AXI4_MASTER" "PCIE_AXI_1_0:AXI4mmaster0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"COREABP3_C0:APB3mmaster" "MSS:FIC_3_APB_MASTER" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_AXI_0_0:AXI4mslave0" "MSS:FIC_0_AXI4_SLAVE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_AXI_0_0:AXI4mslave1" "LSRAM_1:AXI4_Slave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:AXI_1_SLAVE" "PCIE_AXI_1_0:AXI4mslave0" }
@@ -324,49 +310,17 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_AXI_1_0:AXI4mslave2" "CORE
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREAXI4INTERCONNECT_0:AXI4mmaster0" "COREAXI4DMACONTROLLER_0:AXI4MasterDMA_IF" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREAXI4INTERCONNECT_0:AXI4mslave0" "MSS:FIC_1_AXI4_SLAVE" }
 
-# Connect APB3 to PCIe base
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_BASE_0:APBS} -pin_names {PCIE_BASE_0:PADDR} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_BASE_0:APBS} -pin_names {PCIE_BASE_0:PSEL} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_BASE_0:APBS} -pin_names {PCIE_BASE_0:PENABLE} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_BASE_0:APBS} -pin_names {PCIE_BASE_0:PWRITE} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_BASE_0:APBS} -pin_names {PCIE_BASE_0:PRDATA} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_BASE_0:APBS} -pin_names {PCIE_BASE_0:PWDATA} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_BASE_0:APBS} -pin_names {PCIE_BASE_0:PREADY} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_BASE_0:APBS} -pin_names {PCIE_BASE_0:PSLVERR} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {COREABP3_C0:APBmslave3} -pin_names {COREABP3_C0:PADDRS} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {COREABP3_C0:APBmslave3} -pin_names {COREABP3_C0:PSELS3} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {COREABP3_C0:APBmslave3} -pin_names {COREABP3_C0:PENABLES} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {COREABP3_C0:APBmslave3} -pin_names {COREABP3_C0:PWRITES} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {COREABP3_C0:APBmslave3} -pin_names {COREABP3_C0:PRDATAS3} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {COREABP3_C0:APBmslave3} -pin_names {COREABP3_C0:PWDATAS} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {COREABP3_C0:APBmslave3} -pin_names {COREABP3_C0:PREADYS3} 
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {COREABP3_C0:APBmslave3} -pin_names {COREABP3_C0:PSLVERRS3} 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:PRDATA" "COREABP3_C0:PRDATAS3"} 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:PREADY" "COREABP3_C0:PREADYS3"} 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:PSLVERR" "COREABP3_C0:PSLVERRS3"} 
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {COREABP3_C0:PADDRS} -pin_slices {"[31:29]"} 
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {COREABP3_C0:PADDRS} -pin_slices {"[28:0]"} 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"COREABP3_C0:PADDRS[28:0]" "PCIE_BASE_0:PADDR"} 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"COREABP3_C0:PWDATAS" "PCIE_BASE_0:PWDATA"} 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"COREABP3_C0:PSELS3" "PCIE_BASE_0:PSEL"} 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"COREABP3_C0:PENABLES" "PCIE_BASE_0:PENABLE"} 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"COREABP3_C0:PWRITES" "PCIE_BASE_0:PWRITE"} 
-
-sd_connect_pins -sd_name ${sd_name} -pin_names {"COREABP3_C0:APBmslave2" "COREGPIO_C0:APB_bif" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:APBS" "MSS:FIC_3_APB_MASTER" }
 
 
 # Fabric reset
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:MSS_RESET_N_M2F" "CORERESET_0:EXT_RST_N" "CORERESET_1:EXT_RST_N"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:MSS_RESET_N_M2F" "CORERESET_0:EXT_RST_N" }
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_0:BANK_y_VDDI_STATUS} -value {VCC} 
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_0:BANK_x_VDDI_STATUS} -value {VCC} 
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_0:SS_BUSY} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_0:FF_US_RESTORE} -value {GND} 
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_1:BANK_y_VDDI_STATUS} -value {VCC} 
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_1:BANK_x_VDDI_STATUS} -value {VCC} 
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_1:SS_BUSY} -value {GND} 
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {CORERESET_1:FF_US_RESTORE} -value {GND} 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"INIT_MONITOR:FABRIC_POR_N" "CORERESET_0:FPGA_POR_N" "CORERESET_1:FPGA_POR_N"} 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"INIT_MONITOR:DEVICE_INIT_DONE" "CORERESET_0:INIT_DONE" "CORERESET_1:INIT_DONE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"INIT_MONITOR:FABRIC_POR_N" "CORERESET_0:FPGA_POR_N" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"INIT_MONITOR:DEVICE_INIT_DONE" "CORERESET_0:INIT_DONE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:AXI_CLK_125MHZ" "CORERESET_0:CLK"}
 
 #Invert pins

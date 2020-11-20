@@ -93,10 +93,10 @@ SD and eMMC can only be used exclusively as the MSS SD and eMMC I/Os are muxed t
 
 ### eMMC and SD card switching
 
-In previous versions of this design the SDIO_SEL_{x} signals were tied low to enable eMMC or tied high to enable the SD card, this required re-programming the FPGA to switch between SD or eMMC configurations. The Icicle Kit reference design and MPFS HAL have been updated to support dynamically switching between these configurations without having to re-program the FPGA.
+In previous versions of this design the SDIO_SEL_{x} signals were tied low to enable eMMC or tied high to enable the SD card; this required re-programming the FPGA to switch between SD or eMMC configurations. The Icicle Kit reference design and MPFS HAL have been updated to support dynamically switching between these configurations without having to re-program the FPGA.
 
 The SDIO_SEL_{x} signals are now driven by MSS GPIO_2 bit 0 - this bit resets to output 0 selecting the eMMC configuration, to select an SD card configuration set GPIO_2 bit 0 high and re-configure MSS I/Os as required.
 
-HSS build v0.99.14 and greater has support for dynamic switching by re-configuring the MSS I/Os to select the SD configuration and setting GPIO_2 bit 0 high, it will then attempt to initialize an SD card. If this initialization fails (e.g card not inserted) the HSS will switch the MSS I/O configuration to eMMC and set GPIO_2 bit 0 low and attempt to initialize the eMMC.
+HSS build v0.99.14 and greater has support for dynamic switching by re-configuring the MSS I/Os to select the SD configuration and setting GPIO_2 bit 0 high; it will then attempt to initialize an SD card. If this initialization fails (e.g card not inserted) the HSS will switch the MSS I/O configuration to eMMC and set GPIO_2 bit 0 low and attempt to initialize the eMMC.
 
 **Note:** currently these updates are not fully supported by the Libero SoC design suite - to accommodate this the MPFS HAL will been updated with a define to allow dynamic switching. As a result of this we will continue to provide separate eMMC and SD card scripts to generate MSS XML for each configuration until Libero SoC has full support for these updates.

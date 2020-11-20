@@ -89,7 +89,7 @@ The following MSS peripherals are enabled:
 
 The PolarFire SoC Icicle Kit has the ability to use eMMC and SD cards as non-volatile storage. Linux builds and / or bare metal applications can be stored in a HSS payload which is in turn stored in non-volatile storage such as eMMC or SD cards. Using eMMC the user will have access to 8GB of on-board eMMC flash storage which can be programmed using the HSS. Using an SD card users can use the volatile storage capacity of the card, program it directly on their PC and quickly switch between cards to change the payload being run on a kit.
 
-SD and eMMC cannot be used simultaneously as the MSS SD and eMMC I/Os are muxed together. The Icicle Kit features a de-mux connected to these MSS I/Os, the de-mux is controlled by 2 select signals, called SDIO_SEL_{x}, which are connected to the FPGA fabric. When the select signals are low the de-mux connects the MSS I/Os to the eMMC controller, when the select signals are high the de-mux connects the MSS I/Os to the SD card controller.
+The SD card and eMMC cannot be used simultaneously as the MSS I/Os for the SD card and eMMC are muxed together. The Icicle Kit features a de-mux connected to these MSS I/Os, the de-mux is controlled by 2 select signals, called SDIO_SEL_{x}, which are connected to the FPGA fabric. When the select signals are low the de-mux connects the MSS I/Os to the eMMC controller, when the select signals are high the de-mux connects the MSS I/Os to the SD card controller.
 
 ### eMMC and SD card switching
 

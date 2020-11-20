@@ -3,7 +3,7 @@
 ## Description
 
 This repository can be used to generate a reference design for the PolarFire SoC Icicle Kit. This reference design will have the same or extended functionality compared to the pre-programmed FPGA design on the Icicle Kit.
-Libero SoC Tcl scripts are provided to generate the reference design using Libero SoC, these Tcl scripts have been tested using Libero SoC v12.5 and Libero SoC v12.5 SP1.
+Libero SoC Tcl scripts are provided to generate the reference design using Libero SoC. These Tcl scripts have been tested using Libero SoC v12.5 and Libero SoC v12.5 SP1. For information on which script to run for each configuration see the "eMMC and SD cards" section.
 
 ## Using the Reference Design Generation Tcl Scripts
 
@@ -84,12 +84,19 @@ The following MSS peripherals are enabled:
 | PF_PCIE_C0_0            	| AXI4_mslave1 	| LSRAM_1                 	| 0x0 -> 0xfff                  	|
 | COREAXI4DMACONTROLLER_0 	| AXI4_mslave0 	| MSS: FIC1               	| 0xc000_0000 -> 0xcfff_ffff    	|
 
+
+## eMMC and SD Cards
+
+The PolarFire SoC Icicle Kit has the ability to use eMMC and SD cards as non-volatile storage. Linux builds and / or bare metal applications can be stored in a HSS payload which is in turn stored in non-volatile storage such as eMMC or SD cards. Using eMMC the user will have access to 8GB of on board eMMC flash storage which can be programmed using the HSS. Using an SD card users can use the volatile storage capacity of the card, program it directly on their PC and quickly switch between cards to change the payload being run on a kit.
+
+SD and eMMC can only be used exclusively as the MSS SD and eMMC I/Os are muxed together. The Icicle Kit features a de-mux connected to these MSS I/Os, the de-mux is controlled by 2 select signals, called SDIO_SEL_{x}, which are connected to the FPGA fabric. When the select signals are low the de-mux connects the MSS I/Os to the eMMC controller, when the select signals are high the de-mux connects the MSS I/Os to the SD card controller.
+
 ### eMMC and SD card switching
 
-In previous versions of this design the SDIO SEL signals were tied low to enable eMMC or tied high to enable the SD card. These SEL signals drive the select of a de-mux connected to the SD and eMMC controllers. The Icicle Kit reference design and MPFS HAL have been updated to support dynamically switching between these configurations without having to re-program the FPGA.
+In previous versions of this design the SDIO_SEL_{x} signals were tied low to enable eMMC or tied high to enable the SD card, this required re-programming the FPGA to switch between SD or eMMC configurations. The Icicle Kit reference design and MPFS HAL have been updated to support dynamically switching between these configurations without having to re-program the FPGA.
 
-The SDIO SEL signals are now driven by MSS GPIO_2 bit 0 - this bit resets to output 0 selecting the eMMC configuration, to select an SD card configuration set GPIO_2 bit 0 high.
+The SDIO_SEL_{x} signals are now driven by MSS GPIO_2 bit 0 - this bit resets to output 0 selecting the eMMC configuration, to select an SD card configuration set GPIO_2 bit 0 high and re-configure MSS I/Os as required.
 
-HSS build v0.99.14 and greater has support for dynamic switching.
+HSS build v0.99.14 and greater has support for dynamic switching by re-configuring the MSS I/Os to select the SD configuration and setting GPIO_2 bit 0 high, it will then attempt to initialize an SD card. If this initialization fails (e.g card not inserted) the HSS will switch the MSS I/O configuration to eMMC and set GPIO_2 bit 0 low and attempt to initialize the eMMC.
 
 **Note:** currently these updates are not fully supported by the Libero SoC design suite - to accommodate this the MPFS HAL will been updated with a define to allow dynamic switching. As a result of this we will continue to provide separate eMMC and SD card scripts to generate MSS XML for each configuration until Libero SoC has full support for these updates.

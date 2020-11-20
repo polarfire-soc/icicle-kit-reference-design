@@ -87,15 +87,15 @@ The following MSS peripherals are enabled:
 
 ## eMMC and SD Cards
 
-The PolarFire SoC Icicle Kit has the ability to use eMMC and SD cards as non-volatile storage. Linux builds and / or bare metal applications can be stored in a HSS payload which is in turn stored in non-volatile storage such as eMMC or SD cards. Using eMMC the user will have access to 8GB of on board eMMC flash storage which can be programmed using the HSS. Using an SD card users can use the volatile storage capacity of the card, program it directly on their PC and quickly switch between cards to change the payload being run on a kit.
+The PolarFire SoC Icicle Kit has the ability to use eMMC and SD cards as non-volatile storage. Linux builds and / or bare metal applications can be stored in a HSS payload which is in turn stored in non-volatile storage such as eMMC or SD cards. Using eMMC the user will have access to 8GB of on-board eMMC flash storage which can be programmed using the HSS. Using an SD card users can use the volatile storage capacity of the card, program it directly on their PC and quickly switch between cards to change the payload being run on a kit.
 
-SD and eMMC can only be used exclusively as the MSS SD and eMMC I/Os are muxed together. The Icicle Kit features a de-mux connected to these MSS I/Os, the de-mux is controlled by 2 select signals, called SDIO_SEL_{x}, which are connected to the FPGA fabric. When the select signals are low the de-mux connects the MSS I/Os to the eMMC controller, when the select signals are high the de-mux connects the MSS I/Os to the SD card controller.
+SD and eMMC cannot be used simultaneously as the MSS SD and eMMC I/Os are muxed together. The Icicle Kit features a de-mux connected to these MSS I/Os, the de-mux is controlled by 2 select signals, called SDIO_SEL_{x}, which are connected to the FPGA fabric. When the select signals are low the de-mux connects the MSS I/Os to the eMMC controller, when the select signals are high the de-mux connects the MSS I/Os to the SD card controller.
 
 ### eMMC and SD card switching
 
 In previous versions of this design the SDIO_SEL_{x} signals were tied low to enable eMMC or tied high to enable the SD card; this required re-programming the FPGA to switch between SD or eMMC configurations. The Icicle Kit reference design and MPFS HAL have been updated to support dynamically switching between these configurations without having to re-program the FPGA.
 
-The SDIO_SEL_{x} signals are now driven by MSS GPIO_2 bit 0 - this bit resets to output 0 selecting the eMMC configuration, to select an SD card configuration set GPIO_2 bit 0 high and re-configure MSS I/Os as required.
+The SDIO_SEL_{x} signals are now driven by MSS GPIO_2 bit 0 - this bit resets to output low selecting the eMMC configuration by default. To select the SD card configuration, boot software must set MSS GPIO_2 bit 0 high and re-configure MSS I/Os as required.
 
 HSS build v0.99.14 and greater has support for dynamic switching by re-configuring the MSS I/Os to select the SD configuration and setting GPIO_2 bit 0 high; it will then attempt to initialize an SD card. If this initialization fails (e.g card not inserted) the HSS will switch the MSS I/O configuration to eMMC and set GPIO_2 bit 0 low and attempt to initialize the eMMC.
 

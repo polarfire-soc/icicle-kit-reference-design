@@ -25,6 +25,7 @@ source script_support/components/COREAXI4DMACONTROLLER.tcl
 source script_support/components/COREAXI4INTERCONNECT.tcl
 source script_support/components/GPIO.tcl
 source script_support/components/CoreAPB3.tcl
+source script_support/hdl_source.tcl
 source script_support/components/PCIE_BASE.tcl 
 source script_support/components/MPFS_ICICLE_eMMC.tcl 
 build_design_hierarchy

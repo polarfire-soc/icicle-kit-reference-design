@@ -2,3 +2,4 @@ MPFS_ICICLE_eMMC/
 MPFS_ICICLE_SD_CARD/
 script_support/components/MSS_eMMC/
 script_support/components/MSS_SD/
+component/User/Private/sdio_register/1.0/sdio_register.xml

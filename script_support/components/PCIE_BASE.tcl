@@ -202,14 +202,6 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {PF_NGMUX_C0} -inst
 
 
 # Add RC oscillator
-create_and_configure_core -core_vlnv {Actel:SgCore:PF_OSC:1.0.102} -component_name {PF_OSC_C0} -params {\
-	"RCOSC_2MHZ_CLK_DIV_EN:false" \
-	"RCOSC_2MHZ_GL_EN:false" \
-	"RCOSC_2MHZ_NGMUX_EN:false" \
-	"RCOSC_160MHZ_CLK_DIV_EN:true" \
-	"RCOSC_160MHZ_GL_EN:false" \
-	"RCOSC_160MHZ_NGMUX_EN:false"} 
-
 sd_instantiate_component -sd_name ${sd_name} -component_name {PF_OSC_C0} -instance_name {}
 
 

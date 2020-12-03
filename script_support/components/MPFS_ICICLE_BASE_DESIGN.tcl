@@ -107,7 +107,6 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {CORERESET_0:PLL_POWERDOWN_B}
 sd_instantiate_component -sd_name ${sd_name} -component_name {INIT_MONITOR} -instance_name {INIT_MONITOR}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:USRAM_INIT_DONE}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:SRAM_INIT_DONE}
-sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:BANK_9_CALIB_STATUS}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:XCVR_INIT_DONE}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:USRAM_INIT_FROM_SNVM_DONE}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR:USRAM_INIT_FROM_UPROM_DONE}

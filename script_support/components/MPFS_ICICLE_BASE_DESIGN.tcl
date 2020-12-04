@@ -190,7 +190,7 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {AXI4INTERCONNECT} 
 # Add coreAPB3 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {APB3} -instance_name {CoreAPB3}
 
-# Add SDOI+control instance
+# Add SDIO_register instance
 sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {sdio_register} -instance_name {}
 
 # Add scalar net connections

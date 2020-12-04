@@ -54,6 +54,7 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {LED3} -port_direction {OUT
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PB0} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PB1} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PB2} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {PB3} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {USB_ULPI_RESET} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_RX0_P} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_RX0_N} -port_direction {IN}
@@ -150,7 +151,6 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MAC_1_TSU_DELAY_REQ_RX_M
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MAC_1_TSU_PDELAY_REQ_RX_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MAC_1_TSU_PDELAY_RESP_RX_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MSS_INT_M2F}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {MSS:MSS_RESET_N_F2M} -value {VCC}
 
 # Add OR2_0 instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {OR2} -instance_name {OR2_0}
@@ -305,6 +305,8 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_OSCEN} -val
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_PLLMODE} -value {VCC}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_SRESET} -value {VCC}
 sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_RESETN" "CORERESET_0:FABRIC_RESET_N" }
+
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:MSS_RESET_N_F2M" "PB3"}
 
 # Add bus net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CA" "MSS:CA" }

@@ -18,7 +18,7 @@ Libero SoC Tcl scripts are provided to generate the reference design using Liber
 5. Configure the design if required and run the Libero SoC design flow to program a device
 
 **Note:**
-    - In previous designs eMMC and SD cards could not be used simultaneously. This required providing separate designs supporting eMMC or SD cards. Updates allow dynamic switching between eMMC and SD cards, scripts are still provided for both eMMC and SD cards. They will produce the same design and allow interim XML support until Libero SoC is updated. See the section "eMMC and SD cards switching" for more information.
+    - In previous designs eMMC and SD cards could not be used simultaneously. This required providing separate designs supporting eMMC or SD cards. This Icicle Kit Reference Design release allows dynamic switching between eMMC and SD cards. However, scripts are still provided for both eMMC and SD cards. They will produce the same design and allow interim XML support until Libero SoC is updated. See the section "eMMC and SD cards switching" for more information.
     - Dynamic eMMC and SD cards switching allows the HSS to check if an SD card is inserted on system startup and boot it if one is present and if there is no card inserted revert to booting from the eMMC.
 
 ## Design description
@@ -65,7 +65,7 @@ The following MSS peripherals are enabled:
 
 ## Programming the FPGA
 
-Once the scripts have completed the Libero SoC design flow can be run by double clicking on a stage in the design flow on the left hand side of Libero - selecting an option requiring previous steps to be completed will run the full flow, i.e double clicking "Run Program Action" will run any required steps, such as, "Synthesize", "Place and Route", etc and then program the device.
+Once the scripts have completed, the Libero SoC design flow can be run by double clicking on a stage in the design flow on the left hand side of Libero - selecting an option requiring previous steps to be completed will run the full flow, i.e double clicking "Run Program Action" will run any required steps, such as, "Synthesize", "Place and Route", etc and then program the device.
 
 ## Board configuration
 

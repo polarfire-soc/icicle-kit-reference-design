@@ -9,7 +9,7 @@ Libero SoC Tcl scripts are provided to generate the reference design using Liber
 ## Using the Reference Design Generation Tcl Scripts
 
 **To run the scripts:**
-1. Clone the repository
+1. Clone or download the repository
 2. Open Libero v12.6
 3. Open the execute script dialog (CTRL + U)
 4. Execute the script for the design required (e.g "ICICLE_KIT_eMMC.tcl")
@@ -78,7 +78,7 @@ This software tool takes user inputs and generates an MSS configuration file (.x
 The XML file is used by the PolarFire SoC Configuration Generator to generate configuration header files for bare metal applications.
 The MSS component file can be imported into a Libero SoC design and used in the FPGA design flow.
 
-A saved configuration for the PolarFire SoC MSS Configurator is available for both the eMMC and SD card designs in the "script_support" folder. These configurations will match the MSS configuration used in the design and can be used to regenerate XML and a Libero component.
+A saved configuration for the PolarFire SoC MSS Configurator is available for both the eMMC and SD card designs in the "script_support" folder and can be opened by the PolarFire SoC MSS Configurator. These configurations will match the MSS configuration used in the design and can be used to regenerate XML and a Libero component.
 
 ## XML
 
@@ -131,6 +131,6 @@ In previous versions of this design the SDIO_SEL_{0:1} signals were tied low to 
 
 The SDIO_SEL_{0:1} signals are now driven by a bit present in a fabric register - this bit resets to output low selecting the eMMC configuration by default. To select the SD card configuration, software must set the lowest bit in the SDIO_register high and re-configure MSS I/Os as required. As the SDIO_register is located at address 0x4f00_0000, writing 1 to this address will set the register bit.
 
-HSS build v0.99.14 and greater has support for dynamic switching by re-configuring the MSS I/Os to select the SD configuration. The HSS will attempt to initialize an SD card on startup, if this initialization fails (e.g card not inserted) the HSS will switch the MSS I/O configuration to eMMC and set the SDIO_register bit low and attempt to initialize the eMMC.
+HSS build v0.99.16 and greater has support for dynamic switching by re-configuring the MSS I/Os to select the SD configuration. The HSS will attempt to initialize an SD card on startup, if this initialization fails (e.g card not inserted) the HSS will print an MMC initialization failure message, switch the MSS I/O configuration to eMMC and set the SDIO_register bit low and attempt to initialize the eMMC. Once a memory source has been successfully initialized a success message will be printed.
 
 **Note:** currently these updates are not fully supported by the Libero SoC design suite - to accommodate this the MPFS HAL will be updated with a define to allow dynamic switching. As a result of this we will continue to provide separate eMMC and SD card scripts to generate MSS XML for each configuration until Libero SoC has full support for these updates.

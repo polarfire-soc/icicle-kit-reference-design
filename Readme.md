@@ -20,11 +20,12 @@ This repository supports Libero SoC v12.6, which is available for download [here
 4. Execute the script for the design required (e.g "ICICLE_KIT_eMMC.tcl")
 **Note:**
         Scripts will automatically generate an MSS component, using the PolarFire SoC MSS Configurator in batch mode, they then generate, instantiate and connect components and top level I/Os. Constraints are imported for top level I/O and associated with Place and Route. Timing constraints are then generated and associated with Synthesis, Place and Route and Timing.
-5. Configure the design if required and run the Libero SoC design flow to program a device
+5. Configure the design if required
+6. Run the Libero SoC design flow to program a device
 
 **Note:**
     - In previous designs eMMC and SD cards could not be used simultaneously. This required providing separate designs supporting eMMC or SD cards. This Icicle Kit Reference Design release allows dynamic switching between eMMC and SD cards. However, scripts are still provided for both eMMC and SD cards. They will produce the same design and allow interim XML support until Libero SoC is updated. See the section "[eMMC and SD cards switching](#emmc-sd-switching)" for more information.
-    - Dynamic eMMC and SD cards switching allows the HSS to check if an SD card is inserted on system startup and boot it if one is present and if there is no card inserted revert to booting from the eMMC.
+    - Dynamic eMMC and SD card switching allows the HSS to check if an SD card is inserted on system startup and boot from it if one is present. If there is no card inserted, the HSS will boot from the eMMC.
 
 ## Design description
 

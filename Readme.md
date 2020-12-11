@@ -6,6 +6,11 @@ This repository can be used to generate a reference design for the PolarFire SoC
 
 Libero SoC Tcl scripts are provided to generate the reference design using Libero SoC along with device specific I/O constraints. For information on which script to run for each configuration see the "eMMC and SD cards" section. For Tcl scripts supporting previous versions of Libero SoC see "Releases".
 
+This repository supports Libero SoC v12.6, which is available for download [here](https://www.microsemi.com/product-directory/design-resources/1750-libero-soc#downloads). From Libero SoC v12.5 SP1 embedded FlashPro 6 (eFP6) devices are now supported when using eFP6 rev B. To activate an eFP6 and update it to rev B on an Icicle Kit:
+1. Ensure FlashPro Express is installed. Its installed along side Libero SoC and can be installed as part of the standalone Program and Debug tools.
+2. Download the FlashPro Express programming job located [here](https://download-soc.microsemi.com/FPGA/v12.5/sp1/eFP6_revB_TAG_v4_ppd.job).
+3. Follow the steps in [this document](https://download-soc.microsemi.com/FPGA/v12.5/sp1/README.pdf) to program the eFP6 on the Icicle Kit.
+
 ## Using the Reference Design Generation Tcl Scripts
 
 **To run the scripts:**

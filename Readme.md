@@ -18,7 +18,7 @@ Libero SoC Tcl scripts are provided to generate the reference design using Liber
 5. Configure the design if required and run the Libero SoC design flow to program a device
 
 **Note:**
-    - In previous designs eMMC and SD cards could not be used simultaneously. This required providing separate designs supporting eMMC or SD cards. This Icicle Kit Reference Design release allows dynamic switching between eMMC and SD cards. However, scripts are still provided for both eMMC and SD cards. They will produce the same design and allow interim XML support until Libero SoC is updated. See the section "eMMC and SD cards switching" for more information.
+    - In previous designs eMMC and SD cards could not be used simultaneously. This required providing separate designs supporting eMMC or SD cards. This Icicle Kit Reference Design release allows dynamic switching between eMMC and SD cards. However, scripts are still provided for both eMMC and SD cards. They will produce the same design and allow interim XML support until Libero SoC is updated. See the section "[eMMC and SD cards switching](#emmc-sd-switching)" for more information.
     - Dynamic eMMC and SD cards switching allows the HSS to check if an SD card is inserted on system startup and boot it if one is present and if there is no card inserted revert to booting from the eMMC.
 
 ## Design description
@@ -125,6 +125,7 @@ The PolarFire SoC Icicle Kit has the ability to use eMMC and SD cards as non-vol
 
 SD cards and eMMC cannot be used simultaneously as the MSS I/Os for the eMMC and SD cards are muxed together. The Icicle Kit features a de-mux connected to these MSS I/Os, the de-mux is controlled by 2 select signals, called SDIO_SEL_{0:1}, which are connected to the FPGA fabric. When the select signals are low the de-mux connects the MSS I/Os to the eMMC controller, when the select signals are high the de-mux connects the MSS I/Os to the SD card controller.
 
+<a name="emmc-sd-switching"></a>
 ### eMMC and SD card switching
 
 In previous versions of this design the SDIO_SEL_{0:1} signals were tied low to enable eMMC or tied high to enable the SD card; this required re-programming the FPGA to switch between SD or eMMC configurations. The Icicle Kit reference design and MPFS HAL have been updated to support dynamically switching between these configurations without having to re-program the FPGA.

@@ -9,7 +9,7 @@ Libero SoC Tcl scripts are provided to generate the reference design using Liber
 This repository supports Libero SoC v12.6, which is available for download [here](https://www.microsemi.com/product-directory/design-resources/1750-libero-soc#downloads). From Libero SoC v12.5 SP1 embedded FlashPro 6 (eFP6) devices are now supported when using eFP6 rev B. To activate an eFP6 and update it to rev B on an Icicle Kit:
 1. Ensure FlashPro Express is installed. Its installed along side Libero SoC and can be installed as part of the standalone Program and Debug tools.
 2. Download the FlashPro Express programming job located [here](https://download-soc.microsemi.com/FPGA/v12.5/sp1/eFP6_revB_TAG_v4_ppd.job).
-3. Follow the steps in [this document](https://download-soc.microsemi.com/FPGA/v12.5/sp1/README.pdf) to program the eFP6 on the Icicle Kit.
+3. Follow the steps in this [document](https://download-soc.microsemi.com/FPGA/v12.5/sp1/README.pdf) to program the eFP6 on the Icicle Kit.
 
 ## Using the Reference Design Generation Tcl Scripts
 
@@ -18,14 +18,15 @@ This repository supports Libero SoC v12.6, which is available for download [here
 2. Open Libero v12.6
 3. Open the execute script dialog (CTRL + U)
 4. Execute the script for the design required (e.g "ICICLE_KIT_eMMC.tcl")
+
 **Note:**
         Scripts will automatically generate an MSS component, using the PolarFire SoC MSS Configurator in batch mode, they then generate, instantiate and connect components and top level I/Os. Constraints are imported for top level I/O and associated with Place and Route. Timing constraints are then generated and associated with Synthesis, Place and Route and Timing.
 5. Configure the design if required
 6. Run the Libero SoC design flow to program a device
 
 **Note:**
-    - In previous designs eMMC and SD cards could not be used simultaneously. This required providing separate designs supporting eMMC or SD cards. This Icicle Kit Reference Design release allows dynamic switching between eMMC and SD cards. However, scripts are still provided for both eMMC and SD cards. They will produce the same design and allow interim XML support until Libero SoC is updated. See the section "[eMMC and SD cards switching](#emmc-sd-switching)" for more information.
-    - Dynamic eMMC and SD card switching allows the HSS to check if an SD card is inserted on system startup and boot from it if one is present. If there is no card inserted, the HSS will boot from the eMMC.
+  - In previous designs eMMC and SD cards could not be used simultaneously. This required providing separate designs supporting eMMC or SD cards. This Icicle Kit Reference Design release allows dynamic switching between eMMC and SD cards. However, scripts are still provided for both eMMC and SD cards. They will produce the same design and allow interim XML support until Libero SoC is updated. See the section "[eMMC and SD cards switching](#emmc-sd-switching)" for more information.
+  - Dynamic eMMC and SD card switching allows the HSS to check if an SD card is inserted on system startup and boot from it if one is present. If there is no card inserted, the HSS will boot from the eMMC.
 
 ## Design description
 

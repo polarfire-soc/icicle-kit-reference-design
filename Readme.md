@@ -4,11 +4,11 @@
 
 This repository can be used to generate a reference design for the PolarFire SoC Icicle Kit. This reference design will have the same or extended functionality compared to the pre-programmed FPGA design on the Icicle Kit.
 
-Libero SoC Tcl scripts are provided to generate the reference design using Libero SoC along with device specific I/O constraints. For information on which script to run for each configuration see the "eMMC and SD cards" section. For Tcl scripts supporting previous versions of Libero SoC see "Releases".
+Libero SoC Tcl scripts are provided to generate the reference design using Libero SoC along with device specific I/O constraints. For information on which script to run for each configuration see the [eMMC and SD cards](#emmc-sd) section. For Tcl scripts supporting previous versions of Libero SoC see [Releases](https://github.com/polarfire-soc/icicle-kit-reference-design/releases).
 
 This repository supports Libero SoC v12.6, which is available for download [here](https://www.microsemi.com/product-directory/design-resources/1750-libero-soc#downloads). From Libero SoC v12.5 SP1 embedded FlashPro 6 (eFP6) devices are now supported when using eFP6 rev B. To activate an eFP6 and update it to rev B on an Icicle Kit:
-1. Ensure FlashPro Express is installed. Its installed along side Libero SoC and can be installed as part of the standalone Program and Debug tools.
-2. Download the FlashPro Express programming job located [here](https://download-soc.microsemi.com/FPGA/v12.5/sp1/eFP6_revB_TAG_v4_ppd.job).
+1. Ensure FlashPro Express is installed. It is installed automatically with Libero SoC or is available with the standalone Program and Debug tools.
+2. Download this [FlashPro Express programming job](https://download-soc.microsemi.com/FPGA/v12.5/sp1/eFP6_revB_TAG_v4_ppd.job).
 3. Follow the steps in this [document](https://download-soc.microsemi.com/FPGA/v12.5/sp1/README.pdf) to program the eFP6 on the Icicle Kit.
 
 ## Using the Reference Design Generation Tcl Scripts
@@ -126,6 +126,7 @@ To set the PolarFire SoC boot mode to 1 and program and eNVM client in Libero:
 5. Save and add the client
 6. Run the remainder of the Libero SoC design flow and program the device
 
+<a name="emmc-sd"></a>
 ## eMMC and SD Cards
 
 The PolarFire SoC Icicle Kit has the ability to use eMMC and SD cards as non-volatile storage. Linux builds and / or bare metal applications can be stored in a HSS payload which is in turn stored in non-volatile storage. Using eMMC the user will have access to 8GB of on-board eMMC flash storage which can be programmed using the HSS. Using an SD card users can use the storage capacity of the card, program it directly on their PC and quickly switch between cards to change the payload being run on a kit.

@@ -54,8 +54,6 @@ download_core -vlnv {Actel:SystemBuilder:PF_SRAM_AHBL_AXI:1.2.108} -location {ww
 
 source ./script_support/MPFS_ICICLE_eMMC_recursive.tcl
 
-set_root -module {MPFS_ICICLE_eMMC::work} 
-build_design_hierarchy 
 run_tool -name {CONSTRAINT_MANAGEMENT} 
 import_files \
          -convert_EDN_to_HDL 0 \

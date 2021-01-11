@@ -30,7 +30,7 @@ source script_support/hdl_source.tcl
 source script_support/components/PCIE_BASE.tcl 
 source script_support/components/MPFS_ICICLE_eMMC.tcl 
 build_design_hierarchy
-set_root -module {MPFS_ICICLE_eMMC::work} 
+set_root -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} 
 build_design_hierarchy 
 source script_support/simulation/Test_bench.tcl
 build_design_hierarchy

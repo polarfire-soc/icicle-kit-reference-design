@@ -90,6 +90,10 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {CAN_1_TXBUS} -port_directi
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_SEL0} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_SEL1} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_EN_N} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO5} -port_direction {OUT} 
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO6} -port_direction {OUT} 
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO13} -port_direction {OUT} 
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO19} -port_direction {OUT} 
 
 sd_create_bus_port -sd_name ${sd_name} -port_name {CA} -port_direction {OUT} -port_range {[5:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQ} -port_direction {INOUT} -port_range {[31:0]}
@@ -196,6 +200,10 @@ sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {sdio_register} -inst
 # Add COREGPIO instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {GPIO} -instance_name {COREGPIO_C0}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {COREGPIO_C0:GPIO_IN} -value {GND}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {COREGPIO_C0:GPIO_OUT} -pin_slices {"[3:3]"} 
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {COREGPIO_C0:GPIO_OUT} -pin_slices {"[2:2]"} 
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {COREGPIO_C0:GPIO_OUT} -pin_slices {"[1:1]"} 
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {COREGPIO_C0:GPIO_OUT} -pin_slices {"[0:0]"} 
 
 # Add scalar net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"AND4_0:Y" "CORERESET_0:PLL_LOCK" "CORERESET_1:PLL_LOCK"}
@@ -307,6 +315,12 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_SRESET} -va
 sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_RESETN" "CORERESET_0:FABRIC_RESET_N" }
 
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:MSS_RESET_N_F2M" "PB3"}
+
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"COREGPIO_C0:GPIO_OUT[0]" "RPi_GPIO5"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"COREGPIO_C0:GPIO_OUT[1]" "RPi_GPIO6"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"COREGPIO_C0:GPIO_OUT[2]" "RPi_GPIO13"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"COREGPIO_C0:GPIO_OUT[3]" "RPi_GPIO19"} 
+
 
 # Add bus net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CA" "MSS:CA" }

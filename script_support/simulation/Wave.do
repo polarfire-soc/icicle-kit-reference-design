@@ -1,7 +1,10 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
 
-add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/GPIO_OUT[3:0]
+add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/RPi_GPIO5
+add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/RPi_GPIO6
+add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/RPi_GPIO13
+add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/RPi_GPIO19
 add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS/MSS_RESET_N_F2M
 add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS/MSS_RESET_N_M2F 
 add wave -noupdate -expand -group {FABRIC: COREGPIO_C0 (at BaseAddress 0x4200_0000, on FIC3)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/COREGPIO_C0/PCLK

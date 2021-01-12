@@ -47,7 +47,13 @@ sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_B
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SGMII_RX1_N} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:MMUART_3_RXD_F2M} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SGMII_RX1_P} -value {GND} 
+
+# Promote pins to top level
 sd_connect_pin_to_port -sd_name ${sd_tb_name} -pin_name {MPFS_ICICLE_KIT_BASE_DESIGN_0:SDIO_SW_SEL1} -port_name {} 
+sd_connect_pin_to_port -sd_name ${sd_tb_name} -pin_name {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_GPIO5} -port_name {} 
+sd_connect_pin_to_port -sd_name ${sd_tb_name} -pin_name {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_GPIO6} -port_name {} 
+sd_connect_pin_to_port -sd_name ${sd_tb_name} -pin_name {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_GPIO13} -port_name {} 
+sd_connect_pin_to_port -sd_name ${sd_tb_name} -pin_name {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_GPIO19} -port_name {} 
 
 # Mark outputs unused
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SDIO_SW_SEL0} 

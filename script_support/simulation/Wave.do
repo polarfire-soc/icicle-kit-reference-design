@@ -1,9 +1,9 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
+
 add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/GPIO_OUT[3:0]
 add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS/MSS_RESET_N_F2M
 add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS/MSS_RESET_N_M2F 
-
 add wave -noupdate -expand -group {FABRIC: COREGPIO_C0 (at BaseAddress 0x4200_0000, on FIC3)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/COREGPIO_C0/PCLK
 add wave -noupdate -expand -group {FABRIC: COREGPIO_C0 (at BaseAddress 0x4200_0000, on FIC3)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/COREGPIO_C0/PSEL
 add wave -noupdate -expand -group {FABRIC: COREGPIO_C0 (at BaseAddress 0x4200_0000, on FIC3)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/COREGPIO_C0/PENABLE
@@ -12,7 +12,6 @@ add wave -noupdate -expand -group {FABRIC: COREGPIO_C0 (at BaseAddress 0x4200_00
 add wave -noupdate -expand -group {FABRIC: COREGPIO_C0 (at BaseAddress 0x4200_0000, on FIC3)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/COREGPIO_C0/PWDATA
 add wave -noupdate -expand -group {FABRIC: COREGPIO_C0 (at BaseAddress 0x4200_0000, on FIC3)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/COREGPIO_C0/PREADY
 add wave -noupdate -expand -group {FABRIC: COREGPIO_C0 (at BaseAddress 0x4200_0000, on FIC3)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/COREGPIO_C0/PRDATA
-
 add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/ARESETN
 add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/ACLK
 add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/AWVALID
@@ -29,9 +28,11 @@ add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, o
 add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/WDATA
 add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/WREADY
 add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/WVALID
+
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {16493562 ps} 0} {{Cursor 2} {6098277 ps} 0}
 quietly wave cursor active 2
+
 configure wave -namecolwidth 478
 configure wave -valuecolwidth 100
 configure wave -justifyvalue left
@@ -45,5 +46,6 @@ configure wave -gridperiod 1
 configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
+
 update
 WaveRestoreZoom {5611018 ps} {7579768 ps}

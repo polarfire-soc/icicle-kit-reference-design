@@ -1,3 +1,0 @@
-set_io -port_name I2C_0_SCL	-pin_name F12 -fixed true -DIRECTION INOUT
-
-set_io -port_name I2C_0_SDA	-pin_name F13 -fixed true -DIRECTION INOUT

@@ -59,19 +59,17 @@ build_design_hierarchy
 run_tool -name {CONSTRAINT_MANAGEMENT} 
 import_files \
          -convert_EDN_to_HDL 0 \
-         -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE.pdc" \
-         -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_CAN0.pdc" \
-         -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_I2C0.pdc" \
-         -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MAC.pdc" \
-         -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MIKROBUS.pdc" \
-         -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART0.pdc" \
-         -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART1.pdc" \
-         -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART2.pdc" \
-         -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART3.pdc" \
-         -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_MMUART4.pdc" \
-		 -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_PCIE.pdc" \
-		 -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_USB.pdc" \
-		 -io_pdc "${constraint_path}/ICICLE_IO_CONSTRAINTS/ICICLE_SDIO.pdc"
+         -io_pdc "${constraint_path}/ICICLE.pdc" \
+         -io_pdc "${constraint_path}/ICICLE_CAN0.pdc" \
+         -io_pdc "${constraint_path}/ICICLE_MAC.pdc" \
+         -io_pdc "${constraint_path}/ICICLE_MIKROBUS.pdc" \
+         -io_pdc "${constraint_path}/ICICLE_MMUART0.pdc" \
+         -io_pdc "${constraint_path}/ICICLE_MMUART1.pdc" \
+         -io_pdc "${constraint_path}/ICICLE_MMUART2.pdc" \
+         -io_pdc "${constraint_path}/ICICLE_MMUART3.pdc" \
+		 -io_pdc "${constraint_path}/ICICLE_PCIE.pdc" \
+		 -io_pdc "${constraint_path}/ICICLE_USB.pdc" \
+		 -io_pdc "${constraint_path}/ICICLE_SDIO.pdc"
 
 organize_tool_files -tool {PLACEROUTE} -file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" -file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" -file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" -file "${project_dir}/constraint/io/ICICLE_USB.pdc" -file "${project_dir}/constraint/io/ICICLE.pdc" -file "${project_dir}/constraint/io/ICICLE_MAC.pdc" -file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" -module {MPFS_ICICLE_eMMC::work} -input_type {constraint} 
 derive_constraints_sdc 

@@ -1,5 +1,7 @@
-# Exporting core PF_PCIE_C0 to TCL
-# Exporting Create design command for core PF_PCIE_C0
+# Exporting Component Description of PF_PCIE_C0 to TCL
+# Family: PolarFireSoC
+# Part Number: MPFS250T_ES-FCVG484E
+# Create and Configure the core component PF_PCIE_C0
 create_and_configure_core -core_vlnv {Actel:SgCore:PF_PCIE:2.0.104} -component_name {PF_PCIE_C0} -params {\
 "EXPOSE_ALL_DEBUG_PORTS:false"  \
 "UI_DLL_JITTER_TOLERANCE:Medium_Low"  \
@@ -193,4 +195,4 @@ create_and_configure_core -core_vlnv {Actel:SgCore:PF_PCIE:2.0.104} -component_n
 "UI_TX_CLK_DIV_FACTOR:1"  \
 "UI_USE_EMBEDDED_DLL:true"  \
 "XT_ES_DEVICE:false"   }
-# Exporting core PF_PCIE_C0 to TCL done
+# Exporting Component Description of PF_PCIE_C0 to TCL done

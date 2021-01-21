@@ -77,6 +77,16 @@ The following MSS peripherals are enabled:
 | PF_PCIE_C0_0            	| AXI4_mslave1 	| LSRAM_1                 	| 0x0 -> 0xfff                  	|
 | COREAXI4DMACONTROLLER_0 	| AXI4_mslave0 	| MSS: FIC1               	| 0xc000_0000 -> 0xcfff_ffff    	|
 
+### Interrupt map
+
+| Source                	| IRQ                	|
+|-----------------------	|--------------------	|
+| MSS_GPIO_2_28 \| SW1  	| MSS_INT_FTM[0]     	|
+| PF_PCIE               	| MSS_INT_FTM[1]     	|
+| COREAXI4DMACONTROLLER 	| MSS_INT_FTM[2]     	|
+| MSS_GPIO_2_26 \| SW2  	| MSS_GPIO_2_INT[30] 	|
+| MSS_GPIO_2_27 \| SW3  	| MSS_GPIO_2_INT[31] 	|
+
 ## Programming the FPGA
 
 Once the scripts have completed, the Libero SoC design flow can be run by double clicking on a stage in the design flow on the left hand side of Libero - selecting an option requiring previous steps to be completed will run the full flow, i.e double clicking "Run Program Action" will run any required steps, such as, "Synthesize", "Place and Route", etc and then program the device.
@@ -99,6 +109,15 @@ A saved configuration for the PolarFire SoC MSS Configurator is available for bo
 The Microcontroller Subsystem (MSS) configuration is captured in an XML file that is then used by the PolarFire SoC Configuration Generator to generate configuration header files. These header files are compiled as part of the MPFS HAL startup code to configure the system at power on.
 
 XML generated for both the eMMC and SD card configurations is provided in the "XML" folder.
+
+## BFM Simulation
+
+A SmartDesign test bench will be generated along with the SmartDesign containing the reference design. This test bench will allow the user to run BFM simulations of the PolarFire SoC MSS. A custom wave.do file is imported to add signals and updated BFM scripts are also imported. To run a BFM simulation:
+1. Open the "Stimulus Hierarchy" in Libero SoC
+2. Right click on "Test_bench" from the hierarchy
+3. Select "Simulate Pre-Synth Design" and "Open Interactively"
+
+Commands for BFM simulations can be updated by editing the ".vec" files in the Simulation folder which is accessible under the "Files" tab of Libero SoC.
 
 ## Setting the boot mode and programming the eNVM
 

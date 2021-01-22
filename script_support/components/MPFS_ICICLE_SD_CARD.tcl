@@ -1,5 +1,5 @@
 # Creating SmartDesign MPFS_ICICLE_SD_CARD
-set sd_name {MPFS_ICICLE_SD_CARD}
+set sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
 create_smartdesign -sd_name ${sd_name}
 
 # Disable auto promotion of pins of type 'pad'

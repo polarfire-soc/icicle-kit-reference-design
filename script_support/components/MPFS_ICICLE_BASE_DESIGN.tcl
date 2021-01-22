@@ -51,10 +51,10 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {LED0} -port_direction {OUT
 sd_create_scalar_port -sd_name ${sd_name} -port_name {LED1} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {LED2} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {LED3} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PB0} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PB1} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PB2} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PB3} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SW1} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SW2} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SW3} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SW4} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {USB_ULPI_RESET} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_RX0_P} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_RX0_N} -port_direction {IN}
@@ -242,9 +242,9 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_0:Y" "MSS:MSS_INT_F2M[0]" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:PCIE_ROOTPORT_INTERRUPT" "MSS:MSS_INT_F2M[1]" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_1:Y" "MSS:GPIO_2_F2M_30" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_2:Y" "MSS:GPIO_2_F2M_31" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PB0" "OR2_0:A" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PB1" "OR2_1:A" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PB2" "OR2_2:A" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SW1" "OR2_0:A" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SW2" "OR2_1:A" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SW3" "OR2_2:A" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:PCIE_1_PERST_N" "PCIE_1_PERST_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_RXD0_N" "PCIE_BASE_0:PCIESS_LANE_RXD0_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_RXD0_P" "PCIE_BASE_0:PCIESS_LANE_RXD0_P" }
@@ -314,7 +314,7 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_PLLMODE} -v
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_SRESET} -value {VCC}
 sd_connect_pins -sd_name ${sd_name} -pin_names {"VSC_8662_RESETN" "CORERESET_0:FABRIC_RESET_N" }
 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:MSS_RESET_N_F2M" "PB3"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:MSS_RESET_N_F2M" "SW4"}
 
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"COREGPIO_C0:GPIO_OUT[0]" "RPi_GPIO5"} 
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"COREGPIO_C0:GPIO_OUT[1]" "RPi_GPIO6"} 

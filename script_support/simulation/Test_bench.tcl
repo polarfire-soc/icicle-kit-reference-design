@@ -10,7 +10,7 @@ sd_instantiate_component -sd_name ${sd_tb_name} -component_name {RESET_GEN_C0} -
 
 # Make connections
 sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"RESET_GEN_C0_0:RESET" "MPFS_ICICLE_KIT_BASE_DESIGN_0:PCIE_1_PERST_N"} 
-sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"RESET_GEN_C0_0:RESET" "MPFS_ICICLE_KIT_BASE_DESIGN_0:PB3"} 
+sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"RESET_GEN_C0_0:RESET" "MPFS_ICICLE_KIT_BASE_DESIGN_0:SW4"} 
 sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"CLK_GEN_C0_0:CLK" "MPFS_ICICLE_KIT_BASE_DESIGN_0:REFCLK"} 
 sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"CLK_GEN_C0_0:CLK" "MPFS_ICICLE_KIT_BASE_DESIGN_0:REFCLK_N"} 
 sd_invert_pins -sd_name ${sd_tb_name} -pin_names {"MPFS_ICICLE_KIT_BASE_DESIGN_0:REFCLK_N"} 
@@ -37,10 +37,10 @@ sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_B
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:USB_CLK} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:MMUART_1_RXD_F2M} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:USB_DIR} -value {GND} 
-sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:PB0} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SW1} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:USB_NXT} -value {GND} 
-sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:PB2} -value {GND} 
-sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:PB1} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SW3} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SW2} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:MMUART_0_RXD_F2M} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SPI_1_DI} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:MMUART_2_RXD_F2M} -value {GND} 

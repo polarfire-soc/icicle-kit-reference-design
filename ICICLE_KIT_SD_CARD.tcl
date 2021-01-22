@@ -57,7 +57,8 @@ import_files \
          -io_pdc "${constraint_path}/ICICLE_MMUART3.pdc" \
 		 -io_pdc "${constraint_path}/ICICLE_PCIE.pdc" \
 		 -io_pdc "${constraint_path}/ICICLE_USB.pdc" \
-		 -io_pdc "${constraint_path}/ICICLE_SDIO.pdc"
+		 -io_pdc "${constraint_path}/ICICLE_SDIO.pdc" \
+		 -io_pdc "${constraint_path}/ICICLE_RPi.pdc"
 
 organize_tool_files -tool {PLACEROUTE} -file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" -file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" -file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" -file "${project_dir}/constraint/io/ICICLE_USB.pdc" -file "${project_dir}/constraint/io/ICICLE.pdc" -file "${project_dir}/constraint/io/ICICLE_MAC.pdc" -file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" -file "${project_dir}/constraint/io/ICICLE_RPi.pdc" -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} -input_type {constraint} 
 derive_constraints_sdc 

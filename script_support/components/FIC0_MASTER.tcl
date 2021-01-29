@@ -1,8 +1,8 @@
-# Exporting Component Description of PCIE_AXI_1 to TCL
+# Exporting Component Description of FIC0_MASTER to TCL
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
-# Create and Configure the core component PCIE_AXI_1
-create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -component_name {PCIE_AXI_1} -params {\
+# Create and Configure the core component FIC0_MASTER
+create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -component_name {FIC0_MASTER} -params {\
 "ADDR_WIDTH:38"  \
 "CROSSBAR_MODE:0"  \
 "DATA_WIDTH:64"  \

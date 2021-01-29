@@ -1,8 +1,8 @@
-# Exporting Component Description of AXI4INTERCONNECT to TCL
+# Exporting Component Description of DMA_MASTER to TCL
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
-# Create and Configure the core component AXI4INTERCONNECT
-create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -component_name {AXI4INTERCONNECT} -params {\
+# Create and Configure the core component DMA_MASTER
+create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -component_name {DMA_MASTER} -params {\
 "ADDR_WIDTH:32"  \
 "CROSSBAR_MODE:0"  \
 "DATA_WIDTH:64"  \

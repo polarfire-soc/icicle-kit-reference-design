@@ -12,8 +12,8 @@ exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/PF_SoC_MSS_Ic
 import_mss_component -file "$local_dir/script_support/components/MSS_eMMC/ICICLE_MSS.cxz"
 source script_support/components/CORERESET_0.tcl
 source script_support/components/INIT_MONITOR.tcl 
-source script_support/components/PCIE_AXI_0.tcl 
-source script_support/components/PCIE_AXI_1.tcl 
+source script_support/components/PCIE_MASTER.tcl 
+source script_support/components/FIC0_MASTER.tcl 
 source script_support/components/PF_CLK_DIV_C0.tcl 
 source script_support/components/PF_DRI_C0.tcl 
 source script_support/components/PF_NGMUX_C0.tcl 
@@ -22,7 +22,7 @@ source script_support/components/PF_TX_PLL_C0.tcl
 source script_support/components/PF_XCVR_REF_CLK_C0.tcl 
 source script_support/components/LSRAM_0.tcl 
 source script_support/components/COREAXI4DMACONTROLLER.tcl
-source script_support/components/COREAXI4INTERCONNECT.tcl
+source script_support/components/DMA_MASTER.tcl
 source script_support/components/GPIO.tcl
 source script_support/components/CoreAPB3.tcl
 source script_support/components/OSC.tcl

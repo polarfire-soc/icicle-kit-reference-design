@@ -2,7 +2,7 @@
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
 # Create and Configure the core component APB3
-create_and_configure_core -core_vlnv {Actel:DirectCore:CoreAPB3:4.1.100} -component_name {APB3} -params {\
+create_and_configure_core -core_vlnv {Actel:DirectCore:CoreAPB3:4.1.100} -component_name {FIC3_MASTER} -params {\
 "APB_DWIDTH:32"  \
 "APBSLOT0ENABLE:false"  \
 "APBSLOT1ENABLE:false"  \

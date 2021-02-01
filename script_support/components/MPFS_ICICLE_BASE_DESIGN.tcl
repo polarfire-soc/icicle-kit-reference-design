@@ -191,8 +191,8 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {COREAXI4DMACONTROLLE
 # Add DMA_MASTER instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {DMA_MASTER} -instance_name {DMA_MASTER}
 
-# Add coreAPB3 instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {APB3} -instance_name {CoreAPB3}
+# Add FIC3_MASTER instance
+sd_instantiate_component -sd_name ${sd_name} -component_name {FIC3_MASTER} -instance_name {FIC3_MASTER}
 
 # Add SDIO_register instance
 sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {sdio_register} -instance_name {}
@@ -340,10 +340,10 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_MASTER:AXI4mslave2" "COREA
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_MASTER:AXI4mmaster0" "COREAXI4DMACONTROLLER_0:AXI4MasterDMA_IF" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_MASTER:AXI4mslave0" "MSS:FIC_1_AXI4_SLAVE" }
 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:FIC_3_APB_MASTER" "CoreAPB3:APB3mmaster"}
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreAPB3:APBmslave3" "PCIE_BASE_0:APBS_SLAVE"}
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreAPB3:APBmslave2" "COREGPIO_C0:APB_bif"}
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreAPB3:APBmslave15" "sdio_register_0:APBslave"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:FIC_3_APB_MASTER" "FIC3_MASTER:APB3mmaster"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APBmslave3" "PCIE_BASE_0:APBS_SLAVE"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APBmslave2" "COREGPIO_C0:APB_bif"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APBmslave15" "sdio_register_0:APBslave"}
 
 # Fabric reset
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:MSS_RESET_N_M2F" "RESET_125_MHz:EXT_RST_N" "RESET_62_5_MHz:EXT_RST_N" }

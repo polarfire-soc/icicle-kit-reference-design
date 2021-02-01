@@ -24,7 +24,7 @@ source script_support/components/LSRAM_0.tcl
 source script_support/components/COREAXI4DMACONTROLLER.tcl
 source script_support/components/DMA_MASTER.tcl
 source script_support/components/GPIO.tcl
-source script_support/components/CoreAPB3.tcl
+source script_support/components/FIC3_MASTER.tcl
 source script_support/components/OSC.tcl
 source script_support/hdl_source.tcl
 source script_support/components/PCIE_BASE.tcl 

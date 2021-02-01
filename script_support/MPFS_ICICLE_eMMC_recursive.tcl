@@ -15,10 +15,10 @@ source script_support/components/INIT_MONITOR.tcl
 source script_support/components/PCIE_MASTER.tcl 
 source script_support/components/FIC0_MASTER.tcl 
 source script_support/components/CLK_DIV.tcl 
-source script_support/components/PF_DRI_C0.tcl 
+source script_support/components/RECONFIGURATION_INTERFACE.tcl 
 source script_support/components/GLITCHLESS_MUX.tcl 
 source script_support/components/PF_PCIE_C0.tcl 
-source script_support/components/PF_TX_PLL_C0.tcl 
+source script_support/components/TRANSMIT_PLL.tcl 
 source script_support/components/PCIE_REF_CLK.tcl 
 source script_support/components/LSRAM.tcl 
 source script_support/components/DMA_CONTROLLER.tcl

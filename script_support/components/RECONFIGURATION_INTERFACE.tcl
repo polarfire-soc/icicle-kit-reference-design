@@ -1,8 +1,8 @@
-# Exporting Component Description of PF_DRI_C0 to TCL
+# Exporting Component Description of RECONFIGURATION_INTERFACE to TCL
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
-# Create and Configure the core component PF_DRI_C0
-create_and_configure_core -core_vlnv {Actel:SgCore:PF_DRI:1.1.100} -component_name {PF_DRI_C0} -params {\
+# Create and Configure the core component RECONFIGURATION_INTERFACE
+create_and_configure_core -core_vlnv {Actel:SgCore:PF_DRI:1.1.100} -component_name {RECONFIGURATION_INTERFACE} -params {\
 "CRYPTO:false"  \
 "DLL0_NE:false"  \
 "DLL0_NW:false"  \
@@ -63,4 +63,4 @@ create_and_configure_core -core_vlnv {Actel:SgCore:PF_DRI:1.1.100} -component_na
 "Q5_LANE3:false"  \
 "Q5_TXPLL:false"  \
 "Q5_TXPLL_SSC:false"   }
-# Exporting Component Description of PF_DRI_C0 to TCL done
+# Exporting Component Description of RECONFIGURATION_INTERFACE to TCL done

@@ -101,8 +101,8 @@ sd_create_bus_port -sd_name ${sd_name} -port_name {DQS} -port_direction {INOUT} 
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQS_N} -port_direction {INOUT} -port_range {[3:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DM} -port_direction {OUT} -port_range {[3:0]}
 
-# Add AND4_0 instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {AND4} -instance_name {AND4_0}
+# Add PLL_LOCKS instance
+sd_instantiate_macro -sd_name ${sd_name} -macro_name {AND4} -instance_name {PLL_LOCKS}
 
 # Add RESET_125_MHz instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {CORERESET} -instance_name {RESET_125_MHz} 
@@ -156,17 +156,17 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MAC_1_TSU_PDELAY_REQ_RX_
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MAC_1_TSU_PDELAY_RESP_RX_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MSS_INT_M2F}
 
-# Add OR2_0 instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {OR2} -instance_name {OR2_0}
-sd_invert_pins -sd_name ${sd_name} -pin_names {OR2_0:A}
+# Add SW1_OR_GPIO_2_28 instance
+sd_instantiate_macro -sd_name ${sd_name} -macro_name {OR2} -instance_name {SW1_OR_GPIO_2_28}
+sd_invert_pins -sd_name ${sd_name} -pin_names {SW1_OR_GPIO_2_28:A}
 
-# Add OR2_1 instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {OR2} -instance_name {OR2_1}
-sd_invert_pins -sd_name ${sd_name} -pin_names {OR2_1:A}
+# Add SW2_OR_GPIO_2_26 instance
+sd_instantiate_macro -sd_name ${sd_name} -macro_name {OR2} -instance_name {SW2_OR_GPIO_2_26}
+sd_invert_pins -sd_name ${sd_name} -pin_names {SW2_OR_GPIO_2_26:A}
 
-# Add OR2_2 instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {OR2} -instance_name {OR2_2}
-sd_invert_pins -sd_name ${sd_name} -pin_names {OR2_2:A}
+# Add SW3_OR_GPIO_2_27 instance
+sd_instantiate_macro -sd_name ${sd_name} -macro_name {OR2} -instance_name {SW3_OR_GPIO_2_27}
+sd_invert_pins -sd_name ${sd_name} -pin_names {SW3_OR_GPIO_2_27:A}
 
 # Add PCIE_MASTER instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {PCIE_MASTER} -instance_name {PCIE_MASTER}
@@ -206,7 +206,7 @@ sd_create_pin_slices -sd_name ${sd_name} -pin_name {COREGPIO_C0:GPIO_OUT} -pin_s
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {COREGPIO_C0:GPIO_OUT} -pin_slices {"[0:0]"} 
 
 # Add scalar net connections
-sd_connect_pins -sd_name ${sd_name} -pin_names {"AND4_0:Y" "RESET_125_MHz:PLL_LOCK" "RESET_62_5_MHz:PLL_LOCK"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PLL_LOCKS:Y" "RESET_125_MHz:PLL_LOCK" "RESET_62_5_MHz:PLL_LOCK"}
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "MSS:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "MSS:CK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CKE" "MSS:CKE" }
@@ -230,21 +230,21 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"MMUART_2_RXD_F2M" "MSS:MMUART_2
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MMUART_2_TXD_M2F" "MSS:MMUART_2_TXD_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MMUART_3_RXD_F2M" "MSS:MMUART_3_RXD_F2M" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MMUART_3_TXD_M2F" "MSS:MMUART_3_TXD_M2F" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_1:B" "MSS:GPIO_2_M2F_26" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_2:B" "MSS:GPIO_2_M2F_27" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_0:B" "MSS:GPIO_2_M2F_28" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"AND4_0:D" "MSS:FIC_1_DLL_LOCK_M2F" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"AND4_0:C" "PCIE_BASE_0:PCIE_PLL_LOCK" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"AND4_0:B" "MSS:FIC_3_DLL_LOCK_M2F" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"AND4_0:A" "MSS:FIC_0_DLL_LOCK_M2F" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SW2_OR_GPIO_2_26:B" "MSS:GPIO_2_M2F_26" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SW3_OR_GPIO_2_27:B" "MSS:GPIO_2_M2F_27" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SW1_OR_GPIO_2_28:B" "MSS:GPIO_2_M2F_28" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PLL_LOCKS:D" "MSS:FIC_1_DLL_LOCK_M2F" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PLL_LOCKS:C" "PCIE_BASE_0:PCIE_PLL_LOCK" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PLL_LOCKS:B" "MSS:FIC_3_DLL_LOCK_M2F" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PLL_LOCKS:A" "MSS:FIC_0_DLL_LOCK_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ODT" "MSS:ODT" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_0:Y" "MSS:MSS_INT_F2M[0]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SW1_OR_GPIO_2_28:Y" "MSS:MSS_INT_F2M[0]" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:PCIE_ROOTPORT_INTERRUPT" "MSS:MSS_INT_F2M[1]" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_1:Y" "MSS:GPIO_2_F2M_30" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"OR2_2:Y" "MSS:GPIO_2_F2M_31" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SW1" "OR2_0:A" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SW2" "OR2_1:A" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SW3" "OR2_2:A" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SW2_OR_GPIO_2_26:Y" "MSS:GPIO_2_F2M_30" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SW3_OR_GPIO_2_27:Y" "MSS:GPIO_2_F2M_31" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SW1" "SW1_OR_GPIO_2_28:A" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SW2" "SW2_OR_GPIO_2_26:A" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SW3" "SW3_OR_GPIO_2_27:A" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:PCIE_1_PERST_N" "PCIE_1_PERST_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_RXD0_N" "PCIE_BASE_0:PCIESS_LANE_RXD0_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_RXD0_P" "PCIE_BASE_0:PCIESS_LANE_RXD0_P" }

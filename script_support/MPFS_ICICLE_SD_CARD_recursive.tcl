@@ -14,7 +14,7 @@ source script_support/components/CORERESET_0.tcl
 source script_support/components/INIT_MONITOR.tcl 
 source script_support/components/PCIE_MASTER.tcl 
 source script_support/components/FIC0_MASTER.tcl 
-source script_support/components/PF_CLK_DIV_C0.tcl 
+source script_support/components/CLK_DIV.tcl 
 source script_support/components/PF_DRI_C0.tcl 
 source script_support/components/PF_NGMUX_C0.tcl 
 source script_support/components/PF_PCIE_C0.tcl 

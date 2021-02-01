@@ -174,11 +174,11 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {PCIE_MASTER} -inst
 # Add FIC0_MASTER instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {FIC0_MASTER} -instance_name {FIC0_MASTER}
 
-# Add LSRAM_0 instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {LSRAM} -instance_name {LSRAM_0}
+# Add MSS_LSRAM instance
+sd_instantiate_component -sd_name ${sd_name} -component_name {LSRAM} -instance_name {MSS_LSRAM}
 
-# Add LSRAM_1 instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {LSRAM} -instance_name {LSRAM_1}
+# Add PCIE_LSRAM instance
+sd_instantiate_component -sd_name ${sd_name} -component_name {LSRAM} -instance_name {PCIE_LSRAM}
 
 # Add PCIE_BASE_0 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {PCIE_BASE} -instance_name {PCIE_BASE_0}
@@ -210,7 +210,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"AND4_0:Y" "RESET_125_MHz:PLL_LO
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "MSS:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "MSS:CK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CKE" "MSS:CKE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"RESET_125_MHz:FABRIC_RESET_N" "PCIE_MASTER:ARESETN" "FIC0_MASTER:ARESETN" "PCIE_BASE_0:PRESETN" "USB_ULPI_RESET" "LSRAM_0:ARESETN" "LSRAM_1:ARESETN" "DMA_CONTROLLER:RESETN" "DMA_MASTER:ARESETN" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"RESET_125_MHz:FABRIC_RESET_N" "PCIE_MASTER:ARESETN" "FIC0_MASTER:ARESETN" "PCIE_BASE_0:PRESETN" "USB_ULPI_RESET" "MSS_LSRAM:ARESETN" "PCIE_LSRAM:ARESETN" "DMA_CONTROLLER:RESETN" "DMA_MASTER:ARESETN" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"RESET_62_5_MHz:FABRIC_RESET_N" "sdio_register_0:presetn" "COREGPIO_C0:PRESETN"}
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CS" "MSS:CS" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C_1_SCL" "MSS:I2C_1_SCL" }
@@ -262,7 +262,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD2_N" "PCIE_BASE_
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD2_P" "PCIE_BASE_0:PCIESS_LANE_TXD2_P" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD3_N" "PCIE_BASE_0:PCIESS_LANE_TXD3_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD3_P" "PCIE_BASE_0:PCIESS_LANE_TXD3_P" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:AXI_CLK_125MHZ" "MSS:FIC_0_ACLK" "MSS:FIC_1_ACLK" "PCIE_MASTER:ACLK" "FIC0_MASTER:ACLK" "LSRAM_0:ACLK" "LSRAM_1:ACLK" "DMA_CONTROLLER:CLOCK" "DMA_MASTER:ACLK"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:AXI_CLK_125MHZ" "MSS:FIC_0_ACLK" "MSS:FIC_1_ACLK" "PCIE_MASTER:ACLK" "FIC0_MASTER:ACLK" "MSS_LSRAM:ACLK" "PCIE_LSRAM:ACLK" "DMA_CONTROLLER:CLOCK" "DMA_MASTER:ACLK"}
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:APB_CLK_62_5MHZ" "MSS:FIC_3_PCLK" "sdio_register_0:pclk" "RESET_62_5_MHz:CLK" "COREGPIO_C0:PCLK"}
 sd_connect_pins -sd_name ${sd_name} -pin_names {"REF_CLK_PAD_N" "PCIE_BASE_0:REF_CLK_PAD_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"REF_CLK_PAD_P" "PCIE_BASE_0:REF_CLK_PAD_P" }
@@ -332,10 +332,10 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"DQS_N" "MSS:DQS_N" }
 # Add bus interface net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:FIC_0_AXI4_MASTER" "FIC0_MASTER:AXI4mmaster0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:AXI4mslave0" "MSS:FIC_0_AXI4_SLAVE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:AXI4mslave1" "LSRAM_1:AXI4_Slave" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:AXI4mslave1" "PCIE_LSRAM:AXI4_Slave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:AXI_1_SLAVE" "FIC0_MASTER:AXI4mslave0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:AXI4mmaster0" "PCIE_BASE_0:AXI_1_MASTER" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_MASTER:AXI4mslave1" "LSRAM_0:AXI4_Slave" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_MASTER:AXI4mslave1" "MSS_LSRAM:AXI4_Slave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_MASTER:AXI4mslave2" "DMA_CONTROLLER:AXI4SlaveCtrl_IF" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_MASTER:AXI4mmaster0" "DMA_CONTROLLER:AXI4MasterDMA_IF" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_MASTER:AXI4mslave0" "MSS:FIC_1_AXI4_SLAVE" }

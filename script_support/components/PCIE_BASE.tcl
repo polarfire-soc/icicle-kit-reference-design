@@ -202,7 +202,7 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {PF_NGMUX_C0} -inst
 
 
 # Add RC oscillator
-sd_instantiate_component -sd_name ${sd_name} -component_name {PF_OSC_C0} -instance_name {}
+sd_instantiate_component -sd_name ${sd_name} -component_name {OSCILLATOR_160MHz} -instance_name {OSCILLATOR_160MHz}
 
 
 
@@ -255,7 +255,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD3_N" "PF_PCIE_C0
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD3_P" "PF_PCIE_C0_0:PCIESS_LANE_TXD3_P" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_NGMUX_C0_0:CLK0" "CLK_160MHz_to_CLK_80MHz:CLK_OUT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_NGMUX_C0_0:CLK_OUT" "PF_PCIE_C0_0:PCIE_1_TL_CLK_125MHz" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_OSC_C0_0:RCOSC_160MHZ_CLK_DIV" "CLK_160MHz_to_CLK_80MHz:CLK_IN" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"OSCILLATOR_160MHz:RCOSC_160MHZ_CLK_DIV" "CLK_160MHz_to_CLK_80MHz:CLK_IN" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE0_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE2_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE3_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE1_CDR_REF_CLK_0" "PF_TX_PLL_C0_0:REF_CLK" "PF_XCVR_REF_CLK_C0_0:REF_CLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PRESETN" "PF_DRI_C0_0:PRESETN" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"REF_CLK_PAD_N" "PF_XCVR_REF_CLK_C0_0:REF_CLK_PAD_N" }

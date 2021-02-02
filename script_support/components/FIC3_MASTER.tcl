@@ -1,8 +1,8 @@
-# Exporting Component Description of APB3 to TCL
+# Exporting Component Description of FIC3_MASTER to TCL
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
-# Create and Configure the core component APB3
-create_and_configure_core -core_vlnv {Actel:DirectCore:CoreAPB3:4.1.100} -component_name {FIC3_MASTER} -params {\
+# Create and Configure the core component FIC3_MASTER
+create_and_configure_core -core_vlnv {Actel:DirectCore:CoreAPB3:4.2.100} -component_name {FIC3_MASTER} -params {\
 "APB_DWIDTH:32"  \
 "APBSLOT0ENABLE:false"  \
 "APBSLOT1ENABLE:false"  \
@@ -39,4 +39,4 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:CoreAPB3:4.1.100} -compon
 "SC_14:false"  \
 "SC_15:false"  \
 "UPR_NIBBLE_POSN:6"   }
-# Exporting Component Description of APB3 to TCL done
+# Exporting Component Description of FIC3_MASTER to TCL done

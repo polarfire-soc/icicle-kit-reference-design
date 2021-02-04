@@ -101,8 +101,11 @@ sd_create_bus_port -sd_name ${sd_name} -port_name {DQS} -port_direction {INOUT} 
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQS_N} -port_direction {INOUT} -port_range {[3:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DM} -port_direction {OUT} -port_range {[3:0]}
 
-# Add PLL_LOCKS instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {AND4} -instance_name {PLL_LOCKS}
+# Add MSS_PLL_LOCKS instance
+sd_instantiate_macro -sd_name ${sd_name} -macro_name {AND4} -instance_name {MSS_PLL_LOCKS}
+
+# Add SYSTEM_PLL_LOCKS instance
+sd_instantiate_macro -sd_name ${sd_name} -macro_name {AND2} -instance_name {SYSTEM_PLL_LOCKS}
 
 # Add RESET_125_MHz instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {CORERESET} -instance_name {RESET_125_MHz} 
@@ -207,7 +210,9 @@ sd_create_pin_slices -sd_name ${sd_name} -pin_name {COREGPIO_C0:GPIO_OUT} -pin_s
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {COREGPIO_C0:GPIO_OUT} -pin_slices {"[0:0]"} 
 
 # Add scalar net connections
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PLL_LOCKS:Y" "RESET_125_MHz:PLL_LOCK" "RESET_62_5_MHz:PLL_LOCK"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SYSTEM_PLL_LOCKS:Y" "RESET_125_MHz:PLL_LOCK" "RESET_62_5_MHz:PLL_LOCK"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SYSTEM_PLL_LOCKS:A" "PCIE_BASE_0:PCIE_PLL_LOCK"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SYSTEM_PLL_LOCKS:B" "MSS_PLL_LOCKS:Y"}
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "MSS:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "MSS:CK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CKE" "MSS:CKE" }
@@ -234,10 +239,10 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"MMUART_3_TXD_M2F" "MSS:MMUART_3
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SW2_OR_GPIO_2_26:B" "MSS:GPIO_2_M2F_26" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SW3_OR_GPIO_2_27:B" "MSS:GPIO_2_M2F_27" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SW1_OR_GPIO_2_28:B" "MSS:GPIO_2_M2F_28" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PLL_LOCKS:D" "MSS:FIC_1_DLL_LOCK_M2F" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PLL_LOCKS:C" "PCIE_BASE_0:PCIE_PLL_LOCK" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PLL_LOCKS:B" "MSS:FIC_3_DLL_LOCK_M2F" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PLL_LOCKS:A" "MSS:FIC_0_DLL_LOCK_M2F" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_PLL_LOCKS:D" "MSS:FIC_1_DLL_LOCK_M2F" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_PLL_LOCKS:C"  "MSS:FIC_2_DLL_LOCK_M2F"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_PLL_LOCKS:B" "MSS:FIC_3_DLL_LOCK_M2F" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_PLL_LOCKS:A" "MSS:FIC_0_DLL_LOCK_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ODT" "MSS:ODT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SW1_OR_GPIO_2_28:Y" "MSS:MSS_INT_F2M[0]" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_BASE_0:PCIE_ROOTPORT_INTERRUPT" "MSS:MSS_INT_F2M[1]" }

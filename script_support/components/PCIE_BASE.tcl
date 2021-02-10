@@ -6,9 +6,6 @@ create_smartdesign -sd_name ${sd_name}
 auto_promote_pad_pins -promote_all 0
 
 # Create top level Ports
-sd_create_scalar_port -sd_name ${sd_name} -port_name {REF_CLK_PAD_P} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {REF_CLK_PAD_N} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIE_INIT_DONE} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PSEL} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PENABLE} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PWRITE} -port_direction {IN}
@@ -56,10 +53,12 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_AXI_1_S_RLAST} -por
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_AXI_1_S_RVALID} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_AXI_1_S_RREADY} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIE_ROOTPORT_INTERRUPT} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {AXI_CLK_125MHZ} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {APB_CLK_62_5MHZ} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIE_PLL_LOCK} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PRESETN} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {AXI_CLK_125MHz} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {AXI_CLK_125MHz_RESETN} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {APB_CLK_62_5MHz} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {APB_CLK_62_5MHz_RESETN} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIe_REFERENCE_CLK} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIe_CLK_125MHz} -port_direction {IN}
 
 sd_create_bus_port -sd_name ${sd_name} -port_name {PADDR} -port_direction {IN} -port_range {[28:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {PRDATA} -port_direction {OUT} -port_range {[31:0]}
@@ -172,39 +171,12 @@ sd_create_bif_port -sd_name ${sd_name} -port_name {AXI_1_SLAVE} -port_bif_vlnv {
 "RVALID:PCIESS_AXI_1_S_RVALID" \
 "RREADY:PCIESS_AXI_1_S_RREADY" } 
 
-# Add INIT_DONE_AND_PLL_LOCK instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {AND2} -instance_name {INIT_DONE_AND_PLL_LOCK}
-
-
-
-# Add CLK_160MHz_to_CLK_80MHz instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {CLK_DIV} -instance_name {CLK_160MHz_to_CLK_80MHz}
-
-
-
-# Add CLK_125_MHz_to_CLK_62_5_MHz instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {CLK_DIV} -instance_name {CLK_125_MHz_to_CLK_62_5_MHz}
-
-
-
 # Add PF_DRI_C0_0 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {RECONFIGURATION_INTERFACE} -instance_name {RECONFIGURATION_INTERFACE}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {RECONFIGURATION_INTERFACE:PINTERRUPT}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {RECONFIGURATION_INTERFACE:PTIMEOUT}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {RECONFIGURATION_INTERFACE:BUSERROR}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {RECONFIGURATION_INTERFACE:PSTRB} -value {VCC}
-
-
-
-# Add GLITCHLESS_MUX instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {GLITCHLESS_MUX} -instance_name {GLITCHLESS_MUX}
-
-
-
-# Add RC oscillator
-sd_instantiate_component -sd_name ${sd_name} -component_name {OSCILLATOR_160MHz} -instance_name {OSCILLATOR_160MHz}
-
-
 
 # Add PF_PCIE_C0_0 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {PF_PCIE_C0} -instance_name {PF_PCIE_C0_0}
@@ -217,25 +189,11 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PF_PCIE_C0_0:PCIE_1_HOT_RST_
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PF_PCIE_C0_0:PCIE_1_DLUP_EXIT}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PF_PCIE_C0_0:PCIE_1_LTSSM}
 
-
-
-# Add TRANSMIT_PLL instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {TRANSMIT_PLL} -instance_name {TRANSMIT_PLL}
-
-
-
-# Add PCIE_REF_CLK instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {PCIE_REF_CLK} -instance_name {PCIE_REF_CLK}
-
-
-
 # Add scalar net connections
-sd_connect_pins -sd_name ${sd_name} -pin_names {"GLITCHLESS_MUX:SEL" "INIT_DONE_AND_PLL_LOCK:Y" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"APB_CLK_62_5MHZ" "CLK_125_MHz_to_CLK_62_5_MHz:CLK_OUT" "RECONFIGURATION_INTERFACE:PCLK" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"GLITCHLESS_MUX:CLK1" "AXI_CLK_125MHZ" "PF_PCIE_C0_0:AXI_CLK" "TRANSMIT_PLL:CLK_125" "CLK_125_MHz_to_CLK_62_5_MHz:CLK_IN" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"AXI_CLK_125MHz" "PF_PCIE_C0_0:AXI_CLK" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"AXI_CLK_125MHz_RESETN" "PF_PCIE_C0_0:AXI_CLK_STABLE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"APB_CLK_62_5MHz" "RECONFIGURATION_INTERFACE:PCLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_1_PERST_N" "PF_PCIE_C0_0:PCIE_1_PERST_N" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INIT_DONE" "INIT_DONE_AND_PLL_LOCK:A" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_PLL_LOCK" "PF_PCIE_C0_0:AXI_CLK_STABLE" "TRANSMIT_PLL:PLL_LOCK" "INIT_DONE_AND_PLL_LOCK:B" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_ROOTPORT_INTERRUPT" "PF_PCIE_C0_0:PCIE_1_INTERRUPT_OUT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_RXD0_N" "PF_PCIE_C0_0:PCIESS_LANE_RXD0_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_RXD0_P" "PF_PCIE_C0_0:PCIESS_LANE_RXD0_P" }
@@ -253,13 +211,9 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD2_N" "PF_PCIE_C0
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD2_P" "PF_PCIE_C0_0:PCIESS_LANE_TXD2_P" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD3_N" "PF_PCIE_C0_0:PCIESS_LANE_TXD3_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD3_P" "PF_PCIE_C0_0:PCIESS_LANE_TXD3_P" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"GLITCHLESS_MUX:CLK0" "CLK_160MHz_to_CLK_80MHz:CLK_OUT" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"GLITCHLESS_MUX:CLK_OUT" "PF_PCIE_C0_0:PCIE_1_TL_CLK_125MHz" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"OSCILLATOR_160MHz:RCOSC_160MHZ_CLK_DIV" "CLK_160MHz_to_CLK_80MHz:CLK_IN" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE0_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE2_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE3_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE1_CDR_REF_CLK_0" "TRANSMIT_PLL:REF_CLK" "PCIE_REF_CLK:REF_CLK" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PRESETN" "RECONFIGURATION_INTERFACE:PRESETN" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"REF_CLK_PAD_N" "PCIE_REF_CLK:REF_CLK_PAD_N" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"REF_CLK_PAD_P" "PCIE_REF_CLK:REF_CLK_PAD_P" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIe_CLK_125MHz" "PF_PCIE_C0_0:PCIE_1_TL_CLK_125MHz" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE0_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE2_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE3_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE1_CDR_REF_CLK_0" "PCIe_REFERENCE_CLK" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"APB_CLK_62_5MHz_RESETN" "RECONFIGURATION_INTERFACE:PRESETN" }
 
 # Add bus net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_1_INTERRUPT" "PF_PCIE_C0_0:PCIE_1_INTERRUPT" }
@@ -272,7 +226,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"RECONFIGURATION_INTERFACE:Q0_LA
 sd_connect_pins -sd_name ${sd_name} -pin_names {"RECONFIGURATION_INTERFACE:Q0_LANE1_DRI" "PF_PCIE_C0_0:PCIESS_LANE1_DRI_SLAVE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"RECONFIGURATION_INTERFACE:Q0_LANE2_DRI" "PF_PCIE_C0_0:PCIESS_LANE2_DRI_SLAVE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"RECONFIGURATION_INTERFACE:Q0_LANE3_DRI" "PF_PCIE_C0_0:PCIESS_LANE3_DRI_SLAVE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:CLKS_FROM_TXPLL_TO_PCIE_1" "TRANSMIT_PLL:CLKS_TO_XCVR" }
+sd_connect_pin_to_port -sd_name {PCIE_BASE} -pin_name {PF_PCIE_C0_0:CLKS_FROM_TXPLL_TO_PCIE_1} -port_name {} 
 
 # Re-enable auto promotion of pins of type 'pad'
 auto_promote_pad_pins -promote_all 1

@@ -155,10 +155,10 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {PCIE_MASTER} -inst
 sd_instantiate_component -sd_name ${sd_name} -component_name {FIC0_MASTER} -instance_name {FIC0_MASTER}
 
 # Add MSS_LSRAM instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {LSRAM} -instance_name {MSS_LSRAM}
+sd_instantiate_component -sd_name ${sd_name} -component_name {MSS_LSRAM} -instance_name {MSS_LSRAM}
 
 # Add PCIE_LSRAM instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {LSRAM} -instance_name {PCIE_LSRAM}
+sd_instantiate_component -sd_name ${sd_name} -component_name {PCIE_LSRAM} -instance_name {PCIE_LSRAM}
 
 # Add PCIE_BASE_0 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {PCIE_BASE} -instance_name {PCIE_BASE_0}

@@ -20,7 +20,8 @@ source script_support/components/GLITCHLESS_MUX.tcl
 source script_support/components/PF_PCIE_C0.tcl 
 source script_support/components/TRANSMIT_PLL.tcl 
 source script_support/components/PCIE_REF_CLK.tcl 
-source script_support/components/LSRAM.tcl 
+source script_support/components/PCIE_LSRAM.tcl 
+source script_support/components/MSS_LSRAM.tcl 
 source script_support/components/DMA_CONTROLLER.tcl
 source script_support/components/DMA_MASTER.tcl
 source script_support/components/GPIO.tcl

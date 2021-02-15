@@ -2,7 +2,7 @@
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
 # Create and Configure the core component LSRAM
-create_and_configure_core -core_vlnv {Actel:SystemBuilder:PF_SRAM_AHBL_AXI:1.2.108} -component_name {LSRAM} -params {\
+create_and_configure_core -core_vlnv {Actel:SystemBuilder:PF_SRAM_AHBL_AXI:1.2.108} -component_name {MSS_LSRAM} -params {\
 "AXI4_AWIDTH:32" \
 "AXI4_DWIDTH:64" \
 "AXI4_IDWIDTH:8" \
@@ -19,9 +19,9 @@ create_and_configure_core -core_vlnv {Actel:SystemBuilder:PF_SRAM_AHBL_AXI:1.2.1
 "INIT_RAM:F" \
 "LPM_HINT:0" \
 "PIPELINE_OPTIONS:1" \
-"RDEPTH:32768" \
+"RDEPTH:2048" \
 "RWIDTH:80" \
 "USE_NATIVE_INTERFACE:F" \
-"WDEPTH:32768" \
+"WDEPTH:2048" \
 "WWIDTH:80" }
 # Exporting Component Description of LSRAM to TCL done

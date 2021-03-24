@@ -1,5 +1,19 @@
 # Icicle Kit SD card Libero design
 
+if {[string compare [string range [get_libero_version] 0 end-3] "2021.1.0"]==0} { 
+	puts "Libero v2021.1 detected." 
+} else {
+	error "Incorrect Libero version. Please use Libero v2021.1 to run these scripts."
+}
+
+if { [lindex $tcl_platform(os) 0]  == "Windows" } {
+	if {[string length [pwd]] < 90} {
+		puts "Project path length ok." 
+	} else {
+		error "Path to project is too long, please reduce the path and try again."
+	}
+}
+
 if { $::argc > 0 } {
     set i 1
     foreach arg $::argv {

@@ -2,7 +2,7 @@
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
 # Create and Configure the core component INIT_MONITOR
-create_and_configure_core -core_vlnv {Microsemi:SgCore:PFSOC_INIT_MONITOR:1.0.204} -component_name {INIT_MONITOR} -params {\
+create_and_configure_core -core_vlnv {Microsemi:SgCore:PFSOC_INIT_MONITOR:1.0.205} -component_name {INIT_MONITOR} -params {\
 "BANK_0_CALIB_STATUS_ENABLED:false"  \
 "BANK_0_CALIB_STATUS_SIMULATION_DELAY:1"  \
 "BANK_0_RECALIBRATION_ENABLED:false"  \

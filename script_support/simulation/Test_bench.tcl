@@ -42,11 +42,14 @@ sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_B
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SW3} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SW2} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:MMUART_0_RXD_F2M} -value {GND} 
-sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SPI_1_DI} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:MMUART_2_RXD_F2M} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SGMII_RX1_N} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:MMUART_3_RXD_F2M} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SGMII_RX1_P} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:QSPI_DATA0} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:QSPI_DATA1} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:QSPI_DATA2} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:QSPI_DATA3} -value {GND} 
 
 # Promote pins to top level
 sd_connect_pin_to_port -sd_name ${sd_tb_name} -pin_name {MPFS_ICICLE_KIT_BASE_DESIGN_0:SDIO_SW_SEL1} -port_name {} 
@@ -61,7 +64,6 @@ sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESI
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:PCIESS_LANE_TXD3_N} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:I2C_1_SDA} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SGMII_TX1_P} 
-sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SPI_1_DO} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:PCIESS_LANE_TXD3_P} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:I2C_1_SCL} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:LED2} 
@@ -98,7 +100,6 @@ sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESI
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:PCIESS_LANE_TXD1_N} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:MMUART_2_TXD_M2F} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:VSC_8662_PLLMODE} 
-sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SPI_1_CLK} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:USB_DATA4} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:PCIESS_LANE_TXD1_P} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:VSC_8662_OSCEN} 
@@ -112,7 +113,6 @@ sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESI
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SGMII_TX0_P} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RESET_N} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SGMII_TX1_N} 
-sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SPI_1_SS0} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:DM} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:DQS_N} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:DQS} 

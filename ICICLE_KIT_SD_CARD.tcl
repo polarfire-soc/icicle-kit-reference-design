@@ -41,7 +41,7 @@ set_device -family {PolarFireSoC} -die {MPFS250T_ES} -package {FCVG484} -speed {
 download_core -vlnv {Actel:SgCore:PF_OSC:1.0.102} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:SgCore:PF_CCC:2.2.100} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:DirectCore:CORERESET_PF:2.3.100} -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv {Microsemi:SgCore:PFSOC_INIT_MONITOR:1.0.204} -location {www.microchip-ip.com/repositories/SgCore} 
+download_core -vlnv {Microsemi:SgCore:PFSOC_INIT_MONITOR:1.0.205} -location {www.microchip-ip.com/repositories/SgCore} 
 download_core -vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -location {www.microchip-ip.com/repositories/DirectCore}
 download_core -vlnv {Actel:SgCore:PF_CLK_DIV:1.0.103} -location {www.microchip-ip.com/repositories/SgCore} 
 download_core -vlnv {Actel:SgCore:PF_DRI:1.1.100} -location {www.microchip-ip.com/repositories/SgCore} 

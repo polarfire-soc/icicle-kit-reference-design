@@ -96,6 +96,8 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA0} -port_directio
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA1} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA2} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA3} -port_direction {INOUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C0_SCL} -port_direction {INOUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C0_SDA} -port_direction {INOUT}
 sd_create_bus_port -sd_name ${sd_name} -port_name {CA} -port_direction {OUT} -port_range {[5:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQ} -port_direction {INOUT} -port_range {[31:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQS} -port_direction {INOUT} -port_range {[3:0]}
@@ -155,6 +157,14 @@ sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {QSP
 # Add QSPI_DATA3_BIBUF instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {QSPI_DATA3_BIBUF}
 
+# Add I2C0_SCL_BIBUF instance
+sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {I2C0_SCL_BIBUF}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {I2C0_SCL_BIBUF:D} -value {GND}
+
+# Add I2C0_SDA_BIBUF instance
+sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {I2C0_SDA_BIBUF}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {I2C0_SDA_BIBUF:D} -value {GND}
+
 # Add PCIE_MASTER instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {PCIE_MASTER} -instance_name {PCIE_MASTER}
 
@@ -208,6 +218,12 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_CLK" "MSS:QSPI_CLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_CS" "MSS:QSPI_SS0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA0" "MSS:QSPI_DATA0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA1" "MSS:QSPI_DATA1" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:I2C_0_SCL_F2M" "I2C0_SCL_BIBUF:Y" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:I2C_0_SDA_F2M" "I2C0_SDA_BIBUF:Y" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:I2C_0_SCL_OE_M2F" "I2C0_SCL_BIBUF:E" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:I2C_0_SDA_OE_M2F" "I2C0_SDA_BIBUF:E" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C0_SDA_BIBUF:PAD" "I2C0_SDA" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C0_SCL_BIBUF:PAD" "I2C0_SCL" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_PLL_LOCKS:Y" "CLOCKS_AND_RESETS:MSS_PLL_LOCKS"}
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "MSS:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "MSS:CK_N" }

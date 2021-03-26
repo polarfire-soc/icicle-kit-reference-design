@@ -1,2 +1,28 @@
-# set_io -port_name MBUS_RST -pin_name E10 -fixed true -DIRECTION OUTPUT
-# set_io -port_name MBUS_PWM -pin_name E11 -fixed true -DIRECTION OUTPUT
+set_iobank -bank_name Bank1  \
+    -vcci 3.30               \
+    -fixed false             \
+    -update_iostd true
+    
+set_io -port_name QSPI_DATA2 \
+    -pin_name H17	\
+    -fixed true	\
+    -io_std LVCMOS33  \
+    -DIRECTION INOUT    
+    
+set_io -port_name QSPI_DATA3	\
+    -pin_name G15	\
+    -fixed true	\
+    -io_std LVCMOS33  \
+    -DIRECTION INOUT
+    
+set_io -port_name I2C0_SCL \
+    -pin_name F12	\
+    -fixed true	\
+    -io_std LVCMOS33  \
+    -DIRECTION INOUT    
+    
+set_io -port_name I2C0_SDA	\
+    -pin_name F13	\
+    -fixed true	\
+    -io_std LVCMOS33  \
+    -DIRECTION INOUT

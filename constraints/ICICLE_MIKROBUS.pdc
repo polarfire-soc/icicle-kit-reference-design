@@ -26,3 +26,15 @@ set_io -port_name I2C0_SDA	\
     -fixed true	\
     -io_std LVCMOS33  \
     -DIRECTION INOUT
+	
+	set_io -port_name MMUART_4_RXD_F2M \
+    -pin_name A21	\
+    -fixed true	\
+    -io_std LVCMOS33  \
+    -DIRECTION INPUT    
+    
+set_io -port_name MMUART_4_TXD_M2F	\
+    -pin_name B20	\
+    -fixed true	\
+    -io_std LVCMOS33  \
+    -DIRECTION OUTPUT

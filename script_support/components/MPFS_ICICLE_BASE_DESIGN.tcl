@@ -98,6 +98,8 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA2} -port_directio
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA3} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C0_SCL} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C0_SDA} -port_direction {INOUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {MMUART_4_TXD_M2F} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {MMUART_4_RXD_F2M} -port_direction {IN}
 sd_create_bus_port -sd_name ${sd_name} -port_name {CA} -port_direction {OUT} -port_range {[5:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQ} -port_direction {INOUT} -port_range {[31:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQS} -port_direction {INOUT} -port_range {[3:0]}
@@ -249,6 +251,8 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"MMUART_2_RXD_F2M" "MSS:MMUART_2
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MMUART_2_TXD_M2F" "MSS:MMUART_2_TXD_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MMUART_3_RXD_F2M" "MSS:MMUART_3_RXD_F2M" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MMUART_3_TXD_M2F" "MSS:MMUART_3_TXD_M2F" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MMUART_4_RXD_F2M" "MSS:MMUART_4_RXD_F2M" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MMUART_4_TXD_M2F" "MSS:MMUART_4_TXD_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SW2_OR_GPIO_2_26:B" "MSS:GPIO_2_M2F_26" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SW3_OR_GPIO_2_27:B" "MSS:GPIO_2_M2F_27" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SW1_OR_GPIO_2_28:B" "MSS:GPIO_2_M2F_28" }

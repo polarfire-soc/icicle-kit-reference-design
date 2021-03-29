@@ -38,3 +38,4 @@ set_io -port_name MMUART_4_TXD_M2F	\
     -fixed true	\
     -io_std LVCMOS33  \
     -DIRECTION OUTPUT
+	

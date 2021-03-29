@@ -100,6 +100,10 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C0_SCL} -port_direction 
 sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C0_SDA} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MMUART_4_TXD_M2F} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MMUART_4_RXD_F2M} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SPI_0_CLK_M2F} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SPI_0_DO_M2F} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SPI_0_SS1_M2F} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SPI_0_DI_F2M} -port_direction {IN}
 sd_create_bus_port -sd_name ${sd_name} -port_name {CA} -port_direction {OUT} -port_range {[5:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQ} -port_direction {INOUT} -port_range {[31:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQS} -port_direction {INOUT} -port_range {[3:0]}
@@ -116,6 +120,8 @@ sd_create_pin_slices -sd_name ${sd_name} -pin_name {MSS:MSS_INT_F2M} -pin_slices
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {MSS:MSS_INT_F2M} -pin_slices {[2]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {MSS:MSS_INT_F2M} -pin_slices {[63:3]}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {MSS:MSS_INT_F2M[63:3]} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {MSS:SPI_0_CLK_F2M} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {MSS:SPI_0_SS_F2M} -value {GND}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MMUART_0_TXD_OE_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MMUART_1_TXD_OE_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:MAC_0_TSU_SOF_TX_M2F}
@@ -318,6 +324,11 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"CAN_0_TXBUS_M2F" "MSS:CAN_0_TXB
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CAN_1_RXBUS" "MSS:CAN_1_RXBUS" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CAN_1_TX_EBL_N" "MSS:CAN_1_TX_EBL_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CAN_1_TXBUS" "MSS:CAN_1_TXBUS" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SPI_0_CLK_M2F" "MSS:SPI_0_CLK_M2F" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SPI_0_DO_M2F" "MSS:SPI_0_DO_M2F" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SPI_0_SS1_M2F" "MSS:SPI_0_SS1_M2F" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SPI_0_DI_F2M" "MSS:SPI_0_DI_F2M" }
+
 sd_invert_pins -sd_name ${sd_name} -pin_names {"MSS:CAN_0_TX_EBL_M2F"} 
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SDIO_SW_SEL0" "SDIO_SW_SEL1" "sdio_register_0:SDIO_control" }
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_EN_N} -value {GND}

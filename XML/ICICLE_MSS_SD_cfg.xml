@@ -1,11 +1,11 @@
   <mss xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="mpfs_hw_description.xsd">
     <design_information>
-      <libero_version>2.0</libero_version>
+      <libero_version>2021.1</libero_version>
       <design_name>ICICLE_MSS</design_name>
       <mpfs_part_no>MPFS250T_ES</mpfs_part_no>
       <mpfs_package>FCVG484</mpfs_package>
-      <creation_date_time>12-14-2020_09:37:11</creation_date_time>
-      <xml_format_version>0.4.2</xml_format_version>
+      <creation_date_time>04-09-2021_17:06:27</creation_date_time>
+      <xml_format_version>0.5.3</xml_format_version>
     </design_information>
     <mss_memory_map>
       <map>
@@ -21,35 +21,124 @@
           <mem description="64 bit address " name="DDR_64_NON_CACHE" size="0x100000">0x1400000000</mem>
           <mem description="example instance" name="DDR_32_WCB" size="0x100000">0xD0000000</mem>
           <mem description="64 bit address " name="DDR_64_WCB" size="0x100000">0x1800000000</mem>
+          <mem description="Offset and size of reserved sNVM. (Not available to MSS)" name="RESERVED_SNVM" size="0x00000000">0x00000000</mem>
+          <mem description="Offset and size of reserved eNVM  (Not available to MSS)" name="RESERVED_ENVM" size="0x00000000">0x00000000</mem>
         </mem_elements>
       </map>
       <apb_split>
         <registers>
-          <register address="0x00000080" description="AMP Mode peripheral mapping register.  When the register bit is '0' the peripheral is mapped into the 0x2000000 address range using AXI bus 5 from the Coreplex. When the register bit is '1' the peripheral is mapped into the 0x28000000 address range using AXI bus 6 from the Coreplex." name="APBBUS_CR">
-            <field Type="RWC" name="MMUART0" offset="0" width="1">0x0</field>
-            <field Type="RWC" name="MMUART1" offset="1" width="1">0x0</field>
-            <field Type="RWC" name="MMUART2" offset="2" width="1">0x0</field>
-            <field Type="RWC" name="MMUART3" offset="3" width="1">0x0</field>
-            <field Type="RWC" name="MMUART4" offset="4" width="1">0x0</field>
-            <field Type="RWC" name="WDOG0" offset="5" width="1">0x0</field>
-            <field Type="RWC" name="WDOG1" offset="6" width="1">0x0</field>
-            <field Type="RWC" name="WDOG2" offset="7" width="1">0x0</field>
-            <field Type="RWC" name="WDOG3" offset="8" width="1">0x0</field>
-            <field Type="RWC" name="WDOG4" offset="9" width="1">0x0</field>
-            <field Type="RWC" name="SPI0" offset="10" width="1">0x0</field>
-            <field Type="RWC" name="SPI1" offset="11" width="1">0x0</field>
-            <field Type="RWC" name="I2C0" offset="12" width="1">0x0</field>
-            <field Type="RWC" name="I2C1" offset="13" width="1">0x0</field>
-            <field Type="RWC" name="CAN0" offset="14" width="1">0x0</field>
-            <field Type="RWC" name="CAN1" offset="15" width="1">0x0</field>
-            <field Type="RWC" name="GEM0" offset="16" width="1">0x0</field>
-            <field Type="RWC" name="GEM1" offset="17" width="1">0x0</field>
-            <field Type="RWC" name="TIMER" offset="18" width="1">0x0</field>
-            <field Type="RWC" name="GPIO0" offset="19" width="1">0x0</field>
-            <field Type="RWC" name="GPIO1" offset="20" width="1">0x0</field>
-            <field Type="RWC" name="GPIO2" offset="21" width="1">0x0</field>
-            <field Type="RWC" name="RTC" offset="22" width="1">0x0</field>
-            <field Type="RWC" name="H2FINT" offset="23" width="1">0x0</field>
+          <register address="0x00000000" description="This version incrments when change to format of this file" name="APB_SPLIT_VERSION">
+            <field Type="RW" name="VERSION" offset="0" width="32">0x1</field>
+          </register>
+          <register address="0x00000004" description="Enabled in configurator when bit set to 1" name="MEM_CONFIGS_ENABLED">
+            <field Type="RW" name="PMP" offset="0" width="0">0x0</field>
+            <field Type="RW" name="MPU" offset="1" width="0">0x0</field>
+          </register>
+          <register address="0x00000008" description="AMP Mode peripheral mapping register.  When the register bit is '0' the peripheral is mapped into the 0x2000000 address range using AXI bus 5 from the Coreplex. When the register bit is '1' the peripheral is mapped into the 0x28000000 address range using AXI bus 6 from the Coreplex." name="APBBUS_CR">
+            <field Type="RW" name="MMUART0" offset="0" width="1">0x0</field>
+            <field Type="RW" name="MMUART1" offset="1" width="1">0x0</field>
+            <field Type="RW" name="MMUART2" offset="2" width="1">0x0</field>
+            <field Type="RW" name="MMUART3" offset="3" width="1">0x0</field>
+            <field Type="RW" name="MMUART4" offset="4" width="1">0x0</field>
+            <field Type="RW" name="WDOG0" offset="5" width="1">0x0</field>
+            <field Type="RW" name="WDOG1" offset="6" width="1">0x0</field>
+            <field Type="RW" name="WDOG2" offset="7" width="1">0x0</field>
+            <field Type="RW" name="WDOG3" offset="8" width="1">0x0</field>
+            <field Type="RW" name="WDOG4" offset="9" width="1">0x0</field>
+            <field Type="RW" name="SPI0" offset="10" width="1">0x0</field>
+            <field Type="RW" name="SPI1" offset="11" width="1">0x0</field>
+            <field Type="RW" name="I2C0" offset="12" width="1">0x0</field>
+            <field Type="RW" name="I2C1" offset="13" width="1">0x0</field>
+            <field Type="RW" name="CAN0" offset="14" width="1">0x0</field>
+            <field Type="RW" name="CAN1" offset="15" width="1">0x0</field>
+            <field Type="RW" name="GEM0" offset="16" width="1">0x0</field>
+            <field Type="RW" name="GEM1" offset="17" width="1">0x0</field>
+            <field Type="RW" name="TIMER" offset="18" width="1">0x0</field>
+            <field Type="RW" name="GPIO0" offset="19" width="1">0x0</field>
+            <field Type="RW" name="GPIO1" offset="20" width="1">0x0</field>
+            <field Type="RW" name="GPIO2" offset="21" width="1">0x0</field>
+            <field Type="RW" name="RTC" offset="22" width="1">0x0</field>
+            <field Type="RW" name="H2FINT" offset="23" width="1">0x0</field>
+          </register>
+          <register address="0x00000012" description="AMP context A. When the register bit is '0' the peripheral is not allowed access from context A. " name="CONTEXT_A_EN">
+            <field Type="RW" name="MMUART0" offset="0" width="1">0x0</field>
+            <field Type="RW" name="MMUART1" offset="1" width="1">0x0</field>
+            <field Type="RW" name="MMUART2" offset="2" width="1">0x0</field>
+            <field Type="RW" name="MMUART3" offset="3" width="1">0x0</field>
+            <field Type="RW" name="MMUART4" offset="4" width="1">0x0</field>
+            <field Type="RW" name="WDOG0" offset="5" width="1">0x0</field>
+            <field Type="RW" name="WDOG1" offset="6" width="1">0x0</field>
+            <field Type="RW" name="WDOG2" offset="7" width="1">0x0</field>
+            <field Type="RW" name="WDOG3" offset="8" width="1">0x0</field>
+            <field Type="RW" name="WDOG4" offset="9" width="1">0x0</field>
+            <field Type="RW" name="SPI0" offset="10" width="1">0x0</field>
+            <field Type="RW" name="SPI1" offset="11" width="1">0x0</field>
+            <field Type="RW" name="I2C0" offset="12" width="1">0x0</field>
+            <field Type="RW" name="I2C1" offset="13" width="1">0x0</field>
+            <field Type="RW" name="CAN0" offset="14" width="1">0x0</field>
+            <field Type="RW" name="CAN1" offset="15" width="1">0x0</field>
+            <field Type="RW" name="GEM0" offset="16" width="1">0x0</field>
+            <field Type="RW" name="GEM1" offset="17" width="1">0x0</field>
+            <field Type="RW" name="TIMER" offset="18" width="1">0x0</field>
+            <field Type="RW" name="GPIO0" offset="19" width="1">0x0</field>
+            <field Type="RW" name="GPIO1" offset="20" width="1">0x0</field>
+            <field Type="RW" name="GPIO2" offset="21" width="1">0x0</field>
+            <field Type="RW" name="RTC" offset="22" width="1">0x0</field>
+            <field Type="RW" name="H2FINT" offset="23" width="1">0x0</field>
+            <field Type="RW" name="CRYPTO" offset="24" width="1">0x0</field>
+            <field Type="RW" name="USB" offset="25" width="1">0x0</field>
+            <field Type="RW" name="QSPIXIP" offset="26" width="1">0x0</field>
+            <field Type="RW" name="ATHENA" offset="27" width="1">0x0</field>
+            <field Type="RW" name="TRACE" offset="28" width="1">0x0</field>
+            <field Type="RW" name="MAILBOX_SC" offset="29" width="1">0x0</field>
+            <field Type="RW" name="EMMC" offset="30" width="1">0x0</field>
+          </register>
+          <register address="0x00000016" description="AMP context B. When the register bit is '0' the peripheral is not allowed access from context B. " name="CONTEXT_B_EN">
+            <field Type="RW" name="MMUART0" offset="0" width="1">0x0</field>
+            <field Type="RW" name="MMUART1" offset="1" width="1">0x0</field>
+            <field Type="RW" name="MMUART2" offset="2" width="1">0x0</field>
+            <field Type="RW" name="MMUART3" offset="3" width="1">0x0</field>
+            <field Type="RW" name="MMUART4" offset="4" width="1">0x0</field>
+            <field Type="RW" name="WDOG0" offset="5" width="1">0x0</field>
+            <field Type="RW" name="WDOG1" offset="6" width="1">0x0</field>
+            <field Type="RW" name="WDOG2" offset="7" width="1">0x0</field>
+            <field Type="RW" name="WDOG3" offset="8" width="1">0x0</field>
+            <field Type="RW" name="WDOG4" offset="9" width="1">0x0</field>
+            <field Type="RW" name="SPI0" offset="10" width="1">0x0</field>
+            <field Type="RW" name="SPI1" offset="11" width="1">0x0</field>
+            <field Type="RW" name="I2C0" offset="12" width="1">0x0</field>
+            <field Type="RW" name="I2C1" offset="13" width="1">0x0</field>
+            <field Type="RW" name="CAN0" offset="14" width="1">0x0</field>
+            <field Type="RW" name="CAN1" offset="15" width="1">0x0</field>
+            <field Type="RW" name="GEM0" offset="16" width="1">0x0</field>
+            <field Type="RW" name="GEM1" offset="17" width="1">0x0</field>
+            <field Type="RW" name="TIMER" offset="18" width="1">0x0</field>
+            <field Type="RW" name="GPIO0" offset="19" width="1">0x0</field>
+            <field Type="RW" name="GPIO1" offset="20" width="1">0x0</field>
+            <field Type="RW" name="GPIO2" offset="21" width="1">0x0</field>
+            <field Type="RW" name="RTC" offset="22" width="1">0x0</field>
+            <field Type="RW" name="H2FINT" offset="23" width="1">0x0</field>
+            <field Type="RW" name="CRYPTO" offset="24" width="1">0x0</field>
+            <field Type="RW" name="USB" offset="25" width="1">0x0</field>
+            <field Type="RW" name="QSPIXIP" offset="26" width="1">0x0</field>
+            <field Type="RW" name="ATHENA" offset="27" width="1">0x0</field>
+            <field Type="RW" name="TRACE" offset="28" width="1">0x0</field>
+            <field Type="RW" name="MAILBOX_SC" offset="29" width="1">0x0</field>
+            <field Type="RW" name="EMMC" offset="30" width="1">0x0</field>
+          </register>
+          <register address="0x00000020" description="When the register bit is '0' hart is not associated with context A." name="CONTEXT_A_HART_EN">
+            <field Type="RW" name="HART0" offset="0" width="1">0x0</field>
+            <field Type="RW" name="HART1" offset="1" width="1">0x0</field>
+            <field Type="RW" name="HART2" offset="2" width="1">0x0</field>
+            <field Type="RW" name="HART3" offset="3" width="1">0x0</field>
+            <field Type="RW" name="HART4" offset="4" width="1">0x0</field>
+          </register>
+          <register address="0x00000024" description="When the register bit is '0' hart is not associated with context B." name="CONTEXT_B_HART_EN">
+            <field Type="RW" name="HART0" offset="0" width="1">0x0</field>
+            <field Type="RW" name="HART1" offset="1" width="1">0x0</field>
+            <field Type="RW" name="HART2" offset="2" width="1">0x0</field>
+            <field Type="RW" name="HART3" offset="3" width="1">0x0</field>
+            <field Type="RW" name="HART4" offset="4" width="1">0x0</field>
           </register>
         </registers>
       </apb_split>
@@ -408,79 +497,7 @@
       <pmp_h1>
         <registers>
           <register address="0x000003A0" description="PMP  configuration for 8 adress regions, bit 0 read, bit 1 write, bit 2 execute, bit 7 disable, bits 3,4 address format  (0x18 => NAPOT) " name="CSR_PMPCFG0">
-            <field Type="RW" name="PMP0CFG" offset="0" width="8">0x00</field>
-            <field Type="RW" name="PMP1CFG" offset="8" width="8">0x0</field>
-            <field Type="RW" name="PMP2CFG" offset="16" width="8">0x00</field>
-            <field Type="RW" name="PMP3CFG" offset="24" width="8">0x00</field>
-            <field Type="RW" name="PMP4CFG" offset="32" width="8">0x00</field>
-            <field Type="RW" name="PMP5CFG" offset="40" width="8">0x00</field>
-            <field Type="RW" name="PMP6CFG" offset="48" width="8">0x00</field>
-            <field Type="RW" name="PMP7CFG" offset="56" width="8">0x00</field>
-          </register>
-          <register address="0x000003A2" description="PMP  configuration for 8 address regions, bit 0 read, bit 1 write, bit 2 execute, bit 7 disable, bits 3,4 address format  (0x18 => NAPOT) " name="CSR_PMPCFG2">
-            <field Type="RW" name="PMP8CFG" offset="0" width="8">0x00</field>
-            <field Type="RW" name="PMP9CFG" offset="8" width="8">0x00</field>
-            <field Type="RW" name="PMP10CFG" offset="16" width="8">0x00</field>
-            <field Type="RW" name="PMP11CFG" offset="24" width="8">0x00</field>
-            <field Type="RW" name="PMP12CFG" offset="32" width="8">0x00</field>
-            <field Type="RW" name="PMP13CFG" offset="40" width="8">0x00</field>
-            <field Type="RW" name="PMP14CFG" offset="48" width="8">0x00</field>
-            <field Type="RW" name="PMP15CFG" offset="56" width="8">0x00</field>
-          </register>
-          <register address="0x000003B0" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR0">
-            <field Type="RW" name="CSR_PMPADDR0" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x000003B1" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR1">
-            <field Type="RW" name="CSR_PMPADDR1" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x000003B2" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR2">
-            <field Type="RW" name="CSR_PMPADDR2" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x000003B3" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR3">
-            <field Type="RW" name="CSR_PMPADDR3" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x000003B4" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR4">
-            <field Type="RW" name="CSR_PMPADDR4" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x000003B5" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR5">
-            <field Type="RW" name="CSR_PMPADDR5" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x000003B6" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR6">
-            <field Type="RW" name="CSR_PMPADDR6" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x000003B7" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR7">
-            <field Type="RW" name="CSR_PMPADDR7" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x000003B8" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR8">
-            <field Type="RW" name="CSR_PMPADDR8" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x000003B9" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR9">
-            <field Type="RW" name="CSR_PMPADDR9" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x00003B10" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR10">
-            <field Type="RW" name="CSR_PMPADDR10" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x00003B11" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR11">
-            <field Type="RW" name="CSR_PMPADDR11" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x00003B12" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR12">
-            <field Type="RW" name="CSR_PMPADDR12" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x00003B13" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR13">
-            <field Type="RW" name="CSR_PMPADDR13" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x00003B14" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR14">
-            <field Type="RW" name="CSR_PMPADDR14" offset="0" width="64">0x00</field>
-          </register>
-          <register address="0x00003B15" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR15">
-            <field Type="RW" name="CSR_PMPADDR15" offset="0" width="64">0x00</field>
-          </register>
-        </registers>
-      </pmp_h1>
-      <pmp_h2>
-        <registers>
-          <register address="0x000003A0" description="PMP  configuration for 8 adress regions, bit 0 read, bit 1 write, bit 2 execute, bit 7 disable, bits 3,4 address format  (0x18 => NAPOT) " name="CSR_PMPCFG0">
-            <field Type="RW" name="PMP0CFG" offset="0" width="8">0x0</field>
+            <field Type="RW" name="PMP0CFG" offset="0" width="8">0x9F</field>
             <field Type="RW" name="PMP1CFG" offset="8" width="8">0x0</field>
             <field Type="RW" name="PMP2CFG" offset="16" width="8">0x0</field>
             <field Type="RW" name="PMP3CFG" offset="24" width="8">0x0</field>
@@ -500,7 +517,79 @@
             <field Type="RW" name="PMP15CFG" offset="56" width="8">0x0</field>
           </register>
           <register address="0x000003B0" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR0">
-            <field Type="RW" name="CSR_PMPADDR0" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR0" offset="0" width="64">0xFFFFFFFFFFFFFFFF</field>
+          </register>
+          <register address="0x000003B1" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR1">
+            <field Type="RW" name="CSR_PMPADDR1" offset="0" width="64">0x0</field>
+          </register>
+          <register address="0x000003B2" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR2">
+            <field Type="RW" name="CSR_PMPADDR2" offset="0" width="64">0x0</field>
+          </register>
+          <register address="0x000003B3" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR3">
+            <field Type="RW" name="CSR_PMPADDR3" offset="0" width="64">0x0</field>
+          </register>
+          <register address="0x000003B4" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR4">
+            <field Type="RW" name="CSR_PMPADDR4" offset="0" width="64">0x0</field>
+          </register>
+          <register address="0x000003B5" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR5">
+            <field Type="RW" name="CSR_PMPADDR5" offset="0" width="64">0x0</field>
+          </register>
+          <register address="0x000003B6" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR6">
+            <field Type="RW" name="CSR_PMPADDR6" offset="0" width="64">0x0</field>
+          </register>
+          <register address="0x000003B7" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR7">
+            <field Type="RW" name="CSR_PMPADDR7" offset="0" width="64">0x0</field>
+          </register>
+          <register address="0x000003B8" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR8">
+            <field Type="RW" name="CSR_PMPADDR8" offset="0" width="64">0x0</field>
+          </register>
+          <register address="0x000003B9" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR9">
+            <field Type="RW" name="CSR_PMPADDR9" offset="0" width="64">0x0</field>
+          </register>
+          <register address="0x00003B10" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR10">
+            <field Type="RW" name="CSR_PMPADDR10" offset="0" width="64">0x0</field>
+          </register>
+          <register address="0x00003B11" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR11">
+            <field Type="RW" name="CSR_PMPADDR11" offset="0" width="64">0x0</field>
+          </register>
+          <register address="0x00003B12" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR12">
+            <field Type="RW" name="CSR_PMPADDR12" offset="0" width="64">0x0</field>
+          </register>
+          <register address="0x00003B13" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR13">
+            <field Type="RW" name="CSR_PMPADDR13" offset="0" width="64">0x0</field>
+          </register>
+          <register address="0x00003B14" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR14">
+            <field Type="RW" name="CSR_PMPADDR14" offset="0" width="64">0x0</field>
+          </register>
+          <register address="0x00003B15" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR15">
+            <field Type="RW" name="CSR_PMPADDR15" offset="0" width="64">0x0</field>
+          </register>
+        </registers>
+      </pmp_h1>
+      <pmp_h2>
+        <registers>
+          <register address="0x000003A0" description="PMP  configuration for 8 adress regions, bit 0 read, bit 1 write, bit 2 execute, bit 7 disable, bits 3,4 address format  (0x18 => NAPOT) " name="CSR_PMPCFG0">
+            <field Type="RW" name="PMP0CFG" offset="0" width="8">0x9F</field>
+            <field Type="RW" name="PMP1CFG" offset="8" width="8">0x0</field>
+            <field Type="RW" name="PMP2CFG" offset="16" width="8">0x0</field>
+            <field Type="RW" name="PMP3CFG" offset="24" width="8">0x0</field>
+            <field Type="RW" name="PMP4CFG" offset="32" width="8">0x0</field>
+            <field Type="RW" name="PMP5CFG" offset="40" width="8">0x0</field>
+            <field Type="RW" name="PMP6CFG" offset="48" width="8">0x0</field>
+            <field Type="RW" name="PMP7CFG" offset="56" width="8">0x0</field>
+          </register>
+          <register address="0x000003A2" description="PMP  configuration for 8 address regions, bit 0 read, bit 1 write, bit 2 execute, bit 7 disable, bits 3,4 address format  (0x18 => NAPOT) " name="CSR_PMPCFG2">
+            <field Type="RW" name="PMP8CFG" offset="0" width="8">0x0</field>
+            <field Type="RW" name="PMP9CFG" offset="8" width="8">0x0</field>
+            <field Type="RW" name="PMP10CFG" offset="16" width="8">0x0</field>
+            <field Type="RW" name="PMP11CFG" offset="24" width="8">0x0</field>
+            <field Type="RW" name="PMP12CFG" offset="32" width="8">0x0</field>
+            <field Type="RW" name="PMP13CFG" offset="40" width="8">0x0</field>
+            <field Type="RW" name="PMP14CFG" offset="48" width="8">0x0</field>
+            <field Type="RW" name="PMP15CFG" offset="56" width="8">0x0</field>
+          </register>
+          <register address="0x000003B0" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR0">
+            <field Type="RW" name="CSR_PMPADDR0" offset="0" width="64">0xFFFFFFFFFFFFFFFF</field>
           </register>
           <register address="0x000003B1" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR1">
             <field Type="RW" name="CSR_PMPADDR1" offset="0" width="64">0x0</field>
@@ -552,7 +641,7 @@
       <pmp_h3>
         <registers>
           <register address="0x000003A0" description="PMP configuration for 8 adress regions, bit 0 read, bit 1 write, bit 2 execute, bit 7 disable, bits 3,4 address format  (0x18 => NAPOT) " name="CSR_PMPCFG0">
-            <field Type="RW" name="PMP0CFG" offset="0" width="8">0x0</field>
+            <field Type="RW" name="PMP0CFG" offset="0" width="8">0x9F</field>
             <field Type="RW" name="PMP1CFG" offset="8" width="8">0x0</field>
             <field Type="RW" name="PMP2CFG" offset="16" width="8">0x0</field>
             <field Type="RW" name="PMP3CFG" offset="24" width="8">0x0</field>
@@ -572,7 +661,7 @@
             <field Type="RW" name="PMP15CFG" offset="56" width="8">0x0</field>
           </register>
           <register address="0x000003B0" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR0">
-            <field Type="RW" name="CSR_PMPADDR0" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR0" offset="0" width="64">0xFFFFFFFFFFFFFFFF</field>
           </register>
           <register address="0x000003B1" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR1">
             <field Type="RW" name="CSR_PMPADDR1" offset="0" width="64">0x0</field>
@@ -624,7 +713,7 @@
       <pmp_h4>
         <registers>
           <register address="0x000003A0" description="PMP configuration for 8 adress regions, bit 0 read, bit 1 write, bit 2 execute, bit 7 disable, bits 3,4 address format  (0x18 => NAPOT) " name="CSR_PMPCFG0">
-            <field Type="RW" name="PMP0CFG" offset="0" width="8">0x0</field>
+            <field Type="RW" name="PMP0CFG" offset="0" width="8">0x9F</field>
             <field Type="RW" name="PMP1CFG" offset="8" width="8">0x0</field>
             <field Type="RW" name="PMP2CFG" offset="16" width="8">0x0</field>
             <field Type="RW" name="PMP3CFG" offset="24" width="8">0x0</field>
@@ -644,7 +733,7 @@
             <field Type="RW" name="PMP15CFG" offset="56" width="8">0x0</field>
           </register>
           <register address="0x000003B0" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR0">
-            <field Type="RW" name="CSR_PMPADDR0" offset="0" width="64">0x0</field>
+            <field Type="RW" name="CSR_PMPADDR0" offset="0" width="64">0xFFFFFFFFFFFFFFFF</field>
           </register>
           <register address="0x000003B1" description="PMP ADRESS and size, format determined  from bit 3 and 4 of configuration byte in CSR_PMPCFGx" name="CSR_PMPADDR1">
             <field Type="RW" name="CSR_PMPADDR1" offset="0" width="64">0x0</field>
@@ -1123,14 +1212,30 @@
           </register>
         </registers>
       </mpu_trace>
+      <nvm_map>
+        <registers>
+          <register address="0" description="Page offset to start page of sNVM available to MSS. Each SNVM module may be stored in any of the following formats, Non-authenticated plaintext, Authenticated plaintext, Authenticated ciphertext. When the data is authenticated 236 bytes of storage per page is available.  When the data is not authenticated 252 bytes may be stored. (Note: Value in decimal)" name="SNVM_MSS_START_PAGE">
+            <field Type="RW" name="START_PAGE_OFFSET" offset="0" width="32">0</field>
+          </register>
+          <register address="0" description="Page offset to end page of sNVM available to MSS (Note: Value in decimal)" name="SNVM_MSS_END_PAGE">
+            <field Type="RW" name="END_PAGE_OFFSET" offset="0" width="32">220</field>
+          </register>
+          <register address="0" description="Page offset to start page of sNVM available to MSS (Note: Value in decimal)" name="ENVM_MSS_START_PAGE">
+            <field Type="RW" name="START_PAGE_OFFSET" offset="0" width="32">0</field>
+          </register>
+          <register address="0" description="Page offset to end page of sNVM available to MSS (Note: Value in decimal)" name="ENVM_MSS_END_PAGE">
+            <field Type="RW" name="END_PAGE_OFFSET" offset="0" width="32">511</field>
+          </register>
+        </registers>
+      </nvm_map>
     </mss_memory_map>
     <mss_io>
       <io_mux>
         <registers>
           <register address="0x00000200" description="Selects whether the peripheral is connected to the Fabric or IOMUX structure." name="IOMUX0_CR">
-            <field Type="RW" name="SPI0_FABRIC" offset="0" width="1">0x0</field>
+            <field Type="RW" name="SPI0_FABRIC" offset="0" width="1">0x1</field>
             <field Type="RW" name="SPI1_FABRIC" offset="1" width="1">0x0</field>
-            <field Type="RW" name="I2C0_FABRIC" offset="2" width="1">0x0</field>
+            <field Type="RW" name="I2C0_FABRIC" offset="2" width="1">0x1</field>
             <field Type="RW" name="I2C1_FABRIC" offset="3" width="1">0x1</field>
             <field Type="RW" name="CAN0_FABRIC" offset="4" width="1">0x1</field>
             <field Type="RW" name="CAN1_FABRIC" offset="5" width="1">0x0</field>
@@ -1139,11 +1244,11 @@
             <field Type="RW" name="MMUART1_FABRIC" offset="8" width="1">0x1</field>
             <field Type="RW" name="MMUART2_FABRIC" offset="9" width="1">0x1</field>
             <field Type="RW" name="MMUART3_FABRIC" offset="10" width="1">0x1</field>
-            <field Type="RW" name="MMUART4_FABRIC" offset="11" width="1">0x0</field>
+            <field Type="RW" name="MMUART4_FABRIC" offset="11" width="1">0x1</field>
             <field Type="RW" name="MDIO0_FABRIC" offset="12" width="1">0x0</field>
             <field Type="RW" name="MDIO1_FABRIC" offset="13" width="1">0x0</field>
           </register>
-          <register address="0x00000204" description="Configures the IO Mux structure for each IO pad. See the MSS MAS specification for for description." name="IOMUX1_CR">
+          <register address="0x00000204" description="Configures the IO Mux structure for each IO pad.  0  implies  SD/SDIO, 1 implies  EMMC, 2 implies QSPI, 3 implies SPI,4 implies USB,5 implies MMUART,6 implies I2C,7 implies CAN,8 implies MDIO,9 implies Miscellaneous,0xA implies Reserved (Equivalent to Tristate),0xB implies GPIO ,0xC implies Fabric-test,0xD implies Logic 0,0xE implies Logic 1, 0xF implies Tristate" name="IOMUX1_CR">
             <field Type="RW" name="PAD0" offset="0" width="4">0x0</field>
             <field Type="RW" name="PAD1" offset="4" width="4">0x0</field>
             <field Type="RW" name="PAD2" offset="8" width="4">0x0</field>
@@ -1153,7 +1258,7 @@
             <field Type="RW" name="PAD6" offset="24" width="4">0x0</field>
             <field Type="RW" name="PAD7" offset="28" width="4">0x0</field>
           </register>
-          <register address="0x00000208" description="Configures the IO Mux structure for each IO pad. See the MSS MAS specification for for description." name="IOMUX2_CR">
+          <register address="0x00000208" description="Configures the IO Mux structure for each IO pad.  0  implies  SD/SDIO, 1 implies  EMMC, 2 implies QSPI, 3 implies SPI,4 implies USB,5 implies MMUART,6 implies I2C,7 implies CAN,8 implies MDIO,9 implies Miscellaneous,0xA implies Reserved (Equivalent to Tristate),0xB implies GPIO ,0xC implies Fabric-test,0xD implies Logic 0,0xE implies Logic 1, 0xF implies Tristate" name="IOMUX2_CR">
             <field Type="RW" name="PAD8" offset="0" width="4">0x0</field>
             <field Type="RW" name="PAD9" offset="4" width="4">0x0</field>
             <field Type="RW" name="PAD10" offset="8" width="4">0x0</field>
@@ -1161,7 +1266,7 @@
             <field Type="RW" name="PAD12" offset="16" width="4">0x0</field>
             <field Type="RW" name="PAD13" offset="20" width="4">0x0</field>
           </register>
-          <register address="0x0000020C" description="Configures the IO Mux structure for each IO pad. See the MSS MAS specification for for description." name="IOMUX3_CR">
+          <register address="0x0000020C" description="Configures the IO Mux structure for each IO pad.  0  implies  SD/SDIO, 1 implies  EMMC, 2 implies QSPI, 3 implies SPI,4 implies USB,5 implies MMUART,6 implies I2C,7 implies CAN,8 implies MDIO,9 implies Miscellaneous,0xA implies Reserved (Equivalent to Tristate),0xB implies GPIO ,0xC implies Fabric-test,0xD implies Logic 0,0xE implies Logic 1, 0xF implies Tristate" name="IOMUX3_CR">
             <field Type="RW" name="PAD14" offset="0" width="4">0x4</field>
             <field Type="RW" name="PAD15" offset="4" width="4">0x4</field>
             <field Type="RW" name="PAD16" offset="8" width="4">0x4</field>
@@ -1171,7 +1276,7 @@
             <field Type="RW" name="PAD20" offset="24" width="4">0x4</field>
             <field Type="RW" name="PAD21" offset="28" width="4">0x4</field>
           </register>
-          <register address="0x00000210" description="Configures the IO Mux structure for each IO pad. See the MSS MAS specification for for description." name="IOMUX4_CR">
+          <register address="0x00000210" description="Configures the IO Mux structure for each IO pad.  0  implies  SD/SDIO, 1 implies  EMMC, 2 implies QSPI, 3 implies SPI,4 implies USB,5 implies MMUART,6 implies I2C,7 implies CAN,8 implies MDIO,9 implies Miscellaneous,0xA implies Reserved (Equivalent to Tristate),0xB implies GPIO ,0xC implies Fabric-test,0xD implies Logic 0,0xE implies Logic 1, 0xF implies Tristate" name="IOMUX4_CR">
             <field Type="RW" name="PAD22" offset="0" width="4">0x4</field>
             <field Type="RW" name="PAD23" offset="4" width="4">0x4</field>
             <field Type="RW" name="PAD24" offset="8" width="4">0x4</field>
@@ -1181,11 +1286,11 @@
             <field Type="RW" name="PAD28" offset="24" width="4">0x8</field>
             <field Type="RW" name="PAD29" offset="28" width="4">0x8</field>
           </register>
-          <register address="0x00000214" description="Configures the IO Mux structure for each IO pad. See the MSS MAS specification for for description." name="IOMUX5_CR">
-            <field Type="RW" name="PAD30" offset="0" width="4">0x3</field>
-            <field Type="RW" name="PAD31" offset="4" width="4">0x3</field>
-            <field Type="RW" name="PAD32" offset="8" width="4">0x3</field>
-            <field Type="RW" name="PAD33" offset="12" width="4">0x3</field>
+          <register address="0x00000214" description="Configures the IO Mux structure for each IO pad.  0  implies  SD/SDIO, 1 implies  EMMC, 2 implies QSPI, 3 implies SPI,4 implies USB,5 implies MMUART,6 implies I2C,7 implies CAN,8 implies MDIO,9 implies Miscellaneous,0xA implies Reserved (Equivalent to Tristate),0xB implies GPIO ,0xC implies Fabric-test,0xD implies Logic 0,0xE implies Logic 1, 0xF implies Tristate" name="IOMUX5_CR">
+            <field Type="RW" name="PAD30" offset="0" width="4">0x2</field>
+            <field Type="RW" name="PAD31" offset="4" width="4">0x2</field>
+            <field Type="RW" name="PAD32" offset="8" width="4">0x2</field>
+            <field Type="RW" name="PAD33" offset="12" width="4">0x2</field>
             <field Type="RW" name="PAD34" offset="16" width="4">0x7</field>
             <field Type="RW" name="PAD35" offset="20" width="4">0x7</field>
             <field Type="RW" name="PAD36" offset="24" width="4">0x7</field>
@@ -1330,8 +1435,220 @@
             <field Type="RW" name="DPC_IO_CFG_LP_BYPASS_EN" offset="14" width="1">0x0</field>
             <field Type="R" name="RESERVED" offset="15" width="17">0x0</field>
           </register>
+          <register address="0x0000027C" description="Indicates if eMMC is configured for use (bit 0 == 1), If SD is configued for use (bit 1 == 1). Bit 2 indicates which one should be used by default on MSS embedded software startup ( bit2 == 0,  implies  default is eMMC, bit2 == 1,  implies  default is SD). The eMMC configuration is always defined in xml tag (io_mux, the SD configuration is always defined in xml tag (io_mux_alt). All other elements in the (o_mux) and (io_mux_alt) not releating to eMMC/SD differences should be the same values." name="MSSIO_CONFIGURATION_OPTIONS">
+            <field Type="RW" name="EMMC_CONFIGURED" offset="0" width="1">0x0</field>
+            <field Type="RW" name="SD_CONFIGURED" offset="1" width="1">0x0</field>
+            <field Type="RW" name="DEFAULT_ON_START" offset="2" width="1">0x0</field>
+          </register>
         </registers>
       </io_mux>
+      <io_mux_alt>
+        <registers>
+          <register address="0x00000200" description="Selects whether the peripheral is connected to the Fabric or IOMUX structure." name="ALT_IOMUX0_CR">
+            <field Type="RW" name="SPI0_FABRIC" offset="0" width="1">0x0</field>
+            <field Type="RW" name="SPI1_FABRIC" offset="1" width="1">0x0</field>
+            <field Type="RW" name="I2C0_FABRIC" offset="2" width="1">0x0</field>
+            <field Type="RW" name="I2C1_FABRIC" offset="3" width="1">0x0</field>
+            <field Type="RW" name="CAN0_FABRIC" offset="4" width="1">0x0</field>
+            <field Type="RW" name="CAN1_FABRIC" offset="5" width="1">0x0</field>
+            <field Type="RW" name="QSPI_FABRIC" offset="6" width="1">0x0</field>
+            <field Type="RW" name="MMUART0_FABRIC" offset="7" width="1">0x0</field>
+            <field Type="RW" name="MMUART1_FABRIC" offset="8" width="1">0x0</field>
+            <field Type="RW" name="MMUART2_FABRIC" offset="9" width="1">0x0</field>
+            <field Type="RW" name="MMUART3_FABRIC" offset="10" width="1">0x0</field>
+            <field Type="RW" name="MMUART4_FABRIC" offset="11" width="1">0x0</field>
+            <field Type="RW" name="MDIO0_FABRIC" offset="12" width="1">0x0</field>
+            <field Type="RW" name="MDIO1_FABRIC" offset="13" width="1">0x0</field>
+          </register>
+          <register address="0x00000204" description="Configures the IO Mux structure for each IO pad.  0  implies  SD/SDIO, 1 implies  EMMC, 2 implies QSPI, 3 implies SPI,4 implies USB,5 implies MMUART,6 implies I2C,7 implies CAN,8 implies MDIO,9 implies Miscellaneous,0xA implies Reserved (Equivalent to Tristate),0xB implies GPIO ,0xC implies Fabric-test,0xD implies Logic 0,0xE implies Logic 1, 0xF implies Tristate" name="ALT_IOMUX1_CR">
+            <field Type="RW" name="PAD0" offset="0" width="4">0x0</field>
+            <field Type="RW" name="PAD1" offset="4" width="4">0x0</field>
+            <field Type="RW" name="PAD2" offset="8" width="4">0x0</field>
+            <field Type="RW" name="PAD3" offset="12" width="4">0x0</field>
+            <field Type="RW" name="PAD4" offset="16" width="4">0x0</field>
+            <field Type="RW" name="PAD5" offset="20" width="4">0x0</field>
+            <field Type="RW" name="PAD6" offset="24" width="4">0x0</field>
+            <field Type="RW" name="PAD7" offset="28" width="4">0x0</field>
+          </register>
+          <register address="0x00000208" description="Configures the IO Mux structure for each IO pad.  0  implies  SD/SDIO, 1 implies  EMMC, 2 implies QSPI, 3 implies SPI,4 implies USB,5 implies MMUART,6 implies I2C,7 implies CAN,8 implies MDIO,9 implies Miscellaneous,0xA implies Reserved (Equivalent to Tristate),0xB implies GPIO ,0xC implies Fabric-test,0xD implies Logic 0,0xE implies Logic 1, 0xF implies Tristate" name="ALT_IOMUX2_CR">
+            <field Type="RW" name="PAD8" offset="0" width="4">0x0</field>
+            <field Type="RW" name="PAD9" offset="4" width="4">0x0</field>
+            <field Type="RW" name="PAD10" offset="8" width="4">0x0</field>
+            <field Type="RW" name="PAD11" offset="12" width="4">0x0</field>
+            <field Type="RW" name="PAD12" offset="16" width="4">0x0</field>
+            <field Type="RW" name="PAD13" offset="20" width="4">0x0</field>
+          </register>
+          <register address="0x0000020C" description="Configures the IO Mux structure for each IO pad.  0  implies  SD/SDIO, 1 implies  EMMC, 2 implies QSPI, 3 implies SPI,4 implies USB,5 implies MMUART,6 implies I2C,7 implies CAN,8 implies MDIO,9 implies Miscellaneous,0xA implies Reserved (Equivalent to Tristate),0xB implies GPIO ,0xC implies Fabric-test,0xD implies Logic 0,0xE implies Logic 1, 0xF implies Tristate" name="ALT_IOMUX3_CR">
+            <field Type="RW" name="PAD14" offset="0" width="4">0x0</field>
+            <field Type="RW" name="PAD15" offset="4" width="4">0x0</field>
+            <field Type="RW" name="PAD16" offset="8" width="4">0x0</field>
+            <field Type="RW" name="PAD17" offset="12" width="4">0x0</field>
+            <field Type="RW" name="PAD18" offset="16" width="4">0x0</field>
+            <field Type="RW" name="PAD19" offset="20" width="4">0x0</field>
+            <field Type="RW" name="PAD20" offset="24" width="4">0x0</field>
+            <field Type="RW" name="PAD21" offset="28" width="4">0x0</field>
+          </register>
+          <register address="0x00000210" description="Configures the IO Mux structure for each IO pad.  0  implies  SD/SDIO, 1 implies  EMMC, 2 implies QSPI, 3 implies SPI,4 implies USB,5 implies MMUART,6 implies I2C,7 implies CAN,8 implies MDIO,9 implies Miscellaneous,0xA implies Reserved (Equivalent to Tristate),0xB implies GPIO ,0xC implies Fabric-test,0xD implies Logic 0,0xE implies Logic 1, 0xF implies Tristate" name="ALT_IOMUX4_CR">
+            <field Type="RW" name="PAD22" offset="0" width="4">0x0</field>
+            <field Type="RW" name="PAD23" offset="4" width="4">0x0</field>
+            <field Type="RW" name="PAD24" offset="8" width="4">0x0</field>
+            <field Type="RW" name="PAD25" offset="12" width="4">0x0</field>
+            <field Type="RW" name="PAD26" offset="16" width="4">0x0</field>
+            <field Type="RW" name="PAD27" offset="20" width="4">0x0</field>
+            <field Type="RW" name="PAD28" offset="24" width="4">0x0</field>
+            <field Type="RW" name="PAD29" offset="28" width="4">0x0</field>
+          </register>
+          <register address="0x00000214" description="Configures the IO Mux structure for each IO pad.  0  implies  SD/SDIO, 1 implies  EMMC, 2 implies QSPI, 3 implies SPI,4 implies USB,5 implies MMUART,6 implies I2C,7 implies CAN,8 implies MDIO,9 implies Miscellaneous,0xA implies Reserved (Equivalent to Tristate),0xB implies GPIO ,0xC implies Fabric-test,0xD implies Logic 0,0xE implies Logic 1, 0xF implies Tristate" name="ALT_IOMUX5_CR">
+            <field Type="RW" name="PAD30" offset="0" width="4">0x0</field>
+            <field Type="RW" name="PAD31" offset="4" width="4">0x0</field>
+            <field Type="RW" name="PAD32" offset="8" width="4">0x0</field>
+            <field Type="RW" name="PAD33" offset="12" width="4">0x0</field>
+            <field Type="RW" name="PAD34" offset="16" width="4">0x0</field>
+            <field Type="RW" name="PAD35" offset="20" width="4">0x0</field>
+            <field Type="RW" name="PAD36" offset="24" width="4">0x0</field>
+            <field Type="RW" name="PAD37" offset="28" width="4">0x0</field>
+          </register>
+          <register address="0x00000218" description="Sets whether the MMC/SD Voltage select lines are inverted on entry to the IOMUX structure" name="ALT_IOMUX6_CR">
+            <field Type="RW" name="VLT_SEL" offset="0" width="1">0x0</field>
+            <field Type="RW" name="VLT_EN" offset="1" width="1">0x0</field>
+            <field Type="RW" name="VLT_CMD_DIR" offset="2" width="1">0x0</field>
+            <field Type="RW" name="VLT_DIR_0" offset="3" width="1">0x0</field>
+            <field Type="RW" name="VLT_DIR_1_3" offset="4" width="1">0x0</field>
+            <field Type="RW" name="SD_LED" offset="5" width="1">0x0</field>
+            <field Type="RW" name="SD_VOLT_0" offset="6" width="1">0x0</field>
+            <field Type="RW" name="SD_VOLT_1" offset="7" width="1">0x0</field>
+            <field Type="RW" name="SD_VOLT_2" offset="8" width="1">0x0</field>
+          </register>
+          <register address="0x00000230" description="Configures the MSSIO block using SCB write" name="ALT_MSSIO_BANK4_CFG_CR">
+            <field Type="RW" name="BANK_PCODE" offset="0" width="6">0x3F</field>
+            <field Type="RW" name="RESERVED0" offset="6" width="2">0x00</field>
+            <field Type="RW" name="BANK_NCODE" offset="8" width="6">0x3F</field>
+            <field Type="RW" name="RESERVED1" offset="14" width="2">0x0</field>
+            <field Type="RW" name="VS" offset="16" width="4">0x0</field>
+            <field Type="RW" name="RESERVED2" offset="20" width="12">0x0</field>
+          </register>
+          <register address="0x00000234" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK4_IO_CFG_0_1_CR">
+            <field Type="RW" name="IO_CFG_0" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_1" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x00000238" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK4_IO_CFG_2_3_CR">
+            <field Type="RW" name="IO_CFG_2" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_3" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x0000023C" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK4_IO_CFG_4_5_CR">
+            <field Type="RW" name="IO_CFG_4" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_5" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x00000240" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK4_IO_CFG_6_7_CR">
+            <field Type="RW" name="IO_CFG_6" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_7" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x00000244" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK4_IO_CFG_8_9_CR">
+            <field Type="RW" name="IO_CFG_8" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_9" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x00000248" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK4_IO_CFG_10_11_CR">
+            <field Type="RW" name="IO_CFG_10" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_11" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x0000024C" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK4_IO_CFG_12_13_CR">
+            <field Type="RW" name="IO_CFG_12" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_13" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x00000250" description="Configures the MSSIO block using SCB write" name="ALT_MSSIO_BANK2_CFG_CR">
+            <field Type="RW" name="BANK_PCODE" offset="0" width="6">0x3F</field>
+            <field Type="RW" name="RESERVED0" offset="6" width="2">0x00</field>
+            <field Type="RW" name="BANK_NCODE" offset="8" width="6">0x3F</field>
+            <field Type="RW" name="RESERVED1" offset="14" width="2">0x0</field>
+            <field Type="RW" name="VS" offset="16" width="4">0x0</field>
+            <field Type="RW" name="RESERVED2" offset="20" width="12">0x0</field>
+          </register>
+          <register address="0x00000254" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK2_IO_CFG_0_1_CR">
+            <field Type="RW" name="IO_CFG_0" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_1" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x00000258" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK2_IO_CFG_2_3_CR">
+            <field Type="RW" name="IO_CFG_2" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_3" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x0000025C" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK2_IO_CFG_4_5_CR">
+            <field Type="RW" name="IO_CFG_4" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_5" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x00000260" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK2_IO_CFG_6_7_CR">
+            <field Type="RW" name="IO_CFG_6" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_7" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x00000264" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK2_IO_CFG_8_9_CR">
+            <field Type="RW" name="IO_CFG_8" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_9" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x00000268" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK2_IO_CFG_10_11_CR">
+            <field Type="RW" name="IO_CFG_10" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_11" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x0000026C" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK2_IO_CFG_12_13_CR">
+            <field Type="RW" name="IO_CFG_12" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_13" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x00000270" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK2_IO_CFG_14_15_CR">
+            <field Type="RW" name="IO_CFG_14" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_15" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x00000274" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK2_IO_CFG_16_17_CR">
+            <field Type="RW" name="IO_CFG_16" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_17" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x00000278" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK2_IO_CFG_18_19_CR">
+            <field Type="RW" name="IO_CFG_18" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_19" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x0000027C" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK2_IO_CFG_20_21_CR">
+            <field Type="RW" name="IO_CFG_20" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_21" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x00000280" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK2_IO_CFG_22_23_CR">
+            <field Type="RW" name="IO_CFG_22" offset="0" width="16">0x0</field>
+            <field Type="RW" name="IO_CFG_23" offset="16" width="16">0x0</field>
+          </register>
+          <register address="0x00000278" description="default dpc values for MSSIO bank 2 " name="ALT_MSSIO_VB2_CFG">
+            <field Type="RW" name="DPC_IO_CFG_IBUFMD_0" offset="0" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_IBUFMD_1" offset="1" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_IBUFMD_2" offset="2" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_DRV_0" offset="3" width="1">0x1</field>
+            <field Type="RW" name="DPC_IO_CFG_DRV_1" offset="4" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_DRV_2" offset="5" width="1">0x1</field>
+            <field Type="RW" name="DPC_IO_CFG_DRV_3" offset="6" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_CLAMP" offset="7" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_ENHYST" offset="8" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_LOCKDN_EN" offset="9" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_WPD" offset="10" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_WPU" offset="11" width="1">0x1</field>
+            <field Type="RW" name="DPC_IO_CFG_ATP_EN" offset="12" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_LP_PERSIST_EN" offset="13" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_LP_BYPASS_EN" offset="14" width="1">0x0</field>
+            <field Type="R" name="RESERVED" offset="15" width="17">0x0</field>
+          </register>
+          <register address="0x0000027C" description="default dpc values for MSSIO bank 4 " name="ALT_MSSIO_VB4_CFG">
+            <field Type="RW" name="DPC_IO_CFG_IBUFMD_0" offset="0" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_IBUFMD_1" offset="1" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_IBUFMD_2" offset="2" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_DRV_0" offset="3" width="1">0x1</field>
+            <field Type="RW" name="DPC_IO_CFG_DRV_1" offset="4" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_DRV_2" offset="5" width="1">0x1</field>
+            <field Type="RW" name="DPC_IO_CFG_DRV_3" offset="6" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_CLAMP" offset="7" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_ENHYST" offset="8" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_LOCKDN_EN" offset="9" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_WPD" offset="10" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_WPU" offset="11" width="1">0x1</field>
+            <field Type="RW" name="DPC_IO_CFG_ATP_EN" offset="12" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_LP_PERSIST_EN" offset="13" width="1">0x0</field>
+            <field Type="RW" name="DPC_IO_CFG_LP_BYPASS_EN" offset="14" width="1">0x0</field>
+            <field Type="R" name="RESERVED" offset="15" width="17">0x0</field>
+          </register>
+        </registers>
+      </io_mux_alt>
       <hsio>
         <registers>
           <register address="0x00000000" description="User trim options- set option to 1 to use" name="TRIM_OPTIONS">
@@ -1967,12 +2284,12 @@
           <register address="0x00000000" description="Cached access at 0x00_8000_0000 (-0x80+0x00) " name="SEG0_0">
             <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x7F80</field>
             <field Type="RW" name="RESERVED" offset="15" width="16">0x0</field>
-            <field Type="RW" name="LOCKED" offset="31" width="1">0x0</field>
+            <field Type="RW" name="LOCKED" offset="31" width="1">0x1</field>
           </register>
           <register address="0x00000004" description="Cached access at 0x10_0000_000" name="SEG0_1">
-            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x7000</field>
+            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x0</field>
             <field Type="RW" name="RESERVED" offset="15" width="16">0x0</field>
-            <field Type="RW" name="LOCKED" offset="31" width="1">0x0</field>
+            <field Type="RW" name="LOCKED" offset="31" width="1">0x1</field>
           </register>
           <register address="0x00000008" description="not used" name="SEG0_2">
             <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x0</field>
@@ -2015,24 +2332,24 @@
             <field Type="RW" name="LOCKED" offset="31" width="1">0x0</field>
           </register>
           <register address="0x00000008" description="Non-Cached access at 0x00_c000_0000" name="SEG1_2">
-            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x7F40</field>
+            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x7F70</field>
             <field Type="RW" name="RESERVED" offset="15" width="16">0x0</field>
-            <field Type="RW" name="LOCKED" offset="31" width="1">0x0</field>
+            <field Type="RW" name="LOCKED" offset="31" width="1">0x1</field>
           </register>
           <register address="0x00000012" description="Non-Cached access at 0x14_0000_0000" name="SEG1_3">
-            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x6C00</field>
+            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x0</field>
             <field Type="RW" name="RESERVED" offset="15" width="16">0x0</field>
-            <field Type="RW" name="LOCKED" offset="31" width="1">0x0</field>
+            <field Type="RW" name="LOCKED" offset="31" width="1">0x1</field>
           </register>
           <register address="0x00000016" description="Non-Cached WCB access at 0x00_d000_0000" name="SEG1_4">
-            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x7F30</field>
+            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x7F60</field>
             <field Type="RW" name="RESERVED" offset="15" width="16">0x0</field>
-            <field Type="RW" name="LOCKED" offset="31" width="1">0x0</field>
+            <field Type="RW" name="LOCKED" offset="31" width="1">0x1</field>
           </register>
           <register address="0x00000020" description="Non-Cached WCB  0x18_0000_0000" name="SEG1_5">
-            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x6800</field>
+            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x0</field>
             <field Type="RW" name="RESERVED" offset="15" width="6">0x0</field>
-            <field Type="RW" name="LOCKED" offset="31" width="1">0x0</field>
+            <field Type="RW" name="LOCKED" offset="31" width="1">0x1</field>
           </register>
           <register address="0x00000024" description="Trace - Trace not in use here so can be left as 0" name="SEG1_6">
             <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x0</field>
@@ -2478,7 +2795,7 @@
             <field Type="RW" name="CFG_WRITE_TO_READ_ODT" offset="0" width="32">0x1</field>
           </register>
           <register address="0x000040A8" description="IP Blk = MC_BASE2 Access=RW " name="CFG_MIN_READ_IDLE">
-            <field Type="RW" name="CFG_MIN_READ_IDLE" offset="0" width="32">0x1</field>
+            <field Type="RW" name="CFG_MIN_READ_IDLE" offset="0" width="32">0x7</field>
           </register>
           <register address="0x000040AC" description="IP Blk = MC_BASE2 Access=RW " name="CFG_MRD">
             <field Type="RW" name="CFG_MRD" offset="0" width="32">0xC</field>
@@ -3075,16 +3392,16 @@
             <field Type="RW" name="CFG_AXI_START_ADDRESS_AXI2_1" offset="0" width="32">0x00000000</field>
           </register>
           <register address="0x00012F18" description="IP Blk = AXI_IF Access=RW " name="CFG_AXI_END_ADDRESS_AXI1_0">
-            <field Type="RW" name="CFG_AXI_END_ADDRESS_AXI1_0" offset="0" width="32">0xFFFFFFFF</field>
+            <field Type="RW" name="CFG_AXI_END_ADDRESS_AXI1_0" offset="0" width="32">0x7FFFFFFF</field>
           </register>
           <register address="0x00012F1C" description="IP Blk = AXI_IF Access=RW " name="CFG_AXI_END_ADDRESS_AXI1_1">
-            <field Type="RW" name="CFG_AXI_END_ADDRESS_AXI1_1" offset="0" width="32">0x00000003</field>
+            <field Type="RW" name="CFG_AXI_END_ADDRESS_AXI1_1" offset="0" width="32">0x0</field>
           </register>
           <register address="0x00012F20" description="IP Blk = AXI_IF Access=RW " name="CFG_AXI_END_ADDRESS_AXI2_0">
-            <field Type="RW" name="CFG_AXI_END_ADDRESS_AXI2_0" offset="0" width="32">0xFFFFFFFF</field>
+            <field Type="RW" name="CFG_AXI_END_ADDRESS_AXI2_0" offset="0" width="32">0x7FFFFFFF</field>
           </register>
           <register address="0x00012F24" description="IP Blk = AXI_IF Access=RW " name="CFG_AXI_END_ADDRESS_AXI2_1">
-            <field Type="RW" name="CFG_AXI_END_ADDRESS_AXI2_1" offset="0" width="32">0x00000003</field>
+            <field Type="RW" name="CFG_AXI_END_ADDRESS_AXI2_1" offset="0" width="32">0x0</field>
           </register>
           <register address="0x00013218" description="IP Blk = AXI_IF Access=RW " name="CFG_MEM_START_ADDRESS_AXI1_0">
             <field Type="RW" name="CFG_MEM_START_ADDRESS_AXI1_0" offset="0" width="32">0x00000000</field>

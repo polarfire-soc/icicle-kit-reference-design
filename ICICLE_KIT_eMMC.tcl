@@ -59,6 +59,8 @@ download_core -vlnv {Actel:Simulation:RESET_GEN:1.0.1} -location {www.microchip-
 source ./script_support/MPFS_ICICLE_eMMC_recursive.tcl
 
 run_tool -name {CONSTRAINT_MANAGEMENT} 
+
+# Import I/O constraints
 import_files \
          -convert_EDN_to_HDL 0 \
          -io_pdc "${constraint_path}/ICICLE.pdc" \
@@ -74,6 +76,11 @@ import_files \
 		 -io_pdc "${constraint_path}/ICICLE_SDIO.pdc" \
 		 -io_pdc "${constraint_path}/ICICLE_RPi.pdc"
 
-organize_tool_files -tool {PLACEROUTE} -file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" -file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" -file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" -file "${project_dir}/constraint/io/ICICLE_USB.pdc" -file "${project_dir}/constraint/io/ICICLE.pdc" -file "${project_dir}/constraint/io/ICICLE_MAC.pdc" -file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" -file "${project_dir}/constraint/io/ICICLE_RPi.pdc" -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} -input_type {constraint} 
+# Import floor planning constriants
+import_files \
+         -convert_EDN_to_HDL 0 \
+		 -fp_pdc "${constraint_path}/CCC.pdc"
+
+organize_tool_files -tool {PLACEROUTE} -file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" -file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" -file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" -file "${project_dir}/constraint/io/ICICLE_USB.pdc" -file "${project_dir}/constraint/io/ICICLE.pdc" -file "${project_dir}/constraint/io/ICICLE_MAC.pdc" -file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" -file "${project_dir}/constraint/io/ICICLE_RPi.pdc" -file "${project_dir}/constraint/fp/CCC.pdc" -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} -input_type {constraint} 
 derive_constraints_sdc 
 save_project 

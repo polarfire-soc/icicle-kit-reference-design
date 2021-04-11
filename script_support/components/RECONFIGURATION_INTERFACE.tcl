@@ -19,7 +19,7 @@ create_and_configure_core -core_vlnv {Actel:SgCore:PF_DRI:1.1.100} -component_na
 "PLL0_NE:false"  \
 "PLL0_NW:false"  \
 "PLL0_SE:false"  \
-"PLL0_SW:false"  \
+"PLL0_SW:true"  \
 "PLL1_NE:false"  \
 "PLL1_NW:false"  \
 "PLL1_SE:false"  \

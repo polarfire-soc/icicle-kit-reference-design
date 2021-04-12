@@ -103,6 +103,10 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD2_P} -port_
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD2_N} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD3_P} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD3_N} -port_direction {OUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO12} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO16} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO20} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO21} -port_direction {OUT}
 
 sd_create_bus_port -sd_name ${sd_name} -port_name {CA} -port_direction {OUT} -port_range {[5:0]} -port_is_pad {1}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQ} -port_direction {INOUT} -port_range {[31:0]} -port_is_pad {1}
@@ -278,6 +282,10 @@ sd_invert_pins -sd_name ${sd_name} -pin_names {SW3_OR_GPIO_2_27:A}
 
 
 # Add scalar net connections
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_100MHz" "RPi_GPIO12" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_75MHz" "RPi_GPIO16" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_50MHz" "RPi_GPIO20" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_25MHz" "RPi_GPIO21" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:CAN_0_RXBUS_F2M" "CAN_0_RXBUS_F2M" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:CAN_0_TX_EBL_M2F" "CAN_0_TX_EBL_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:CAN_0_TXBUS_M2F" "CAN_0_TXBUS_M2F" }

@@ -1,4 +1,4 @@
-# PolarFire SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero v12.6
+# PolarFire SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero v2021.1
 
 ## Description
 
@@ -6,7 +6,7 @@ This repository can be used to generate a reference design for the PolarFire SoC
 
 Libero SoC Tcl scripts are provided to generate the reference design using Libero SoC along with device specific I/O constraints. For information on which script to run for each configuration see the [eMMC and SD cards](#emmc-sd) section. For Tcl scripts supporting previous versions of Libero SoC see [Releases](https://github.com/polarfire-soc/icicle-kit-reference-design/releases).
 
-This repository supports Libero SoC v12.6, which is available for download [here](https://www.microsemi.com/product-directory/design-resources/1750-libero-soc#downloads).
+This repository supports Libero SoC v2021.1, which is available for download [here]().
 
 ## Embedded FlashPro 6
 This section is only relevant if you have received a pre-production Icicle Kit which was delivered with an external FlashPro programmer.
@@ -21,12 +21,12 @@ From Libero SoC v12.5 SP1 embedded FlashPro 6 (eFP6) devices are now supported w
 
 **To run the scripts:**
 1. Clone or download the repository
-2. Open Libero v12.6
+2. Open Libero v2021.1
 3. Open the execute script dialog (CTRL + U)
 4. Execute the script for the design required (e.g "ICICLE_KIT_eMMC.tcl")
 
 **Note:**
-        Scripts will automatically generate an MSS component, using the PolarFire SoC MSS Configurator in batch mode, they then generate, instantiate and connect components and top level I/Os. Constraints are imported for top level I/O and associated with Place and Route. Timing constraints are then generated and associated with Synthesis, Place and Route and Timing.
+        Scripts will automatically generate an MSS component, using the PolarFire SoC MSS Configurator in batch mode, they then generate, instantiate and connect components and top level I/Os. Constraints are imported for top level I/O and floor planning which associated with Place and Route. Timing constraints are then generated and associated with Synthesis, Place and Route and Timing Verification.
 
 5. Configure the design if required
 6. Run the Libero SoC design flow to program a device
@@ -46,36 +46,43 @@ The diagram below outlines the FPGA fabric configuration and shows MSS I/Os used
 ### MSS peripherals
 The following MSS peripherals are enabled:
 
-| Peripheral 	| Routing           	| Notes                                     	|
-|------------	|-------------------	|-------------------------------------------	|
-| eMMC       	| MSS I/Os BANK 4   	| See "eMMC and SD card switching"          	|
-| USB        	| MSS I/Os BANK 2   	|                                           	|
-| SD/SDIO    	| MSS I/Os BANK 4   	| See "eMMC and SD card switching"          	|
-| GEM 0      	| SGMII I/Os BANK 5 	|                                           	|
-| GEM 1      	| SGMII I/Os BANK 5 	| Management through MSS I/Os BANK 2 B      	|
-| SPI 1      	| MSS I/Os BANK 2 B 	|                                           	|
-| MMUART 0   	| Fabric            	|                                           	|
-| MMUART 1   	| Fabric            	|                                           	|
-| MMUART 2   	| Fabric            	|                                           	|
-| MMUART 3   	| Fabric            	|                                           	|
-| I2C 1      	| MSS I/Os BANK 2 B 	|                                           	|
-| CAN 0      	| Fabric            	|                                           	|
-| CAN 1      	| MSS I/Os BANK 2 B 	|                                           	|
-| GPIO 2     	| Fabric            	| See block diagram for enabled GPIOs       	|
+| Peripheral 	| Routing           	| Notes                                     	                  |
+|------------	|-------------------	|-------------------------------------------------------------  |
+| eMMC       	| MSS I/Os BANK 4   	| See "eMMC and SD card switching"          	                  |
+| USB        	| MSS I/Os BANK 2   	|                                           	                  |
+| SD/SDIO    	| MSS I/Os BANK 4   	| See "eMMC and SD card switching"          	                  |
+| GEM 0      	| SGMII I/Os BANK 5 	|                                           	                  |
+| GEM 1      	| SGMII I/Os BANK 5 	| Management through MSS I/Os BANK 2 B      	                  |
+| SPI 0      	| Fabric             	|                                                             	|
+| QSPI      	| Fabric / MSS I/Os  	| Data 2 to 3 I/Os to fabric, remaining pins to MSS I/Os BANK 2 |
+| MMUART 0   	| Fabric            	|                                                             	|
+| MMUART 1   	| Fabric            	|                                                             	|
+| MMUART 2   	| Fabric            	|                                                             	|
+| MMUART 3   	| Fabric            	|                                                             	|
+| MMUART 4   	| Fabric            	|                                           	                  |
+| I2C 0      	| Fabric             	|                                           	                  |
+| I2C 1      	| MSS I/Os BANK 2 B 	|                                           	                  |
+| CAN 0      	| Fabric            	|                                           	                  |
+| CAN 1      	| MSS I/Os BANK 2 B 	|                                           	                  |
+| GPIO 2     	| Fabric            	| See block diagram for enabled GPIOs       	                  |
+
+QSPI
+
 
 ### Memory map
 
 | Server                  	| Bus          	| Receiver                	| Address range                 	|
 |-------------------------	|--------------	|-------------------------	|-------------------------------	|
 | MSS: FIC0               	| AXI4_mslave0 	| PF_PCIE_C0_0            	| 0x7000_0000 -> 0x2f_ffff_ffff 	|
-| MSS: FIC0               	| AXI4_mslave1 	| LSRAM_0                 	| 0x6100_0000 -> 0x6fff_ffff    	|
-| MSS: FIC0               	| AXI4_mslave2 	| COREAXI4DMACONTROLLER_0 	| 0x6002_0000 -> 0x6002_ffff    	|
+| MSS: FIC0               	| AXI4_mslave1 	| MSS_LSRAM                	| 0x6100_0000 -> 0x6fff_ffff    	|
+| MSS: FIC0               	| AXI4_mslave2 	| DMA_CONTROLLER          	| 0x6002_0000 -> 0x6002_ffff    	|
 | MSS: FIC3               	| APBmslave2   	| CoreGPIO                	| 0x4200_0000 -> 0x42ff_ffff    	|
-| MSS: FIC3               	| APBmslave3   	| PF_DRI_C0_0             	| 0x4300_0000 -> 0x43ff_ffff    	|
+| MSS: FIC3               	| APBmslave3   	| RECONFIGURATION_INTERFACE	| 0x4300_0000 -> 0x43ff_ffff    	|
+| MSS: FIC3               	| APBmslave3   	| RECONFIGURATION_INTERFACE	| 0x4800_0000 -> 0x48ff_ffff    	|
 | MSS: FIC3               	| APBmslave15  	| SDIO_register            	| 0x4f00_0000 -> 0x4fff_ffff    	|
 | PF_PCIE_C0_0            	| AXI4_mslave0 	| MSS: FIC0               	| 0x6000_0000 -> 0xbfff_ffff    	|
-| PF_PCIE_C0_0            	| AXI4_mslave1 	| LSRAM_1                 	| 0x0 -> 0xfff                  	|
-| COREAXI4DMACONTROLLER_0 	| AXI4_mslave0 	| MSS: FIC1               	| 0xc000_0000 -> 0xcfff_ffff    	|
+| PF_PCIE_C0_0            	| AXI4_mslave1 	| PCIE_LSRAM               	| 0x0 -> 0xfff                  	|
+| DMA_CONTROLLER           	| AXI4_mslave0 	| MSS: FIC1               	| 0xc000_0000 -> 0xcfff_ffff    	|
 
 ### Interrupt map
 
@@ -83,7 +90,7 @@ The following MSS peripherals are enabled:
 |-----------------------	|--------------------	|
 | MSS_GPIO_2_28 \| SW1  	| MSS_INT_FTM[0]     	|
 | PF_PCIE               	| MSS_INT_FTM[1]     	|
-| COREAXI4DMACONTROLLER 	| MSS_INT_FTM[2]     	|
+| DMA_CONTROLLER         	| MSS_INT_FTM[2]     	|
 | MSS_GPIO_2_26 \| SW2  	| MSS_GPIO_2_INT[30] 	|
 | MSS_GPIO_2_27 \| SW3  	| MSS_GPIO_2_INT[31] 	|
 
@@ -123,7 +130,7 @@ Commands for BFM simulations can be updated by editing the ".vec" files in the S
 
 ### Boot mode 0
 
-Boot mode 0 will put all of the MSS cores into WFI (Wait For Interrupt) mode on power on, the cores will not boot until debugged. SoftConsole v6.4 or later can be used to set the PolarFire SoC boot mode to 0:
+Boot mode 0 will put all of the MSS cores into WFI (Wait For Interrupt) mode on power on, the cores will not boot until debugged. SoftConsole v6.5 or later can be used to set the PolarFire SoC boot mode to 0:
 1. Connect the board to the PC using the embedded FlashPro6 or an external FlashPro and power on the board
 2. In SoftConsole select the "External Tool" drop down menu
 3. Select the "PolarFire SoC idle boot mode 0" configuration and run

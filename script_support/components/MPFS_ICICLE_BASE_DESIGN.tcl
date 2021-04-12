@@ -430,6 +430,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_MASTER:AXI4mmaster0" "MSS:
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APB3mmaster" "MSS:FIC_3_APB_MASTER" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:AXI4mslave0" "MSS:FIC_0_AXI4_SLAVE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:AXI4mslave1" "PCIE_LSRAM:AXI4_Slave" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:AXI_1_MASTER" "PCIE_MASTER:AXI4mmaster0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:PLL0_DRI" "RECONFIGURATION_INTERFACE_0:PLL0_SW_DRI" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE0_DRI_SLAVE" "RECONFIGURATION_INTERFACE_0:Q0_LANE0_DRI" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE1_DRI_SLAVE" "RECONFIGURATION_INTERFACE_0:Q0_LANE1_DRI" }

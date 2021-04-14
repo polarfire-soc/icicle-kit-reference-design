@@ -6,7 +6,7 @@ This repository can be used to generate a reference design for the PolarFire SoC
 
 Libero SoC Tcl scripts are provided to generate the reference design using Libero SoC along with device specific I/O constraints. For information on which script to run for each configuration see the [eMMC and SD cards](#emmc-sd) section. For Tcl scripts supporting previous versions of Libero SoC see [Releases](https://github.com/polarfire-soc/icicle-kit-reference-design/releases).
 
-This repository supports Libero SoC v2021.1, which is available for download [here]().
+This repository supports Libero SoC v2021.1, which is available for download [here](https://www.microsemi.com/product-directory/design-resources/1750-libero-soc#downloads).
 
 ## Embedded FlashPro 6
 This section is only relevant if you have received a pre-production Icicle Kit which was delivered with an external FlashPro programmer.

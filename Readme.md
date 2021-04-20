@@ -66,9 +66,6 @@ The following MSS peripherals are enabled:
 | CAN 1      	| MSS I/Os BANK 2 B 	|                                           	                  |
 | GPIO 2     	| Fabric            	| See block diagram for enabled GPIOs       	                  |
 
-QSPI
-
-
 ### Memory map
 
 | Server                  	| Bus          	| Receiver                	| Address range                 	|

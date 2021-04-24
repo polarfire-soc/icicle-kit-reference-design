@@ -22,18 +22,18 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {EMMC_DATA7} -port_directio
 sd_create_scalar_port -sd_name ${sd_name} -port_name {EMMC_STRB} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {EMMC_RSTN} -port_direction {OUT}
 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_CLK" "MSS:EMMC_CLK" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_CMD" "MSS:EMMC_CMD" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA0" "MSS:EMMC_DATA0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA1" "MSS:EMMC_DATA1" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA2" "MSS:EMMC_DATA2" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA3" "MSS:EMMC_DATA3" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA4" "MSS:EMMC_DATA4" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA5" "MSS:EMMC_DATA5" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA6" "MSS:EMMC_DATA6" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA7" "MSS:EMMC_DATA7" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_RSTN" "MSS:EMMC_RSTN" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_STRB" "MSS:EMMC_STRB" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_CLK" "ICICLE_MSS:EMMC_CLK" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_CMD" "ICICLE_MSS:EMMC_CMD" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA0" "ICICLE_MSS:EMMC_DATA0" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA1" "ICICLE_MSS:EMMC_DATA1" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA2" "ICICLE_MSS:EMMC_DATA2" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA3" "ICICLE_MSS:EMMC_DATA3" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA4" "ICICLE_MSS:EMMC_DATA4" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA5" "ICICLE_MSS:EMMC_DATA5" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA6" "ICICLE_MSS:EMMC_DATA6" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_DATA7" "ICICLE_MSS:EMMC_DATA7" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_RSTN" "ICICLE_MSS:EMMC_RSTN" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"EMMC_STRB" "ICICLE_MSS:EMMC_STRB" }
 
 # Re-enable auto promotion of pins of type 'pad'
 auto_promote_pad_pins -promote_all 1

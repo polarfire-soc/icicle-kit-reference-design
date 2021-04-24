@@ -17,9 +17,14 @@ if { [lindex $tcl_platform(os) 0]  == "Windows" } {
 if { $::argc > 0 } {
     set i 1
     foreach arg $::argv {
-		set temp [split $arg ":"]
-		puts "Setting parameter [lindex $temp 0] to [lindex $temp 1]"
-		set [lindex $temp 0] "[lindex $temp 0]:[lindex $temp 1]"
+		if {[string match "*:*" $arg]} {
+			set temp [split $arg ":"]
+			puts "Setting parameter [lindex $temp 0] to [lindex $temp 1]"
+			set [lindex $temp 0] "[lindex $temp 0]:[lindex $temp 1]"
+		} else {
+			set $arg 1
+			puts "set $arg to 1" 
+		}
         incr i
     }
 } else {
@@ -34,6 +39,8 @@ set project_dir "$local_dir/MPFS_ICICLE_eMMC"
 set emmc_sd "emmc"
 
 set constraint_path ./constraints
+
+source ./script_support/functions.tcl
 
 new_project -location {./MPFS_ICICLE_eMMC} -name {MPFS_ICICLE_eMMC} -project_description {} -block_mode 0 -standalone_peripheral_initialization 0 -instantiate_in_smartdesign 1 -ondemand_build_dh 1 -use_relative_path 0 -linked_files_root_dir_env {} -hdl {VERILOG} -family {PolarFireSoC} -die {MPFS250T_ES} -package {FCG1152} -speed {STD} -die_voltage {1.0} -part_range {EXT} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {SYSTEM_CONTROLLER_SUSPEND_MODE:0} -adv_options {TEMPR:EXT} -adv_options {VCCI_1.2_VOLTR:EXT} -adv_options {VCCI_1.5_VOLTR:EXT} -adv_options {VCCI_1.8_VOLTR:EXT} -adv_options {VCCI_2.5_VOLTR:EXT} -adv_options {VCCI_3.3_VOLTR:EXT} -adv_options {VOLTR:EXT} 
 set_device -family {PolarFireSoC} -die {MPFS250T_ES} -package {FCVG484} -speed {STD} -die_voltage {1.0} -part_range {EXT} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {SYSTEM_CONTROLLER_SUSPEND_MODE:0} -adv_options {TEMPR:EXT} -adv_options {VCCI_1.2_VOLTR:EXT} -adv_options {VCCI_1.5_VOLTR:EXT} -adv_options {VCCI_1.8_VOLTR:EXT} -adv_options {VCCI_2.5_VOLTR:EXT} -adv_options {VCCI_3.3_VOLTR:EXT} -adv_options {VOLTR:EXT} 
@@ -74,13 +81,27 @@ import_files \
 		 -io_pdc "${constraint_path}/ICICLE_PCIE.pdc" \
 		 -io_pdc "${constraint_path}/ICICLE_USB.pdc" \
 		 -io_pdc "${constraint_path}/ICICLE_SDIO.pdc" \
-		 -io_pdc "${constraint_path}/ICICLE_RPi.pdc"
+		 -io_pdc "${constraint_path}/ICICLE_RPi.pdc" \
+		 -io_pdc "${constraint_path}/ICICLE_I2C_LOOPBACK.pdc"
 
 # Import floor planning constriants
 import_files \
          -convert_EDN_to_HDL 0 \
 		 -fp_pdc "${constraint_path}/CCC.pdc"
-
+		 
 organize_tool_files -tool {PLACEROUTE} -file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" -file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" -file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" -file "${project_dir}/constraint/io/ICICLE_USB.pdc" -file "${project_dir}/constraint/io/ICICLE.pdc" -file "${project_dir}/constraint/io/ICICLE_MAC.pdc" -file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" -file "${project_dir}/constraint/io/ICICLE_RPi.pdc" -file "${project_dir}/constraint/fp/CCC.pdc" -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} -input_type {constraint} 
 derive_constraints_sdc 
 save_project 
+
+if {[info exists I2C_LOOPBACK]} {
+	if {[file isdirectory $local_dir/script_support/components/MSS_I2C_LOOPBACK]} {
+		file delete -force $local_dir/script_support/components/MSS_I2C_LOOPBACK
+	}
+	file mkdir $local_dir/script_support/components/MSS_I2C_LOOPBACK
+	create_config $local_dir/script_support/components/MSS_eMMC/ICICLE_MSS.cfg $local_dir/script_support/ICICLE_MSS_I2C_LOOPBACK.cfg
+	update_param $local_dir/script_support/ICICLE_MSS_I2C_LOOPBACK.cfg "I2C_1 " "FABRIC"
+	exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/ICICLE_MSS_I2C_LOOPBACK.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_I2C_LOOPBACK
+   source ./script_support/I2C_LOOPBACK.tcl
+   save_project 
+} 
+

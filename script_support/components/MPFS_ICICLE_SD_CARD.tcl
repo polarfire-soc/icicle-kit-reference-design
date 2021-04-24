@@ -24,20 +24,20 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CD} -port_direction {IN
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_WP} -port_direction {IN}
 
 # Add scalar net connections
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_CLK" "MSS:SD_CLK" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_CMD" "MSS:SD_CMD" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_DATA0" "MSS:SD_DATA0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_DATA1" "MSS:SD_DATA1" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_DATA2" "MSS:SD_DATA2" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_DATA3" "MSS:SD_DATA3" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_POW" "MSS:SD_POW" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_CMD_DIR" "MSS:SD_VOLT_CMD_DIR" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_DIR_1_3" "MSS:SD_VOLT_DIR_1_3" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_DIR_0" "MSS:SD_VOLT_DIR_0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_EN" "MSS:SD_VOLT_EN" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_SEL" "MSS:SD_VOLT_SEL" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_CD" "MSS:SD_CD" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_WP" "MSS:SD_WP" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_CLK" "ICICLE_MSS:SD_CLK" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_CMD" "ICICLE_MSS:SD_CMD" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_DATA0" "ICICLE_MSS:SD_DATA0" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_DATA1" "ICICLE_MSS:SD_DATA1" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_DATA2" "ICICLE_MSS:SD_DATA2" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_DATA3" "ICICLE_MSS:SD_DATA3" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_POW" "ICICLE_MSS:SD_POW" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_CMD_DIR" "ICICLE_MSS:SD_VOLT_CMD_DIR" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_DIR_1_3" "ICICLE_MSS:SD_VOLT_DIR_1_3" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_DIR_0" "ICICLE_MSS:SD_VOLT_DIR_0" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_EN" "ICICLE_MSS:SD_VOLT_EN" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_SEL" "ICICLE_MSS:SD_VOLT_SEL" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_CD" "ICICLE_MSS:SD_CD" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_WP" "ICICLE_MSS:SD_WP" }
 
 # Re-enable auto promotion of pins of type 'pad'
 auto_promote_pad_pins -promote_all 1

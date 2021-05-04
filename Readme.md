@@ -46,25 +46,25 @@ The diagram below outlines the FPGA fabric configuration and shows MSS I/Os used
 ### MSS peripherals
 The following MSS peripherals are enabled:
 
-| Peripheral 	| Routing           	| Notes                                     	                  |
-|------------	|-------------------	|-------------------------------------------------------------  |
-| eMMC       	| MSS I/Os BANK 4   	| See "eMMC and SD card switching"          	                  |
-| USB        	| MSS I/Os BANK 2   	|                                           	                  |
-| SD/SDIO    	| MSS I/Os BANK 4   	| See "eMMC and SD card switching"          	                  |
-| GEM 0      	| SGMII I/Os BANK 5 	|                                           	                  |
-| GEM 1      	| SGMII I/Os BANK 5 	| Management through MSS I/Os BANK 2 B      	                  |
-| SPI 0      	| Fabric             	|                                                             	|
-| QSPI      	| Fabric / MSS I/Os  	| Data 2 to 3 I/Os to fabric, remaining pins to MSS I/Os BANK 2 |
-| MMUART 0   	| Fabric            	|                                                             	|
-| MMUART 1   	| Fabric            	|                                                             	|
-| MMUART 2   	| Fabric            	|                                                             	|
-| MMUART 3   	| Fabric            	|                                                             	|
-| MMUART 4   	| Fabric            	|                                           	                  |
-| I2C 0      	| Fabric             	|                                           	                  |
-| I2C 1      	| MSS I/Os BANK 2 B 	|                                           	                  |
-| CAN 0      	| Fabric            	|                                           	                  |
-| CAN 1      	| MSS I/Os BANK 2 B 	|                                           	                  |
-| GPIO 2     	| Fabric            	| See block diagram for enabled GPIOs       	                  |
+| Peripheral  | Routing            | On-board routing                  |Notes                                                         |
+|------------ |------------------- |---------------------------------- |--------------------------------------------------------------|
+| eMMC        | MSS I/Os BANK 4    | eMMC device                       |See "eMMC and SD card switching"                              |
+| USB         | MSS I/Os BANK 2    | USB OTG Phy connected to J16      |                                                              |
+| SD/SDIO     | MSS I/Os BANK 4    | On-board SD card socket           |See "eMMC and SD card switching"                              |
+| GEM 0       | SGMII I/Os BANK 5  | VSC8662 PHY Port0 connected to J2 |                                                              |
+| GEM 1       | SGMII I/Os BANK 5  | VSC8662 PHY Port0 connected to J1 |Management through MSS I/Os BANK 2 B                          |
+| SPI 0       | Fabric             | Raspberry Pi connector J26        |                                                              |
+| QSPI        | Fabric / MSS I/Os  | Microbus connector                |Data 2 to 3 I/Os to fabric, remaining pins to MSS I/Os BANK 2 |
+| MMUART 0    | Fabric             | USB-UART PHY Connected to J11     |                                                              |
+| MMUART 1    | Fabric             | USB-UART PHY Connected to J11     |                                                              |
+| MMUART 2    | Fabric             | USB-UART PHY Connected to J11     |                                                              |
+| MMUART 3    | Fabric             | USB-UART PHY Connected to J11     |                                                              |
+| MMUART 4    | Fabric             | Microbus connector                |                                                              |
+| I2C 0       | Fabric             | Microbus connector                |                                                              |
+| I2C 1       | MSS I/Os BANK 2 B  | On-board PAC1934 sensor           |                                                              |
+| CAN 0       | Fabric             |                                   |                                                              |
+| CAN 1       | MSS I/Os BANK 2 B  |                                   |                                                              |
+| GPIO 2      | Fabric             | LEDs and Switches                 |See block diagram for enabled GPIOs                           |
 
 ### Memory map
 

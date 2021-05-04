@@ -34,15 +34,22 @@ if { $::argc > 0 } {
 set install_loc [defvar_get -name ACTEL_SW_DIR]
 set mss_config_loc "$install_loc/bin64/pfsoc_mss"
 set local_dir [pwd]
-set project_dir "$local_dir/MPFS_ICICLE_SD_CARD"
 
 set emmc_sd "sd"
 
 set constraint_path ./constraints
 
-source ./script_support/functions.tcl
+source ./script_support/additional_configurations/functions.tcl
 
-new_project -location {./MPFS_ICICLE_SD_CARD} -name {MPFS_ICICLE_SD_CARD} -project_description {} -block_mode 0 -standalone_peripheral_initialization 0 -instantiate_in_smartdesign 1 -ondemand_build_dh 1 -use_relative_path 0 -linked_files_root_dir_env {} -hdl {VERILOG} -family {PolarFireSoC} -die {MPFS250T_ES} -package {FCG1152} -speed {STD} -die_voltage {1.0} -part_range {EXT} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {SYSTEM_CONTROLLER_SUSPEND_MODE:0} -adv_options {TEMPR:EXT} -adv_options {VCCI_1.2_VOLTR:EXT} -adv_options {VCCI_1.5_VOLTR:EXT} -adv_options {VCCI_1.8_VOLTR:EXT} -adv_options {VCCI_2.5_VOLTR:EXT} -adv_options {VCCI_3.3_VOLTR:EXT} -adv_options {VOLTR:EXT} 
+if {[info exists I2C_LOOPBACK]} {
+	set project_name "MPFS_ICICLE_I2C_LOOPBACK"
+	set project_dir "$local_dir/MPFS_ICICLE_I2C_LOOPBACK"
+} else {
+	set project_name "MPFS_ICICLE_SD_CARD"
+	set project_dir "$local_dir/MPFS_ICICLE_SD_CARD"
+}
+
+new_project -location $project_name -name $project_name -project_description {} -block_mode 0 -standalone_peripheral_initialization 0 -instantiate_in_smartdesign 1 -ondemand_build_dh 1 -use_relative_path 0 -linked_files_root_dir_env {} -hdl {VERILOG} -family {PolarFireSoC} -die {MPFS250T_ES} -package {FCG1152} -speed {STD} -die_voltage {1.0} -part_range {EXT} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {SYSTEM_CONTROLLER_SUSPEND_MODE:0} -adv_options {TEMPR:EXT} -adv_options {VCCI_1.2_VOLTR:EXT} -adv_options {VCCI_1.5_VOLTR:EXT} -adv_options {VCCI_1.8_VOLTR:EXT} -adv_options {VCCI_2.5_VOLTR:EXT} -adv_options {VCCI_3.3_VOLTR:EXT} -adv_options {VOLTR:EXT} 
 set_device -family {PolarFireSoC} -die {MPFS250T_ES} -package {FCVG484} -speed {STD} -die_voltage {1.0} -part_range {EXT} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {SYSTEM_CONTROLLER_SUSPEND_MODE:0} -adv_options {TEMPR:EXT} -adv_options {VCCI_1.2_VOLTR:EXT} -adv_options {VCCI_1.5_VOLTR:EXT} -adv_options {VCCI_1.8_VOLTR:EXT} -adv_options {VCCI_2.5_VOLTR:EXT} -adv_options {VCCI_3.3_VOLTR:EXT} -adv_options {VOLTR:EXT} 
 
 download_core -vlnv {Actel:SgCore:PF_OSC:1.0.102} -location {www.microchip-ip.com/repositories/SgCore}
@@ -98,9 +105,9 @@ if {[info exists I2C_LOOPBACK]} {
 		file delete -force $local_dir/script_support/components/MSS_I2C_LOOPBACK
 	}
 	file mkdir $local_dir/script_support/components/MSS_I2C_LOOPBACK
-	create_config $local_dir/script_support/components/MSS_SD/ICICLE_MSS.cfg $local_dir/script_support/ICICLE_MSS_I2C_LOOPBACK.cfg
-	update_param $local_dir/script_support/ICICLE_MSS_I2C_LOOPBACK.cfg "I2C_1 " "FABRIC"
-	exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/ICICLE_MSS_I2C_LOOPBACK.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_I2C_LOOPBACK
-   source ./script_support/I2C_LOOPBACK.tcl
+	create_config $local_dir/script_support/components/MSS_SD/ICICLE_MSS.cfg $local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg
+	update_param $local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg "I2C_1 " "FABRIC"
+	exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_I2C_LOOPBACK
+   source ./script_support/additional_configurations/I2C_LOOPBACK/I2C_LOOPBACK.tcl
    save_project 
 } 

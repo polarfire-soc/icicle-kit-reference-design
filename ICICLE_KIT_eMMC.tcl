@@ -105,10 +105,10 @@ if {[info exists I2C_LOOPBACK]} {
 		file delete -force $local_dir/script_support/components/MSS_I2C_LOOPBACK
 	}
 	file mkdir $local_dir/script_support/components/MSS_I2C_LOOPBACK
-	create_config $local_dir/script_support/components/MSS_eMMC/ICICLE_MSS.cfg $local_dir/script_support/additional_configurations/ICICLE_MSS_I2C_LOOPBACK.cfg
-	update_param $local_dir/script_support/additional_configurations/ICICLE_MSS_I2C_LOOPBACK.cfg "I2C_1 " "FABRIC"
-	exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/additional_configurations/ICICLE_MSS_I2C_LOOPBACK.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_I2C_LOOPBACK
-   source ./script_support/additional_configurations/I2C_LOOPBACK.tcl
+	create_config $local_dir/script_support/components/MSS_eMMC/ICICLE_MSS.cfg $local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg
+	update_param $local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg "I2C_1 " "FABRIC"
+	exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_I2C_LOOPBACK
+   source ./script_support/additional_configurations/I2C_LOOPBACK/I2C_LOOPBACK.tcl
    save_project 
 } 
 

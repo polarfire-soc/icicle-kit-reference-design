@@ -9,7 +9,7 @@ auto_promote_pad_pins -promote_all 0
 sd_create_scalar_port -sd_name ${sd_name} -port_name {REF_CLK_0} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {EXT_RST_N} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {INIT_DONE} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {FPGA_POR_N} -port_direction {IN}
+
 sd_create_scalar_port -sd_name ${sd_name} -port_name {aclk} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {aclk_control} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {s_axi_awvalid} -port_direction {IN}
@@ -153,7 +153,7 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {fast_reset:BANK_y_VD
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {fast_reset:SS_BUSY} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {fast_reset:FF_US_RESTORE} -value {GND}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {fast_reset:PLL_POWERDOWN_B}
-
+sd_connect_pins_to_constant -sd_name {Vectorblox_ss} -pin_names {fast_reset:FPGA_POR_N} -value {VCC} 
 
 
 # Add memprot_0 instance
@@ -184,7 +184,7 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {slow_reset:BANK_y_VD
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {slow_reset:SS_BUSY} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {slow_reset:FF_US_RESTORE} -value {GND}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {slow_reset:PLL_POWERDOWN_B}
-
+sd_connect_pins_to_constant -sd_name {Vectorblox_ss} -pin_names {slow_reset:FPGA_POR_N} -value {VCC} 
 
 
 # Add vectorblox_axi_resize_0 instance
@@ -197,7 +197,6 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"core_vectorblox_C0_0:clk_2x" "v
 sd_connect_pins -sd_name ${sd_name} -pin_names {"aclk_control" "slow_reset:CLK" "core_vectorblox_C0_0:clk" "PF_CCC_C1_0:OUT0_FABCLK_0" "vectorblox_axi_resize_0:M_CLK0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"slow_reset:EXT_RST_N" "EXT_RST_N" "fast_reset:EXT_RST_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"vectorblox_axi_resize_0:ARESETN" "fast_reset:FABRIC_RESET_N" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"slow_reset:FPGA_POR_N" "FPGA_POR_N" "fast_reset:FPGA_POR_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"slow_reset:INIT_DONE" "INIT_DONE" "fast_reset:INIT_DONE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"slow_reset:PLL_LOCK" "PF_CCC_C1_0:PLL_LOCK_0" "fast_reset:PLL_LOCK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"REF_CLK_0" "PF_CCC_C1_0:REF_CLK_0" }

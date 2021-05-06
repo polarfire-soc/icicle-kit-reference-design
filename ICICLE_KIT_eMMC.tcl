@@ -43,10 +43,10 @@ source ./script_support/additional_configurations/functions.tcl
 
 if {[info exists I2C_LOOPBACK]} {
 	set project_name "MPFS_ICICLE_I2C_LOOPBACK"
-	set project_dir "$local_dir/MPFS_ICICLE_I2C_LOOPBACK"
+	set project_dir "$local_dir/MPFS_ICICLE_I2C_LOOPBACK_eMMC"
 } elseif {[info exists VECTORBLOX]} {
 	set project_name "MPFS_ICICLE_Vectorblox"
-	set project_dir "$local_dir/MPFS_ICICLE_Vectorblox"
+	set project_dir "$local_dir/MPFS_ICICLE_Vectorblox_eMMC"
 } else {
 	set project_name "MPFS_ICICLE_eMMC"
 	set project_dir "$local_dir/MPFS_ICICLE_eMMC"
@@ -113,7 +113,7 @@ if {[info exists I2C_LOOPBACK]} {
 	exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_I2C_LOOPBACK
    source ./script_support/additional_configurations/I2C_LOOPBACK/I2C_LOOPBACK.tcl
    save_project 
-}  elseif {[info exists VECTORBLOX]} {
+} elseif {[info exists VECTORBLOX]} {
 	source ./script_support/additional_configurations/Vectorblox/Vectorblox.tcl
 	save_project 
 }  

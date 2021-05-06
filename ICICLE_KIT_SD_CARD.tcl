@@ -43,10 +43,10 @@ source ./script_support/additional_configurations/functions.tcl
 
 if {[info exists I2C_LOOPBACK]} {
 	set project_name "MPFS_ICICLE_I2C_LOOPBACK"
-	set project_dir "$local_dir/MPFS_ICICLE_I2C_LOOPBACK"
+	set project_dir "$local_dir/MPFS_ICICLE_I2C_LOOPBACK_SD_CARD"
 } elseif {[info exists VECTORBLOX]} {
 	set project_name "MPFS_ICICLE_Vectorblox"
-	set project_dir "$local_dir/MPFS_ICICLE_Vectorblox"
+	set project_dir "$local_dir/MPFS_ICICLE_Vectorblox_SD_CARD"
 } else {
 	set project_name "MPFS_ICICLE_SD_CARD"
 	set project_dir "$local_dir/MPFS_ICICLE_SD_CARD"
@@ -117,3 +117,4 @@ if {[info exists I2C_LOOPBACK]} {
 	source ./script_support/additional_configurations/Vectorblox/Vectorblox.tcl
 	save_project 
 }  
+

@@ -118,3 +118,10 @@ if {[info exists I2C_LOOPBACK]} {
 	save_project 
 }  
 
+if {[info exists HSS_UPDATE]} {
+	if {[catch	{exec wget https://github.com/polarfire-soc/hart-software-services/releases/download/2021.04/hss-bm1-p0.hex} issue]} {
+	}
+	create_eNVM_config "$local_dir/script_support/components/MSS_SD/ENVM.cfg" "$local_dir/hss-bm1-p0.hex"
+	run_tool -name {GENERATEPROGRAMMINGDATA} 
+	configure_envm -cfg_file {script_support/components/MSS_SD/ENVM.cfg} 
+}

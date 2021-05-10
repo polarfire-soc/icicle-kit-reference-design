@@ -42,10 +42,10 @@ set constraint_path ./constraints
 source ./script_support/additional_configurations/functions.tcl
 
 if {[info exists I2C_LOOPBACK]} {
-	set project_name "MPFS_ICICLE_I2C_LOOPBACK"
+	set project_name "MPFS_ICICLE_I2C_LOOPBACK_eMMC"
 	set project_dir "$local_dir/MPFS_ICICLE_I2C_LOOPBACK_eMMC"
 } elseif {[info exists VECTORBLOX]} {
-	set project_name "MPFS_ICICLE_Vectorblox"
+	set project_name "MPFS_ICICLE_Vectorblox_eMMC"
 	set project_dir "$local_dir/MPFS_ICICLE_Vectorblox_eMMC"
 } else {
 	set project_name "MPFS_ICICLE_eMMC"
@@ -118,3 +118,11 @@ if {[info exists I2C_LOOPBACK]} {
 	save_project 
 }  
 
+if {[info exists HSS_UPDATE]} {
+	if {[catch	{exec explorer https://github.com/polarfire-soc/hart-software-services/releases/download/2021.04/hss-bm1-p0.hex} issue]} {
+
+	}
+	create_eNVM_config "$local_dir/script_support/components/MSS_eMMC/ENVM.cfg" "$local_dir/hss-bm1-p0.hex"
+	run_tool -name {GENERATEPROGRAMMINGDATA} 
+	configure_envm -cfg_file {"$local_dir/script_support/components/MSS_eMMC/ENVM.cfg"} 
+}

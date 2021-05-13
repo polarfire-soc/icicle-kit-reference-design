@@ -8,28 +8,69 @@ Libero SoC Tcl scripts are provided to generate the reference design using Liber
 
 This repository supports Libero SoC v2021.1, which is available for download [here](https://www.microsemi.com/product-directory/design-resources/1750-libero-soc#downloads).
 
-## Embedded FlashPro 6
-This section is only relevant if you have received a pre-production Icicle Kit which was delivered with an external FlashPro programmer.
+## Using the reference design generation Tcl scripts
 
-From Libero SoC v12.5 SP1 embedded FlashPro 6 (eFP6) devices are now supported when using eFP6 rev B. To activate an eFP6 and update it to rev B on an Icicle Kit:
-1. Ensure FlashPro Express is installed. It is installed automatically with Libero SoC or is available with the standalone Program and Debug tools
-2. Download this [FlashPro Express programming job](https://download-soc.microsemi.com/FPGA/v12.5/sp1/eFP6_revB_TAG_v4_ppd.job)
-3. Follow the steps in this [document](https://download-soc.microsemi.com/FPGA/v12.5/sp1/README.pdf) to program the eFP6 on the Icicle Kit
-4. Close jumpers J24 and J9
+### Standard design generation
 
-## Using the Reference Design Generation Tcl Scripts
+To generate the standard reference design which is capable of running the majority of bare metal example applications and run Linux the following flow can be used:
 
-**To run the scripts:**
 1. Clone or download the repository
 2. Open Libero v2021.1
 3. Open the execute script dialog (CTRL + U)
 4. Execute the script for the design required (e.g "ICICLE_KIT_eMMC.tcl")
-
-**Note:**
-        Scripts will automatically generate an MSS component, using the PolarFire SoC MSS Configurator in batch mode, they then generate, instantiate and connect components and top level I/Os. Constraints are imported for top level I/O and floor planning which associated with Place and Route. Timing constraints are then generated and associated with Synthesis, Place and Route and Timing Verification.
-
 5. Configure the design if required
 6. Run the Libero SoC design flow to program a device
+
+### Argument based design generation
+
+Some bare metal examples and tutorials require a specific fabric configuration which cannot be achieved in the standard base design, for example to test I2C loop back the MSS must be reconfigured to route I2C1 to the fabric and bi directional buffers then need to be instantiated along with additional constraints. These configurations are achieved by passing an argument to Libero when generating the design. Arguments will generate a standard base design and apply design changes on top of that configuration. Supported arguments are:
+
+| Argument             	| Description                                                                                                                                                                                                                                                                         	|
+|----------------------	|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| I2C_LOOPBACK         	| Routes I2C0 and I2C1 to the fabric and connects them to bibufs routed to RaspberriPi I/Os. Associates I2C loop back constraints for I/O. This design can be used with the I2C loop back bare metal example project and will still boot Linux but the PAC1934 will be inaccessible.  	|
+| VECTORBLOX           	| Adds the Vectorblox CNN subsystem to the reference design                                                                                                                                                                                                                           	|
+
+Arguments in the table above can only be used exclusively - i.e you cannot pass "I2C_LOOPBACK" and "VECTORBLOX" as arguments.
+
+Additional arguments are also supported to modify or configure aspects of the design flow that will be run. Supported arguments are:
+
+| Argument        	| Description                                                                                                                                                                                                                        	|
+|-----------------	|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| HSS_UPDATE      	| Downloads the HSS release hex file associated with this release of the reference design. The hex file is added as an eNVM client in Libero.                                                                                        	|
+| SYNTHESIZE      	| Runs the synthesis step after design generation has completed                                                                                                                                                                      	|
+| VERIFY_TIMING   	| Runs the synthesis, place and route and timing verification steps after design generation has completed                                                                                                                            	|
+| PROGRAM         	| Runs the full design flow after generating a design and programs a connected device.  Note: the device must be connected when the "Run PROGRAM Action" stage of the design flow is reached and only one device should be connected 	|
+| EXPORT_FPE:PATH 	| Runs the full design flow after generating a design and exports a FlashPro Express file to a specified path e.g EXPORT_FPE:/home/user/jobs/                                                                                        	|
+The arguments listed in the table above can be used with other arguments - i.e you can pass "VECTORBLOX" and "HSS_UPDATE" as arguments.
+
+The design flow for using arguments is the same as the standard flow,  ensuring the argument is passed at script execution time:
+
+1. Clone or download the repository
+2. Open Libero v2021.1
+3. Open the execute script dialog (CTRL + U)
+4. Select the script for the design required (e.g "ICICLE_KIT_eMMC.tcl")
+6. Add any required arguments (e.g "VECTORBLOX HSS_UPDATE")
+
+**Note:** arguments should not be put in quotes and are separated by spaces.
+
+7. Configure the design if required
+8. Run the Libero SoC design flow to program a device
+
+### Generating designs from the command line - no GUI
+
+Libero has support to run Tcl scripts without launching a GUI, this can significantly reduce design generation time. Arguments can also be passed when generating from the command line.
+
+To generate a design from the command line:
+
+1. Clone or download the repository
+2. Open a terminal in the directory containing the design generation scripts
+3. Execute the command (example script names and arguments shown):
+[path to Libero]/libero script: ICICLE_KIT_eMMC.tcl "SCRIPT_ARGS:VECTORBLOX HSS_UPDATE" logfile: ICICLE_KIT_eMMC.log
+
+**Note:** 'SCRIPT_ARGS: ' and associated arguments should be contained in double quotes when using the command line.
+
+**Note:**
+  Scripts will automatically generate an MSS component, using the PolarFire SoC MSS Configurator in batch mode, they then generate, instantiate and connect components and top level I/Os. Constraints are imported for top level I/O and floor planning which associated with Place and Route. Timing constraints are then generated and associated with Synthesis, Place and Route and Timing Verification. Some arguments may require part of the design flow to be run while executing a script.
 
 **Note:**
   - In previous designs eMMC and SD cards could not be used simultaneously. This required providing separate designs supporting eMMC or SD cards. This Icicle Kit Reference Design release allows dynamic switching between eMMC and SD cards. However, scripts are still provided for both eMMC and SD cards. They will produce the same design and allow interim XML support until Libero SoC is updated. See the section "[eMMC and SD cards switching](#emmc-sd-switching)" for more information.

@@ -7,3 +7,5 @@ script_support/components/MSS_SD/
 script_support/components/MSS_I2C_LOOPBACK/
 script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg
 *.hex
+*.job
+*.digest

@@ -49,7 +49,7 @@ set install_loc [defvar_get -name ACTEL_SW_DIR]
 set mss_config_loc "$install_loc/bin64/pfsoc_mss"
 set local_dir [pwd]
 set emmc_sd "emmc"
-set constraint_path ./constraints
+set constraint_path ./script_support/constraints
 
 if {[info exists I2C_LOOPBACK]} {
 	set project_name "MPFS_ICICLE_I2C_LOOPBACK_eMMC"
@@ -209,11 +209,11 @@ if {[info exists SYNTHESIZE]} {
 }
 
 if {[info exists HSS_UPDATE]} {
-	if !{[file exists "./hss-bm1-p0.hex"]} {
-		if {[catch	{exec wget https://github.com/polarfire-soc/hart-software-services/releases/download/2021.04/hss-bm1-p0.hex} issue]} {
+	if !{[file exists "./script_support/hss-bm1-p0.hex"]} {
+		if {[catch	{exec wget https://github.com/polarfire-soc/hart-software-services/releases/download/2021.04/hss-bm1-p0.hex -P ./script_support/} issue]} {
 		}
 	}
-	create_eNVM_config "$local_dir/script_support/components/MSS_eMMC/ENVM.cfg" "$local_dir/hss-bm1-p0.hex"
+	create_eNVM_config "$local_dir/script_support/components/MSS_eMMC/ENVM.cfg" "$local_dir/script_support/hss-bm1-p0.hex"
 	run_tool -name {GENERATEPROGRAMMINGDATA}
 	configure_envm -cfg_file {script_support/components/MSS_eMMC/ENVM.cfg}
 }

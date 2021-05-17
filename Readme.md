@@ -51,8 +51,8 @@ The following MSS peripherals are enabled:
 | eMMC            | MSS I/Os BANK 4    | eMMC device                       |See "eMMC and SD card switching"                              |
 | USB             | MSS I/Os BANK 2    | USB OTG Phy connected to J16      |                                                              |
 | SD/SDIO         | MSS I/Os BANK 4    | On-board SD card socket           |See "eMMC and SD card switching"                              |
-| GEM 0           | SGMII I/Os BANK 5  | VSC8662 PHY Port0 connected to J2 |                                                              |
-| GEM 1           | SGMII I/Os BANK 5  | VSC8662 PHY Port0 connected to J1 |Management through MSS I/Os BANK 2 B                          |
+| GEM 0           | SGMII I/Os BANK 5  | VSC8662 PHY Port0 connected to J1 |                                                              |
+| GEM 1           | SGMII I/Os BANK 5  | VSC8662 PHY Port1 connected to J2 |Management through MSS I/Os BANK 2 B                          |
 | SPI 0           | Fabric             | Raspberry Pi connector J26        |                                                              |
 | QSPI            | Fabric / MSS I/Os  | Microbus connector                |Data 2 to 3 I/Os to fabric, remaining pins to MSS I/Os BANK 2 |
 | MMUART 0        | Fabric             | USB-UART PHY Connected to J11     |                                                              |
@@ -62,8 +62,8 @@ The following MSS peripherals are enabled:
 | MMUART 4        | Fabric             | Microbus connector                |                                                              |
 | I2C 0           | Fabric             | Microbus connector                |                                                              |
 | I2C 1           | MSS I/Os BANK 2 B  | On-board PAC1934 sensor           |                                                              |
-| CAN 0           | Fabric             |                                   |                                                              |
-| CAN 1           | MSS I/Os BANK 2 B  |                                   |                                                              |
+| CAN 0           | Fabric             | Routed to jumper J25              |                                                              |
+| CAN 1           | MSS I/Os BANK 2 B  | Routed to jumper J27              |                                                              |
 | GPIO 2          | Fabric             | LEDs and Switches                 |See block diagram for enabled GPIOs                           |
 
 ### Memory map

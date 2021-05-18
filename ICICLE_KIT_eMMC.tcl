@@ -183,6 +183,10 @@ derive_constraints_sdc
 # // Apply additional design configurations
 #
 
+if {[info exists BFM_SIMULATION]} {
+	source script_support/simulation/Test_bench.tcl
+}
+
 if {[info exists I2C_LOOPBACK]} {
 	if {[file isdirectory $local_dir/script_support/components/MSS_I2C_LOOPBACK]} {
 		file delete -force $local_dir/script_support/components/MSS_I2C_LOOPBACK

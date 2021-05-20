@@ -46,25 +46,25 @@ The diagram below outlines the FPGA fabric configuration and shows MSS I/Os used
 ### MSS peripherals
 The following MSS peripherals are enabled:
 
-| MSS Peripheral| Route to I/O      | Board peripheral | Board I/O                    | Notes                                                        |
-|---------------|-------------------|------------------|------------------------------|--------------------------------------------------------------|
-| eMMC          | MSS I/Os BANK 4   | eMMC device      | N/A                          |See "eMMC and SD card switching"                              |
-| USB           | MSS I/Os BANK 2   | USB OTG Phy      | J16 (Micro USB)              |                                                              |
-| SD/SDIO       | MSS I/Os BANK 4   | SD card socket   | N/A                          |See "eMMC and SD card switching"                              |
-| GEM0          | SGMII I/Os BANK 5 | VSC8662 PHY Port0| J1 (RJ45 connector)          |                                                              |
-| GEM1          | SGMII I/Os BANK 5 | VSC8662 PHY Port1| J2 (RJ45 connector)          |Management through MSS I/Os BANK 2 B                          |
-| QSPI          | Fabric / MSS I/Os | N/A              | J8/J44 (MikroBUS socket)     |Data 2 to 3 I/Os to fabric, remaining pins to MSS I/Os BANK 2 |
-| SPI0          | Fabric            | N/A              | J26 (Raspberry Pi connector) |                                                              |
-| MMUART0       | Fabric            | USB-UART PHY     | J11 (Micro USB)              |                                                              |
-| MMUART1       | Fabric            | USB-UART PHY     | J11 (Micro USB)              |                                                              |
-| MMUART2       | Fabric            | USB-UART PHY     | J11 (Micro USB)              |                                                              |
-| MMUART3       | Fabric            | USB-UART PHY     | J11 (Micro USB)              |                                                              |
-| MMUART4       | Fabric            | N/A              | J8/J44 (MikroBUS socket)     |                                                              |
-| I2C0          | Fabric            | N/A              | J8/J44 (MikroBUS socket)     |                                                              |
-| I2C1          | MSS I/Os BANK 2 B | PAC1934 sensor   | N/A                          |                                                              |
-| CAN0          | Fabric            | N/A              | J25 (Jumper)                 |                                                              |
-| CAN1          | MSS I/Os BANK 2 B | N/A              | J27 (Jumper)                 |                                                              |
-| GPIO2         | Fabric            | LEDs and Switches| N/A                          |See block diagram for enabled GPIOs                           |
+| MSS Peripheral| Route to I/O      | Board peripheral | Board I/O                           | Notes                                                        |
+|---------------|-------------------|------------------|-------------------------------------|--------------------------------------------------------------|
+| eMMC          | MSS I/Os BANK 4   | eMMC device      | N/A                                 |See "eMMC and SD card switching"                              |
+| USB           | MSS I/Os BANK 2   | USB OTG Phy      | J16 (Micro USB)                     |                                                              |
+| SD/SDIO       | MSS I/Os BANK 4   | SD card socket   | N/A                                 |See "eMMC and SD card switching"                              |
+| GEM0          | SGMII I/Os BANK 5 | VSC8662 PHY Port0| J1 (RJ45 connector)                 |                                                              |
+| GEM1          | SGMII I/Os BANK 5 | VSC8662 PHY Port1| J2 (RJ45 connector)                 |Management through MSS I/Os BANK 2 B                          |
+| QSPI          | Fabric / MSS I/Os | N/A              | J8/J44 (mikroBUS&trade; socket)     |Data 2 to 3 I/Os to fabric, remaining pins to MSS I/Os BANK 2 |
+| SPI0          | Fabric            | N/A              | J26 (Raspberry Pi connector)        |                                                              |
+| MMUART0       | Fabric            | USB-UART PHY     | J11 (Micro USB)                     |                                                              |
+| MMUART1       | Fabric            | USB-UART PHY     | J11 (Micro USB)                     |                                                              |
+| MMUART2       | Fabric            | USB-UART PHY     | J11 (Micro USB)                     |                                                              |
+| MMUART3       | Fabric            | USB-UART PHY     | J11 (Micro USB)                     |                                                              |
+| MMUART4       | Fabric            | N/A              | J8/J44 (mikroBUS socket)            |                                                              |
+| I2C0          | Fabric            | N/A              | J8/J44 (mikroBUS socket)            |                                                              |
+| I2C1          | MSS I/Os BANK 2 B | PAC1934 sensor   | N/A                                 |                                                              |
+| CAN0          | Fabric            | N/A              | J25 (Jumper)                        |                                                              |
+| CAN1          | MSS I/Os BANK 2 B | N/A              | J27 (Jumper)                        |                                                              |
+| GPIO2         | Fabric            | LEDs and Switches| N/A                                 |See block diagram for enabled GPIOs                           |
 
 ### Memory map
 

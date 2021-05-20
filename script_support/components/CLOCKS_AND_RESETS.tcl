@@ -143,6 +143,20 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"TRANSMIT_PLL_0:PLL_LOCK" "PCIe_
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLKS_TO_XCVR" "TRANSMIT_PLL_0:CLKS_TO_XCVR" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PLL0_DRI" "CCC:PLL0_DRI" }
 
+# Mark pins unused
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {CCC:PLL_LOCK_0}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR_0:USRAM_INIT_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR_0:SRAM_INIT_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR_0:XCVR_INIT_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR_0:USRAM_INIT_FROM_SNVM_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR_0:USRAM_INIT_FROM_UPROM_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR_0:USRAM_INIT_FROM_SPI_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR_0:SRAM_INIT_FROM_SNVM_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR_0:SRAM_INIT_FROM_UPROM_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR_0:SRAM_INIT_FROM_SPI_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {INIT_MONITOR_0:AUTOCALIB_DONE}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {RESET_CLK_125MHz:PLL_POWERDOWN_B}
+
 # Re-enable auto promotion of pins of type 'pad'
 auto_promote_pad_pins -promote_all 1
 # Save the smartDesign

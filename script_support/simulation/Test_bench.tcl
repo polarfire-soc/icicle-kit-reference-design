@@ -123,6 +123,17 @@ sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESI
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:DQ} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:CA} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SDIO_SW_EN_N} 
+sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:MMUART_4_TXD_M2F} 
+sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SPI_0_CLK_M2F}
+sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SPI_0_DO_M2F}  
+sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SPI_0_SS1_M2F} 
+sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_GPIO12} 
+sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPI_GPIO16} 
+sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPI_GPIO20} 
+sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPI_GPIO21} 
+sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:QSPI_CS} 
+sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:QSPI_CLK} 
+
 if {$emmc_sd=="emmc"} {
 	sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:EMMC_STRB} -value {GND} 
 	sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:EMMC_DATA5} 

@@ -9,7 +9,6 @@ auto_promote_pad_pins -promote_all 0
 sd_create_scalar_port -sd_name ${sd_name} -port_name {REF_CLK_0} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {EXT_RST_N} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {INIT_DONE} -port_direction {IN}
-
 sd_create_scalar_port -sd_name ${sd_name} -port_name {aclk} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {aclk_control} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {s_axi_awvalid} -port_direction {IN}
@@ -152,23 +151,8 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {fast_reset:BANK_x_VD
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {fast_reset:BANK_y_VDDI_STATUS} -value {VCC}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {fast_reset:SS_BUSY} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {fast_reset:FF_US_RESTORE} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {fast_reset:FPGA_POR_N} -value {VCC}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {fast_reset:PLL_POWERDOWN_B}
-sd_connect_pins_to_constant -sd_name {Vectorblox_ss} -pin_names {fast_reset:FPGA_POR_N} -value {VCC} 
-
-
-# Add memprot_0 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {memprot} -instance_name {memprot_0}
-# Exporting Parameters of instance memprot_0
-sd_configure_core_instance -sd_name ${sd_name} -instance_name {memprot_0} -params {\
-"ADDR_WIDTH:38" \
-"BASE_ADDR_HI24:138" \
-"BASE_ADDR_LO24:0" \
-"DATA_WIDTH:64" \
-"END_ADDR_HI24:140" \
-"END_ADDR_LO24:0" \
-"ID_WIDTH:3" }\
--validate_rules 0
-sd_save_core_instance_config -sd_name ${sd_name} -instance_name {memprot_0}
 
 
 
@@ -183,8 +167,9 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {slow_reset:BANK_x_VD
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {slow_reset:BANK_y_VDDI_STATUS} -value {VCC}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {slow_reset:SS_BUSY} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {slow_reset:FF_US_RESTORE} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {slow_reset:FPGA_POR_N} -value {VCC}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {slow_reset:PLL_POWERDOWN_B}
-sd_connect_pins_to_constant -sd_name {Vectorblox_ss} -pin_names {slow_reset:FPGA_POR_N} -value {VCC} 
+
 
 
 # Add vectorblox_axi_resize_0 instance
@@ -193,21 +178,20 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {vectorblox_axi_res
 
 
 # Add scalar net connections
-sd_connect_pins -sd_name ${sd_name} -pin_names {"core_vectorblox_C0_0:clk_2x" "vectorblox_axi_resize_0:ACLK" "aclk" "fast_reset:CLK" "PF_CCC_C1_0:OUT1_FABCLK_0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"aclk_control" "slow_reset:CLK" "core_vectorblox_C0_0:clk" "PF_CCC_C1_0:OUT0_FABCLK_0" "vectorblox_axi_resize_0:M_CLK0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"slow_reset:EXT_RST_N" "EXT_RST_N" "fast_reset:EXT_RST_N" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"core_vectorblox_C0_0:clk_2x" "PF_CCC_C1_0:OUT1_FABCLK_0" "vectorblox_axi_resize_0:ACLK" "fast_reset:CLK" "aclk" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"core_vectorblox_C0_0:clk" "slow_reset:CLK" "PF_CCC_C1_0:OUT0_FABCLK_0" "vectorblox_axi_resize_0:M_CLK0" "aclk_control" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"slow_reset:EXT_RST_N" "fast_reset:EXT_RST_N" "EXT_RST_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"vectorblox_axi_resize_0:ARESETN" "fast_reset:FABRIC_RESET_N" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"slow_reset:INIT_DONE" "INIT_DONE" "fast_reset:INIT_DONE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"slow_reset:PLL_LOCK" "PF_CCC_C1_0:PLL_LOCK_0" "fast_reset:PLL_LOCK" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"REF_CLK_0" "PF_CCC_C1_0:REF_CLK_0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"slow_reset:FABRIC_RESET_N" "core_vectorblox_C0_0:resetn" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"slow_reset:INIT_DONE" "fast_reset:INIT_DONE" "INIT_DONE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_CCC_C1_0:PLL_LOCK_0" "slow_reset:PLL_LOCK" "fast_reset:PLL_LOCK" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_CCC_C1_0:REF_CLK_0" "REF_CLK_0" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"core_vectorblox_C0_0:resetn" "slow_reset:FABRIC_RESET_N" }
 
 
 # Add bus interface net connections
-sd_connect_pins -sd_name ${sd_name} -pin_names {"memprot_0:m_axi" "AXIM" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"core_vectorblox_C0_0:M_AXI" "vectorblox_axi_resize_0:AXI4mmaster0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"core_vectorblox_C0_0:S_control" "S_control" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"memprot_0:s_axi" "vectorblox_axi_resize_0:AXI4mslave0" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"vectorblox_axi_resize_0:AXI4mslave0" "AXIM" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"vectorblox_axi_resize_0:AXI4mmaster0" "core_vectorblox_C0_0:M_AXI" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"S_control" "core_vectorblox_C0_0:S_control" }
 
 # Re-enable auto promotion of pins of type 'pad'
 auto_promote_pad_pins -promote_all 1

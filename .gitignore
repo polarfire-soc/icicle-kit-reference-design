@@ -2,6 +2,7 @@ MPFS_ICICLE_eMMC/
 MPFS_ICICLE_SD_CARD/
 MPFS_ICICLE_I2C_LOOPBACK/
 MPFS_ICICLE_Vectorblox_eMMC/
+MPFS_ICICLE_Vectorblox_SD_CARD/
 script_support/components/MSS_eMMC/
 script_support/components/MSS_SD/
 script_support/components/MSS_I2C_LOOPBACK/

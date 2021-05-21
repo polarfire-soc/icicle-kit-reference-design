@@ -66,6 +66,8 @@ The following MSS peripherals are enabled:
 | CAN1          | MSS I/Os BANK 2 B | N/A              | J27 (Jumper)                        |                                                              |
 | GPIO2         | Fabric            | LEDs and Switches| N/A                                 |See block diagram for<br> enabled GPIOs                       |
 
+**Note:** “Raspberry Pi is a trademark of the Raspberry Pi Foundation”.
+
 ### Memory map
 
 | Server                  	| Bus          	| Receiver                	| Address range                 	|

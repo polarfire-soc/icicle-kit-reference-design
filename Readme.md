@@ -23,7 +23,7 @@ To generate the standard reference design which is capable of running the majori
 
 #### Argument based design generation
 
-Some bare metal examples and tutorials require a specific fabric configuration which cannot be achieved in the standard base design, for example to test I2C loop back the MSS must be reconfigured to route I2C1 to the fabric and bi directional buffers then need to be instantiated along with additional constraints. These configurations are achieved by passing an argument to Libero when generating the design. Arguments will generate a standard base design and apply design changes on top of that configuration. Supported arguments are:
+Some bare metal examples and tutorials require a specific fabric configuration which cannot be achieved in the standard base design, for example to test I2C loopback the MSS must be reconfigured to route I2C1 to the fabric and bi directional buffers then need to be instantiated along with additional constraints. These configurations are achieved by passing an argument to Libero when generating the design. Arguments will generate a standard base design and apply design changes on top of that configuration. Supported arguments are:
 
 | Argument             	| Description                                                                                                                                                                                                                                                                         	|
 |----------------------	|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
@@ -71,7 +71,7 @@ To generate a design from the command line:
 3. Execute the command (example script names and arguments shown):
 [path to Libero]/libero script: ICICLE_KIT_eMMC.tcl SCRIPT_ARGS:I2C_LOOPBACK+HSS_UPDATE+PROGRAM logfile: ICICLE_KIT_eMMC.log
 
-**Note:** 'SCRIPT_ARGS: ' and associated arguments should be contained in double quotes when using the command line.
+**Note:** Arguments are separated by a "+" symbol when using the command line.
 
 **Note:** Scripts will automatically generate an MSS component, using the PolarFire SoC MSS Configurator in batch mode, they then generate, instantiate and connect components and top level I/Os. Constraints are imported for top level I/O and floor planning which associated with Place and Route. Timing constraints are then generated and associated with Synthesis, Place and Route and Timing Verification. Some arguments may require part of the design flow to be run while executing a script.
 

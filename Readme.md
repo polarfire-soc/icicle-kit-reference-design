@@ -1,4 +1,4 @@
-# PolarFire SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero v2021.1
+# PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2021.1
 
 ## Description
 
@@ -12,7 +12,7 @@ This repository supports Libero SoC v2021.1, which is available for download [he
 
 #### Standard design generation
 
-To generate the standard reference design which is capable of running the majority of bare metal example applications and run Linux the following flow can be used:
+To generate the standard reference design which is capable of running the majority of bare metal example applications and run Linux&reg; the following flow can be used:
 
 1. Clone or download the repository
 2. Open Libero v2021.1
@@ -27,7 +27,7 @@ Some bare metal examples and tutorials require a specific fabric configuration w
 
 | Argument             	| Description                                                                                                                                                                                                                                                                         	|
 |----------------------	|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| I2C_LOOPBACK         	| Routes I2C0 and I2C1 to the fabric and connects them to bibufs routed to RaspberriPi I/Os. Associates I2C loop back constraints for I/O. This design can be used with the I2C loop back bare metal example project and will still boot Linux but the PAC1934 will be inaccessible.  	|
+| I2C_LOOPBACK         	| Routes I2C0 and I2C1 to the fabric and connects them to bibufs routed to Raspberry Pi&reg; I/Os. Associates I2C loop back constraints for I/O. This design can be used with the I2C loop back bare metal example project and will still boot Linux but the PAC1934 will be inaccessible.  	|
 | BFM_SIMULATION           	| Generates a smart design test bench based on the reference design and imports custom BFM scripts to generate transactions on MSS FICs. A custom DO file is also imported to add waves and run the simulation.                                                                                                                                                                                                                           	|
 
 Arguments in the table above can only be used exclusively - i.e you cannot pass "I2C_LOOPBACK" and "BFM_SIMULATION" as arguments.
@@ -36,7 +36,7 @@ Additional arguments are also supported to modify or configure aspects of the de
 
 | Argument           	| Description                                                                                                                                                                                                                                                                                                                                	|
 |--------------------	|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| HSS_UPDATE         	| Downloads the HSS release hex file associated with this release of the reference design. The hex file is added as an eNVM client in Libero.  This argument requires wget to be installed. This is installed by default on most Linux systems, on Windows wget can be downloaded [here](http://gnuwin32.sourceforge.net/packages/wget.htm). 	|
+| HSS_UPDATE         	| Downloads the HSS release hex file associated with this release of the reference design. The hex file is added as an eNVM client in Libero.  This argument requires wget to be installed. This is installed by default on most Linux systems, on Windows&reg; wget can be downloaded [here](http://gnuwin32.sourceforge.net/packages/wget.htm). 	|
 | SYNTHESIZE         	| Runs the synthesis step after design generation has completed                                                                                                                                                                                                                                                                              	|
 | PLACEROUTE         	| Runs the synthesis and place and route steps after design generation has completed                                                                                                                                                                                                                                                         	|
 | VERIFY_TIMING      	| Runs the synthesis, place and route and timing verification steps after design generation has completed                                                                                                                                                                                                                                    	|
@@ -219,3 +219,8 @@ The SDIO_SEL_{0:1} signals are now driven by a bit present in a fabric register 
 HSS build v0.99.15 and greater has support for dynamic switching by re-configuring the MSS I/Os to select the SD configuration. The HSS will attempt to initialize an SD card on startup, if this initialization fails (e.g card not inserted) the HSS will print an MMC initialization failure message, switch the MSS I/O configuration to eMMC and set the SDIO_register bit low and attempt to initialize the eMMC. Once a memory source has been successfully initialized a success message will be printed.
 
 **Note:** currently these updates are not fully supported by the Libero SoC design suite - to accommodate this the MPFS HAL will be updated with a define to allow dynamic switching. As a result of this we will continue to provide separate eMMC and SD card scripts to generate MSS XML for each configuration until Libero SoC has full support for these updates.
+
+
+Linux® is the registered trademark of Linus Torvalds in the U.S. and other countries.
+Raspberry Pi is a trademark of the Raspberry Pi Foundation.
+All other trademarks are the property of their respective owners.

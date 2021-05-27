@@ -209,6 +209,8 @@ The PolarFire SoC Icicle Kit has the ability to use eMMC and SD cards as non-vol
 
 SD cards and eMMC cannot be used simultaneously as the MSS I/Os for the eMMC and SD cards are muxed together. The Icicle Kit features a de-mux connected to these MSS I/Os, the de-mux is controlled by 2 select signals, called SDIO_SEL_{0:1}, which are connected to the FPGA fabric. When the select signals are low the de-mux connects the MSS I/Os to the eMMC controller, when the select signals are high the de-mux connects the MSS I/Os to the SD card controller.
 
+The MSS configurator doesn't currently allow generating a configuration that supports the behavior described above. This behavior is achieved using overwrites in the HSS. To allow generation of designs using allowed configurations two scripts are provided: "ICICLE_KIT_eMMC.tcl" and "ICICLE_KIT_SD_CARD.tcl". These both generate the same FPGA fabric configuration and support the same arguments. They will generate XML for eMMC or SD cards but will not generate XML that supports both. The HSS can be used to work around the exclusive eMMC or SD card limitation. The eMMC and SD card scripts will be merged after a future Libero release provides support for the required features.
+
 <a name="emmc-sd-switching"></a>
 ### eMMC and SD card switching
 

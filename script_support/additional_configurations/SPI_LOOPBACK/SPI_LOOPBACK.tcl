@@ -6,7 +6,7 @@ sd_update_instance -sd_name ${sd_name} -instance_name {ICICLE_MSS}
 
 sd_delete_instances -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -instance_names {"QSPI_DATA2_BIBUF"} 
 sd_delete_instances -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -instance_names {"QSPI_DATA3_BIBUF"} 
-sd_connect_pin_to_port -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_name {ICICLE_MSS:SPI_1_SS1_M2F} -port_name {} 
+
 generate_component -component_name {MPFS_ICICLE_KIT_BASE_DESIGN} -recursive 0 
 
 generate_component -component_name ${sd_name} -recursive 0 

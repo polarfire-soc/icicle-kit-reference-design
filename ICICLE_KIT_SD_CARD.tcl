@@ -177,6 +177,7 @@ organize_tool_files \
 # // Derive timing constraints
 #
 
+build_design_hierarchy
 derive_constraints_sdc 
 
 #

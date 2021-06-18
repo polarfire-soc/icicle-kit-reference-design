@@ -57,6 +57,9 @@ if {[info exists I2C_LOOPBACK]} {
 } elseif {[info exists VECTORBLOX]} {
 	set project_name "MPFS_ICICLE_Vectorblox_SD_CARD"
 	set project_dir "$local_dir/MPFS_ICICLE_Vectorblox_SD_CARD"
+} elseif {[info exists SPI_LOOPBACK]} {
+	set project_name "MPFS_ICICLE_SPI_LOOPBACK_SD_CARD"
+	set project_dir "$local_dir/MPFS_ICICLE_SPI_LOOPBACK_SD_CARD"
 } else {
 	set project_name "MPFS_ICICLE_SD_CARD"
 	set project_dir "$local_dir/MPFS_ICICLE_SD_CARD"
@@ -143,7 +146,8 @@ import_files \
 	-io_pdc "${constraint_path}/ICICLE_USB.pdc" \
 	-io_pdc "${constraint_path}/ICICLE_SDIO.pdc" \
 	-io_pdc "${constraint_path}/ICICLE_RPi.pdc" \
-	-io_pdc "${constraint_path}/ICICLE_I2C_LOOPBACK.pdc"
+	-io_pdc "${constraint_path}/ICICLE_I2C_LOOPBACK.pdc" \
+	-io_pdc "${constraint_path}/ICICLE_SPI_LOOPBACK.pdc"
 
 #
 # // Import floor planning constraints
@@ -198,6 +202,19 @@ if {[info exists I2C_LOOPBACK]} {
 	source ./script_support/additional_configurations/I2C_LOOPBACK/I2C_LOOPBACK.tcl
 } elseif {[info exists VECTORBLOX]} {
 	source ./script_support/additional_configurations/Vectorblox/Vectorblox.tcl
+} elseif {[info exists SPI_LOOPBACK]} {
+	if {[file isdirectory $local_dir/script_support/components/MSS_SPI_LOOPBACK]} {
+		file delete -force $local_dir/script_support/components/MSS_SPI_LOOPBACK
+	}
+	file mkdir $local_dir/script_support/components/MSS_SPI_LOOPBACK
+	create_config $local_dir/script_support/components/MSS_SD/ICICLE_MSS.cfg $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg
+	update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "QSPI                                " "UNUSED"
+	update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "QSPI_CLK                                " "UNUSED"
+	update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "QSPI_DATA_3_2                                " "UNUSED"
+	update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "SPI_1                                " "MSSIO_B2_B"
+	update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "SPI_1_SS1                                " "FABRIC"
+	exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_SPI_LOOPBACK
+	source ./script_support/additional_configurations/SPI_LOOPBACK/SPI_LOOPBACK.tcl
 }
 
 #

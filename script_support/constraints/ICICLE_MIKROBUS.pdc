@@ -4,13 +4,13 @@ set_iobank -bank_name Bank1  \
     -update_iostd true
     
 set_io -port_name QSPI_DATA2 \
-    -pin_name H17	\
+    -pin_name E10	\
     -fixed true	\
     -io_std LVCMOS33  \
     -DIRECTION INOUT    
     
 set_io -port_name QSPI_DATA3	\
-    -pin_name G15	\
+    -pin_name E11	\
     -fixed true	\
     -io_std LVCMOS33  \
     -DIRECTION INOUT

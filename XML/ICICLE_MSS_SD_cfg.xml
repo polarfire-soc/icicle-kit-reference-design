@@ -4,7 +4,7 @@
       <design_name>ICICLE_MSS</design_name>
       <mpfs_part_no>MPFS250T_ES</mpfs_part_no>
       <mpfs_package>FCVG484</mpfs_package>
-      <creation_date_time>04-11-2021_22:29:53</creation_date_time>
+      <creation_date_time>06-25-2021_00:03:00</creation_date_time>
       <xml_format_version>0.5.3</xml_format_version>
     </design_information>
     <mss_memory_map>
@@ -3564,7 +3564,7 @@
             <field Type="RO" name="VCO0PH_SEL" offset="0" width="3">0x0</field>
             <field Type="RW" name="DIV0_START" offset="3" width="3">0x0</field>
             <field Type="RSVD" name="RESERVE18" offset="6" width="2">0x0</field>
-            <field Type="RW" name="POST0DIV" offset="8" width="7">0x2</field>
+            <field Type="RW" name="POST0DIV" offset="8" width="7">0x1</field>
             <field Type="RSVD" name="RESERVE19" offset="15" width="1">0x0</field>
             <field Type="RO" name="VCO1PH_SEL" offset="16" width="3">0x0</field>
             <field Type="RW" name="DIV1_START" offset="19" width="3">0x0</field>
@@ -3576,12 +3576,12 @@
             <field Type="RO" name="VCO2PH_SEL" offset="0" width="3">0x0</field>
             <field Type="RW" name="DIV2_START" offset="3" width="3">0x0</field>
             <field Type="RSVD" name="RESERVE22" offset="6" width="2">0x0</field>
-            <field Type="RW" name="POST2DIV" offset="8" width="7">0x6</field>
+            <field Type="RW" name="POST2DIV" offset="8" width="7">0x3</field>
             <field Type="RSVD" name="RESERVE23" offset="15" width="1">0x0</field>
             <field Type="RO" name="VCO3PH_SEL" offset="16" width="3">0x0</field>
             <field Type="RW" name="DIV3_START" offset="19" width="3">0x0</field>
             <field Type="RSVD" name="RESERVE24" offset="22" width="2">0x0</field>
-            <field Type="RW" name="POST3DIV" offset="24" width="7">0xF</field>
+            <field Type="RW" name="POST3DIV" offset="24" width="7">0x4B</field>
             <field Type="RW" name="CKPOST3_SEL" offset="31" width="1">0x0</field>
           </register>
           <register address="0x00000018" description="PLL control register" name="PLL_CTRL2">
@@ -3628,7 +3628,7 @@
             <field Type="RSVD" name="RESERVE01" offset="30" width="2">0x0</field>
           </register>
           <register address="0x0000002C" description="SSCG registers 2" name="SSCG_REG_2">
-            <field Type="RW" name="INTIN" offset="0" width="12">0xC0</field>
+            <field Type="RW" name="INTIN" offset="0" width="12">0x60</field>
             <field Type="RO" name="INTMOD" offset="12" width="12">0x0</field>
             <field Type="RSVD" name="RESERVE02" offset="24" width="8">0x0</field>
           </register>

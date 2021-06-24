@@ -106,8 +106,8 @@ The following MSS peripherals are enabled:
 | MMUART4       | Fabric            | N/A              | J8/J44 (mikroBUS socket)            |                                                              |
 | I2C0          | Fabric            | N/A              | J8/J44 (mikroBUS socket)            |                                                              |
 | I2C1          | MSS I/Os BANK 2 B | PAC1934 sensor   | N/A                                 |                                                              |
-| CAN0          | Fabric            | N/A              | J25 (Jumper)                        |                                                              |
-| CAN1          | MSS I/Os BANK 2 B | N/A              | J27 (Jumper)                        |                                                              |
+| CAN0          | Fabric            | N/A              | J27 (Jumper)                        |                                                              |
+| CAN1          | MSS I/Os BANK 2 B | N/A              | J25 (Jumper)                        |                                                              |
 | GPIO2         | Fabric            | LEDs and Switches| N/A                                 |See block diagram for<br> enabled GPIOs                       |
 
 **Note:** “Raspberry Pi is a trademark of the Raspberry Pi Foundation”.

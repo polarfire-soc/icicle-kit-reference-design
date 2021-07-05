@@ -1142,8 +1142,8 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.
 "SLAVE0_END_ADDR:0xffffffff"  \
 "SLAVE0_END_ADDR_UPPER:0x2f"  \
 "SLAVE0_READ_INTERLEAVE:false"  \
-"SLAVE0_START_ADDR:0x70000000"  \
-"SLAVE0_START_ADDR_UPPER:0x0"  \
+"SLAVE0_START_ADDR:0x0"  \
+"SLAVE0_START_ADDR_UPPER:0x20"  \
 "SLAVE0_TYPE:0"  \
 "SLAVE1_CHAN_RS:true"  \
 "SLAVE1_CLOCK_DOMAIN_CROSSING:false"  \
@@ -1458,4 +1458,4 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.
 "SLV_AXI4PRT_ADDRDEPTH:8"  \
 "SLV_AXI4PRT_DATADEPTH:9"  \
 "USER_WIDTH:1"   }
-# Exporting Component Description of PCIE_AXI_1 to TCL done
+# Exporting Component Description of FIC0_MASTER to TCL done

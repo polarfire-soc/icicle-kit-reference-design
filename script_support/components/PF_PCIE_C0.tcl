@@ -107,7 +107,7 @@ create_and_configure_core -core_vlnv {Actel:SgCore:PF_PCIE:2.0.104} -component_n
 "UI_PCIE_1_DE_EMPHASIS:-3.5 dB"  \
 "UI_PCIE_1_DEVICE_ID:0x1556"  \
 "UI_PCIE_1_EXPOSE_WAKE_SIG:Disabled"  \
-"UI_PCIE_1_INTERRUPTS:MSI1"  \
+"UI_PCIE_1_INTERRUPTS:MSI8"  \
 "UI_PCIE_1_L0_ACC_LATENCY:No limit"  \
 "UI_PCIE_1_L0_EXIT_LATENCY:64 ns to less than 128 ns"  \
 "UI_PCIE_1_L1_ACC_LATENCY:No limit"  \

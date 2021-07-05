@@ -1,13 +1,13 @@
-# Exporting Component Description of PCIE_AXI_0 to TCL
+# Exporting Component Description of PCIE_MASTER to TCL
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
-# Create and Configure the core component PCIE_AXI_0
+# Create and Configure the core component PCIE_MASTER
 create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -component_name {PCIE_MASTER} -params {\
 "ADDR_WIDTH:38"  \
 "CROSSBAR_MODE:0"  \
 "DATA_WIDTH:64"  \
 "DWC_ADDR_FIFO_DEPTH_CEILING:64"  \
-"ID_WIDTH:8"  \
+"ID_WIDTH:4"  \
 "MASTER0_CHAN_RS:true"  \
 "MASTER0_CLOCK_DOMAIN_CROSSING:false"  \
 "MASTER0_DATA_WIDTH:64"  \
@@ -1139,8 +1139,8 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.
 "SLAVE0_CLOCK_DOMAIN_CROSSING:false"  \
 "SLAVE0_DATA_WIDTH:64"  \
 "SLAVE0_DWC_DATA_FIFO_DEPTH:16"  \
-"SLAVE0_END_ADDR:0xbfffffff"  \
-"SLAVE0_END_ADDR_UPPER:0x0"  \
+"SLAVE0_END_ADDR:0xffffffff"  \
+"SLAVE0_END_ADDR_UPPER:0x1f"  \
 "SLAVE0_READ_INTERLEAVE:false"  \
 "SLAVE0_START_ADDR:0x60000000"  \
 "SLAVE0_START_ADDR_UPPER:0x0"  \
@@ -1458,4 +1458,4 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.
 "SLV_AXI4PRT_ADDRDEPTH:8"  \
 "SLV_AXI4PRT_DATADEPTH:9"  \
 "USER_WIDTH:1"   }
-# Exporting Component Description of PCIE_AXI_0 to TCL done
+# Exporting Component Description of PCIE_MASTER to TCL done

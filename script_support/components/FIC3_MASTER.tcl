@@ -5,7 +5,7 @@
 create_and_configure_core -core_vlnv {Actel:DirectCore:CoreAPB3:4.2.100} -component_name {FIC3_MASTER} -params {\
 "APB_DWIDTH:32"  \
 "APBSLOT0ENABLE:false"  \
-"APBSLOT1ENABLE:false"  \
+"APBSLOT1ENABLE:true"  \
 "APBSLOT2ENABLE:true"  \
 "APBSLOT3ENABLE:false"  \
 "APBSLOT4ENABLE:false"  \

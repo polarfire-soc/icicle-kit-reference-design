@@ -57,7 +57,7 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:corepwm:4.5.100} -compone
 "FIXED_PWM_NEGEDGE14:0"  \
 "FIXED_PWM_NEGEDGE15:0"  \
 "FIXED_PWM_NEGEDGE16:0"  \
-"FIXED_PWM_POS_EN1:true"  \
+"FIXED_PWM_POS_EN1:false"  \
 "FIXED_PWM_POS_EN2:true"  \
 "FIXED_PWM_POS_EN3:true"  \
 "FIXED_PWM_POS_EN4:true"  \

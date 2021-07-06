@@ -368,6 +368,10 @@ sd_instantiate_macro -sd_name ${sd_name} -macro_name {AND2} -instance_name {READ
 sd_instantiate_component -sd_name ${sd_name} -component_name {RECONFIGURATION_INTERFACE} -instance_name {RECONFIGURATION_INTERFACE_0}
 
 
+# Add corepwm_C0 instance
+sd_instantiate_component -sd_name ${sd_name} -component_name {corepwm_C0} -instance_name {PWM}
+
+
 
 # Add sdio_register_0 instance
 sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {sdio_register} -instance_name {sdio_register_0}
@@ -418,11 +422,11 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:CAN_1_TXBUS" "CAN_1_
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "ICICLE_MSS:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "ICICLE_MSS:CK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CKE" "ICICLE_MSS:CKE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"RECONFIGURATION_INTERFACE_0:PCLK" "ICICLE_MSS:FIC_3_PCLK" "COREGPIO_C0:PCLK" "sdio_register_0:pclk" "CLOCKS_AND_RESETS:CLK_62_5MHz" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PWM:PCLK" "RECONFIGURATION_INTERFACE_0:PCLK" "ICICLE_MSS:FIC_3_PCLK" "COREGPIO_C0:PCLK" "sdio_register_0:pclk" "CLOCKS_AND_RESETS:CLK_62_5MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:FIC_2_ACLK" "ICICLE_MSS:FIC_1_ACLK" "PCIE_MASTER:ACLK" "ICICLE_MSS:FIC_0_ACLK" "DMA_MASTER:ACLK" "PCIE_LSRAM:ACLK" "MSS_LSRAM:ACLK" "FIC0_MASTER:ACLK" "DMA_CONTROLLER:CLOCK" "PF_PCIE_C0_0:AXI_CLK" "CLOCKS_AND_RESETS:CLK_125MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIE_1_TL_CLK_125MHz" "CLOCKS_AND_RESETS:PCIe_CLK_125MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE1_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE2_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE3_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE0_CDR_REF_CLK_0" "CLOCKS_AND_RESETS:PCIe_REFERENCE_CLK" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"RECONFIGURATION_INTERFACE_0:PRESETN" "COREGPIO_C0:PRESETN" "sdio_register_0:presetn" "CLOCKS_AND_RESETS:RESETN_CLK_62_5MHz" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PWM:PRESETN" "RECONFIGURATION_INTERFACE_0:PRESETN" "COREGPIO_C0:PRESETN" "sdio_register_0:presetn" "CLOCKS_AND_RESETS:RESETN_CLK_62_5MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CS" "ICICLE_MSS:CS" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[2]" "DMA_CONTROLLER:INTERRUPT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C0_SCL_BIBUF:PAD" "I2C0_SCL" }
@@ -576,6 +580,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_MASTER:AXI4mslave0" "ICICLE
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:AXI_1_SLAVE" "FIC0_MASTER:AXI4mslave0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_LSRAM:AXI4_Slave" "FIC0_MASTER:AXI4mslave1" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_MASTER:AXI4mslave2" "DMA_CONTROLLER:AXI4SlaveCtrl_IF" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APBmslave1" "PWM:APBslave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APBmslave2" "COREGPIO_C0:APB_bif" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APBmslave15" "sdio_register_0:APBslave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APBmslave16" "RECONFIGURATION_INTERFACE_0:APBS_SLAVE" }

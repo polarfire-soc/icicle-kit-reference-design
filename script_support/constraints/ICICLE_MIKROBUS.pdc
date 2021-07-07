@@ -13,6 +13,7 @@ set_io -port_name QSPI_DATA3_OR_PWM	\
     -pin_name E11	\
     -fixed true	\
     -io_std LVCMOS33  \
+	-RES_PULL Down \
     -DIRECTION INOUT
     
 set_io -port_name I2C0_SCL \

@@ -9,7 +9,7 @@ set_io -port_name QSPI_DATA2 \
     -io_std LVCMOS33  \
     -DIRECTION INOUT    
     
-set_io -port_name QSPI_DATA3	\
+set_io -port_name QSPI_DATA3_OR_PWM	\
     -pin_name E11	\
     -fixed true	\
     -io_std LVCMOS33  \

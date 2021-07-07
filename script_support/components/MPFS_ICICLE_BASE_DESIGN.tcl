@@ -82,7 +82,7 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_CLK} -port_direction 
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA0} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA1} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA2} -port_direction {INOUT} -port_is_pad {1}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA3} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA3_OR_PWM} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C0_SCL} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C0_SDA} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MMUART_4_TXD_M2F} -port_direction {OUT}
@@ -515,7 +515,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA0" "QSPI_DA
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA1" "QSPI_DATA1" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA2_BIBUF:PAD" "QSPI_DATA2" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA2_F2M" "QSPI_DATA2_BIBUF:Y" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA3_OR_PWM_BIBUF:PAD" "QSPI_DATA3" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA3_OR_PWM_BIBUF:PAD" "QSPI_DATA3_OR_PWM" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA3_F2M" "QSPI_DATA3_OR_PWM_BIBUF:Y" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"REF_CLK_PAD_N" "CLOCKS_AND_RESETS:REF_CLK_PAD_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"REF_CLK_PAD_P" "CLOCKS_AND_RESETS:REF_CLK_PAD_P" }

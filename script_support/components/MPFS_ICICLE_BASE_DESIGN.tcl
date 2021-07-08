@@ -224,83 +224,83 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {PCIE_LSRAM} -insta
 
 
 
-# Add PCIE_MASTER instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {PCIE_MASTER} -instance_name {PCIE_MASTER}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_MASTER:MASTER0_AWADDR} -pin_slices {[31:0]}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_MASTER:MASTER0_AWADDR} -pin_slices {[35:32]}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_AWADDR[35:32]} -value {GND}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_MASTER:MASTER0_AWADDR} -pin_slices {[36]}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_MASTER:MASTER0_AWADDR} -pin_slices {[37]}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_AWADDR[37]} -value {GND}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_MASTER:MASTER0_AWSIZE} -pin_slices {[1:0]}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_MASTER:MASTER0_AWSIZE} -pin_slices {[2]}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_AWSIZE[2]} -value {GND}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_MASTER:MASTER0_ARADDR} -pin_slices {[31:0]}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_MASTER:MASTER0_ARADDR} -pin_slices {[35:32]}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_ARADDR[35:32]} -value {GND}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_MASTER:MASTER0_ARADDR} -pin_slices {[36]}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_MASTER:MASTER0_ARADDR} -pin_slices {[37]}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_ARADDR[37]} -value {GND}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_MASTER:MASTER0_ARSIZE} -pin_slices {[1:0]}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_MASTER:MASTER0_ARSIZE} -pin_slices {[2]}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_ARSIZE[2]} -value {GND}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_AWID}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_AWADDR}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_AWLEN}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_AWSIZE}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_AWBURST}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_AWLOCK}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_AWCACHE}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_AWPROT}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_AWQOS}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_AWREGION}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_AWVALID}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_AWREADY}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_WDATA}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_WSTRB}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_WLAST}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_WVALID}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_WREADY}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_BID}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_BRESP}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_BVALID}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_BREADY}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_ARID}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_ARADDR}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_ARLEN}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_ARSIZE}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_ARBURST}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_ARLOCK}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_ARCACHE}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_ARPROT}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_ARQOS}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_ARREGION}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_ARVALID}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_ARREADY}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_RID}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_RDATA}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_RRESP}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_RLAST}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_RVALID}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_RREADY}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_AWUSER}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_WUSER}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_BUSER}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_ARUSER}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_MASTER:AXI4mmaster0} -pin_names {PCIE_MASTER:MASTER0_RUSER}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_AWLOCK} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_AWCACHE} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_AWPROT} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_AWQOS} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_AWREGION} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_ARLOCK} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_ARCACHE} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_ARPROT} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_ARQOS} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_ARREGION} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_AWUSER} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_WUSER} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_MASTER:MASTER0_ARUSER} -value {GND}
+# Add PCIE_INITIATOR instance
+sd_instantiate_component -sd_name ${sd_name} -component_name {PCIE_INITIATOR} -instance_name {PCIE_INITIATOR}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_INITIATOR:MASTER0_AWADDR} -pin_slices {[31:0]}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_INITIATOR:MASTER0_AWADDR} -pin_slices {[35:32]}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_AWADDR[35:32]} -value {GND}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_INITIATOR:MASTER0_AWADDR} -pin_slices {[36]}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_INITIATOR:MASTER0_AWADDR} -pin_slices {[37]}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_AWADDR[37]} -value {GND}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_INITIATOR:MASTER0_AWSIZE} -pin_slices {[1:0]}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_INITIATOR:MASTER0_AWSIZE} -pin_slices {[2]}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_AWSIZE[2]} -value {GND}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_INITIATOR:MASTER0_ARADDR} -pin_slices {[31:0]}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_INITIATOR:MASTER0_ARADDR} -pin_slices {[35:32]}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_ARADDR[35:32]} -value {GND}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_INITIATOR:MASTER0_ARADDR} -pin_slices {[36]}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_INITIATOR:MASTER0_ARADDR} -pin_slices {[37]}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_ARADDR[37]} -value {GND}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_INITIATOR:MASTER0_ARSIZE} -pin_slices {[1:0]}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {PCIE_INITIATOR:MASTER0_ARSIZE} -pin_slices {[2]}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_ARSIZE[2]} -value {GND}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_AWID}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_AWADDR}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_AWLEN}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_AWSIZE}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_AWBURST}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_AWLOCK}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_AWCACHE}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_AWPROT}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_AWQOS}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_AWREGION}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_AWVALID}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_AWREADY}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_WDATA}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_WSTRB}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_WLAST}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_WVALID}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_WREADY}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_BID}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_BRESP}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_BVALID}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_BREADY}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_ARID}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_ARADDR}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_ARLEN}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_ARSIZE}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_ARBURST}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_ARLOCK}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_ARCACHE}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_ARPROT}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_ARQOS}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_ARREGION}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_ARVALID}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_ARREADY}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_RID}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_RDATA}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_RRESP}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_RLAST}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_RVALID}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_RREADY}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_AWUSER}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_WUSER}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_BUSER}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_ARUSER}
+sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {PCIE_INITIATOR:AXI4mmaster0} -pin_names {PCIE_INITIATOR:MASTER0_RUSER}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_AWLOCK} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_AWCACHE} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_AWPROT} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_AWQOS} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_AWREGION} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_ARLOCK} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_ARCACHE} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_ARPROT} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_ARQOS} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_ARREGION} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_AWUSER} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_WUSER} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE_INITIATOR:MASTER0_ARUSER} -value {GND}
 
 
 
@@ -414,8 +414,8 @@ sd_instantiate_macro -sd_name ${sd_name} -macro_name {OR2} -instance_name {WRITE
 
 
 # Add scalar net connections
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:MASTER0_AWADDR[36]" "WRITE_ADDR_OFFSET:Y" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"READ_ADDR_OFFSET:Y" "PCIE_MASTER:MASTER0_ARADDR[36]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:MASTER0_AWADDR[36]" "WRITE_ADDR_OFFSET:Y" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"READ_ADDR_OFFSET:Y" "PCIE_INITIATOR:MASTER0_ARADDR[36]" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_100MHz" "RPi_GPIO12" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_75MHz" "RPi_GPIO16" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_50MHz" "RPi_GPIO20" }
@@ -430,7 +430,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "ICICLE_MSS:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "ICICLE_MSS:CK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CKE" "ICICLE_MSS:CKE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PWM:PCLK" "RECONFIGURATION_INTERFACE_0:PCLK" "ICICLE_MSS:FIC_3_PCLK" "COREGPIO_C0:PCLK" "sdio_register_0:pclk" "CLOCKS_AND_RESETS:CLK_62_5MHz" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:FIC_2_ACLK" "ICICLE_MSS:FIC_1_ACLK" "PCIE_MASTER:ACLK" "ICICLE_MSS:FIC_0_ACLK" "DMA_MASTER:ACLK" "PCIE_LSRAM:ACLK" "MSS_LSRAM:ACLK" "FIC0_MASTER:ACLK" "DMA_CONTROLLER:CLOCK" "PF_PCIE_C0_0:AXI_CLK" "CLOCKS_AND_RESETS:CLK_125MHz" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:FIC_2_ACLK" "ICICLE_MSS:FIC_1_ACLK" "PCIE_INITIATOR:ACLK" "ICICLE_MSS:FIC_0_ACLK" "DMA_MASTER:ACLK" "PCIE_LSRAM:ACLK" "MSS_LSRAM:ACLK" "FIC0_MASTER:ACLK" "DMA_CONTROLLER:CLOCK" "PF_PCIE_C0_0:AXI_CLK" "CLOCKS_AND_RESETS:CLK_125MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIE_1_TL_CLK_125MHz" "CLOCKS_AND_RESETS:PCIe_CLK_125MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE1_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE2_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE3_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE0_CDR_REF_CLK_0" "CLOCKS_AND_RESETS:PCIe_REFERENCE_CLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PWM:PRESETN" "RECONFIGURATION_INTERFACE_0:PRESETN" "COREGPIO_C0:PRESETN" "sdio_register_0:presetn" "CLOCKS_AND_RESETS:RESETN_CLK_62_5MHz" }
@@ -479,12 +479,12 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA3_OR_PWM_D_OR:B" "PWM:
 sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA3_OR_PWM_D_OR:Y" "QSPI_DATA3_OR_PWM_BIBUF:D" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ODT" "ICICLE_MSS:ODT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"WRITE_ADDR_OFFSET:B" "WRITE_VALIDS:Y" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:MASTER0_ARREADY" "PF_PCIE_C0_0:PCIESS_AXI_1_M_ARREADY" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:MASTER0_AWREADY" "PF_PCIE_C0_0:PCIESS_AXI_1_M_AWREADY" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_BVALID" "PCIE_MASTER:MASTER0_BVALID" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_RLAST" "PCIE_MASTER:MASTER0_RLAST" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_RVALID" "PCIE_MASTER:MASTER0_RVALID" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_WREADY" "PCIE_MASTER:MASTER0_WREADY" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:MASTER0_ARREADY" "PF_PCIE_C0_0:PCIESS_AXI_1_M_ARREADY" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:MASTER0_AWREADY" "PF_PCIE_C0_0:PCIESS_AXI_1_M_AWREADY" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_BVALID" "PCIE_INITIATOR:MASTER0_BVALID" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_RLAST" "PCIE_INITIATOR:MASTER0_RLAST" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_RVALID" "PCIE_INITIATOR:MASTER0_RVALID" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_WREADY" "PCIE_INITIATOR:MASTER0_WREADY" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIE_1_PERST_N" "PCIE_1_PERST_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_RXD0_N" "PF_PCIE_C0_0:PCIESS_LANE_RXD0_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_RXD0_P" "PF_PCIE_C0_0:PCIESS_LANE_RXD0_P" }
@@ -503,12 +503,12 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD2_P" "PF_PCIE_C0
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD3_N" "PF_PCIE_C0_0:PCIESS_LANE_TXD3_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIESS_LANE_TXD3_P" "PF_PCIE_C0_0:PCIESS_LANE_TXD3_P" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIE_1_INTERRUPT_OUT" "ICICLE_MSS:MSS_INT_F2M[1]" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:MASTER0_ARVALID" "READ_ADDR_OFFSET:B" "PF_PCIE_C0_0:PCIESS_AXI_1_M_ARVALID" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:MASTER0_AWVALID" "PF_PCIE_C0_0:PCIESS_AXI_1_M_AWVALID" "WRITE_VALIDS:A" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_BREADY" "PCIE_MASTER:MASTER0_BREADY" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_RREADY" "PCIE_MASTER:MASTER0_RREADY" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_WLAST" "PCIE_MASTER:MASTER0_WLAST" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_WVALID" "WRITE_VALIDS:B" "PCIE_MASTER:MASTER0_WVALID" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:MASTER0_ARVALID" "READ_ADDR_OFFSET:B" "PF_PCIE_C0_0:PCIESS_AXI_1_M_ARVALID" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:MASTER0_AWVALID" "PF_PCIE_C0_0:PCIESS_AXI_1_M_AWVALID" "WRITE_VALIDS:A" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_BREADY" "PCIE_INITIATOR:MASTER0_BREADY" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_RREADY" "PCIE_INITIATOR:MASTER0_RREADY" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_WLAST" "PCIE_INITIATOR:MASTER0_WLAST" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_WVALID" "WRITE_VALIDS:B" "PCIE_INITIATOR:MASTER0_WVALID" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_CLK" "QSPI_CLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_SS0" "QSPI_CS" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA0" "QSPI_DATA0" }
@@ -558,7 +558,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:USB_DATA7" "USB_DATA
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:USB_DIR" "USB_DIR" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:USB_NXT" "USB_NXT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:USB_STP" "USB_STP" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:ARESETN" "VSC_8662_RESETN" "USB_ULPI_RESET"  "READ_ADDR_OFFSET:A" "DMA_MASTER:ARESETN" "PCIE_LSRAM:ARESETN" "MSS_LSRAM:ARESETN" "WRITE_ADDR_OFFSET:A" "FIC0_MASTER:ARESETN" "DMA_CONTROLLER:RESETN" "PF_PCIE_C0_0:AXI_CLK_STABLE" "CLOCKS_AND_RESETS:RESETN_CLK_125MHz" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:ARESETN" "VSC_8662_RESETN" "USB_ULPI_RESET"  "READ_ADDR_OFFSET:A" "DMA_MASTER:ARESETN" "PCIE_LSRAM:ARESETN" "MSS_LSRAM:ARESETN" "WRITE_ADDR_OFFSET:A" "FIC0_MASTER:ARESETN" "DMA_CONTROLLER:RESETN" "PF_PCIE_C0_0:AXI_CLK_STABLE" "CLOCKS_AND_RESETS:RESETN_CLK_125MHz" }
 
 # Add bus net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:CA" "CA" }
@@ -566,23 +566,23 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"DM" "ICICLE_MSS:DM" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DQ" "ICICLE_MSS:DQ" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DQS" "ICICLE_MSS:DQS" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DQS_N" "ICICLE_MSS:DQS_N" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_BID" "PCIE_MASTER:MASTER0_BID" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_BRESP" "PCIE_MASTER:MASTER0_BRESP" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_RDATA" "PCIE_MASTER:MASTER0_RDATA" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:MASTER0_RID" "PF_PCIE_C0_0:PCIESS_AXI_1_M_RID" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_RRESP" "PCIE_MASTER:MASTER0_RRESP" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_ARADDR[31:0]" "PCIE_MASTER:MASTER0_ARADDR[31:0]" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:MASTER0_ARBURST" "PF_PCIE_C0_0:PCIESS_AXI_1_M_ARBURST" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_ARID" "PCIE_MASTER:MASTER0_ARID" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:MASTER0_ARLEN" "PF_PCIE_C0_0:PCIESS_AXI_1_M_ARLEN" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_ARSIZE" "PCIE_MASTER:MASTER0_ARSIZE[1:0]" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:MASTER0_AWADDR[31:0]" "PF_PCIE_C0_0:PCIESS_AXI_1_M_AWADDR[31:0]" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:MASTER0_AWBURST" "PF_PCIE_C0_0:PCIESS_AXI_1_M_AWBURST" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:MASTER0_AWID" "PF_PCIE_C0_0:PCIESS_AXI_1_M_AWID" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:MASTER0_AWLEN" "PF_PCIE_C0_0:PCIESS_AXI_1_M_AWLEN" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_AWSIZE" "PCIE_MASTER:MASTER0_AWSIZE[1:0]" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_WDATA" "PCIE_MASTER:MASTER0_WDATA" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_WSTRB" "PCIE_MASTER:MASTER0_WSTRB" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_BID" "PCIE_INITIATOR:MASTER0_BID" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_BRESP" "PCIE_INITIATOR:MASTER0_BRESP" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_RDATA" "PCIE_INITIATOR:MASTER0_RDATA" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:MASTER0_RID" "PF_PCIE_C0_0:PCIESS_AXI_1_M_RID" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_RRESP" "PCIE_INITIATOR:MASTER0_RRESP" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_ARADDR[31:0]" "PCIE_INITIATOR:MASTER0_ARADDR[31:0]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:MASTER0_ARBURST" "PF_PCIE_C0_0:PCIESS_AXI_1_M_ARBURST" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_ARID" "PCIE_INITIATOR:MASTER0_ARID" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:MASTER0_ARLEN" "PF_PCIE_C0_0:PCIESS_AXI_1_M_ARLEN" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_ARSIZE" "PCIE_INITIATOR:MASTER0_ARSIZE[1:0]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:MASTER0_AWADDR[31:0]" "PF_PCIE_C0_0:PCIESS_AXI_1_M_AWADDR[31:0]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:MASTER0_AWBURST" "PF_PCIE_C0_0:PCIESS_AXI_1_M_AWBURST" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:MASTER0_AWID" "PF_PCIE_C0_0:PCIESS_AXI_1_M_AWID" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:MASTER0_AWLEN" "PF_PCIE_C0_0:PCIESS_AXI_1_M_AWLEN" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_AWSIZE" "PCIE_INITIATOR:MASTER0_AWSIZE[1:0]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_WDATA" "PCIE_INITIATOR:MASTER0_WDATA" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_WSTRB" "PCIE_INITIATOR:MASTER0_WSTRB" }
 
 # Add bus interface net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:CLKS_FROM_TXPLL_TO_PCIE_1" "CLOCKS_AND_RESETS:CLKS_TO_XCVR" }
@@ -597,9 +597,9 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APBmslave15" "sdio_
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APBmslave16" "RECONFIGURATION_INTERFACE_0:APBS_SLAVE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_MASTER:AXI4mmaster0" "ICICLE_MSS:FIC_0_AXI4_MASTER" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APB3mmaster" "ICICLE_MSS:FIC_3_APB_MASTER" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:AXI4mslave0" "ICICLE_MSS:FIC_0_AXI4_SLAVE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_MASTER:AXI4mslave1" "PCIE_LSRAM:AXI4_Slave" }
-#sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:AXI_1_MASTER" "PCIE_MASTER:AXI4mmaster0" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:AXI4mslave0" "ICICLE_MSS:FIC_0_AXI4_SLAVE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:AXI4mslave1" "PCIE_LSRAM:AXI4_Slave" }
+#sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:AXI_1_MASTER" "PCIE_INITIATOR:AXI4mmaster0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:PLL0_DRI" "RECONFIGURATION_INTERFACE_0:PLL0_SW_DRI" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE0_DRI_SLAVE" "RECONFIGURATION_INTERFACE_0:Q0_LANE0_DRI" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE1_DRI_SLAVE" "RECONFIGURATION_INTERFACE_0:Q0_LANE1_DRI" }

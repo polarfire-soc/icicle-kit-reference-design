@@ -7,7 +7,7 @@ import_mss_component -file "$local_dir/script_support/components/MSS_eMMC/ICICLE
 source script_support/hdl_source.tcl
 source script_support/components/CORERESET_0.tcl
 source script_support/components/INIT_MONITOR.tcl 
-source script_support/components/PCIE_MASTER.tcl 
+source script_support/components/PCIE_INITIATOR.tcl 
 source script_support/components/FIC0_MASTER.tcl 
 source script_support/components/CLK_DIV.tcl 
 source script_support/components/PF_CCC_C0.tcl 

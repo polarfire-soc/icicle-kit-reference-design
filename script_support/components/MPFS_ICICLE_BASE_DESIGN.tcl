@@ -155,8 +155,8 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {FIC0_INITIATOR} -i
 
 
 
-# Add FIC3_MASTER instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {FIC3_MASTER} -instance_name {FIC3_MASTER}
+# Add FIC3_INITIATOR instance
+sd_instantiate_component -sd_name ${sd_name} -component_name {FIC3_INITIATOR} -instance_name {FIC3_INITIATOR}
 
 
 
@@ -591,12 +591,12 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_MASTER:AXI4mslave0" "ICICLE
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:AXI_1_SLAVE" "FIC0_INITIATOR:AXI4mslave0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_LSRAM:AXI4_Slave" "FIC0_INITIATOR:AXI4mslave1" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_INITIATOR:AXI4mslave2" "DMA_CONTROLLER:AXI4SlaveCtrl_IF" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APBmslave1" "PWM:APBslave" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APBmslave2" "COREGPIO_C0:APB_bif" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APBmslave15" "sdio_register_0:APBslave" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APBmslave16" "RECONFIGURATION_INTERFACE_0:APBS_SLAVE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_INITIATOR:APBmslave1" "PWM:APBslave" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_INITIATOR:APBmslave2" "COREGPIO_C0:APB_bif" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_INITIATOR:APBmslave15" "sdio_register_0:APBslave" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_INITIATOR:APBmslave16" "RECONFIGURATION_INTERFACE_0:APBS_SLAVE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_INITIATOR:AXI4mmaster0" "ICICLE_MSS:FIC_0_AXI4_MASTER" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_MASTER:APB3mmaster" "ICICLE_MSS:FIC_3_APB_MASTER" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_INITIATOR:APB3mmaster" "ICICLE_MSS:FIC_3_APB_MASTER" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:AXI4mslave0" "ICICLE_MSS:FIC_0_AXI4_SLAVE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:AXI4mslave1" "PCIE_LSRAM:AXI4_Slave" }
 #sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:AXI_1_MASTER" "PCIE_INITIATOR:AXI4mmaster0" }

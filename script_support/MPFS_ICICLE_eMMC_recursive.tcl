@@ -21,7 +21,7 @@ source script_support/components/MSS_LSRAM.tcl
 source script_support/components/DMA_CONTROLLER.tcl
 source script_support/components/DMA_MASTER.tcl
 source script_support/components/GPIO.tcl
-source script_support/components/FIC3_MASTER.tcl
+source script_support/components/FIC3_INITIATOR.tcl
 source script_support/components/OSCILLATOR_160MHz.tcl
 source script_support/components/COREPWM_C0.tcl
 source script_support/components/CLOCKS_AND_RESETS.tcl 

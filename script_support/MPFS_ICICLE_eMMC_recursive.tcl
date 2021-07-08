@@ -19,7 +19,7 @@ source script_support/components/PCIE_REF_CLK.tcl
 source script_support/components/PCIE_LSRAM.tcl 
 source script_support/components/MSS_LSRAM.tcl 
 source script_support/components/DMA_CONTROLLER.tcl
-source script_support/components/DMA_MASTER.tcl
+source script_support/components/DMA_INITIATOR.tcl
 source script_support/components/GPIO.tcl
 source script_support/components/FIC3_INITIATOR.tcl
 source script_support/components/OSCILLATOR_160MHz.tcl

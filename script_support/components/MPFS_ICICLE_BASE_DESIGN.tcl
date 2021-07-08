@@ -145,8 +145,8 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {DMA_CONTROLLER:STRTD
 
 
 
-# Add DMA_MASTER instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {DMA_MASTER} -instance_name {DMA_MASTER}
+# Add DMA_INITIATOR instance
+sd_instantiate_component -sd_name ${sd_name} -component_name {DMA_INITIATOR} -instance_name {DMA_INITIATOR}
 
 
 
@@ -430,7 +430,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "ICICLE_MSS:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "ICICLE_MSS:CK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CKE" "ICICLE_MSS:CKE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PWM:PCLK" "RECONFIGURATION_INTERFACE_0:PCLK" "ICICLE_MSS:FIC_3_PCLK" "COREGPIO_C0:PCLK" "sdio_register_0:pclk" "CLOCKS_AND_RESETS:CLK_62_5MHz" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:FIC_2_ACLK" "ICICLE_MSS:FIC_1_ACLK" "PCIE_INITIATOR:ACLK" "ICICLE_MSS:FIC_0_ACLK" "DMA_MASTER:ACLK" "PCIE_LSRAM:ACLK" "MSS_LSRAM:ACLK" "FIC0_INITIATOR:ACLK" "DMA_CONTROLLER:CLOCK" "PF_PCIE_C0_0:AXI_CLK" "CLOCKS_AND_RESETS:CLK_125MHz" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:FIC_2_ACLK" "ICICLE_MSS:FIC_1_ACLK" "PCIE_INITIATOR:ACLK" "ICICLE_MSS:FIC_0_ACLK" "DMA_INITIATOR:ACLK" "PCIE_LSRAM:ACLK" "MSS_LSRAM:ACLK" "FIC0_INITIATOR:ACLK" "DMA_CONTROLLER:CLOCK" "PF_PCIE_C0_0:AXI_CLK" "CLOCKS_AND_RESETS:CLK_125MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIE_1_TL_CLK_125MHz" "CLOCKS_AND_RESETS:PCIe_CLK_125MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_LANE1_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE2_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE3_CDR_REF_CLK_0" "PF_PCIE_C0_0:PCIESS_LANE0_CDR_REF_CLK_0" "CLOCKS_AND_RESETS:PCIe_REFERENCE_CLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PWM:PRESETN" "RECONFIGURATION_INTERFACE_0:PRESETN" "COREGPIO_C0:PRESETN" "sdio_register_0:presetn" "CLOCKS_AND_RESETS:RESETN_CLK_62_5MHz" }
@@ -558,7 +558,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:USB_DATA7" "USB_DATA
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:USB_DIR" "USB_DIR" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:USB_NXT" "USB_NXT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:USB_STP" "USB_STP" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:ARESETN" "VSC_8662_RESETN" "USB_ULPI_RESET"  "READ_ADDR_OFFSET:A" "DMA_MASTER:ARESETN" "PCIE_LSRAM:ARESETN" "MSS_LSRAM:ARESETN" "WRITE_ADDR_OFFSET:A" "FIC0_INITIATOR:ARESETN" "DMA_CONTROLLER:RESETN" "PF_PCIE_C0_0:AXI_CLK_STABLE" "CLOCKS_AND_RESETS:RESETN_CLK_125MHz" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:ARESETN" "VSC_8662_RESETN" "USB_ULPI_RESET"  "READ_ADDR_OFFSET:A" "DMA_INITIATOR:ARESETN" "PCIE_LSRAM:ARESETN" "MSS_LSRAM:ARESETN" "WRITE_ADDR_OFFSET:A" "FIC0_INITIATOR:ARESETN" "DMA_CONTROLLER:RESETN" "PF_PCIE_C0_0:AXI_CLK_STABLE" "CLOCKS_AND_RESETS:RESETN_CLK_125MHz" }
 
 # Add bus net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:CA" "CA" }
@@ -586,8 +586,8 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:PCIESS_AXI_1_M_WST
 
 # Add bus interface net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:CLKS_FROM_TXPLL_TO_PCIE_1" "CLOCKS_AND_RESETS:CLKS_TO_XCVR" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_CONTROLLER:AXI4MasterDMA_IF" "DMA_MASTER:AXI4mmaster0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_MASTER:AXI4mslave0" "ICICLE_MSS:FIC_1_AXI4_SLAVE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_CONTROLLER:AXI4MasterDMA_IF" "DMA_INITIATOR:AXI4mmaster0" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_INITIATOR:AXI4mslave0" "ICICLE_MSS:FIC_1_AXI4_SLAVE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PF_PCIE_C0_0:AXI_1_SLAVE" "FIC0_INITIATOR:AXI4mslave0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_LSRAM:AXI4_Slave" "FIC0_INITIATOR:AXI4mslave1" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_INITIATOR:AXI4mslave2" "DMA_CONTROLLER:AXI4SlaveCtrl_IF" }

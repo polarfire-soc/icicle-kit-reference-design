@@ -53,17 +53,17 @@ set local_dir [pwd]
 set constraint_path ./script_support/constraints
 
 if {[info exists I2C_LOOPBACK]} {
-	set project_name "MPFS_ICICLE_I2C_LOOPBACK_eMMC"
-	set project_dir "$local_dir/MPFS_ICICLE_I2C_LOOPBACK_eMMC"
+	set project_name "MPFS_ICICLE_I2C_LOOPBACK"
+	set project_dir "$local_dir/MPFS_ICICLE_I2C_LOOPBACK"
 } elseif {[info exists VECTORBLOX]} {
-	set project_name "MPFS_ICICLE_Vectorblox_eMMC"
-	set project_dir "$local_dir/MPFS_ICICLE_Vectorblox_eMMC"
+	set project_name "MPFS_ICICLE_Vectorblox"
+	set project_dir "$local_dir/MPFS_ICICLE_Vectorblox"
 } elseif {[info exists SPI_LOOPBACK]} {
-	set project_name "MPFS_ICICLE_SPI_LOOPBACK_eMMC"
-	set project_dir "$local_dir/MPFS_ICICLE_SPI_LOOPBACK_eMMC"
+	set project_name "MPFS_ICICLE_SPI_LOOPBACK"
+	set project_dir "$local_dir/MPFS_ICICLE_SPI_LOOPBACK"
 } else {
-	set project_name "MPFS_ICICLE_eMMC"
-	set project_dir "$local_dir/MPFS_ICICLE_eMMC"
+	set project_name "MPFS_ICICLE"
+	set project_dir "$local_dir/MPFS_ICICLE"
 }
 
 source ./script_support/additional_configurations/functions.tcl
@@ -199,7 +199,7 @@ if {[info exists I2C_LOOPBACK]} {
 		file delete -force $local_dir/script_support/components/MSS_I2C_LOOPBACK
 	}
 	file mkdir $local_dir/script_support/components/MSS_I2C_LOOPBACK
-	create_config $local_dir/script_support/components/MSS_eMMC/ICICLE_MSS.cfg $local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg
+	create_config $local_dir/script_support/components/MSS/ICICLE_MSS.cfg $local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg
 	update_param $local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg "I2C_1 " "FABRIC"
 	exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_I2C_LOOPBACK
 	source ./script_support/additional_configurations/I2C_LOOPBACK/I2C_LOOPBACK.tcl
@@ -210,7 +210,7 @@ if {[info exists I2C_LOOPBACK]} {
 		file delete -force $local_dir/script_support/components/MSS_SPI_LOOPBACK
 	}
 	file mkdir $local_dir/script_support/components/MSS_SPI_LOOPBACK
-	create_config $local_dir/script_support/components/MSS_eMMC/ICICLE_MSS.cfg $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg
+	create_config $local_dir/script_support/components/MSS/ICICLE_MSS.cfg $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg
 	update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "QSPI                                " "UNUSED"
 	update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "QSPI_CLK                                " "UNUSED"
 	update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "QSPI_DATA_3_2                                " "UNUSED"
@@ -237,9 +237,9 @@ if {[info exists HSS_UPDATE]} {
 		if {[catch	{exec wget https://github.com/polarfire-soc/hart-software-services/releases/download/2021.04/hss-bm1-p0.hex -P ./script_support/} issue]} {
 		}
 	}
-	create_eNVM_config "$local_dir/script_support/components/MSS_eMMC/ENVM.cfg" "$local_dir/script_support/hss-bm1-p0.hex"
+	create_eNVM_config "$local_dir/script_support/components/MSS/ENVM.cfg" "$local_dir/script_support/hss-bm1-p0.hex"
 	run_tool -name {GENERATEPROGRAMMINGDATA}
-	configure_envm -cfg_file {script_support/components/MSS_eMMC/ENVM.cfg}
+	configure_envm -cfg_file {script_support/components/MSS/ENVM.cfg}
 }
 
 if {[info exists GENERATE_BITSTREAM]} {

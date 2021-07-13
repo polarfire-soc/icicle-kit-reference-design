@@ -1,9 +1,9 @@
-if {[file isdirectory $local_dir/script_support/components/MSS_eMMC]} {
-	file delete -force $local_dir/script_support/components/MSS_eMMC
+if {[file isdirectory $local_dir/script_support/components/MSS]} {
+	file delete -force $local_dir/script_support/components/MSS
 }
-file mkdir $local_dir/script_support/components/MSS_eMMC
-exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/PF_SoC_MSS_Icicle_eMMC.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_eMMC
-import_mss_component -file "$local_dir/script_support/components/MSS_eMMC/ICICLE_MSS.cxz"
+file mkdir $local_dir/script_support/components/MSS
+exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/PF_SoC_MSS_Icicle.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
+import_mss_component -file "$local_dir/script_support/components/MSS/ICICLE_MSS.cxz"
 source script_support/hdl_source.tcl
 source script_support/components/CORERESET_0.tcl
 source script_support/components/INIT_MONITOR.tcl 

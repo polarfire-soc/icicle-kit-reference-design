@@ -1,3 +1,10 @@
+# Creating SmartDesign MPFS_ICICLE_KIT_BASE_DESIGN
+set sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
+create_smartdesign -sd_name ${sd_name}
+
+# Disable auto promotion of pins of type 'pad'
+auto_promote_pad_pins -promote_all 0
+
 # Create top level Ports
 sd_create_scalar_port -sd_name ${sd_name} -port_name {REFCLK} -port_direction {IN} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {REFCLK_N} -port_direction {IN} -port_is_pad {1}
@@ -107,6 +114,21 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO12} -port_directio
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO16} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO20} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO21} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CLK_EMMC_CLK} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CMD_EMMC_CMD} -port_direction {INOUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA0_EMMC_DATA0} -port_direction {INOUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA1_EMMC_DATA1} -port_direction {INOUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA2_EMMC_DATA2} -port_direction {INOUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA3_EMMC_DATA3} -port_direction {INOUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_POW_EMMC_DATA4} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_VOLT_SEL_EMMC_DATA5} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_VOLT_EN_EMMC_DATA6} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_VOLT_CMD_DIR_EMMC_DATA7} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_VOLT_DIR_1_3_EMMC_UNUSED} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_VOLT_DIR_0_EMMC_UNUSED} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CD_EMMC_STRB} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_WP_EMMC_RSTN} -port_direction {IN}
+
 
 sd_create_bus_port -sd_name ${sd_name} -port_name {CA} -port_direction {OUT} -port_range {[5:0]} -port_is_pad {1}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQ} -port_direction {INOUT} -port_range {[31:0]} -port_is_pad {1}
@@ -124,6 +146,7 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_PLLMODE} -v
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_CMODE3} -value {GND}
 sd_invert_pins -sd_name ${sd_name} -pin_names {USB_ULPI_RESET}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_EN_N} -value {GND}
+
 # Add CLOCKS_AND_RESETS instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {CLOCKS_AND_RESETS} -instance_name {CLOCKS_AND_RESETS}
 
@@ -559,6 +582,20 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:USB_DIR" "USB_DIR" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:USB_NXT" "USB_NXT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:USB_STP" "USB_STP" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE_INITIATOR:ARESETN" "VSC_8662_RESETN" "USB_ULPI_RESET"  "READ_ADDR_OFFSET:A" "DMA_INITIATOR:ARESETN" "PCIE_LSRAM:ARESETN" "MSS_LSRAM:ARESETN" "WRITE_ADDR_OFFSET:A" "FIC0_INITIATOR:ARESETN" "DMA_CONTROLLER:RESETN" "PCIE:AXI_CLK_STABLE" "CLOCKS_AND_RESETS:RESETN_CLK_125MHz" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_CLK_EMMC_CLK" "ICICLE_MSS:SD_CLK_EMMC_CLK" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_CMD_EMMC_CMD" "ICICLE_MSS:SD_CMD_EMMC_CMD" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_DATA0_EMMC_DATA0" "ICICLE_MSS:SD_DATA0_EMMC_DATA0" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_DATA1_EMMC_DATA1" "ICICLE_MSS:SD_DATA1_EMMC_DATA1" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_DATA2_EMMC_DATA2" "ICICLE_MSS:SD_DATA2_EMMC_DATA2" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_DATA3_EMMC_DATA3" "ICICLE_MSS:SD_DATA3_EMMC_DATA3" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_POW_EMMC_DATA4" "ICICLE_MSS:SD_POW_EMMC_DATA4" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_SEL_EMMC_DATA5" "ICICLE_MSS:SD_VOLT_SEL_EMMC_DATA5" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_EN_EMMC_DATA6" "ICICLE_MSS:SD_VOLT_EN_EMMC_DATA6" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_CMD_DIR_EMMC_DATA7" "ICICLE_MSS:SD_VOLT_CMD_DIR_EMMC_DATA7" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_DIR_1_3_EMMC_UNUSED" "ICICLE_MSS:SD_VOLT_DIR_1_3_EMMC_UNUSED" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_VOLT_DIR_0_EMMC_UNUSED" "ICICLE_MSS:SD_VOLT_DIR_0_EMMC_UNUSED" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_CD_EMMC_STRB" "ICICLE_MSS:SD_CD_EMMC_STRB" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"SD_WP_EMMC_RSTN" "ICICLE_MSS:SD_WP_EMMC_RSTN" }
 
 # Add bus net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:CA" "CA" }
@@ -618,3 +655,11 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:PLL_SGMII_LOCK_M2
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {RECONFIGURATION_INTERFACE_0:PINTERRUPT}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {RECONFIGURATION_INTERFACE_0:PTIMEOUT}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {RECONFIGURATION_INTERFACE_0:BUSERROR}
+
+# Re-enable auto promotion of pins of type 'pad'
+auto_promote_pad_pins -promote_all 1
+# Save the smartDesign
+save_smartdesign -sd_name ${sd_name}
+# Generate SmartDesign MPFS_ICICLE_eMMC
+generate_component -component_name ${sd_name}
+

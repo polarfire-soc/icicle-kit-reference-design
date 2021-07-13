@@ -129,7 +129,7 @@ download_core -vlnv {Actel:DirectCore:corepwm:4.5.100} -location {www.microchip-
 # // Generate base design
 #
 
-source ./script_support/MPFS_ICICLE_eMMC_recursive.tcl
+source ./script_support/MPFS_ICICLE_recursive.tcl
 
 #
 # // Import I/O constraints

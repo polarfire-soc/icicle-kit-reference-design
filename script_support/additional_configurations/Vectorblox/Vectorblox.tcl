@@ -1,4 +1,4 @@
-download_core -vlnv {Microchip:SolutionCore:core_vectorblox:1.1.12} -location {www.microchip-ip.com/repositories/SolutionCore}
+download_core -vlnv {Microchip:SolutionCore:core_vectorblox:1.1.12} -location {www.microchip-ip.com/repositories/DirectCore} 
 cd $local_dir/script_support/additional_configurations/Vectorblox/
 source Vectorblox_ss_recursive.tcl
 sd_instantiate_component -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -component_name {Vectorblox_ss} -instance_name {Vectorblox_ss_0} 

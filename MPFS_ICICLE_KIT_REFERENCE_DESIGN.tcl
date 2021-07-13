@@ -50,7 +50,6 @@ if { $::argc > 0 } {
 set install_loc [defvar_get -name ACTEL_SW_DIR]
 set mss_config_loc "$install_loc/bin64/pfsoc_mss"
 set local_dir [pwd]
-set emmc_sd "emmc"
 set constraint_path ./script_support/constraints
 
 if {[info exists I2C_LOOPBACK]} {

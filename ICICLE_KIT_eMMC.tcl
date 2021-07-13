@@ -3,13 +3,15 @@
 #
 
 #
-# // Check Libero version and path lenth to verify project can be created
+# // Check Libero version and path length to verify project can be created
 #
 
-if {[string compare [string range [get_libero_version] 0 end-3] "2021.1.0"]==0} {
-	puts "Libero v2021.1 detected."
+set libero_release [split [get_libero_version] .]
+
+if {[string compare [lindex $libero_release 0] "2021"] == 0 && [string compare [lindex $libero_release 1] "2"] == 0} {
+	puts "Libero v2021.2 detected."
 } else {
-	error "Incorrect Libero version. Please use Libero v2021.1 to run these scripts."
+	error "Incorrect Libero version detected. Please use Libero v2021.2 to run these scripts."
 }
 
 if { [lindex $tcl_platform(os) 0]  == "Windows" } {

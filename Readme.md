@@ -156,7 +156,7 @@ A saved configuration for the PolarFire SoC MSS Configurator is available in the
 
 The Microcontroller Subsystem (MSS) configuration is captured in an XML file that is then used by the PolarFire SoC Configuration Generator to generate configuration header files. These header files are compiled as part of the MPFS HAL startup code to configure the system at power on.
 
-XML generated for both the eMMC and SD card configurations is provided in the "XML" folder.
+XML generated for all available configurations is provided in the "XML" folder.
 
 ## BFM Simulation
 

@@ -111,7 +111,7 @@ The following MSS peripherals are enabled:
 
 ### Memory map
 
-| Server                  	| Bus          	| Receiver                	| Address range                 	|
+| Initiator                	| Bus          	| Target                  	| Address range                 	|
 |-------------------------	|--------------	|-------------------------	|-------------------------------	|
 | MSS: FIC0               	| AXI4_mslave0 	| PF_PCIE_C0_0            	| 0x7000_0000 -> 0x2f_ffff_ffff 	|
 | MSS: FIC0               	| AXI4_mslave1 	| MSS_LSRAM                	| 0x6100_0000 -> 0x6fff_ffff    	|

@@ -8,7 +8,7 @@ A Libero SoC Tcl script is provided to generate the reference design using Liber
 
 This repository supports Libero SoC v2021.1, which is available for download [here](https://www.microsemi.com/product-directory/design-resources/1750-libero-soc#downloads).
 
-## Using the reference design generation Tcl scripts
+## Using the reference design generation Tcl script
 
 #### Standard design generation
 
@@ -17,7 +17,7 @@ To generate the standard reference design which is capable of running the majori
 1. Clone or download the repository
 2. Open Libero v2021.1
 3. Open the execute script dialog (CTRL + U)
-4. Execute the script for the design required (e.g "ICICLE_KIT_eMMC.tcl")
+4. Execute the "MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl" script
 5. Configure the design if required
 6. Run the Libero SoC design flow to program a device
 

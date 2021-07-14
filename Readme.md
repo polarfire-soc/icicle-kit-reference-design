@@ -200,27 +200,6 @@ To set the PolarFire SoC boot mode to 1 and program and eNVM client in Libero:
 5. Save and add the client
 6. Run the remainder of the Libero SoC design flow and program the device
 
-<a name="emmc-sd"></a>
-## eMMC and SD Cards
-
-The PolarFire SoC Icicle Kit has the ability to use eMMC and SD cards as non-volatile storage. Linux builds and / or bare metal applications can be stored in a HSS payload which is in turn stored in non-volatile storage. Using eMMC the user will have access to 8GB of on-board eMMC flash storage which can be programmed using the HSS. Using an SD card users can use the storage capacity of the card, program it directly on their PC and quickly switch between cards to change the payload being run on a kit.
-
-SD cards and eMMC cannot be used simultaneously as the MSS I/Os for the eMMC and SD cards are muxed together. The Icicle Kit features a de-mux connected to these MSS I/Os, the de-mux is controlled by 2 select signals, called SDIO_SEL_{0:1}, which are connected to the FPGA fabric. When the select signals are low the de-mux connects the MSS I/Os to the eMMC controller, when the select signals are high the de-mux connects the MSS I/Os to the SD card controller.
-
-The MSS configurator doesn't currently allow generating a configuration that supports the behavior described above. This behavior is achieved using overwrites in the HSS. To allow generation of designs using allowed configurations two scripts are provided: "ICICLE_KIT_eMMC.tcl" and "ICICLE_KIT_SD_CARD.tcl". These both generate the same FPGA fabric configuration and support the same arguments. They will generate XML for eMMC or SD cards but will not generate XML that supports both. The HSS can be used to work around the exclusive eMMC or SD card limitation. The eMMC and SD card scripts will be merged after a future Libero release provides support for the required features.
-
-<a name="emmc-sd-switching"></a>
-### eMMC and SD card switching
-
-In previous versions of this design the SDIO_SEL_{0:1} signals were tied low to enable eMMC or tied high to enable the SD card; this required re-programming the FPGA to switch between SD or eMMC configurations. The Icicle Kit reference design and MPFS HAL have been updated to support dynamically switching between these configurations without having to re-program the FPGA.
-
-The SDIO_SEL_{0:1} signals are now driven by a bit present in a fabric register - this bit resets to output low selecting the eMMC configuration by default. To select the SD card configuration, software must set the lowest bit in the SDIO_register high and re-configure MSS I/Os as required. As the SDIO_register is located at address 0x4f00_0000, writing 1 to this address will set the register bit.
-
-HSS build v0.99.15 and greater has support for dynamic switching by re-configuring the MSS I/Os to select the SD configuration. The HSS will attempt to initialize an SD card on startup, if this initialization fails (e.g card not inserted) the HSS will print an MMC initialization failure message, switch the MSS I/O configuration to eMMC and set the SDIO_register bit low and attempt to initialize the eMMC. Once a memory source has been successfully initialized a success message will be printed.
-
-**Note:** currently these updates are not fully supported by the Libero SoC design suite - to accommodate this the MPFS HAL will be updated with a define to allow dynamic switching. As a result of this we will continue to provide separate eMMC and SD card scripts to generate MSS XML for each configuration until Libero SoC has full support for these updates.
-
-
 Linux® is the registered trademark of Linus Torvalds in the U.S. and other countries.
 Raspberry Pi is a trademark of the Raspberry Pi Foundation.
 All other trademarks are the property of their respective owners.

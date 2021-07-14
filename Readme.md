@@ -53,7 +53,7 @@ The design flow for using arguments is the same as the standard flow, ensuring t
 1. Clone or download the repository
 2. Open Libero v2021.1
 3. Open the execute script dialog (CTRL + U)
-4. Select the script for the design required (e.g "ICICLE_KIT_eMMC.tcl")
+4. Execute the "MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl" script
 6. Add any required arguments (e.g "I2C_LOOPBACK HSS_UPDATE PROGRAM")
 
 **Note:** arguments should not be put in quotes and are separated by a space when using the GUI.

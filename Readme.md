@@ -137,7 +137,7 @@ The following MSS peripherals are enabled:
 
 ## Programming the FPGA
 
-Once the scripts have completed, the Libero SoC design flow can be run by double clicking on a stage in the design flow on the left hand side of Libero - selecting an option requiring previous steps to be completed will run the full flow, i.e double clicking "Run Program Action" will run any required steps, such as, "Synthesize", "Place and Route", etc and then program the device.
+Once the script has completed the design can be configured further if needed and the Libero SoC design flow can be run by double clicking on a stage in the design flow on the left hand side of Libero. Selecting an option requiring previous steps to be completed will run the full flow, i.e double clicking "Run Program Action" will run any required steps, such as, "Synthesize", "Place and Route", etc and then program the device.
 
 ## Board configuration
 

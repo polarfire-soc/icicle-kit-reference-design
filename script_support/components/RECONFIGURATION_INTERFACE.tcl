@@ -14,8 +14,6 @@ create_and_configure_core -core_vlnv {Actel:SgCore:PF_DRI:1.1.104} -component_na
 "DLL1_SW:false"  \
 "ENABLE_APB_SLAVE_IF:true"  \
 "ENABLE_LATENCY_SIMULATION:true"  \
-"PCIE0:false"  \
-"PCIE1:false"  \
 "PLL0_NE:false"  \
 "PLL0_NW:false"  \
 "PLL0_SE:false"  \

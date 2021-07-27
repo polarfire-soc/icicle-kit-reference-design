@@ -5,7 +5,9 @@ import_mss_component -file "$local_dir/script_support/components/MSS_SPI_LOOPBAC
 sd_update_instance -sd_name ${sd_name} -instance_name {ICICLE_MSS} 
 
 sd_delete_instances -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -instance_names {"QSPI_DATA2_BIBUF"} 
-sd_delete_instances -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -instance_names {"QSPI_DATA3_BIBUF"} 
+sd_delete_instances -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -instance_names {"QSPI_DATA3_OR_PWM_BIBUF"} 
+sd_delete_instances -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -instance_names {"QSPI_DATA3_OR_PWM_D_OR"} 
+sd_delete_instances -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -instance_names {"QSPI_DATA3_OR_PWM_EN_OR"} 
 
 generate_component -component_name {MPFS_ICICLE_KIT_BASE_DESIGN} -recursive 0 
 

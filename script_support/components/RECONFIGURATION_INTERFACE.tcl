@@ -2,7 +2,7 @@
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
 # Create and Configure the core component RECONFIGURATION_INTERFACE
-create_and_configure_core -core_vlnv {Actel:SgCore:PF_DRI:1.1.100} -component_name {RECONFIGURATION_INTERFACE} -params {\
+create_and_configure_core -core_vlnv {Actel:SgCore:PF_DRI:1.1.104} -component_name {RECONFIGURATION_INTERFACE} -params {\
 "CRYPTO:false"  \
 "DLL0_NE:false"  \
 "DLL0_NW:false"  \

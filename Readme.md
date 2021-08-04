@@ -114,7 +114,7 @@ The following MSS peripherals are enabled:
 | Initiator                 | Bus           | Target                    | Address range                     |
 |-------------------------  |-------------- |-------------------------  |-------------------------------    |
 | MSS: FIC0                 | AXI4_mslave0  | PF_PCIE_C0_0              | 0x20_0000_0000 -> 0x2f_ffff_ffff  |
-| MSS: FIC0                 | AXI4_mslave1  | MSS_LSRAM                 | 0x6100_0000 -> 0x6fff_ffff        |
+| MSS: FIC0                 | AXI4_mslave1  | MSS_LSRAM                 | 0x6100_0000 -> 0x6100_1000        |
 | MSS: FIC0                 | AXI4_mslave2  | DMA_CONTROLLER            | 0x6002_0000 -> 0x6002_ffff        |
 | MSS: FIC3                 | APBmslave2    | PWM                       | 0x4100_0000 -> 0x41ff_ffff        |
 | MSS: FIC3                 | APBmslave2    | CoreGPIO                  | 0x4200_0000 -> 0x42ff_ffff        |

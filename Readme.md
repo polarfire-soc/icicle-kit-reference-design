@@ -70,7 +70,7 @@ To generate a design from the command line:
 1. Clone or download the repository
 2. Open a terminal in the directory containing the design generation scripts
 3. Execute the command (example arguments shown):
-[path to Libero]/libero script: MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl SCRIPT_ARGS:I2C_LOOPBACK+HSS_UPDATE+PROGRAM logfile: MPFS_ICICLE_KIT_REFERENCE_DESIGN.log
+[path to Libero]/libero script:MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl SCRIPT_ARGS:I2C_LOOPBACK+HSS_UPDATE+PROGRAM logfile: MPFS_ICICLE_KIT_REFERENCE_DESIGN.log
 
 **Note:** Arguments are separated by a "+" symbol when using the command line.
 

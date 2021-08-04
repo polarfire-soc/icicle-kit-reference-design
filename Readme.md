@@ -111,19 +111,19 @@ The following MSS peripherals are enabled:
 
 ### Memory map
 
-| Initiator                	| Bus          	| Target                  	| Address range                 	|
-|-------------------------	|--------------	|-------------------------	|-------------------------------	|
-| MSS: FIC0               	| AXI4_mslave0 	| PF_PCIE_C0_0            	| 0x7000_0000 -> 0x2f_ffff_ffff 	|
-| MSS: FIC0               	| AXI4_mslave1 	| MSS_LSRAM                	| 0x6100_0000 -> 0x6fff_ffff    	|
-| MSS: FIC0               	| AXI4_mslave2 	| DMA_CONTROLLER          	| 0x6002_0000 -> 0x6002_ffff    	|
-| MSS: FIC3               	| APBmslave2   	| PWM                     	| 0x4100_0000 -> 0x41ff_ffff    	|
-| MSS: FIC3               	| APBmslave2   	| CoreGPIO                	| 0x4200_0000 -> 0x42ff_ffff    	|
-| MSS: FIC3               	| APBmslave3   	| RECONFIGURATION_INTERFACE	| 0x4300_0000 -> 0x43ff_ffff    	|
-| MSS: FIC3               	| APBmslave3   	| RECONFIGURATION_INTERFACE	| 0x4800_0000 -> 0x48ff_ffff    	|
-| MSS: FIC3               	| APBmslave15  	| SDIO_register            	| 0x4f00_0000 -> 0x4fff_ffff    	|
-| PF_PCIE_C0_0            	| AXI4_mslave0 	| MSS: FIC0               	| 0x6000_0000 -> 0xbfff_ffff    	|
-| PF_PCIE_C0_0            	| AXI4_mslave1 	| PCIE_LSRAM               	| 0x0 -> 0xfff                  	|
-| DMA_CONTROLLER           	| AXI4_mslave0 	| MSS: FIC1               	| 0xc000_0000 -> 0xcfff_ffff    	|
+| Initiator                 | Bus           | Target                    | Address range                     |
+|-------------------------  |-------------- |-------------------------  |-------------------------------    |
+| MSS: FIC0                 | AXI4_mslave0  | PF_PCIE_C0_0              | 0x20_0000_0000 -> 0x2f_ffff_ffff  |
+| MSS: FIC0                 | AXI4_mslave1  | MSS_LSRAM                 | 0x6100_0000 -> 0x6fff_ffff        |
+| MSS: FIC0                 | AXI4_mslave2  | DMA_CONTROLLER            | 0x6002_0000 -> 0x6002_ffff        |
+| MSS: FIC3                 | APBmslave2    | PWM                       | 0x4100_0000 -> 0x41ff_ffff        |
+| MSS: FIC3                 | APBmslave2    | CoreGPIO                  | 0x4200_0000 -> 0x42ff_ffff        |
+| MSS: FIC3                 | APBmslave3    | RECONFIGURATION_INTERFACE | 0x4300_0000 -> 0x43ff_ffff        |
+| MSS: FIC3                 | APBmslave3    | RECONFIGURATION_INTERFACE | 0x4800_0000 -> 0x48ff_ffff        |
+| MSS: FIC3                 | APBmslave15   | SDIO_register             | 0x4f00_0000 -> 0x4fff_ffff        |
+| PF_PCIE_C0_0              | AXI4_mslave0  | MSS: FIC0                 | 0x6000_0000 -> 0xbfff_ffff        |
+| PF_PCIE_C0_0              | AXI4_mslave1  | PCIE_LSRAM                | 0x0 -> 0xfff                      |
+| DMA_CONTROLLER            | AXI4_mslave0  | MSS: FIC1                 | 0xc000_0000 -> 0xcfff_ffff        |
 
 ### Interrupt map
 

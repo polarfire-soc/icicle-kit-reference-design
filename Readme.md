@@ -160,7 +160,7 @@ XML generated for all available configurations is provided in the "XML" folder.
 
 ## BFM Simulation
 
-A SmartDesign test bench will be generated along with the SmartDesign containing the reference design. This test bench will allow the user to run BFM simulations of the PolarFire SoC MSS. A custom wave.do file is imported to add signals and updated BFM scripts are also imported. To run a BFM simulation:
+A SmartDesign test bench can be generated along with the SmartDesign containing the reference design by passing the "BFM_SIMULATION" argument when generating the design. This test bench will allow the user to run BFM simulations of the PolarFire SoC MSS. A custom wave.do file is imported to add signals and updated BFM scripts are also imported. To run a BFM simulation:
 1. Open the "Stimulus Hierarchy" in Libero SoC
 2. Right click on "Test_bench" from the hierarchy
 3. Select "Simulate Pre-Synth Design" and "Open Interactively"

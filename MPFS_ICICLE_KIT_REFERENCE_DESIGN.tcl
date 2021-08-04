@@ -242,7 +242,7 @@ if {[info exists HSS_UPDATE]} {
 	configure_envm -cfg_file {script_support/components/MSS/ENVM.cfg}
 }
 
-if {[info exists GENERATE_BITSTREAM]} {
+if {[info exists GENERATE_PROGRAMMING_DATA]} {
 	run_tool -name {GENERATEPROGRAMMINGDATA} 
 }  elseif {[info exists PROGRAM]} {
 	run_tool -name {PROGRAMDEVICE}

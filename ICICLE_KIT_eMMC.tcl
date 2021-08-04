@@ -50,7 +50,7 @@ set mss_config_loc "$install_loc/bin64/pfsoc_mss"
 set local_dir [pwd]
 set emmc_sd "emmc"
 set constraint_path ./script_support/constraints
-set release_tag "2021.07"
+set release_tag "2021.08"
 
 if {[info exists I2C_LOOPBACK]} {
 	set project_name "MPFS_ICICLE_I2C_LOOPBACK_eMMC"

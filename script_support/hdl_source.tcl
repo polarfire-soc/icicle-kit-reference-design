@@ -10,6 +10,7 @@ import_files \
          -hdl_source {script_support/HDL/mailbox_mem.v} 
 
 build_design_hierarchy 
+
 create_hdl_core -file $project_dir/hdl/SDIO_register.v -module {sdio_register} -library {work} -package {} 
 hdl_core_add_bif -hdl_core_name {sdio_register} -bif_definition {APB:AMBA:AMBA2:slave} -bif_name {APBslave} -signal_map {} 
 hdl_core_assign_bif_signal -hdl_core_name {sdio_register} -bif_name {APBslave} -bif_signal_name {PADDR} -core_signal_name {paddr} 
@@ -20,3 +21,33 @@ hdl_core_assign_bif_signal -hdl_core_name {sdio_register} -bif_name {APBslave} -
 hdl_core_assign_bif_signal -hdl_core_name {sdio_register} -bif_name {APBslave} -bif_signal_name {PREADY} -core_signal_name {pready} 
 hdl_core_assign_bif_signal -hdl_core_name {sdio_register} -bif_name {APBslave} -bif_signal_name {PSLVERR} -core_signal_name {pslverr} 
 hdl_core_assign_bif_signal -hdl_core_name {sdio_register} -bif_name {APBslave} -bif_signal_name {PSELx} -core_signal_name {psel} 
+
+create_hdl_core -file $project_dir/hdl/apb_arbiter.v -module {APB_ARBITER} -library {work} -package {} 
+hdl_core_add_bif -hdl_core_name {APB_ARBITER} -bif_definition {APB:AMBA:AMBA2:mirroredMaster} -bif_name {APB_MMASTER} -signal_map {} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MMASTER} -bif_signal_name {PADDR} -core_signal_name {in_paddr} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MMASTER} -bif_signal_name {PENABLE} -core_signal_name {in_penable} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MMASTER} -bif_signal_name {PWRITE} -core_signal_name {in_pwrite} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MMASTER} -bif_signal_name {PRDATA} -core_signal_name {in_prdata} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MMASTER} -bif_signal_name {PWDATA} -core_signal_name {in_pwdata} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MMASTER} -bif_signal_name {PREADY} -core_signal_name {in_pready} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MMASTER} -bif_signal_name {PSLVERR} -core_signal_name {in_pslverr} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MMASTER} -bif_signal_name {PSELx} -core_signal_name {in_psel} 
+hdl_core_add_bif -hdl_core_name {APB_ARBITER} -bif_definition {APB:AMBA:AMBA2:master} -bif_name {APB_MASTER_0x4xxx_xxxx} -signal_map {} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x4xxx_xxxx} -bif_signal_name {PADDR} -core_signal_name {out_0x4xxx_xxxx_paddr} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x4xxx_xxxx} -bif_signal_name {PENABLE} -core_signal_name {out_0x4xxx_xxxx_penable} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x4xxx_xxxx} -bif_signal_name {PWRITE} -core_signal_name {out_0x4xxx_xxxx_pwrite} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x4xxx_xxxx} -bif_signal_name {PRDATA} -core_signal_name {out_0x4xxx_xxxx_prdata} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x4xxx_xxxx} -bif_signal_name {PWDATA} -core_signal_name {out_0x4xxx_xxxx_pwdata} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x4xxx_xxxx} -bif_signal_name {PREADY} -core_signal_name {out_0x4xxx_xxxx_pready} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x4xxx_xxxx} -bif_signal_name {PSLVERR} -core_signal_name {out_0x4xxx_xxxx_pslverr} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x4xxx_xxxx} -bif_signal_name {PSELx} -core_signal_name {out_0x5xxx_xxxx_psel} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x4xxx_xxxx} -bif_signal_name {PSELx} -core_signal_name {out_0x4xxx_xxxx_psel} 
+hdl_core_add_bif -hdl_core_name {APB_ARBITER} -bif_definition {APB:AMBA:AMBA2:master} -bif_name {APB_MASTER_0x5xxx_xxxx} -signal_map {} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x5xxx_xxxx} -bif_signal_name {PADDR} -core_signal_name {out_0x5xxx_xxxx_paddr} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x5xxx_xxxx} -bif_signal_name {PENABLE} -core_signal_name {out_0x5xxx_xxxx_penable} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x5xxx_xxxx} -bif_signal_name {PWRITE} -core_signal_name {out_0x5xxx_xxxx_pwrite} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x5xxx_xxxx} -bif_signal_name {PRDATA} -core_signal_name {out_0x5xxx_xxxx_prdata} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x5xxx_xxxx} -bif_signal_name {PWDATA} -core_signal_name {out_0x5xxx_xxxx_pwdata} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x5xxx_xxxx} -bif_signal_name {PREADY} -core_signal_name {out_0x5xxx_xxxx_pready} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x5xxx_xxxx} -bif_signal_name {PSLVERR} -core_signal_name {out_0x5xxx_xxxx_pslverr} 
+hdl_core_assign_bif_signal -hdl_core_name {APB_ARBITER} -bif_name {APB_MASTER_0x5xxx_xxxx} -bif_signal_name {PSELx} -core_signal_name {out_0x5xxx_xxxx_psel} 

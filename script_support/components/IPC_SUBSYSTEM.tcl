@@ -39,7 +39,7 @@ sd_create_bif_port -sd_name ${sd_name} -port_name {APB3mmaster} -port_bif_vlnv {
 "PSLVERR:PSLVERR" } 
 
 # Add CONTEXT_0_TO_CONTEXT_1 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {AMP_MAILBOX} -instance_name {CONTEXT_0_TO_CONTEXT_1}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {CONTEXT_0_TO_CONTEXT_1}
 # Exporting Parameters of instance CONTEXT_0_TO_CONTEXT_1
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CONTEXT_0_TO_CONTEXT_1} -params {\
 "A_HART_ID:0" \
@@ -57,7 +57,7 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {IPC_APB} -instance
 
 
 # Add HSS_E51_TO_U54_1 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {AMP_MAILBOX} -instance_name {HSS_E51_TO_U54_1}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {HSS_E51_TO_U54_1}
 # Exporting Parameters of instance HSS_E51_TO_U54_1
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {HSS_E51_TO_U54_1} -params {\
 "A_HART_ID:0" \
@@ -70,7 +70,7 @@ sd_update_instance -sd_name ${sd_name} -instance_name {HSS_E51_TO_U54_1}
 
 
 # Add HSS_E51_TO_U54_2 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {AMP_MAILBOX} -instance_name {HSS_E51_TO_U54_2}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {HSS_E51_TO_U54_2}
 # Exporting Parameters of instance HSS_E51_TO_U54_2
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {HSS_E51_TO_U54_2} -params {\
 "A_HART_ID:0" \
@@ -83,7 +83,7 @@ sd_update_instance -sd_name ${sd_name} -instance_name {HSS_E51_TO_U54_2}
 
 
 # Add HSS_E51_TO_U54_3 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {AMP_MAILBOX} -instance_name {HSS_E51_TO_U54_3}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {HSS_E51_TO_U54_3}
 # Exporting Parameters of instance HSS_E51_TO_U54_3
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {HSS_E51_TO_U54_3} -params {\
 "A_HART_ID:0" \
@@ -96,7 +96,7 @@ sd_update_instance -sd_name ${sd_name} -instance_name {HSS_E51_TO_U54_3}
 
 
 # Add HSS_E51_TO_U54_4 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {AMP_MAILBOX} -instance_name {HSS_E51_TO_U54_4}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {HSS_E51_TO_U54_4}
 # Exporting Parameters of instance HSS_E51_TO_U54_4
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {HSS_E51_TO_U54_4} -params {\
 "A_HART_ID:0" \

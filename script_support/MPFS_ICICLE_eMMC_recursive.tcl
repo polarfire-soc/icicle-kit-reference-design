@@ -25,5 +25,7 @@ source script_support/components/FIC3_INITIATOR.tcl
 source script_support/components/OSCILLATOR_160MHz.tcl
 source script_support/components/COREPWM_C0.tcl
 source script_support/components/CLOCKS_AND_RESETS.tcl 
+source script_support/components/IPC_APB.tcl
+source script_support/components/IPC_SUBSYSTEM.tcl
 source script_support/components/MPFS_ICICLE_eMMC.tcl 
 set_root -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} 

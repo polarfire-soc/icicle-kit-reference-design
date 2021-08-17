@@ -30,7 +30,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     wire [31:0]  A_DATA_OUT;
     wire [31:0]  A_DATA_IN;
     wire [5:0]   A_ADDR_IN;
-    reg [2:0]   A_SEL;
+    reg [1:0]   A_SEL;
     reg         A_MSG_READ;
     reg         A_READ;
     wire        A_MBX_READ_VALID;
@@ -49,7 +49,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     wire [31:0]  B_DATA_OUT;
     wire [31:0]  B_DATA_IN;
     wire [5:0]   B_ADDR_IN;
-    reg [2:0]   B_SEL;
+    reg [1:0]   B_SEL;
     reg         B_MSG_READ;
     reg         B_READ;
     wire         B_MBX_READ_VALID;

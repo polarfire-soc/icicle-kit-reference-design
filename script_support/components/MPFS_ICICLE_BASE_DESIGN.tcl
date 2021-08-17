@@ -177,6 +177,11 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {I2C0_SDA_BIBUF:D} -v
 
 
 
+# Add IPC_SUBSYSTEM instance
+sd_instantiate_component -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -component_name {IPC_SUBSYSTEM} -instance_name {IPC_SUBSYSTEM_0} 
+
+
+
 # Add MSS instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {ICICLE_MSS} -instance_name {ICICLE_MSS}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[0]}

@@ -160,6 +160,11 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {FIC3_INITIATOR} -i
 
 
 
+# Add APB_ARBITER instance
+sd_instantiate_hdl_core -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -hdl_core_name {APB_ARBITER} -instance_name {} 
+
+
+
 # Add I2C0_SCL_BIBUF instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {I2C0_SCL_BIBUF}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {I2C0_SCL_BIBUF:D} -value {GND}

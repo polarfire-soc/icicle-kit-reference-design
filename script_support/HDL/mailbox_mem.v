@@ -4,7 +4,7 @@ module mailbox_mem #(parameter MESSAGE_DEPTH = 1) (
     input wire logic            wr,
     input wire logic            rd,
     input wire logic [2:0]      wr_sel,
-    input wire logic [3:0]      rd_sel,
+    input wire logic [2:0]      rd_sel,
     input wire logic [31:0]     wdata,
     output wire logic           wr_ready,
     output wire logic [31:0]    rdata,

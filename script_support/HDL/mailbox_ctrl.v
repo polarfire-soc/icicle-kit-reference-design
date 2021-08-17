@@ -43,7 +43,6 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     reg         A_CTRL_READ_VALID;
     reg [2:0]   A_CTRL_READ_DATA;
     reg         A_MSG_PRESENT_IRQ;
-    wire        A_READ_SEL;
     
     // B SIDE
     reg [31:0]  B_READ_DATA;

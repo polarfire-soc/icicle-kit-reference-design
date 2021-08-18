@@ -15,22 +15,22 @@ add wave -noupdate -expand -group {FABRIC: COREGPIO_C0 (at BaseAddress 0x4200_00
 add wave -noupdate -expand -group {FABRIC: COREGPIO_C0 (at BaseAddress 0x4200_0000, on FIC3)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/COREGPIO_C0/PWDATA
 add wave -noupdate -expand -group {FABRIC: COREGPIO_C0 (at BaseAddress 0x4200_0000, on FIC3)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/COREGPIO_C0/PREADY
 add wave -noupdate -expand -group {FABRIC: COREGPIO_C0 (at BaseAddress 0x4200_0000, on FIC3)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/COREGPIO_C0/PRDATA
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/ARESETN
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/ACLK
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/AWVALID
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/AWADDR
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/AWREADY
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/ARADDR
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/ARVALID
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/ARREADY
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/BREADY
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/BVALID
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/RDATA
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/RREADY
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/RVALID
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/WDATA
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/WREADY
-add wave -noupdate -expand -group {FABRIC: LSRAM_0 (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/LSRAM_0/WVALID
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/ARESETN
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/ACLK
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/AWVALID
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/AWADDR
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/AWREADY
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/ARADDR
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/ARVALID
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/ARREADY
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/BREADY
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/BVALID
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/RDATA
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/RREADY
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/RVALID
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/WDATA
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/WREADY
+add wave -noupdate -expand -group {FABRIC: MSS_LSRAM (at Baseddress 0x6100_0000, on FIC0)} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS_LSRAM_inst_0/WVALID
 
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {16493562 ps} 0} {{Cursor 2} {6098277 ps} 0}

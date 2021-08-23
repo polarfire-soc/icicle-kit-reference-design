@@ -8,6 +8,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     output wire logic           a_ready,
     output wire logic [31:0]    a_rdata,
     output wire logic           a_msg_present,
+    output wire logic           a_msg_ack,
     
     input wire logic            b_write_in,
     input wire logic            b_read_in,
@@ -15,11 +16,12 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     input wire logic [31:0]     b_wdata,
     output wire logic           b_ready,
     output wire logic [31:0]    b_rdata,
-    output wire logic           b_msg_present
+    output wire logic           b_msg_present,
+    output wire logic           b_msg_ack
     );                      
     
     localparam IP_VERSION = 1;
-      localparam message_depth = 3;
+    localparam message_depth = 3;
     
     // declarations
     
@@ -41,7 +43,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     reg         A_CTRL_WRITE;
     reg         A_CTRL_READ;
     reg         A_CTRL_READ_VALID;
-    reg [2:0]   A_CTRL_READ_DATA;
+    reg [5:0]   A_CTRL_READ_DATA;
     reg         A_MSG_PRESENT_IRQ;
     
     // B SIDE
@@ -60,7 +62,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     reg         B_CTRL_WRITE;
     reg         B_CTRL_READ;
     reg         B_CTRL_READ_VALID;
-    reg [2:0]   B_CTRL_READ_DATA;
+    reg [5:0]   B_CTRL_READ_DATA;
     reg         B_MSG_PRESENT_IRQ;
     
     
@@ -323,14 +325,16 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     .rd_a(A_CTRL_READ),
     .wr_b(B_CTRL_WRITE),
     .rd_b(B_CTRL_READ),
-    .wdata_a(A_DATA_IN[2:0]),
-    .wdata_b(B_DATA_IN[2:0]),
+    .wdata_a(A_DATA_IN[5:0]),
+    .wdata_b(B_DATA_IN[5:0]),
     .rdata_a(A_CTRL_READ_DATA),
     .rdata_b(B_CTRL_READ_DATA),
     .rvalid_a(A_CTRL_READ_VALID),
     .rvalid_b(B_CTRL_READ_VALID),
     .mp_irq_a(A_MSG_PRESENT_IRQ),
-    .mp_irq_b(B_MSG_PRESENT_IRQ)
+    .mp_irq_b(B_MSG_PRESENT_IRQ),
+    .ack_irq_a(a_msg_ack),
+    .ack_irq_b(b_msg_ack)
     );
     
     

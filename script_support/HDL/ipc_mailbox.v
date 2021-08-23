@@ -18,7 +18,9 @@ module IPC_MAILBOX #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, param
     output     logic        b_pready,
     output     logic        b_pslverr,
     output     logic        a_msg_present_irq,
-    output     logic        b_msg_present_irq
+    output     logic        b_msg_present_irq,
+    output     logic        a_msg_ack_irq,
+    output     logic        b_msg_ack_irq
     );  
     
     wire a_penable_net;
@@ -70,13 +72,15 @@ module IPC_MAILBOX #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, param
     .a_ready(a_pready_net),
     .a_rdata(a_prdata_net),
     .a_msg_present(a_msg_present_irq_net),
+    .a_msg_ack(a_msg_ack_irq),
     .b_write_in((b_penable_net && b_psel_net && b_pwrite_net)),
     .b_read_in((b_penable_net && b_psel_net && !b_pwrite_net)),
     .b_addr(b_paddr_net),
     .b_wdata(b_pwdata_net),
     .b_ready(b_pready_net),
     .b_rdata(b_prdata_net),
-    .b_msg_present(b_msg_present_irq_net)
+    .b_msg_present(b_msg_present_irq_net),
+    .b_msg_ack(b_msg_ack_irq)
     );
 
 endmodule

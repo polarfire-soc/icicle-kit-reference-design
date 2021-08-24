@@ -25,16 +25,6 @@ module APB_ARBITER #(select_bit = 28) (
     input     logic        out_0x5xxx_xxxx_pslverr
     );  
     
-    wire penable;
-    wire psel_0x4xxx_xxxx;
-    wire psel_0x5xxx_xxxx;
-    wire [31:0] paddr;
-    wire pwrite;
-    wire [31:0] pwdata;
-    wire [31:0] prdata;
-    wire pready;
-    wire pslverr;
-    
     assign out_0x4xxx_xxxx_penable = in_penable;
     assign out_0x5xxx_xxxx_penable = in_penable;
     

@@ -238,7 +238,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
                             B_READ_VALID <= B_CTRL_READ_VALID;
                         end
                         4'b0010: begin
-                            B_READ_DATA <= B_HART_ID;
+                            B_READ_DATA <= A_HART_ID;
                             B_READ_VALID <= 1;
                         end
                         4'b0011: begin

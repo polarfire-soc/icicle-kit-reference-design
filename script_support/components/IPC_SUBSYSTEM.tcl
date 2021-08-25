@@ -271,8 +271,8 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"U54_4_IRQ" "U54_4_IRQ_AGGREGATO
 
 # Add bus interface net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"APB3mmaster" "APB_ARBITER_0:APB_MMASTER" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"APB_ARBITER_0:APB_MASTER_0x4xxx_xxxx" "IPC_APB_0:APB3mmaster" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IPC_APB_1:APB3mmaster" "APB_ARBITER_0:APB_MASTER_0x5xxx_xxxx" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"APB_ARBITER_0:APB_MASTER_low" "IPC_APB_0:APB3mmaster" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"IPC_APB_1:APB3mmaster" "APB_ARBITER_0:APB_MASTER_high" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"HSS_E51_TO_U54_1:A_SIDE" "IPC_APB_0:APBmslave0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"HSS_E51_TO_U54_2:A_SIDE" "IPC_APB_0:APBmslave1" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"HSS_E51_TO_U54_3:A_SIDE" "IPC_APB_0:APBmslave2" }

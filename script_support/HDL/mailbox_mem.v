@@ -62,7 +62,7 @@ module mailbox_mem #(parameter MESSAGE_DEPTH = 1) (
     // Signal Declarations
     //-----------------------------------------------------------------------------
     logic  [31:0]     register[MESSAGE_DEPTH];
-    logic  [2:0]     wr_en;
+    logic  [(MESSAGE_DEPTH - 1):0]     wr_en;
     reg   [31:0]     read_data;
     reg                rd_valid;
     

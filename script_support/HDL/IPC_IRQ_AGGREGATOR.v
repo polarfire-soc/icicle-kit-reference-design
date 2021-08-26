@@ -79,7 +79,7 @@ module IPC_IRQ_AGGREGATOR (
         if (!presetn) begin
             prdata <= 0;
             pready <= 0;
-            control <= 0;
+            control <= 10'h3FF;
         end else begin
             if (psel) begin
                 case (paddr[3:0])

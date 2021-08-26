@@ -59,10 +59,10 @@ module IPC_MAILBOX #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, param
     output     logic [31:0] b_prdata,
     output     logic        b_pready,
     output     logic        b_pslverr,
-    output     logic        a_msg_present_irq,
-    output     logic        b_msg_present_irq,
-    output     logic        a_msg_ack_irq,
-    output     logic        b_msg_ack_irq
+    output     logic        SIDE_A_MSG_PRESENT,
+    output     logic        SIDE_A_ACK_FROM_B,
+    output     logic        SIDE_B_MSG_PRESENT,
+    output     logic        SIDE_B_ACK_FROM_A
     );  
     
     assign a_pslverr = 0;
@@ -77,16 +77,16 @@ module IPC_MAILBOX #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, param
     .a_wdata(a_pwdata),
     .a_ready(a_pready),
     .a_rdata(a_prdata),
-    .a_msg_present(a_msg_present_irq),
-    .a_msg_ack(a_msg_ack_irq),
+    .a_msg_present(SIDE_A_MSG_PRESENT),
+    .a_msg_ack(SIDE_B_ACK_FROM_A),
     .b_write_in((b_penable && b_psel && b_pwrite)),
     .b_read_in((b_penable && b_psel && !b_pwrite)),
     .b_addr(b_paddr),
     .b_wdata(b_pwdata),
     .b_ready(b_pready),
     .b_rdata(b_prdata),
-    .b_msg_present(b_msg_present_irq),
-    .b_msg_ack(b_msg_ack_irq)
+    .b_msg_present(SIDE_B_MSG_PRESENT),
+    .b_msg_ack(SIDE_A_ACK_FROM_B)
     );
 
 endmodule

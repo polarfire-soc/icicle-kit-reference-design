@@ -110,7 +110,6 @@ module mailbox_irqs (
             valid_b <= 0;
         end
         if (wr_a && resetn) begin
-            $display("A write: %x", wdata_a);
             A_AIE <= wdata_a[5];
             A_ACK <= wdata_a[4];
             B_ACK <= wdata_a[3];
@@ -119,7 +118,6 @@ module mailbox_irqs (
             B_MP <= wdata_a[0];
             valid_a <= 0;
         end else if (rd_a && resetn) begin 
-            $display("A read: %x", {B_MP, A_MP, A_MPIE});
             data_out_a <= {A_AIE, A_ACK, B_ACK, A_MPIE, A_MP, B_MP};
             valid_a <= 1;
         end else begin
@@ -127,7 +125,6 @@ module mailbox_irqs (
         end
         
         if (wr_b && resetn) begin
-            $display("B write: %x", wdata_b);
             B_AIE <= wdata_b[5];
             B_ACK <= wdata_b[4];
             A_ACK <= wdata_b[3];
@@ -136,7 +133,6 @@ module mailbox_irqs (
             A_MP <= wdata_b[0];
             valid_b <= 0;
         end else if (rd_b && resetn) begin 
-            $display("B read: %x", {A_MP, B_MP, B_MPIE});
             data_out_b <= {B_AIE, B_ACK, A_ACK, B_MPIE, B_MP, A_MP};
             valid_b <= 1;
         end else begin 

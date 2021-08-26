@@ -50,7 +50,7 @@ sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instan
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CONTEXT_U54_1_TO_U54_4} -params {\
 "A_HART_ID:1" \
 "B_HART_ID:4" \
-"MESSAGE_DEPTH:4" }\
+"MESSAGE_DEPTH:2" }\
 -validate_rules 0
 sd_save_core_instance_config -sd_name ${sd_name} -instance_name {CONTEXT_U54_1_TO_U54_4}
 sd_update_instance -sd_name ${sd_name} -instance_name {CONTEXT_U54_1_TO_U54_4}
@@ -63,7 +63,7 @@ sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instan
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CONTEXT_U54_1_TO_U54_2} -params {\
 "A_HART_ID:1" \
 "B_HART_ID:2" \
-"MESSAGE_DEPTH:4" }\
+"MESSAGE_DEPTH:2" }\
 -validate_rules 0
 sd_save_core_instance_config -sd_name ${sd_name} -instance_name {CONTEXT_U54_1_TO_U54_2}
 sd_update_instance -sd_name ${sd_name} -instance_name {CONTEXT_U54_1_TO_U54_2}
@@ -76,7 +76,7 @@ sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instan
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CONTEXT_U54_1_TO_U54_3} -params {\
 "A_HART_ID:1" \
 "B_HART_ID:3" \
-"MESSAGE_DEPTH:4" }\
+"MESSAGE_DEPTH:2" }\
 -validate_rules 0
 sd_save_core_instance_config -sd_name ${sd_name} -instance_name {CONTEXT_U54_1_TO_U54_3}
 sd_update_instance -sd_name ${sd_name} -instance_name {CONTEXT_U54_1_TO_U54_3}
@@ -89,7 +89,7 @@ sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instan
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CONTEXT_U54_2_TO_U54_3} -params {\
 "A_HART_ID:2" \
 "B_HART_ID:3" \
-"MESSAGE_DEPTH:4" }\
+"MESSAGE_DEPTH:2" }\
 -validate_rules 0
 sd_save_core_instance_config -sd_name ${sd_name} -instance_name {CONTEXT_U54_2_TO_U54_3}
 sd_update_instance -sd_name ${sd_name} -instance_name {CONTEXT_U54_2_TO_U54_3}
@@ -102,7 +102,7 @@ sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instan
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CONTEXT_U54_2_TO_U54_4} -params {\
 "A_HART_ID:2" \
 "B_HART_ID:4" \
-"MESSAGE_DEPTH:4" }\
+"MESSAGE_DEPTH:2" }\
 -validate_rules 0
 sd_save_core_instance_config -sd_name ${sd_name} -instance_name {CONTEXT_U54_2_TO_U54_4}
 sd_update_instance -sd_name ${sd_name} -instance_name {CONTEXT_U54_2_TO_U54_4}
@@ -115,7 +115,7 @@ sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instan
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CONTEXT_U54_3_TO_U54_4} -params {\
 "A_HART_ID:3" \
 "B_HART_ID:4" \
-"MESSAGE_DEPTH:4" }\
+"MESSAGE_DEPTH:2" }\
 -validate_rules 0
 sd_save_core_instance_config -sd_name ${sd_name} -instance_name {CONTEXT_U54_3_TO_U54_4}
 sd_update_instance -sd_name ${sd_name} -instance_name {CONTEXT_U54_3_TO_U54_4}

@@ -65,63 +65,27 @@ module IPC_MAILBOX #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, param
     output     logic        b_msg_ack_irq
     );  
     
-    wire a_penable_net;
-    wire a_psel_net;
-    wire [3:0] a_paddr_net;
-    wire a_pwrite_net;
-    wire [31:0] a_pwdata_net;
-    wire [31:0] a_prdata_net;
-    wire a_pready_net;
-    wire a_msg_present_irq_net;
-    
-    wire b_penable_net;
-    wire b_psel_net;
-    wire [3:0] b_paddr_net;
-    wire b_pwrite_net;
-    wire [31:0] b_pwdata_net;
-    wire [31:0] b_prdata_net;
-    wire b_pready_net;
-    wire b_msg_present_irq_net;
-    
     assign a_pslverr = 0;
     assign b_pslverr = 0;
-    
-    assign a_penable_net = a_penable;
-    assign a_psel_net = a_psel;
-    assign a_paddr_net = a_paddr;
-    assign a_pwrite_net = a_pwrite;
-    assign a_pwdata_net = a_pwdata;
-    assign a_prdata = a_prdata_net;
-    assign a_pready = a_pready_net;
-    assign a_msg_present_irq = a_msg_present_irq_net;
-    
-    assign b_penable_net = b_penable;
-    assign b_psel_net = b_psel;
-    assign b_paddr_net = b_paddr;
-    assign b_pwrite_net = b_pwrite;
-    assign b_pwdata_net = b_pwdata;
-    assign b_prdata = b_prdata_net;
-    assign b_pready = b_pready_net;
-    assign b_msg_present_irq = b_msg_present_irq_net;
     
     mailbox_ctrl #(.MESSAGE_DEPTH(MESSAGE_DEPTH), .A_HART_ID(A_HART_ID), .B_HART_ID(B_HART_ID)) amp_mailbox_ctrl (
     .clk(pclk),
     .resetn(presetn),
-    .a_write_in((a_penable_net && a_psel_net && a_pwrite_net)),
-    .a_read_in((a_penable_net && a_psel_net && !a_pwrite_net)),
-    .a_addr(a_paddr_net),
-    .a_wdata(a_pwdata_net),
-    .a_ready(a_pready_net),
-    .a_rdata(a_prdata_net),
-    .a_msg_present(a_msg_present_irq_net),
+    .a_write_in((a_penable && a_psel && a_pwrite)),
+    .a_read_in((a_penable && a_psel && !a_pwrite)),
+    .a_addr(a_paddr),
+    .a_wdata(a_pwdata),
+    .a_ready(a_pready),
+    .a_rdata(a_prdata),
+    .a_msg_present(a_msg_present_irq),
     .a_msg_ack(a_msg_ack_irq),
-    .b_write_in((b_penable_net && b_psel_net && b_pwrite_net)),
-    .b_read_in((b_penable_net && b_psel_net && !b_pwrite_net)),
-    .b_addr(b_paddr_net),
-    .b_wdata(b_pwdata_net),
-    .b_ready(b_pready_net),
-    .b_rdata(b_prdata_net),
-    .b_msg_present(b_msg_present_irq_net),
+    .b_write_in((b_penable && b_psel && b_pwrite)),
+    .b_read_in((b_penable && b_psel && !b_pwrite)),
+    .b_addr(b_paddr),
+    .b_wdata(b_pwdata),
+    .b_ready(b_pready),
+    .b_rdata(b_prdata),
+    .b_msg_present(b_msg_present_irq),
     .b_msg_ack(b_msg_ack_irq)
     );
 

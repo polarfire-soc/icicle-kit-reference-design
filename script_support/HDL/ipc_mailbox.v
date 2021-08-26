@@ -45,7 +45,7 @@ module IPC_MAILBOX #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, param
     input wire logic        presetn,
     input wire logic        a_penable,
     input wire logic        a_psel,
-    input wire logic [5:0] a_paddr,
+    input wire logic [5:2] a_paddr,
     input wire logic        a_pwrite,
     input wire logic [31:0] a_pwdata,
     output     logic [31:0] a_prdata,
@@ -53,7 +53,7 @@ module IPC_MAILBOX #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, param
     output     logic        a_pslverr,
     input wire logic        b_penable,
     input wire logic        b_psel,
-    input wire logic [5:0] b_paddr,
+    input wire logic [5:2] b_paddr,
     input wire logic        b_pwrite,
     input wire logic [31:0] b_pwdata,
     output     logic [31:0] b_prdata,
@@ -67,7 +67,7 @@ module IPC_MAILBOX #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, param
     
     wire a_penable_net;
     wire a_psel_net;
-    wire [5:0] a_paddr_net;
+    wire [3:0] a_paddr_net;
     wire a_pwrite_net;
     wire [31:0] a_pwdata_net;
     wire [31:0] a_prdata_net;
@@ -76,7 +76,7 @@ module IPC_MAILBOX #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, param
     
     wire b_penable_net;
     wire b_psel_net;
-    wire [5:0] b_paddr_net;
+    wire [3:0] b_paddr_net;
     wire b_pwrite_net;
     wire [31:0] b_pwdata_net;
     wire [31:0] b_prdata_net;

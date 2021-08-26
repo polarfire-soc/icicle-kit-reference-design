@@ -45,7 +45,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     input wire logic            resetn,
     input wire logic            a_write_in,
     input wire logic            a_read_in,
-    input wire logic [5:0]      a_addr,
+    input wire logic [3:0]      a_addr,
     input wire logic [31:0]     a_wdata,
     output wire logic           a_ready,
     output wire logic [31:0]    a_rdata,
@@ -54,7 +54,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     
     input wire logic            b_write_in,
     input wire logic            b_read_in,
-    input wire logic [5:0]      b_addr,
+    input wire logic [3:0]      b_addr,
     input wire logic [31:0]     b_wdata,
     output wire logic           b_ready,
     output wire logic [31:0]    b_rdata,
@@ -73,7 +73,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     reg [31:0]  A_READ_DATA;
     wire [31:0]  A_DATA_OUT;
     wire [31:0]  A_DATA_IN;
-    wire [5:0]   A_ADDR_IN;
+    wire [3:0]   A_ADDR_IN;
     reg [1:0]   A_SEL;
     reg         A_MSG_READ;
     reg         A_READ;
@@ -92,7 +92,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     reg [31:0]  B_READ_DATA;
     wire [31:0]  B_DATA_OUT;
     wire [31:0]  B_DATA_IN;
-    wire [5:0]   B_ADDR_IN;
+    wire [3:0]   B_ADDR_IN;
     reg [1:0]   B_SEL;
     reg         B_MSG_READ;
     reg         B_READ;
@@ -114,7 +114,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     assign a_rdata  =   A_READ_DATA;
     assign a_ready  =   A_READ_VALID || A_WRITE_VALID;
     assign A_READ   =   a_read_in;
-    assign A_ADDR_IN    =   a_addr[5:0];
+    assign A_ADDR_IN    =   a_addr[3:0];
     assign A_WRITE  =    a_write_in;
     assign A_DATA_IN    =   a_wdata;
     assign a_msg_present = A_MSG_PRESENT_IRQ;
@@ -124,7 +124,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     assign b_rdata  =   B_READ_DATA;
     assign b_ready  =   B_READ_VALID || B_WRITE_VALID;
     assign B_READ   =   b_read_in;
-    assign B_ADDR_IN    =   b_addr[5:0];
+    assign B_ADDR_IN    =   b_addr[3:0];
     assign B_WRITE  =    b_write_in;
     assign B_DATA_IN    =   b_wdata;
     assign b_msg_present = B_MSG_PRESENT_IRQ;     
@@ -133,7 +133,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     
     // A side select
     always @(posedge clk) begin
-        case (A_ADDR_IN[3:2])
+        case (A_ADDR_IN[1:0])
             default: A_SEL <= 0;
             2'b01: A_SEL <= 1;
             2'b10: A_SEL <= 2;
@@ -153,7 +153,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
             end
             default: begin
                 if (A_READ) begin
-                    case(A_ADDR_IN[5:2])
+                    case(A_ADDR_IN)
                         6'b0: begin
                             A_READ_DATA <= IP_VERSION;
                             A_READ_VALID <= 1;
@@ -212,7 +212,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
             end
             default: begin
                 if (A_WRITE) begin
-                    case(A_ADDR_IN[5:2])
+                    case(A_ADDR_IN)
                         4'b0001: begin
                             A_CTRL_WRITE <= 1;
                             A_WRITE_VALID <= 1;
@@ -249,7 +249,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
 
     // B side select
     always @(posedge clk) begin
-        case (B_ADDR_IN[3:2])
+        case (B_ADDR_IN[1:0])
             default: B_SEL <= 0;
             2'b01: B_SEL <= 1;
             2'b10: B_SEL <= 2;
@@ -269,7 +269,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
             end
             default: begin
                 if (B_READ) begin
-                    case(B_ADDR_IN[5:2])
+                    case(B_ADDR_IN)
                         6'b0: begin
                             B_READ_DATA <= IP_VERSION;
                             B_READ_VALID <= 1;
@@ -328,7 +328,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
             end
             default: begin
                 if (B_WRITE) begin
-                    case(B_ADDR_IN[5:2])
+                    case(B_ADDR_IN)
                         4'b0001: begin
                             B_CTRL_WRITE <= 1;
                             B_WRITE_VALID <= 1;

@@ -8,7 +8,7 @@ import_files \
          -hdl_source {script_support/HDL/mailbox_ctrl.v} \
          -hdl_source {script_support/HDL/mailbox_irqs.v} \
          -hdl_source {script_support/HDL/mailbox_mem.v} \
-         -hdl_source {script_support/HDL/IPC_IRQ_AGGREGATOR.v}
+         -hdl_source {script_support/HDL/ipc_irq_aggregator.v}
 
 build_design_hierarchy 
 
@@ -73,7 +73,7 @@ hdl_core_assign_bif_signal -hdl_core_name {IPC_MAILBOX} -bif_name {B_SIDE} -bif_
 hdl_core_assign_bif_signal -hdl_core_name {IPC_MAILBOX} -bif_name {B_SIDE} -bif_signal_name {PSLVERR} -core_signal_name {b_pslverr} 
 hdl_core_assign_bif_signal -hdl_core_name {IPC_MAILBOX} -bif_name {B_SIDE} -bif_signal_name {PSELx} -core_signal_name {b_psel} 
 
-create_hdl_core -file $project_dir/hdl/IPC_IRQ_AGGREGATOR.v -module {IPC_IRQ_AGGREGATOR} -library {work} -package {} 
+create_hdl_core -file $project_dir/hdl/ipc_irq_aggregator.v -module {IPC_IRQ_AGGREGATOR} -library {work} -package {} 
 hdl_core_add_bif -hdl_core_name {IPC_IRQ_AGGREGATOR} -bif_definition {APB:AMBA:AMBA2:slave} -bif_name {APB_SLAVE} -signal_map {} 
 hdl_core_assign_bif_signal -hdl_core_name {IPC_IRQ_AGGREGATOR} -bif_name {APB_SLAVE} -bif_signal_name {PADDR} -core_signal_name {paddr} 
 hdl_core_assign_bif_signal -hdl_core_name {IPC_IRQ_AGGREGATOR} -bif_name {APB_SLAVE} -bif_signal_name {PENABLE} -core_signal_name {penable} 

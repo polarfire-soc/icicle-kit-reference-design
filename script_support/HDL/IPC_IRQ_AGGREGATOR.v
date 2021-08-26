@@ -47,7 +47,7 @@ module IPC_IRQ_AGGREGATOR (
     input wire logic        psel,
     input wire logic [3:0]  paddr,
     input wire logic        pwrite,
-    input wire logic [4:0]  pwdata,
+    input wire logic [9:0]  pwdata,
     output     logic [9:0]  prdata,
     output     logic        pready,
     output     logic        pslverr,
@@ -68,7 +68,7 @@ module IPC_IRQ_AGGREGATOR (
     localparam IP_VERSION = 1;
     
     wire [9:0] irqs;
-    reg [4:0] control;
+    reg [9:0] control;
     reg ch0_irq, ch1_irq, ch2_irq, ch3_irq, ch4_irq;
     
     assign pslverr = 0;    
@@ -94,7 +94,7 @@ module IPC_IRQ_AGGREGATOR (
                             prdata <= control;
                             pready <= 1;
                         end else if (pwrite) begin
-                            control <= pwdata[4:0];
+                            control <= pwdata[9:0];
                             prdata <= 0;
                             pready <= 1;
                         end
@@ -119,30 +119,20 @@ module IPC_IRQ_AGGREGATOR (
         ch2_irq <= 0;
         ch3_irq <= 0;
         ch4_irq <= 0;
-        if (control[0]) begin
-            if (irqs[0] | irqs[1]) begin
-                ch0_irq <= 1;
-            end
+        if ((control[0] && irqs[0]) || (control[1] && irqs[1])) begin
+            ch0_irq <= 1;
         end
-        if (control[1]) begin
-            if (irqs[2] | irqs[3]) begin
-                ch1_irq <= 1;
-            end
+        if ((control[2] && irqs[2]) || (control[3] && irqs[3])) begin
+            ch1_irq <= 1;
         end
-        if (control[2]) begin
-            if (irqs[4] | irqs[5]) begin
-                ch2_irq <= 1;
-            end
+        if ((control[4] && irqs[4]) || (control[5] && irqs[5])) begin
+            ch2_irq <= 1;
         end
-        if (control[3]) begin
-            if (irqs[6] | irqs[7]) begin
-                ch3_irq <= 1;
-            end
+        if ((control[6] && irqs[6]) || (control[7] && irqs[7])) begin
+            ch3_irq <= 1;
         end
-        if (control[4]) begin
-            if (irqs[8] | irqs[9]) begin
-                ch4_irq <= 1;
-            end
+        if ((control[8] && irqs[8]) || (control[9] && irqs[9])) begin
+            ch4_irq <= 1;
         end
     end
 

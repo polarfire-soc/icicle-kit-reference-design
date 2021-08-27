@@ -150,7 +150,7 @@ This software tool takes user inputs and generates an MSS configuration file (.x
 The XML file is used by the PolarFire SoC Configuration Generator to generate configuration header files for bare metal applications.
 The MSS component file can be imported into a Libero SoC design and used in the FPGA design flow.
 
-A saved configuration for the PolarFire SoC MSS Configurator is available in the "script_support" folder and can be opened by the PolarFire SoC MSS Configurator. These configurations will match the MSS configuration used in the design and can be used to regenerate XML and a Libero component. For argument based designs MSS configuration files will be generated in the script_support/additional_configurations/[configuration name] directory when a design is generated.
+A saved configuration for the PolarFire SoC MSS Configurator is available in the "script_support" folder and can be opened by the PolarFire SoC MSS Configurator. These configurations will match the MSS configuration used in the design and can be used to regenerate XML and a Libero component. For argument based designs, MSS configuration files will be generated in the script_support/additional_configurations/[configuration name] directory when a design is generated.
 
 ## XML
 

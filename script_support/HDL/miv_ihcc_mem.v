@@ -40,53 +40,69 @@
 // limitations under the License.
 ////////////////////////////////////////////////////////////////////////////////
 
-module IPC_MAILBOX #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, parameter B_HART_ID = 1) (
-    input wire logic        pclk,
-    input wire logic        presetn,
-    input wire logic        a_penable,
-    input wire logic        a_psel,
-    input wire logic [5:2] a_paddr,
-    input wire logic        a_pwrite,
-    input wire logic [31:0] a_pwdata,
-    output     logic [31:0] a_prdata,
-    output     logic        a_pready,
-    output     logic        a_pslverr,
-    input wire logic        b_penable,
-    input wire logic        b_psel,
-    input wire logic [5:2] b_paddr,
-    input wire logic        b_pwrite,
-    input wire logic [31:0] b_pwdata,
-    output     logic [31:0] b_prdata,
-    output     logic        b_pready,
-    output     logic        b_pslverr,
-    output     logic        SIDE_A_MSG_PRESENT,
-    output     logic        SIDE_A_ACK_FROM_B,
-    output     logic        SIDE_B_MSG_PRESENT,
-    output     logic        SIDE_B_ACK_FROM_A
-    );  
+module miv_ihcc_mem #(parameter MESSAGE_DEPTH = 1) (
+    input wire logic            clk,
+    input wire logic            resetn,
+    input wire logic            wr,
+    input wire logic            rd,
+    input wire logic [1:0]      wr_sel,
+    input wire logic [1:0]      rd_sel,
+    input wire logic [31:0]     wdata,
+    output wire logic           wr_ready,
+    output wire logic [31:0]    rdata,
+    output wire logic           rvalid
+    );                      
     
-    assign a_pslverr = 0;
-    assign b_pslverr = 0;
+    //-----------------------------------------------------------------------------
+    // Parameters
+    //-----------------------------------------------------------------------------
     
-    mailbox_ctrl #(.MESSAGE_DEPTH(MESSAGE_DEPTH), .A_HART_ID(A_HART_ID), .B_HART_ID(B_HART_ID)) amp_mailbox_ctrl (
-    .clk(pclk),
-    .resetn(presetn),
-    .a_write_in((a_penable && a_psel && a_pwrite)),
-    .a_read_in((a_penable && a_psel && !a_pwrite)),
-    .a_addr(a_paddr),
-    .a_wdata(a_pwdata),
-    .a_ready(a_pready),
-    .a_rdata(a_prdata),
-    .a_msg_present(SIDE_A_MSG_PRESENT),
-    .a_msg_ack(SIDE_B_ACK_FROM_A),
-    .b_write_in((b_penable && b_psel && b_pwrite)),
-    .b_read_in((b_penable && b_psel && !b_pwrite)),
-    .b_addr(b_paddr),
-    .b_wdata(b_pwdata),
-    .b_ready(b_pready),
-    .b_rdata(b_prdata),
-    .b_msg_present(SIDE_B_MSG_PRESENT),
-    .b_msg_ack(SIDE_A_ACK_FROM_B)
-    );
+    
+    //-----------------------------------------------------------------------------
+    // Signal Declarations
+    //-----------------------------------------------------------------------------
+    logic  [31:0]     register[MESSAGE_DEPTH];
+    logic  [(MESSAGE_DEPTH - 1):0]     wr_en;
+    reg   [31:0]     read_data;
+    reg                rd_valid;
+    
 
+    //-----------------------------------------------------------------------------
+    // Assignments
+    //-----------------------------------------------------------------------------
+    assign rdata = read_data;
+    assign rvalid = rd_valid;
+    
+    // logic
+    genvar mbx_reg;
+    generate  
+        for (mbx_reg = 0; mbx_reg <= (MESSAGE_DEPTH - 1); mbx_reg++) begin : gen_mbx_regs
+
+            assign wr_en[mbx_reg] = wr & (wr_sel == mbx_reg[2:0]);
+
+            always @(posedge clk)
+            begin
+                if(wr_en[mbx_reg])
+                    register[mbx_reg] <= wdata;
+            end
+
+        end
+    endgenerate
+
+    assign wr_ready = 1'b1; // can always accept writes in this implemnetation when operand (wr data) is valid
+    
+      //read mux
+    always @*
+    begin
+        read_data = 32'b0;
+        rd_valid = 1'b0;
+        for(int i = 0; i <= MESSAGE_DEPTH - 1; i++) 
+        begin
+          if(rd & (rd_sel == i[2:0])) begin
+                read_data = register[i];
+                rd_valid = 1'b1;
+            end
+        end
+    end
+        
 endmodule

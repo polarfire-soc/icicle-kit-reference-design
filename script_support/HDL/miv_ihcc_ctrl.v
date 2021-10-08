@@ -40,7 +40,7 @@
 // limitations under the License.
 ////////////////////////////////////////////////////////////////////////////////
 
-module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, parameter B_HART_ID = 1)(
+module miv_ihcc_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, parameter B_HART_ID = 1)(
     input wire logic            clk,
     input wire logic            resetn,
     input wire logic            a_write_in,
@@ -360,7 +360,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     end
             
     // Interrupts
-    mailbox_irqs u_mailbox_irqs (
+    miv_ihcc_irqs u_miv_ihcc_ctrl (
     .clk(clk),
     .resetn(resetn),
     .wr_a(A_CTRL_WRITE),
@@ -382,7 +382,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
     
     // MAILBOXES
     
-    mailbox_mem  #(.MESSAGE_DEPTH(MESSAGE_DEPTH)) u_a_to_b_mem (
+    miv_ihcc_mem  #(.MESSAGE_DEPTH(MESSAGE_DEPTH)) u_a_to_b_mem (
         .clk(clk),
         .resetn(resetn),
         .wr((A_MBX_WRITE & !A_MSG_PRESENT_IRQ)),
@@ -395,7 +395,7 @@ module mailbox_ctrl #(parameter MESSAGE_DEPTH = 1, parameter A_HART_ID = 0, para
         .rvalid(B_MBX_READ_VALID)
     );
     
-    mailbox_mem  #(.MESSAGE_DEPTH(MESSAGE_DEPTH)) u_b_to_a_mem (
+    miv_ihcc_mem  #(.MESSAGE_DEPTH(MESSAGE_DEPTH)) u_b_to_a_mem (
         .clk(clk),
         .resetn(resetn),
         .wr((B_MBX_WRITE & !B_MSG_PRESENT_IRQ)),

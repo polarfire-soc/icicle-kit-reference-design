@@ -40,7 +40,7 @@
 // limitations under the License.
 ////////////////////////////////////////////////////////////////////////////////
 
-module mailbox_irqs (
+module miv_ihcc_ctrl (
     input wire logic            clk,
     input wire logic            resetn,
     input wire logic            wr_a,

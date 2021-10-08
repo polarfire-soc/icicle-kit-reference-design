@@ -1,5 +1,5 @@
-# Creating SmartDesign IPC_SUBSYSTEM
-set sd_name {IPC_SUBSYSTEM}
+# Creating SmartDesign IHC_SUBSYSTEM
+set sd_name {IHC_SUBSYSTEM}
 create_smartdesign -sd_name ${sd_name}
 
 # Disable auto promotion of pins of type 'pad'
@@ -45,7 +45,7 @@ sd_update_instance -sd_name ${sd_name} -instance_name {APB_ARBITER_0}
 
 
 # Add CHANNEL_U54_1_TO_U54_4 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {CHANNEL_U54_1_TO_U54_4}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCC} -instance_name {CHANNEL_U54_1_TO_U54_4}
 # Exporting Parameters of instance CHANNEL_U54_1_TO_U54_4
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CHANNEL_U54_1_TO_U54_4} -params {\
 "A_HART_ID:1" \
@@ -58,7 +58,7 @@ sd_update_instance -sd_name ${sd_name} -instance_name {CHANNEL_U54_1_TO_U54_4}
 
 
 # Add CHANNEL_U54_1_TO_U54_2 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {CHANNEL_U54_1_TO_U54_2}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCC} -instance_name {CHANNEL_U54_1_TO_U54_2}
 # Exporting Parameters of instance CHANNEL_U54_1_TO_U54_2
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CHANNEL_U54_1_TO_U54_2} -params {\
 "A_HART_ID:1" \
@@ -71,7 +71,7 @@ sd_update_instance -sd_name ${sd_name} -instance_name {CHANNEL_U54_1_TO_U54_2}
 
 
 # Add CHANNEL_U54_1_TO_U54_3 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {CHANNEL_U54_1_TO_U54_3}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCC} -instance_name {CHANNEL_U54_1_TO_U54_3}
 # Exporting Parameters of instance CHANNEL_U54_1_TO_U54_3
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CHANNEL_U54_1_TO_U54_3} -params {\
 "A_HART_ID:1" \
@@ -84,7 +84,7 @@ sd_update_instance -sd_name ${sd_name} -instance_name {CHANNEL_U54_1_TO_U54_3}
 
 
 # Add CHANNEL_U54_2_TO_U54_3 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {CHANNEL_U54_2_TO_U54_3}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCC} -instance_name {CHANNEL_U54_2_TO_U54_3}
 # Exporting Parameters of instance CHANNEL_U54_2_TO_U54_3
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CHANNEL_U54_2_TO_U54_3} -params {\
 "A_HART_ID:2" \
@@ -97,7 +97,7 @@ sd_update_instance -sd_name ${sd_name} -instance_name {CHANNEL_U54_2_TO_U54_3}
 
 
 # Add CHANNEL_U54_2_TO_U54_4 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {CHANNEL_U54_2_TO_U54_4}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCC} -instance_name {CHANNEL_U54_2_TO_U54_4}
 # Exporting Parameters of instance CHANNEL_U54_2_TO_U54_4
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CHANNEL_U54_2_TO_U54_4} -params {\
 "A_HART_ID:2" \
@@ -110,7 +110,7 @@ sd_update_instance -sd_name ${sd_name} -instance_name {CHANNEL_U54_2_TO_U54_4}
 
 
 # Add CHANNEL_U54_3_TO_U54_4 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {CHANNEL_U54_3_TO_U54_4}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCC} -instance_name {CHANNEL_U54_3_TO_U54_4}
 # Exporting Parameters of instance CHANNEL_U54_3_TO_U54_4
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CHANNEL_U54_3_TO_U54_4} -params {\
 "A_HART_ID:3" \
@@ -123,14 +123,14 @@ sd_update_instance -sd_name ${sd_name} -instance_name {CHANNEL_U54_3_TO_U54_4}
 
 
 # Add E51_IRQ_AGGREGATOR_0 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_IRQ_AGGREGATOR} -instance_name {E51_IRQ_AGGREGATOR_0}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCIA} -instance_name {E51_IRQ_AGGREGATOR_0}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {E51_IRQ_AGGREGATOR_0:CH0_MSG_PRESENT_IRQ} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {E51_IRQ_AGGREGATOR_0:CH0_ACK_IRQ} -value {GND}
 
 
 
 # Add CHANNEL_E51_TO_U54_1 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {CHANNEL_E51_TO_U54_1}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCC} -instance_name {CHANNEL_E51_TO_U54_1}
 # Exporting Parameters of instance CHANNEL_E51_TO_U54_1
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CHANNEL_E51_TO_U54_1} -params {\
 "A_HART_ID:0" \
@@ -143,7 +143,7 @@ sd_update_instance -sd_name ${sd_name} -instance_name {CHANNEL_E51_TO_U54_1}
 
 
 # Add CHANNEL_E51_TO_U54_2 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {CHANNEL_E51_TO_U54_2}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCC} -instance_name {CHANNEL_E51_TO_U54_2}
 # Exporting Parameters of instance CHANNEL_E51_TO_U54_2
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CHANNEL_E51_TO_U54_2} -params {\
 "A_HART_ID:0" \
@@ -156,7 +156,7 @@ sd_update_instance -sd_name ${sd_name} -instance_name {CHANNEL_E51_TO_U54_2}
 
 
 # Add CHANNEL_E51_TO_U54_3 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {CHANNEL_E51_TO_U54_3}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCC} -instance_name {CHANNEL_E51_TO_U54_3}
 # Exporting Parameters of instance CHANNEL_E51_TO_U54_3
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CHANNEL_E51_TO_U54_3} -params {\
 "A_HART_ID:0" \
@@ -169,7 +169,7 @@ sd_update_instance -sd_name ${sd_name} -instance_name {CHANNEL_E51_TO_U54_3}
 
 
 # Add CHANNEL_E51_TO_U54_4 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_MAILBOX} -instance_name {CHANNEL_E51_TO_U54_4}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCC} -instance_name {CHANNEL_E51_TO_U54_4}
 # Exporting Parameters of instance CHANNEL_E51_TO_U54_4
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {CHANNEL_E51_TO_U54_4} -params {\
 "A_HART_ID:0" \
@@ -192,28 +192,28 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {IPC_APB} -instance
 
 
 # Add U54_1_IRQ_AGGREGATOR instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_IRQ_AGGREGATOR} -instance_name {U54_1_IRQ_AGGREGATOR}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCIA} -instance_name {U54_1_IRQ_AGGREGATOR}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {U54_1_IRQ_AGGREGATOR:CH1_MSG_PRESENT_IRQ} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {U54_1_IRQ_AGGREGATOR:CH1_ACK_IRQ} -value {GND}
 
 
 
 # Add U54_2_IRQ_AGGREGATOR instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_IRQ_AGGREGATOR} -instance_name {U54_2_IRQ_AGGREGATOR}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCIA} -instance_name {U54_2_IRQ_AGGREGATOR}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {U54_2_IRQ_AGGREGATOR:CH2_MSG_PRESENT_IRQ} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {U54_2_IRQ_AGGREGATOR:CH2_ACK_IRQ} -value {GND}
 
 
 
 # Add U54_3_IRQ_AGGREGATOR instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_IRQ_AGGREGATOR} -instance_name {U54_3_IRQ_AGGREGATOR}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCIA} -instance_name {U54_3_IRQ_AGGREGATOR}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {U54_3_IRQ_AGGREGATOR:CH3_MSG_PRESENT_IRQ} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {U54_3_IRQ_AGGREGATOR:CH3_ACK_IRQ} -value {GND}
 
 
 
 # Add U54_4_IRQ_AGGREGATOR instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {IPC_IRQ_AGGREGATOR} -instance_name {U54_4_IRQ_AGGREGATOR}
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MIV_IHCIA} -instance_name {U54_4_IRQ_AGGREGATOR}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {U54_4_IRQ_AGGREGATOR:CH4_MSG_PRESENT_IRQ} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {U54_4_IRQ_AGGREGATOR:CH4_ACK_IRQ} -value {GND}
 
@@ -303,5 +303,5 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"IPC_APB_1:APBmslave8" "U54_4_IR
 auto_promote_pad_pins -promote_all 1
 # Save the smartDesign
 save_smartdesign -sd_name ${sd_name}
-# Generate SmartDesign IPC_SUBSYSTEM
+# Generate SmartDesign IHC_SUBSYSTEM
 generate_component -component_name ${sd_name}

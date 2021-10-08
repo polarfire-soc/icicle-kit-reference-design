@@ -40,7 +40,7 @@
 // limitations under the License.
 ////////////////////////////////////////////////////////////////////////////////
 
-module IPC_IRQ_AGGREGATOR (
+module MIV_IHCIA (
     input wire logic        pclk,
     input wire logic        presetn,
     input wire logic        penable,

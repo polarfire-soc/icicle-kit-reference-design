@@ -2,13 +2,13 @@
 import_files \
          -convert_EDN_to_HDL 0 \
          -library {work} \
-         -hdl_source {script_support/HDL/SDIO_register.v} \
-         -hdl_source {script_support/HDL/apb_arbiter.v} \
-         -hdl_source {script_support/HDL/miv_ihcc.v} \
-         -hdl_source {script_support/HDL/miv_ihcc_ctrl.v} \
-         -hdl_source {script_support/HDL/miv_ihcc_irqs.v} \
-         -hdl_source {script_support/HDL/miv_ihcc_mem.v} \
-         -hdl_source {script_support/HDL/miv_ihcia.v}
+         -hdl_source {script_support/HDL/Register/SDIO_register.v} \
+         -hdl_source {script_support/HDL/APB_arbiter/apb_arbiter.v} \
+         -hdl_source {script_support/HDL/MIV_IHC/MIV_IHCC/miv_ihcc.v} \
+         -hdl_source {script_support/HDL/MIV_IHC/MIV_IHCC/miv_ihcc_ctrl.v} \
+         -hdl_source {script_support/HDL/MIV_IHC/MIV_IHCC/miv_ihcc_irqs.v} \
+         -hdl_source {script_support/HDL/MIV_IHC/MIV_IHCC/miv_ihcc_mem.v} \
+         -hdl_source {script_support/HDL/MIV_IHC/MIV_IHCIA/miv_ihcia.v}
 
 build_design_hierarchy 
 

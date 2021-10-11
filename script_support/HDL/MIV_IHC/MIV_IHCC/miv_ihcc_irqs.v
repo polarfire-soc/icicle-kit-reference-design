@@ -40,7 +40,7 @@
 // limitations under the License.
 ////////////////////////////////////////////////////////////////////////////////
 
-module miv_ihcc_ctrl (
+module miv_ihcc_irqs (
     input wire logic            clk,
     input wire logic            resetn,
     input wire logic            wr_a,

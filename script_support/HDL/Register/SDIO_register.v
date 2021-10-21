@@ -52,7 +52,7 @@ module
         output     logic [31:0] prdata,
         output     logic        pready,
         output     logic        pslverr,
-        output     logic        SDIO_control	  
+        output     logic        SDIO_control      
         );                      
         
         //-----------------------------------------------------------------------------

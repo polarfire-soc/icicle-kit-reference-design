@@ -1,5 +1,5 @@
 #set_iobank -bank_name bank1 -vcci 3.3 -update_iostd true
-#set_io -port_name EXT_RST_N	-pin_name W18 -fixed true -DIRECTION INPUT
+#set_io -port_name EXT_RST_N    -pin_name W18 -fixed true -DIRECTION INPUT
 set_io -port_name SW1 -pin_name V19 -fixed true -DIRECTION INPUT
 set_io -port_name SW2 -pin_name U18 -fixed true -DIRECTION INPUT
 set_io -port_name SW3 -pin_name W19 -fixed true -DIRECTION INPUT

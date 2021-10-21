@@ -159,6 +159,6 @@ import_files \
          -convert_EDN_to_HDL 0 \
          -library {work} \
          -simulation "$local_dir/script_support/simulation/Wave.do" -simulation "$local_dir/script_support/simulation/ICICLE_MSS_PFSOC_MSS_FIC0_user.bfm" -simulation "$local_dir/script_support/simulation/ICICLE_MSS_PFSOC_MSS_FIC3_user.bfm"
-		 
+         
 # Configure simulation options
 set_modelsim_options  -include_do_file 1 -included_do_file "${project_dir}/simulation/Wave.do" -sim_runtime "10us"

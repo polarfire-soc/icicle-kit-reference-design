@@ -13,27 +13,27 @@ set_io -port_name RPi_GPIO16 -pin_name C6 -fixed true -DIRECTION OUTPUT -io_std 
 set_io -port_name RPi_GPIO20 -pin_name C5 -fixed true -DIRECTION OUTPUT -io_std LVCMOS33 
 set_io -port_name RPi_GPIO21 -pin_name C4 -fixed true -DIRECTION OUTPUT -io_std LVCMOS33 
 
-	set_io -port_name SPI_0_DI_F2M \
-    -pin_name G12	\
-    -fixed true	\
+    set_io -port_name SPI_0_DI_F2M \
+    -pin_name G12    \
+    -fixed true    \
     -io_std LVCMOS33  \
     -DIRECTION INPUT    
     
-set_io -port_name SPI_0_CLK_M2F	\
-    -pin_name C10	\
-    -fixed true	\
+set_io -port_name SPI_0_CLK_M2F    \
+    -pin_name C10    \
+    -fixed true    \
     -io_std LVCMOS33  \
     -DIRECTION OUTPUT
-	
-set_io -port_name SPI_0_DO_M2F	\
-    -pin_name D13	\
-    -fixed true	\
+    
+set_io -port_name SPI_0_DO_M2F    \
+    -pin_name D13    \
+    -fixed true    \
     -io_std LVCMOS33  \
     -DIRECTION OUTPUT
-	
-set_io -port_name SPI_0_SS1_M2F	\
-    -pin_name H13	\
-    -fixed true	\
+    
+set_io -port_name SPI_0_SS1_M2F    \
+    -pin_name H13    \
+    -fixed true    \
     -io_std LVCMOS33  \
     -DIRECTION OUTPUT
 

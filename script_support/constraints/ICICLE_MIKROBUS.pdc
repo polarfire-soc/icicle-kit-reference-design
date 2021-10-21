@@ -4,39 +4,39 @@ set_iobank -bank_name Bank1  \
     -update_iostd true
     
 set_io -port_name QSPI_DATA2 \
-    -pin_name E10	\
-    -fixed true	\
+    -pin_name E10    \
+    -fixed true    \
     -io_std LVCMOS33  \
     -DIRECTION INOUT    
     
-set_io -port_name QSPI_DATA3_OR_PWM	\
-    -pin_name E11	\
-    -fixed true	\
+set_io -port_name QSPI_DATA3_OR_PWM    \
+    -pin_name E11    \
+    -fixed true    \
     -io_std LVCMOS33  \
-	-RES_PULL Down \
+    -RES_PULL Down \
     -DIRECTION INOUT
     
 set_io -port_name I2C0_SCL \
-    -pin_name F12	\
-    -fixed true	\
+    -pin_name F12    \
+    -fixed true    \
     -io_std LVCMOS33  \
     -DIRECTION INOUT    
     
-set_io -port_name I2C0_SDA	\
-    -pin_name F13	\
-    -fixed true	\
+set_io -port_name I2C0_SDA    \
+    -pin_name F13    \
+    -fixed true    \
     -io_std LVCMOS33  \
     -DIRECTION INOUT
-	
-	set_io -port_name MMUART_4_RXD_F2M \
-    -pin_name A21	\
-    -fixed true	\
+    
+    set_io -port_name MMUART_4_RXD_F2M \
+    -pin_name A21    \
+    -fixed true    \
     -io_std LVCMOS33  \
     -DIRECTION INPUT    
     
-set_io -port_name MMUART_4_TXD_M2F	\
-    -pin_name B20	\
-    -fixed true	\
+set_io -port_name MMUART_4_TXD_M2F    \
+    -pin_name B20    \
+    -fixed true    \
     -io_std LVCMOS33  \
     -DIRECTION OUTPUT
-	
+    

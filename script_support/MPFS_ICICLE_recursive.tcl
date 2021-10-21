@@ -1,5 +1,5 @@
 if {[file isdirectory $local_dir/script_support/components/MSS]} {
-	file delete -force $local_dir/script_support/components/MSS
+    file delete -force $local_dir/script_support/components/MSS
 }
 file mkdir $local_dir/script_support/components/MSS
 exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/PF_SoC_MSS_Icicle.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS

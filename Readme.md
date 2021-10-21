@@ -84,7 +84,7 @@ The diagram below outlines the top level configuration of the FPGA fabric and sh
 
 ![Block diagram](./block_diagram.svg)
 
-The diagram below shows the Inter Hart Communication (IHC) subsystem confifguration used in the reference design:
+The diagram below shows the Inter Hart Communication (IHC) subsystem configuration used in the reference design:
 
 ![IHC subsystem block diagram](./IHC_SUBSYSTEM_block_diagram.svg)
 

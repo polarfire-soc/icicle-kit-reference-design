@@ -51,7 +51,6 @@ set install_loc [defvar_get -name ACTEL_SW_DIR]
 set mss_config_loc "$install_loc/bin64/pfsoc_mss"
 set local_dir [pwd]
 set constraint_path ./script_support/constraints
-set release_tag "2021.08"
 
 if {[info exists I2C_LOOPBACK]} {
     set project_name "MPFS_ICICLE_I2C_LOOPBACK"
@@ -235,7 +234,7 @@ if {[info exists SYNTHESIZE]} {
 
 if {[info exists HSS_UPDATE]} {
     if !{[file exists "./script_support/hss-bm1-p0.hex"]} {
-        if {[catch    {exec wget https://github.com/polarfire-soc/hart-software-services/releases/download/$release_tag/hss-bm1-p0.hex -P ./script_support/} issue]} {
+        if {[catch    {exec wget https://github.com/polarfire-soc/hart-software-services/releases/latest/download/hss-bm1-p0.hex -P ./script_support/} issue]} {
         }
     }
     create_eNVM_config "$local_dir/script_support/components/MSS/ENVM.cfg" "$local_dir/script_support/hss-bm1-p0.hex"

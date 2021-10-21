@@ -115,19 +115,44 @@ The following MSS peripherals are enabled:
 
 ### Memory map
 
-| Initiator                 | Bus            | Target                    | Address range                     |
-|-------------------------  |--------------  |-------------------------  |-------------------------------    |
-| MSS: FIC0                 | AXI4_mslave0   | PF_PCIE_C0_0              | 0x20_0000_0000 -> 0x2f_ffff_ffff  |
-| MSS: FIC0                 | AXI4_mslave1   | MSS_LSRAM                 | 0x6100_0000 -> 0x6100_1000        |
-| MSS: FIC0                 | AXI4_mslave2   | DMA_CONTROLLER            | 0x6002_0000 -> 0x6002_ffff        |
-| MSS: FIC3                 | APBmslave1     | PWM                       | 0x4100_0000 -> 0x41ff_ffff        |
-| MSS: FIC3                 | APBmslave2     | CoreGPIO                  | 0x4200_0000 -> 0x42ff_ffff        |
-| MSS: FIC3                 | APBmslave16    | RECONFIGURATION_INTERFACE | 0x4300_0000 -> 0x43ff_ffff        |
-| MSS: FIC3                 | APBmslave16    | RECONFIGURATION_INTERFACE | 0x4800_0000 -> 0x48ff_ffff        |
-| MSS: FIC3                 | APBmslave15    | SDIO_register             | 0x4f00_0000 -> 0x4fff_ffff        |
-| PF_PCIE_C0_0              | AXI4_mslave0   | MSS: FIC0                 | 0x6000_0000 -> 0xbfff_ffff        |
-| PF_PCIE_C0_0              | AXI4_mslave1   | PCIE_LSRAM                | 0x0 -> 0xfff                      |
-| DMA_CONTROLLER            | AXI4_mslave0   | MSS: FIC1                 | 0xc000_0000 -> 0xcfff_ffff        |
+| Initiator                 | Bus                        | Target                    | Address range                     |
+|-------------------------  |--------------------------  |-------------------------  |-------------------------------    |
+| MSS: FIC0                 | AXI4_mslave0               | PF_PCIE_C0_0              | 0x20_0000_0000 -> 0x2F_FFFF_FFFF  |
+| MSS: FIC0                 | AXI4_mslave1               | MSS_LSRAM                 | 0x6100_0000 -> 0x6100_1000        |
+| MSS: FIC0                 | AXI4_mslave2               | DMA_CONTROLLER            | 0x6002_0000 -> 0x6002_FFFF        |
+| MSS: FIC3                 | APBmslave1                 | PWM                       | 0x4100_0000 -> 0x41FF_FFFF        |
+| MSS: FIC3                 | APBmslave2                 | CoreGPIO                  | 0x4200_0000 -> 0x42FF_FFFF        |
+| MSS: FIC3                 | APBmslave16                | RECONFIGURATION_INTERFACE | 0x4300_0000 -> 0x43FF_FFFF        |
+| MSS: FIC3                 | APBmslave16                | RECONFIGURATION_INTERFACE | 0x4800_0000 -> 0x48FF_FFFF        |
+| MSS: FIC3                 | APBmslave15                | SDIO_register             | 0x4F00_0000 -> 0x4FFF_FFFF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_1:A    | 0x5000_0000 -> 0x5000_00FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_2:A    | 0x5000_0100 -> 0x5000_01FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_3:A    | 0x5000_0200 -> 0x5000_02FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_4:A    | 0x5000_0300 -> 0x5000_03FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | E51_IRQ_AGGREGATOR        | 0x5000_0400 -> 0x5000_04FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_1:B    | 0x5000_0500 -> 0x5000_05FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_2:A  | 0x5000_0600 -> 0x5000_06FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_3:A  | 0x5000_0700 -> 0x5000_07FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_4:A  | 0x5000_0800 -> 0x5000_08FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | U54_1_IRQ_AGGREGATOR      | 0x5000_0900 -> 0x5000_09FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_2:B    | 0x5000_0A00 -> 0x5000_0AFF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_2:B  | 0x5000_0B00 -> 0x5000_0BFF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_3:A  | 0x5000_0C00 -> 0x5000_0CFF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_4:A  | 0x5000_0D00 -> 0x5000_0DFF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | U54_2_IRQ_AGGREGATOR      | 0x5000_0E00 -> 0x5000_0EFF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_3:B    | 0x5000_0F00 -> 0x5000_0FFF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_3:B  | 0x5000_1000 -> 0x5000_10FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_3:B  | 0x5000_1100 -> 0x5000_11FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_3_TO_U54_4:A  | 0x5000_1200 -> 0x5000_12FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | U54_3_IRQ_AGGREGATOR      | 0x5000_1300 -> 0x5000_13FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_4:B    | 0x5000_1400 -> 0x5000_14FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_4:B  | 0x5000_1500 -> 0x5000_15FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_4:B  | 0x5000_1600 -> 0x5000_16FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_3_TO_U54_4:B  | 0x5000_1700 -> 0x5000_17FF        |
+| MSS: FIC3                 | IHC_SUBSYSTEM: APB3mmaster | U54_4_IRQ_AGGREGATOR      | 0x5000_1800 -> 0x5000_18FF        |
+| PF_PCIE_C0_0              | AXI4_mslave0               | MSS: FIC0                 | 0x6000_0000 -> 0xBFFF_FFFF        |
+| PF_PCIE_C0_0              | AXI4_mslave1               | PCIE_LSRAM                | 0x0 -> 0xFFF                      |
+| DMA_CONTROLLER            | AXI4_mslave0               | MSS: FIC1                 | 0xC000_0000 -> 0xCFFF_FFFF        |
 
 ### Interrupt map
 
@@ -136,6 +161,11 @@ The following MSS peripherals are enabled:
 | MSS_GPIO_2_28 \| SW1  	| MSS_INT_FTM[0]     	|
 | PF_PCIE               	| MSS_INT_FTM[1]     	|
 | DMA_CONTROLLER         	| MSS_INT_FTM[2]     	|
+| IHC_SUBSYSTEM:E51_IRQ  	| MSS_INT_FTM[63]     |
+| IHC_SUBSYSTEM:U54_1_IRQ	| MSS_INT_FTM[62]     |
+| IHC_SUBSYSTEM:U54_2_IRQ	| MSS_INT_FTM[61]     |
+| IHC_SUBSYSTEM:U54_3_IRQ	| MSS_INT_FTM[60]     |
+| IHC_SUBSYSTEM:U54_4_IRQ	| MSS_INT_FTM[59]     |
 | MSS_GPIO_2_26 \| SW2  	| MSS_GPIO_2_INT[30] 	|
 | MSS_GPIO_2_27 \| SW3  	| MSS_GPIO_2_INT[31] 	|
 

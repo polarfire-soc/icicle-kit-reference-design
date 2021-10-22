@@ -181,13 +181,13 @@ sd_update_instance -sd_name ${sd_name} -instance_name {CHANNEL_E51_TO_U54_4}
 
 
 
-# Add IPC_APB_0 instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {IPC_APB} -instance_name {IPC_APB_0}
+# Add IHC_APB_0 instance
+sd_instantiate_component -sd_name ${sd_name} -component_name {IHC_APB} -instance_name {IHC_APB_0}
 
 
 
-# Add IPC_APB_1 instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {IPC_APB} -instance_name {IPC_APB_1}
+# Add IHC_APB_1 instance
+sd_instantiate_component -sd_name ${sd_name} -component_name {IHC_APB} -instance_name {IHC_APB_1}
 
 
 
@@ -271,33 +271,33 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"U54_4_IRQ" "U54_4_IRQ_AGGREGATO
 
 # Add bus interface net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"APB3mmaster" "APB_ARBITER_0:APB_MMASTER" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"APB_ARBITER_0:APB_MASTER_low" "IPC_APB_0:APB3mmaster" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IPC_APB_1:APB3mmaster" "APB_ARBITER_0:APB_MASTER_high" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_E51_TO_U54_1:A_SIDE" "IPC_APB_0:APBmslave0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_E51_TO_U54_2:A_SIDE" "IPC_APB_0:APBmslave1" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_E51_TO_U54_3:A_SIDE" "IPC_APB_0:APBmslave2" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_E51_TO_U54_4:A_SIDE" "IPC_APB_0:APBmslave3" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"E51_IRQ_AGGREGATOR_0:APB_SLAVE" "IPC_APB_0:APBmslave4" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_E51_TO_U54_1:B_SIDE" "IPC_APB_0:APBmslave5" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_1_TO_U54_2:A_SIDE" "IPC_APB_0:APBmslave6" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_1_TO_U54_3:A_SIDE" "IPC_APB_0:APBmslave7" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_1_TO_U54_4:A_SIDE" "IPC_APB_0:APBmslave8" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"U54_1_IRQ_AGGREGATOR:APB_SLAVE" "IPC_APB_0:APBmslave9" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_E51_TO_U54_2:B_SIDE" "IPC_APB_0:APBmslave10" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_1_TO_U54_2:B_SIDE" "IPC_APB_0:APBmslave11" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_2_TO_U54_3:A_SIDE" "IPC_APB_0:APBmslave12" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_2_TO_U54_4:A_SIDE" "IPC_APB_0:APBmslave13" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"U54_2_IRQ_AGGREGATOR:APB_SLAVE" "IPC_APB_0:APBmslave14" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_E51_TO_U54_3:B_SIDE" "IPC_APB_0:APBmslave15" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_1_TO_U54_3:B_SIDE" "IPC_APB_1:APBmslave0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_2_TO_U54_3:B_SIDE" "IPC_APB_1:APBmslave1" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IPC_APB_1:APBmslave2" "CHANNEL_U54_3_TO_U54_4:A_SIDE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IPC_APB_1:APBmslave3" "U54_3_IRQ_AGGREGATOR:APB_SLAVE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IPC_APB_1:APBmslave4" "CHANNEL_E51_TO_U54_4:B_SIDE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_1_TO_U54_4:B_SIDE" "IPC_APB_1:APBmslave5" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IPC_APB_1:APBmslave6" "CHANNEL_U54_2_TO_U54_4:B_SIDE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IPC_APB_1:APBmslave7" "CHANNEL_U54_3_TO_U54_4:B_SIDE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IPC_APB_1:APBmslave8" "U54_4_IRQ_AGGREGATOR:APB_SLAVE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"APB_ARBITER_0:APB_MASTER_low" "IHC_APB_0:APB3mmaster" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_APB_1:APB3mmaster" "APB_ARBITER_0:APB_MASTER_high" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_E51_TO_U54_1:A_SIDE" "IHC_APB_0:APBmslave0" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_E51_TO_U54_2:A_SIDE" "IHC_APB_0:APBmslave1" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_E51_TO_U54_3:A_SIDE" "IHC_APB_0:APBmslave2" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_E51_TO_U54_4:A_SIDE" "IHC_APB_0:APBmslave3" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"E51_IRQ_AGGREGATOR_0:APB_SLAVE" "IHC_APB_0:APBmslave4" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_E51_TO_U54_1:B_SIDE" "IHC_APB_0:APBmslave5" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_1_TO_U54_2:A_SIDE" "IHC_APB_0:APBmslave6" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_1_TO_U54_3:A_SIDE" "IHC_APB_0:APBmslave7" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_1_TO_U54_4:A_SIDE" "IHC_APB_0:APBmslave8" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"U54_1_IRQ_AGGREGATOR:APB_SLAVE" "IHC_APB_0:APBmslave9" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_E51_TO_U54_2:B_SIDE" "IHC_APB_0:APBmslave10" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_1_TO_U54_2:B_SIDE" "IHC_APB_0:APBmslave11" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_2_TO_U54_3:A_SIDE" "IHC_APB_0:APBmslave12" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_2_TO_U54_4:A_SIDE" "IHC_APB_0:APBmslave13" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"U54_2_IRQ_AGGREGATOR:APB_SLAVE" "IHC_APB_0:APBmslave14" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_E51_TO_U54_3:B_SIDE" "IHC_APB_0:APBmslave15" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_1_TO_U54_3:B_SIDE" "IHC_APB_1:APBmslave0" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_2_TO_U54_3:B_SIDE" "IHC_APB_1:APBmslave1" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_APB_1:APBmslave2" "CHANNEL_U54_3_TO_U54_4:A_SIDE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_APB_1:APBmslave3" "U54_3_IRQ_AGGREGATOR:APB_SLAVE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_APB_1:APBmslave4" "CHANNEL_E51_TO_U54_4:B_SIDE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CHANNEL_U54_1_TO_U54_4:B_SIDE" "IHC_APB_1:APBmslave5" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_APB_1:APBmslave6" "CHANNEL_U54_2_TO_U54_4:B_SIDE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_APB_1:APBmslave7" "CHANNEL_U54_3_TO_U54_4:B_SIDE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_APB_1:APBmslave8" "U54_4_IRQ_AGGREGATOR:APB_SLAVE" }
 
 # Re-enable auto promotion of pins of type 'pad'
 auto_promote_pad_pins -promote_all 1

@@ -1,8 +1,8 @@
-# Exporting Component Description of IPC_APB to TCL
+# Exporting Component Description of IHC_APB to TCL
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
-# Create and Configure the core component IPC_APB
-create_and_configure_core -core_vlnv {Actel:DirectCore:CoreAPB3:4.2.100} -component_name {IPC_APB} -params {\
+# Create and Configure the core component IHC_APB
+create_and_configure_core -core_vlnv {Actel:DirectCore:CoreAPB3:4.2.100} -component_name {IHC_APB} -params {\
 "APB_DWIDTH:32"  \
 "APBSLOT0ENABLE:true"  \
 "APBSLOT1ENABLE:true"  \
@@ -39,4 +39,4 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:CoreAPB3:4.2.100} -compon
 "SC_14:false"  \
 "SC_15:false"  \
 "UPR_NIBBLE_POSN:6"   }
-# Exporting Component Description of IPC_APB to TCL done
+# Exporting Component Description of IHC_APB to TCL done

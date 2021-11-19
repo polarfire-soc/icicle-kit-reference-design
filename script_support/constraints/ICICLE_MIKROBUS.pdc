@@ -28,7 +28,7 @@ set_io -port_name mBUS_I2C_SDA    \
     -io_std LVCMOS33  \
     -DIRECTION INOUT
     
-    set_io -port_name mBUS_UART_RX \
+set_io -port_name mBUS_UART_RX \
     -pin_name A21    \
     -fixed true    \
     -io_std LVCMOS33  \
@@ -40,3 +40,9 @@ set_io -port_name mBUS_UART_TX    \
     -io_std LVCMOS33  \
     -DIRECTION OUTPUT
     
+set_io -port_name mBUS_INT \
+    -pin_name A20    \
+    -fixed true    \
+    -io_std LVCMOS33  \
+    -RES_PULL Down \
+    -DIRECTION INPUT

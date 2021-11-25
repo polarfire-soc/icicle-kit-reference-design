@@ -89,3 +89,14 @@ set_io -port_name COREI2C_C0_SDA    \
     -RES_PULL Down \
     -DIRECTION INOUT
 
+set_io -port_name COREUART_TX    \
+    -pin_name A7    \
+    -fixed true    \
+    -io_std LVCMOS33  \
+    -DIRECTION OUTPUT
+    
+set_io -port_name COREUART_RX    \
+    -pin_name H15    \
+    -fixed true    \
+    -io_std LVCMOS33  \
+    -DIRECTION INPUT

@@ -74,4 +74,18 @@ set_io -port_name SPI_0_SS1_M2F    \
     -fixed true    \
     -io_std LVCMOS33  \
     -DIRECTION OUTPUT
+    
+set_io -port_name COREI2C_C0_SCL    \
+    -pin_name B8    \
+    -fixed true    \
+    -io_std LVCMOS33  \
+    -RES_PULL Down \
+    -DIRECTION INOUT
+    
+set_io -port_name COREI2C_C0_SDA    \
+    -pin_name A8    \
+    -fixed true    \
+    -io_std LVCMOS33  \
+    -RES_PULL Down \
+    -DIRECTION INOUT
 

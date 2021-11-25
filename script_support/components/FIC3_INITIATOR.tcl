@@ -8,7 +8,7 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:CoreAPB3:4.2.100} -compon
 "APBSLOT1ENABLE:true"  \
 "APBSLOT2ENABLE:true"  \
 "APBSLOT3ENABLE:false"  \
-"APBSLOT4ENABLE:false"  \
+"APBSLOT4ENABLE:true"  \
 "APBSLOT5ENABLE:false"  \
 "APBSLOT6ENABLE:false"  \
 "APBSLOT7ENABLE:false"  \

@@ -129,6 +129,8 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_VOLT_DIR_0_EMMC_UNUSED}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CD_EMMC_STRB} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_WP_EMMC_RSTN} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {mBUS_INT} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {COREI2C_C0_SCL} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {COREI2C_C0_SDA} -port_direction {INOUT} -port_is_pad {1}
 
 
 sd_create_bus_port -sd_name ${sd_name} -port_name {CA} -port_direction {OUT} -port_range {[5:0]} -port_is_pad {1}
@@ -205,6 +207,26 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {I2C0_SDA_BIBUF:D} -v
 sd_instantiate_component -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -component_name {IHC_SUBSYSTEM} -instance_name {IHC_SUBSYSTEM_0} 
 
 
+# Add COREI2C_C0 instance
+sd_instantiate_component -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -component_name {COREI2C_C0} -instance_name {COREI2C_C0_0} 
+sd_create_pin_slices -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_name {COREI2C_C0_0:SCLI} -pin_slices {"[0:0]"} 
+sd_create_pin_slices -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_name {COREI2C_C0_0:SCLO} -pin_slices {"[0:0]"} 
+sd_create_pin_slices -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_name {COREI2C_C0_0:SDAI} -pin_slices {"[0:0]"} 
+sd_create_pin_slices -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_name {COREI2C_C0_0:SDAO} -pin_slices {"[0:0]"} 
+sd_create_pin_slices -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_name {COREI2C_C0_0:INT} -pin_slices {"[0:0]"} 
+
+
+# Add COREI2C_C0_0_BIBUF instance
+sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {COREI2C_C0_0_SCL_BIBUF}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {COREI2C_C0_0_SCL_BIBUF:D} -value {GND}
+
+
+
+# Add COREI2C_C0_0_BIBUF instance
+sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {COREI2C_C0_0_SDA_BIBUF}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {COREI2C_C0_0_SDA_BIBUF:D} -value {GND}
+
+
 
 # Add MSS instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {ICICLE_MSS} -instance_name {ICICLE_MSS}
@@ -212,13 +234,14 @@ sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[1]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[2]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[3]}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[58:4]}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[4]}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[58:5]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[59]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[60]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[61]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[62]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[63]}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {ICICLE_MSS:MSS_INT_F2M[58:4]} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {ICICLE_MSS:MSS_INT_F2M[58:5]} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {ICICLE_MSS:SPI_0_SS_F2M} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {ICICLE_MSS:SPI_0_CLK_F2M} -value {GND}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:MMUART_0_TXD_OE_M2F}
@@ -469,11 +492,11 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:CAN_1_TXBUS" "CAN_1_
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "ICICLE_MSS:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "ICICLE_MSS:CK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CKE" "ICICLE_MSS:CKE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_SUBSYSTEM_0:pclk" "PWM:PCLK" "RECONFIGURATION_INTERFACE_0:PCLK" "ICICLE_MSS:FIC_3_PCLK" "COREGPIO_C0:PCLK" "sdio_register_0:pclk" "CLOCKS_AND_RESETS:CLK_62_5MHz" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_0:PCLK" "IHC_SUBSYSTEM_0:pclk" "PWM:PCLK" "RECONFIGURATION_INTERFACE_0:PCLK" "ICICLE_MSS:FIC_3_PCLK" "COREGPIO_C0:PCLK" "sdio_register_0:pclk" "CLOCKS_AND_RESETS:CLK_62_5MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:FIC_2_ACLK" "ICICLE_MSS:FIC_1_ACLK" "PCIE_INITIATOR:ACLK" "ICICLE_MSS:FIC_0_ACLK" "DMA_INITIATOR:ACLK" "PCIE_LSRAM:ACLK" "MSS_LSRAM:ACLK" "FIC0_INITIATOR:ACLK" "DMA_CONTROLLER:CLOCK" "PCIE:AXI_CLK" "CLOCKS_AND_RESETS:CLK_125MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIE_1_TL_CLK_125MHz" "CLOCKS_AND_RESETS:PCIe_CLK_125MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE1_CDR_REF_CLK_0" "PCIE:PCIESS_LANE2_CDR_REF_CLK_0" "PCIE:PCIESS_LANE3_CDR_REF_CLK_0" "PCIE:PCIESS_LANE0_CDR_REF_CLK_0" "CLOCKS_AND_RESETS:PCIe_REFERENCE_CLK" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_SUBSYSTEM_0:presetn" "PWM:PRESETN" "RECONFIGURATION_INTERFACE_0:PRESETN" "COREGPIO_C0:PRESETN" "sdio_register_0:presetn" "CLOCKS_AND_RESETS:RESETN_CLK_62_5MHz" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_0:PRESETN" "IHC_SUBSYSTEM_0:presetn" "PWM:PRESETN" "RECONFIGURATION_INTERFACE_0:PRESETN" "COREGPIO_C0:PRESETN" "sdio_register_0:presetn" "CLOCKS_AND_RESETS:RESETN_CLK_62_5MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CS" "ICICLE_MSS:CS" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[2]" "DMA_CONTROLLER:INTERRUPT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C0_SCL_BIBUF:PAD" "mBUS_I2C_SCL" }
@@ -619,6 +642,13 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[61]" "IH
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[60]" "IHC_SUBSYSTEM_0:U54_3_IRQ" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[59]" "IHC_SUBSYSTEM_0:U54_4_IRQ" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[3]" "mBUS_INT" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[4]" "COREI2C_C0_0:INT[0:0]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_0_SCL_BIBUF:PAD" "COREI2C_C0_SCL" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_0_SDA_BIBUF:PAD" "COREI2C_C0_SDA" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_0:SCLO[0:0]" "COREI2C_C0_0_SCL_BIBUF:E" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_0:SCLI[0:0]" "COREI2C_C0_0_SCL_BIBUF:Y" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_0:SDAO[0:0]" "COREI2C_C0_0_SDA_BIBUF:E" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_0:SDAI[0:0]" "COREI2C_C0_0_SDA_BIBUF:Y" }
 
 # Add bus net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:CA" "CA" }
@@ -667,6 +697,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE0_DRI_SLAVE" "R
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE1_DRI_SLAVE" "RECONFIGURATION_INTERFACE_0:Q0_LANE1_DRI" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE2_DRI_SLAVE" "RECONFIGURATION_INTERFACE_0:Q0_LANE2_DRI" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE3_DRI_SLAVE" "RECONFIGURATION_INTERFACE_0:Q0_LANE3_DRI" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_0:APBslave" "FIC3_INITIATOR:APBmslave4"} 
 
 # Mark pins unused
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {COREGPIO_C0:INT}

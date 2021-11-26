@@ -80,10 +80,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {CAN_1_TXBUS} -port_directi
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_SEL0} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_SEL1} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_EN_N} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO5} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO6} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO13} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO19} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_CS} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_CLK} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA0} -port_direction {INOUT} -port_is_pad {1}
@@ -110,10 +106,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD2_P} -port_
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD2_N} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD3_P} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD3_N} -port_direction {OUT} -port_is_pad {1}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO12} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO16} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO20} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO21} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CLK_EMMC_CLK} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CMD_EMMC_CMD} -port_direction {INOUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA0_EMMC_DATA0} -port_direction {INOUT}
@@ -131,7 +123,22 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_WP_EMMC_RSTN} -port_dir
 sd_create_scalar_port -sd_name ${sd_name} -port_name {mBUS_INT} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {COREI2C_C0_SCL} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {COREI2C_C0_SDA} -port_direction {INOUT} -port_is_pad {1}
-
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO5} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO6} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO12} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO13} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO16} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO17} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO18} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO19} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO20} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO21} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO22} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO23} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO24} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO25} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO26} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO27} -port_direction {INOUT} -port_is_pad {1}
 
 sd_create_bus_port -sd_name ${sd_name} -port_name {CA} -port_direction {OUT} -port_range {[5:0]} -port_is_pad {1}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQ} -port_direction {INOUT} -port_range {[31:0]} -port_is_pad {1}
@@ -239,7 +246,6 @@ sd_mark_pins_unused -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {CoreUARTa
 sd_mark_pins_unused -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {CoreUARTapb_C0_0:RXRDY} 
 
 
-
 # Add MSS_GPIO_2_16_OR_COREGPIO_C0_GPIO_OUT_0 instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {OR2} -instance_name {MSS_GPIO_2_16_OR_COREGPIO_C0_GPIO_OUT_0}
 
@@ -301,6 +307,134 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:MAC_1_TSU_DELAY_R
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:MAC_1_TSU_PDELAY_REQ_RX_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:MAC_1_TSU_PDELAY_RESP_RX_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:FIC_2_AXI4_SLAVE}
+
+
+# Add GPIO_2_0_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_0_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_0_IO:D" "ICICLE_MSS:GPIO_2_M2F_0"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_0_IO:Y" "ICICLE_MSS:GPIO_2_F2M_0"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_0_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_0"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_0_IO:PAD" "RPi_GPIO5" }
+
+
+# Add GPIO_2_1_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_1_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_1_IO:D" "ICICLE_MSS:GPIO_2_M2F_1"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_1_IO:Y" "ICICLE_MSS:GPIO_2_F2M_1"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_1_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_1"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_1_IO:PAD" "RPi_GPIO6" }
+
+
+# Add GPIO_2_2_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_2_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_2_IO:D" "ICICLE_MSS:GPIO_2_M2F_2"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_2_IO:Y" "ICICLE_MSS:GPIO_2_F2M_2"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_2_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_2"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_2_IO:PAD" "RPi_GPIO12" }
+
+
+# Add GPIO_2_3_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_3_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_3_IO:D" "ICICLE_MSS:GPIO_2_M2F_3"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_3_IO:Y" "ICICLE_MSS:GPIO_2_F2M_3"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_3_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_3"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_3_IO:PAD" "RPi_GPIO13" }
+
+
+# Add GPIO_2_4_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_4_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_4_IO:D" "ICICLE_MSS:GPIO_2_M2F_4"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_4_IO:Y" "ICICLE_MSS:GPIO_2_F2M_4"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_4_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_4"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_4_IO:PAD" "RPi_GPIO16" }
+
+
+# Add GPIO_2_5_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_5_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_5_IO:D" "ICICLE_MSS:GPIO_2_M2F_5"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_5_IO:Y" "ICICLE_MSS:GPIO_2_F2M_5"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_5_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_5"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_5_IO:PAD" "RPi_GPIO17" }
+
+
+# Add GPIO_2_6_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_6_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_6_IO:D" "ICICLE_MSS:GPIO_2_M2F_6"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_6_IO:Y" "ICICLE_MSS:GPIO_2_F2M_6"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_6_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_6"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_6_IO:PAD" "RPi_GPIO18" }
+
+
+# Add GPIO_2_7_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_7_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_7_IO:D" "ICICLE_MSS:GPIO_2_M2F_7"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_7_IO:Y" "ICICLE_MSS:GPIO_2_F2M_7"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_7_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_7"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_7_IO:PAD" "RPi_GPIO19" }
+
+
+# Add GPIO_2_8_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_8_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_8_IO:D" "ICICLE_MSS:GPIO_2_M2F_8"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_8_IO:Y" "ICICLE_MSS:GPIO_2_F2M_8"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_8_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_8"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_8_IO:PAD" "RPi_GPIO20" }
+
+
+# Add GPIO_2_9_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_9_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_9_IO:D" "ICICLE_MSS:GPIO_2_M2F_9"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_9_IO:Y" "ICICLE_MSS:GPIO_2_F2M_9"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_9_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_9"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_9_IO:PAD" "RPi_GPIO21" }
+
+
+# Add GPIO_2_10_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_10_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_10_IO:D" "ICICLE_MSS:GPIO_2_M2F_10"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_10_IO:Y" "ICICLE_MSS:GPIO_2_F2M_10"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_10_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_10"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_10_IO:PAD" "RPi_GPIO22" }
+
+
+# Add GPIO_2_11_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_11_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_11_IO:D" "ICICLE_MSS:GPIO_2_M2F_11"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_11_IO:Y" "ICICLE_MSS:GPIO_2_F2M_11"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_11_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_11"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_11_IO:PAD" "RPi_GPIO23" }
+
+
+# Add GPIO_2_12_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_12_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_12_IO:D" "ICICLE_MSS:GPIO_2_M2F_12"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_12_IO:Y" "ICICLE_MSS:GPIO_2_F2M_12"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_12_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_12"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_12_IO:PAD" "RPi_GPIO24" }
+
+
+# Add GPIO_2_13_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_13_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_13_IO:D" "ICICLE_MSS:GPIO_2_M2F_13"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_13_IO:Y" "ICICLE_MSS:GPIO_2_F2M_13"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_13_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_13"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_13_IO:PAD" "RPi_GPIO25" }
+
+
+# Add GPIO_2_14_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_14_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_14_IO:D" "ICICLE_MSS:GPIO_2_M2F_14"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_14_IO:Y" "ICICLE_MSS:GPIO_2_F2M_14"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_14_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_14"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_14_IO:PAD" "RPi_GPIO26" }
+
+
+# Add GPIO_2_15_IO BIBUF instance
+sd_instantiate_macro -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -macro_name {BIBUF} -instance_name {GPIO_2_15_IO} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_15_IO:D" "ICICLE_MSS:GPIO_2_M2F_15"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_15_IO:Y" "ICICLE_MSS:GPIO_2_F2M_15"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_15_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_15"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_15_IO:PAD" "RPi_GPIO27" }
 
 
 
@@ -681,15 +815,6 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_GPIO_2_18_OR_COREGPIO_C0_GP
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_GPIO_2_19_OR_COREGPIO_C0_GPIO_OUT_3:A" "ICICLE_MSS:GPIO_2_M2F_19" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_GPIO_2_19_OR_COREGPIO_C0_GPIO_OUT_3:B" "COREGPIO_C0:GPIO_OUT[3]" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_GPIO_2_19_OR_COREGPIO_C0_GPIO_OUT_3:Y" "LED3"  }
-
-sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {RPi_GPIO19} -value {GND} 
-sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {RPi_GPIO13} -value {GND} 
-sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {RPi_GPIO6} -value {GND} 
-sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {RPi_GPIO5} -value {GND}
-sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {RPi_GPIO12} -value {GND} 
-sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {RPi_GPIO16} -value {GND} 
-sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {RPi_GPIO20} -value {GND} 
-sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {RPi_GPIO21} -value {GND}
 
 # Add bus net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:CA" "CA" }

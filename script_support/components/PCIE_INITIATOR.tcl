@@ -1130,7 +1130,7 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.
 "MASTER15_WRITE_SLAVE31:true"  \
 "NUM_MASTERS:1"  \
 "NUM_MASTERS_WIDTH:1"  \
-"NUM_SLAVES:2"  \
+"NUM_SLAVES:1"  \
 "NUM_THREADS:4"  \
 "OPEN_TRANS_MAX:8"  \
 "OPTIMIZATION:1"  \

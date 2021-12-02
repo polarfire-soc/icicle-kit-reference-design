@@ -221,6 +221,8 @@ sd_create_pin_slices -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_name {COREI2C_C
 sd_create_pin_slices -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_name {COREI2C_C0_0:SDAI} -pin_slices {"[0:0]"} 
 sd_create_pin_slices -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_name {COREI2C_C0_0:SDAO} -pin_slices {"[0:0]"} 
 sd_create_pin_slices -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_name {COREI2C_C0_0:INT} -pin_slices {"[0:0]"} 
+sd_invert_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_0:SDAO[0:0]"}
+sd_invert_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_0:SCLO[0:0]"}
 
 
 # Add COREI2C_C0_0_BIBUF instance

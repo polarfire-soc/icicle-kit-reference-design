@@ -39,7 +39,7 @@ parameter
     
     always @(posedge ACLK, negedge RSTN) begin
         if (!RSTN)  tdata_ff <= 0;
-        else        tdata_ff = tdata_nxt;                    
+        else        tdata_ff <= tdata_nxt;                    
     end
     
     always @* begin        

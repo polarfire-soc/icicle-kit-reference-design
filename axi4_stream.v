@@ -23,6 +23,7 @@ module axi4_stream (
                     ACLK,
                     RSTN,
                     VALID,
+                    trans_size,
                     
                     //output
                     TLAST,
@@ -35,6 +36,7 @@ module axi4_stream (
 parameter   TRANSFER_SIZE =10;
 
 input   ACLK,   RSTN,   VALID; 
+input [31:0] trans_size;
 
 output   TLAST;
 output   [1:0]   TDEST;
@@ -44,7 +46,7 @@ output   [31:0]  TSTRB;
 
 parameter 
     INC = 1,
-    TX_SIZE = 10;
+    TX_SIZE = 2097152;
 
 
 localparam
@@ -52,8 +54,6 @@ localparam
     TSTRB_WIDTH = 32,
     TX_SIZE_INT = TX_SIZE - 2;    
 
-    
-    
     reg tlast_ff, tlast_nxt;        
     reg [31:0] trans_ff, trans_nxt;          
     
@@ -82,7 +82,7 @@ localparam
         
         
         if (VALID) begin
-            if (trans_ff == TX_SIZE_INT) begin
+            if (trans_ff == trans_size) begin
                 trans_nxt = 1'b0;
                 tlast_nxt = 1'b1;          
             
@@ -104,3 +104,4 @@ localparam
     assign TSTRB = {{(TSTRB_WIDTH - 4){1'b0}},{TKEEP_WIDTH{(| VALID)}}} & {TSTRB_WIDTH{!tlast_ff}};
     
 endmodule
+

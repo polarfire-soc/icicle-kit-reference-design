@@ -39,9 +39,9 @@ The following table describes the remaining ports:
 
 | Signal                  	| Width 	| Direction 	| Description                                                             	|
 |-------------------------	|-------	|-----------	|-------------------------------------------------------------------------	|
-| SIDE_A_MSG_PRESENT 	      | 1     	| Input     	| Indicates a message present in channel A                                	|
-| SIDE_A_ACK_FROM_B        	| 1     	| Input     	| Indicates an acknowledge interrupt was sent on channel A                	|
-| SIDE_B_MSG_PRESENT       	| 1     	| Output    	| Indicates a message present in channel A                                 	|
+| SIDE_A_MSG_PRESENT 	      | 1     	| Output     	| Indicates a message present in channel A                                	|
+| SIDE_A_ACK_FROM_B        	| 1     	| Output     	| Indicates an acknowledge interrupt was sent on channel A                	|
+| SIDE_B_MSG_PRESENT       	| 1     	| Output    	| Indicates a message present in channel B                                 	|
 | SIDE_B_ACK_FROM_A       	| 1     	| Output    	| Indicates an acknowledge interrupt was sent on channel B                 	|
 
 ## Register Description
@@ -54,14 +54,14 @@ The following table describes the remaining ports:
 | Control      	 | 0x4    	| 32    	| R/W 	| 0x3FF       	| Used to enable / disable interrupts and set the ACK interrupt - see below            	|
 | Debug ID A  	 | 0x8    	| 32    	| RO  	| Hart ID      	| A parameter set to indicate which hart should be connected to this interface         	|
 | Message size 	 | 0x4    	| 32    	| RO  	| Depth       	| Indicates the number of message in registers available (between 1 and 4)             	|
-| Message in 0   | 0x10   	| 32    	| WO  	| 0x0         	| Message A -> B register                                                             	|
-| Message in 1   | 0x14   	| 32    	| WO  	| 0x0         	| Message A -> B register                                                             	|
-| Message in 2   | 0x18   	| 32    	| WO  	| 0x0         	| Message A -> B register                                                             	|
-| Message in 3   | 0x1C   	| 32    	| WO  	| 0x0         	| Message A -> B register                                                             	|
-| Message out 0  | 0x20   	| 32    	| RO  	| 0x0         	| Message B -> A register                                                             	|
-| Message out 1  | 0x24   	| 32    	| RO  	| 0x0         	| Message B -> A register                                                             	|
-| Message out 2  | 0x28   	| 32    	| RO  	| 0x0         	| Message B -> A register                                                             	|
-| Message out 3  | 0x2C   	| 32    	| RO  	| 0x0         	| Message B -> A register                                                             	|
+| Message in 0   | 0x10   	| 32    	| RO  	| 0x0         	| Message B -> A register                                                             	|
+| Message in 1   | 0x14   	| 32    	| RO  	| 0x0         	| Message B -> A register                                                             	|
+| Message in 2   | 0x18   	| 32    	| RO  	| 0x0         	| Message B -> A register                                                             	|
+| Message in 3   | 0x1C   	| 32    	| RO  	| 0x0         	| Message B -> A register                                                             	|
+| Message out 0  | 0x20   	| 32    	| WO  	| 0x0         	| Message A -> B register                                                             	|
+| Message out 1  | 0x24   	| 32    	| WO  	| 0x0         	| Message A -> B register                                                             	|
+| Message out 2  | 0x28   	| 32    	| WO  	| 0x0         	| Message A -> B register                                                             	|
+| Message out 3  | 0x2C   	| 32    	| WO  	| 0x0         	| Message A -> B register                                                             	|
 
 ### Side B
 
@@ -71,14 +71,14 @@ The following table describes the remaining ports:
 | Control     	 | 0x4    	| 32    	| R/W 	| 0x3FF       	| Used to enable / disable interrupts and set the ACK interrupt - see below            	|
 | Debug ID B  	 | 0x8    	| 32    	| RO  	| Hart ID      	| A parameter set to indicate which hart should be connected to this interface         	|
 | Message size 	 | 0x4    	| 32    	| RO  	| Depth       	| Indicates the number of message in registers available (between 1 and 4)             	|
-| Message in 0   | 0x10   	| 32    	| RW  	| 0x0         	| Message B -> A register                                                             	|
-| Message in 1   | 0x14   	| 32    	| RW  	| 0x0         	| Message B -> A register                                                             	|
-| Message in 2   | 0x18   	| 32    	| RW  	| 0x0         	| Message B -> A register                                                             	|
-| Message in 3   | 0x1C   	| 32    	| RW  	| 0x0         	| Message B -> A register                                                             	|
-| Message out 0  | 0x20   	| 32    	| RO  	| 0x0         	| Message A -> B register                                                             	|
-| Message out 1  | 0x24   	| 32    	| RO  	| 0x0         	| Message A -> B register                                                             	|
-| Message out 2  | 0x28   	| 32    	| RO  	| 0x0         	| Message A -> B register                                                             	|
-| Message out 3  | 0x2C   	| 32    	| RO  	| 0x0         	| Message A -> B register                                                             	|
+| Message in 0   | 0x10   	| 32    	| RO  	| 0x0         	| Message A -> B register                                                             	|
+| Message in 1   | 0x14   	| 32    	| RO  	| 0x0         	| Message A -> B register                                                             	|
+| Message in 2   | 0x18   	| 32    	| RO  	| 0x0         	| Message A -> B register                                                             	|
+| Message in 3   | 0x1C   	| 32    	| RO  	| 0x0         	| Message A -> B register                                                             	|
+| Message out 0  | 0x20   	| 32    	| WO  	| 0x0         	| Message B -> A register                                                             	|
+| Message out 1  | 0x24   	| 32    	| WO  	| 0x0         	| Message B -> A register                                                             	|
+| Message out 2  | 0x28   	| 32    	| WO  	| 0x0         	| Message B -> A register                                                             	|
+| Message out 3  | 0x2C   	| 32    	| WO  	| 0x0         	| Message B -> A register                                                             	|
 
 ### Version register
 
@@ -113,13 +113,13 @@ The following table describes the remaining ports:
 
 | Bit(s) 	| Name                    	| Reset value 	| Description                                                                                                                             	 |
 |-----  	|-------------------------	|-------------	|------------------------------------------------------------------------------                                                           	 |
-| 31:0   	| Message in x            	| 0            	| These are write only registers used to send messages. The number of registers available depends on the core configuration.                 |
+| 31:0   	| Message in x            	| 0            	| These are read only registers used to receive messages. The number of registers available depends on the core configuration.                 |
 
 ### Message out X registers
 
 | Bit(s) 	| Name                    	| Reset value 	| Description                                                                                                                             	 |
 |-----  	|-------------------------	|-------------	|------------------------------------------------------------------------------                                                           	 |
-| 31:0   	| Message out x            	| 0            	| These are read only registers used to receive messages. The number of registers available depends on the core configuration.               |
+| 31:0   	| Message out x            	| 0            	| These are write only registers used to send messages. The number of registers available depends on the core configuration.               |
 
 ## Design
 

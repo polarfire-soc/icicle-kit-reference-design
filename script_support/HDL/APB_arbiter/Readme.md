@@ -12,37 +12,37 @@ The APB arbiter has a single APB target interface and 2 APB initiator interfaces
 
 The following table describes the ports that are used in the APB interfaces:
 
-| Signal  	        | Width 	| Direction 	| Description                                                   	|
-|---------  	      |-------	|-----------	|---------------------------------------------------------------	|
-| pclk            	| 1     	| Input     	| Clock source for the peripheral                               	|
-| presetn        	  | 1     	| Input     	| Active high reset for the peripheral                          	|
-|  |  |  |  |
-| in_penable 	      | 1     	| Input     	| Indicates a transaction has begun                             	|
-| in_psel         	| 1     	| Input     	| Indicates this target has been selected                       	|
-| in_paddr        	| 32     	| Input     	| Address selected                                              	|
-| in_pwrite       	| 1     	| Input     	| If high indicates the transaction is a write, otherwise read    |
-| in_pwdata       	| 32    	| Input     	| Data to be written to the peripheral                          	|
-| in_prdata       	| 32    	| Output    	| Data read from the peripheral                                 	|
-| in_pready       	| 1     	| Output    	| Indicates a successful transaction                            	|
-| in_pslverr      	| 1     	| Output    	| If high, indicates an error has occurred                      	|
-| | | | |
-| out_low_penable 	| 1     	| Output     	| Indicates a transaction has begun                             	|
-| out_low_psel    	| 1     	| Output     	| Indicates this target has been selected                       	|
-| out_low_paddr   	| 32     	| Output     	| Address selected                                              	|
-| out_low_pwrite  	| 1     	| Output     	| If high indicates the transaction is a write, otherwise read    |
-| out_low_pwdata  	| 32    	| Output     	| Data to be written to the peripheral                          	|
-| out_low_prdata  	| 32    	| Input     	| Data read from the peripheral                                 	|
-| out_low_pready  	| 1     	| Input     	| Indicates a successful transaction                            	|
-| out_low_pslverr 	| 1     	| Input     	| If high, indicates an error has occurred                      	|
-| | | | |
-| out_high_penable 	| 1     	| Output     	| Indicates a transaction has begun                             	|
-| out_high_psel    	| 1     	| Output     	| Indicates this target has been selected                       	|
-| out_high_paddr   	| 32     	| Output     	| Address selected                                              	|
-| out_high_pwrite  	| 1     	| Output     	| If high indicates the transaction is a write, otherwise read    |
-| out_high_pwdata  	| 32    	| Output     	| Data to be written to the peripheral                          	|
-| out_high_prdata  	| 32    	| Input     	| Data read from the peripheral                                 	|
-| out_high_pready  	| 1     	| Input     	| Indicates a successful transaction                            	|
-| out_high_pslverr 	| 1     	| Input     	| If high, indicates an error has occurred                      	|
+| Signal           | Width | Direction | Description                                                  |
+|:-----------------|:------|:----------|:-------------------------------------------------------------|
+| pclk             | 1     | Input     | Clock source for the peripheral                              |
+| presetn          | 1     | Input     | Active high reset for the peripheral                         |
+|                  |       |           |                                                              |
+| in_penable       | 1     | Input     | Indicates a transaction has begun                            |
+| in_psel          | 1     | Input     | Indicates this target has been selected                      |
+| in_paddr         | 32    | Input     | Address selected                                             |
+| in_pwrite        | 1     | Input     | If high indicates the transaction is a write, otherwise read |
+| in_pwdata        | 32    | Input     | Data to be written to the peripheral                         |
+| in_prdata        | 32    | Output    | Data read from the peripheral                                |
+| in_pready        | 1     | Output    | Indicates a successful transaction                           |
+| in_pslverr       | 1     | Output    | If high, indicates an error has occurred                     |
+|                  |       |           |                                                              |
+| out_low_penable  | 1     | Output    | Indicates a transaction has begun                            |
+| out_low_psel     | 1     | Output    | Indicates this target has been selected                      |
+| out_low_paddr    | 32    | Output    | Address selected                                             |
+| out_low_pwrite   | 1     | Output    | If high indicates the transaction is a write, otherwise read |
+| out_low_pwdata   | 32    | Output    | Data to be written to the peripheral                         |
+| out_low_prdata   | 32    | Input     | Data read from the peripheral                                |
+| out_low_pready   | 1     | Input     | Indicates a successful transaction                           |
+| out_low_pslverr  | 1     | Input     | If high, indicates an error has occurred                     |
+|                  |       |           |                                                              |
+| out_high_penable | 1     | Output    | Indicates a transaction has begun                            |
+| out_high_psel    | 1     | Output    | Indicates this target has been selected                      |
+| out_high_paddr   | 32    | Output    | Address selected                                             |
+| out_high_pwrite  | 1     | Output    | If high indicates the transaction is a write, otherwise read |
+| out_high_pwdata  | 32    | Output    | Data to be written to the peripheral                         |
+| out_high_prdata  | 32    | Input     | Data read from the peripheral                                |
+| out_high_pready  | 1     | Input     | Indicates a successful transaction                           |
+| out_high_pslverr | 1     | Input     | If high, indicates an error has occurred                     |
 
 ## Design
 

@@ -10,32 +10,32 @@ The SDIO register is a single bit register which provides a memory mapped bit wh
 
 The following table describes the ports that are used in the APB interface:
 
-| Signal  	| Width 	| Direction 	| Description                                                   	|
-|---------	|-------	|-----------	|---------------------------------------------------------------	|
-| pclk    	| 1     	| Input     	| Clock source for the peripheral                               	|
-| presetn 	| 1     	| Input     	| Active high reset for the peripheral                          	|
-| penable 	| 1     	| Input     	| Indicates a transaction has begun                             	|
-| psel    	| 1     	| Input     	| Indicates this target has been selected                       	|
-| paddr   	| 32    	| Input     	| Address selected                                              	|
-| pwrite  	| 1     	| Input     	| If high indicates the transaction is a write, otherwise read. 	|
-| pwdata  	| 32    	| Input     	| Data to be written to the peripheral                          	|
-| prdata  	| 32    	| Output    	| Data read from the peripheral                                 	|
-| pready  	| 1     	| Output    	| Indicates a successful transaction                            	|
-| pslverr 	| 1     	| Output    	| Always 0, if high, indicates an error has occurred            	|
+| Signal  | Width | Direction | Description                                                   |
+|:--------|:------|:----------|:--------------------------------------------------------------|
+| pclk    | 1     | Input     | Clock source for the peripheral                               |
+| presetn | 1     | Input     | Active high reset for the peripheral                          |
+| penable | 1     | Input     | Indicates a transaction has begun                             |
+| psel    | 1     | Input     | Indicates this target has been selected                       |
+| paddr   | 32    | Input     | Address selected                                              |
+| pwrite  | 1     | Input     | If high indicates the transaction is a write, otherwise read. |
+| pwdata  | 32    | Input     | Data to be written to the peripheral                          |
+| prdata  | 32    | Output    | Data read from the peripheral                                 |
+| pready  | 1     | Output    | Indicates a successful transaction                            |
+| pslverr | 1     | Output    | Always 0, if high, indicates an error has occurred            |
 
 ### Misc
 
 The following table describes the remaining ports:
 
-| Signal                  	| Width 	| Direction 	| Description                                                             	|
-|-------------------------	|-------	|-----------	|-------------------------------------------------------------------------	|
-| SDIO_control             	| 1     	| Output     	| This bit mirrors the internal register bit that can be set and cleared   	|
+| Signal       | Width | Direction | Description                                                            |
+|:-------------|:------|:----------|:-----------------------------------------------------------------------|
+| SDIO_control | 1     | Output    | This bit mirrors the internal register bit that can be set and cleared |
 
 ## Register Description
 
-| Register 	      | Offset 	| Width 	| R/W 	| Reset value 	| Description                                                                         	|
-|----------	      |--------	|-------	|-----	|-------------	|-------------------------------------------------------------------------------------	|
-| SDIO_control  	| 0x0    	| 1     	| R/W  	| 0x0         	| Register bit that can be set and cleared                                             	|
+| Register     | Offset | Width | R/W | Reset value | Description                              |
+|:-------------|:-------|:------|:----|:------------|:-----------------------------------------|
+| SDIO_control | 0x0    | 1     | R/W | 0x0         | Register bit that can be set and cleared |
 
 ## Design
 

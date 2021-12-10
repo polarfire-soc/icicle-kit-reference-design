@@ -10,3 +10,8 @@ script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cf
 *.hex
 *.job
 *.digest
+
+
+*tb_data_gen.v
+*tb_top.v
+*tb_axi4_stream.v

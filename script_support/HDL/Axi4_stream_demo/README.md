@@ -60,7 +60,7 @@ The stream transaction generation block is comprised of 2 sub-modules `data_gen.
 
 The SDIO register has a simple design, a single register bit at offset 0x0 can be accessed using the APB target interface of the core. Internally the register bit is brought out as a top level output.
 
-![Module Design](./axi4_stream_module_block.drawio.svg)
+![Module Design](./axi4_stream_module_block.svg)
 
 ## System integration
 

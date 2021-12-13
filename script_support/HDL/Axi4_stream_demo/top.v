@@ -47,25 +47,18 @@ output   [3:0]   TKEEP;
 output   TLAST,  TVALID;
 output   [31:0]  TSTRB, TDATA;
 
-reg started, valid_reg;
-assign TVALID = valid_reg;
+reg started;
+assign TVALID = started;
 
     always @(posedge ACLK) begin
         if (!RSTN) begin
             started <= 0;
-            valid_reg <= 0;
         end else begin
             if (start) begin
                 started <= 1;
             end else begin
                 started <= 0;
-            end
-            
-            if (!started) begin
-                valid_reg <= 0;
-            end else if (started) begin
-                valid_reg <= 1;
-            end
+            end            
         end
     end
     

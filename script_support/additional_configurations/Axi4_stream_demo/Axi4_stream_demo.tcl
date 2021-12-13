@@ -2,9 +2,9 @@
 import_files \
          -convert_EDN_to_HDL 0 \
          -library {work} \
-         -hdl_source {../source/top.v} \
-         -hdl_source {../source/data_gen.v} \
-         -hdl_source {../source/axi4_stream.v} 
+         -hdl_source {./script_support/HDL/Axi4_stream_demo/top.v} \
+         -hdl_source {./script_support/HDL/Axi4_stream_demo/data_gen.v} \
+         -hdl_source {./script_support/HDL/Axi4_stream_demo/axi4_stream.v} 
 build_design_hierarchy 
 
 		 

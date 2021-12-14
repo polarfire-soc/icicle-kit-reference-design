@@ -1,4 +1,4 @@
-#	imporitng the files 
+#	imporitng files 
 import_files \
          -convert_EDN_to_HDL 0 \
          -library {work} \
@@ -25,24 +25,24 @@ create_hdl_core -file {./MPFS_ICICLE/hdl/AXI4_STREAM_DATA_GENERATOR.v} -module {
 
 
 #	adding the signal to the BIF	
-hdl_core_add_bif -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_definition {APB:AMBA:AMBA2:slave} -bif_name {BIF_1} -signal_map {} 
-hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {BIF_1} -bif_signal_name {PADDR} -core_signal_name {paddr} 
-hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {BIF_1} -bif_signal_name {PENABLE} -core_signal_name {penable} 
-hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {BIF_1} -bif_signal_name {PWRITE} -core_signal_name {pwrite} 
-hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {BIF_1} -bif_signal_name {PRDATA} -core_signal_name {prdata} 
-hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {BIF_1} -bif_signal_name {PWDATA} -core_signal_name {pwdata} 
-hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {BIF_1} -bif_signal_name {PREADY} -core_signal_name {pready} 
-hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {BIF_1} -bif_signal_name {PSLVERR} -core_signal_name {pslverr} 
-hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {BIF_1} -bif_signal_name {PSELx} -core_signal_name {psel} 
+hdl_core_add_bif -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_definition {APB:AMBA:AMBA2:slave} -bif_name {APB_TARGET} -signal_map {} 
+hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {APB_TARGET} -bif_signal_name {PADDR} -core_signal_name {paddr} 
+hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {APB_TARGET} -bif_signal_name {PENABLE} -core_signal_name {penable} 
+hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {APB_TARGET} -bif_signal_name {PWRITE} -core_signal_name {pwrite} 
+hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {APB_TARGET} -bif_signal_name {PRDATA} -core_signal_name {prdata} 
+hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {APB_TARGET} -bif_signal_name {PWDATA} -core_signal_name {pwdata} 
+hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {APB_TARGET} -bif_signal_name {PREADY} -core_signal_name {pready} 
+hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {APB_TARGET} -bif_signal_name {PSLVERR} -core_signal_name {pslverr} 
+hdl_core_assign_bif_signal -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_name {APB_TARGET} -bif_signal_name {PSELx} -core_signal_name {psel} 
 
 
 #	instanciate the module in the smart design
 sd_instantiate_hdl_core -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -instance_name {} 
 
 # connect the module ot the fic
-sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"FIC3_INITIATOR:APBmslave10" "AXI4_STREAM_DATA_GENERATOR_0:BIF_1"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"FIC3_INITIATOR:APBmslave10" "AXI4_STREAM_DATA_GENERATOR_0:APB_TARGET"} 
 
-puts "first"
+
 
 
 #	connecting the module to the dma controller
@@ -58,7 +58,6 @@ save_smartdesign -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:CLK_125MHz" "AXI4_STREAM_DATA_GENERATOR_0:ACLK"} 
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:RESETN_CLK_125MHz" "AXI4_STREAM_DATA_GENERATOR_0:RSTN"} 
 
-puts "second block"
 
 
 #	connecting the start input to the MSS
@@ -66,12 +65,10 @@ sd_delete_nets -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -net_names {ICICLE_MSS_GPI
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"ICICLE_MSS:GPIO_2_M2F_28" "AXI4_STREAM_DATA_GENERATOR_0:start"} 
 sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {SW1_OR_GPIO_2_28:B} -value {GND} 
 
-puts "third block"
 
 #	connecting the PCLK and PRESET_n
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:CLK_62_5MHz" "AXI4_STREAM_DATA_GENERATOR_0:pclk"} 
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:RESETN_CLK_62_5MHz" "AXI4_STREAM_DATA_GENERATOR_0:presetn"} 
-export_script -file {./exported.tcl} -relative_path 1 
 
 
 build_design_hierarchy

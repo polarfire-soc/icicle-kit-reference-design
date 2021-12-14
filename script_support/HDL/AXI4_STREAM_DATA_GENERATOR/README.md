@@ -1,9 +1,8 @@
 # AXI4 Stream Data Generator Readme
 
 ## Introduction
+The AXI4_STREAM_DATA_GENERATOR module generates incrementing data which is outputted over an AXI4 Stream interface. The data is used in transfers as part of a AXI4 Stream transaction.
 
-A demonstration of how to correctly configure and implement the AXI4 streaming interface on a CoreAXI4DMAController.
-The demonstration consists of an IP block that will generate stream transactions on the AXI4 stream interface of the DMA controller. Transactions will consist of incrementing data and will be directed to DDR memory to benchmark performance.
 
 ## Ports
 
@@ -28,13 +27,10 @@ The following table describes the ports that are used in the APB interface:
 
 | Signal  | Width | Direction | Description                                                   |
 |:--------|:------|:----------|:--------------------------------------------------------------|
-| pclk    | 1     | Input     | Clock source for the peripheral.                               |
-| presetn | 1     | Input     | Active high reset for the peripheral.                         |
 | penable | 1     | Input     | Indicates a transaction has begun.                            |
 | psel    | 1     | Input     | Indicates this target has been selected.                       |
 | paddr   | 32    | Input     | Address selected.                                              |
 | pwrite  | 1     | Input     | If high indicates the transaction is a write, otherwise read. |
-| pwdata  | 32    | Input     | Data to be written to the peripheral.                          |
 | prdata  | 32    | Output    | Data read from the peripheral.                                 |
 | pready  | 1     | Output    | Indicates a successful transaction.                            |
 | pslverr | 1     | Output    | Always 0, if high, indicates an error has occurred.            |
@@ -45,9 +41,12 @@ The following table describes the remaining ports:
 
 | Signal  | Width | Direction | Description                                                   |
 |:--------|:------|:----------|:--------------------------------------------------------------|
-| ACLK      |   1   |   Input   |   Global clock signal, all signal are sampled on a rising edge.   |
-| RSTN      |   1   |   Input   |   Global reset signal, active low.        |
+| ACLK      |   1   |   Input   |   Primary clock signal, all signal are sampled on a rising edge.   |
+| RSTN      |   1   |   Input   |   Primary reset signal, active low.        |
+| pclk    | 1     | Input     | Clock signal for APB interface exclusively.
+| presetn | 1     | Input     | Active high reset signal for APB interface exclusively.                         |
 | start     |   1   |   Input   |   Signal to initiate an AXI4 Stream transfer.   |
+| pwdata  | 32    | Input     | Input used to set the transfer size.                          |
 
 ## Register Description
 
@@ -62,6 +61,4 @@ The stream transaction generation block is comprised of 2 sub-modules `AXI4_STRE
 
 ## System integration
 
-This core is usually converted to be a HDL+ core when imported into Libero SoC, this allows BIFs (Bus Interfaces) to be added which collect all AMBA signals for a particular interface into one port for easier interaction and connection using SmartDesigns. The module is intended to be connected via an AXI4 Stream interface to a CoreAXI4DMAController. The module's output will generate dummy data to benchmark the performance of the CoreAXI4DMAController.
-
-
+This core is usually converted to be a HDL+ core when imported into Libero SoC, this allows BIFs (Bus Interfaces) to be added which collect all AMBA signals for a particular interface into one port for easier interaction and connection using SmartDesigns. The module is intended to be connected via an AXI4 Stream interface to a CoreAXI4DMAController. The module's output will generate incrementing data to benchmark the performance of the system.

@@ -2,6 +2,7 @@ MPFS_ICICLE/
 MPFS_ICICLE_I2C_LOOPBACK/
 MPFS_ICICLE_SPI_LOOPBACK/
 MPFS_ICICLE_Vectorblox/
+MPFS_ICICLE_DRI_CCC_DEMO/
 script_support/components/MSS/
 script_support/components/MSS_I2C_LOOPBACK/
 script_support/components/MSS_SPI_LOOPBACK/

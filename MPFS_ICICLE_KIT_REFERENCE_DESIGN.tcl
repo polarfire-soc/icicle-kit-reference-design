@@ -61,6 +61,9 @@ if {[info exists I2C_LOOPBACK]} {
 } elseif {[info exists SPI_LOOPBACK]} {
     set project_name "MPFS_ICICLE_SPI_LOOPBACK"
     set project_dir "$local_dir/MPFS_ICICLE_SPI_LOOPBACK"
+} elseif {[info exists DRI_CCC_DEMO]} {
+    set project_name "MPFS_ICICLE_DRI_CCC_DEMO"
+    set project_dir "$local_dir/MPFS_ICICLE_DRI_CCC_DEMO"
 } else {
     set project_name "MPFS_ICICLE"
     set project_dir "$local_dir/MPFS_ICICLE"
@@ -123,6 +126,8 @@ download_core -vlnv {Actel:SystemBuilder:PF_SRAM_AHBL_AXI:1.2.108} -location {ww
 download_core -vlnv {Actel:Simulation:CLK_GEN:1.0.1} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:Simulation:RESET_GEN:1.0.1} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:DirectCore:corepwm:4.5.100} -location {www.microchip-ip.com/repositories/DirectCore} 
+download_core -vlnv {Actel:DirectCore:COREI2C:7.2.101} -location {www.microchip-ip.com/repositories/DirectCore} 
+download_core -vlnv {Actel:DirectCore:CoreUARTapb:5.7.100} -location {www.microchip-ip.com/repositories/DirectCore} 
 
 #
 # // Generate base design
@@ -152,12 +157,6 @@ import_files \
     -io_pdc "${constraint_path}/ICICLE_SPI_LOOPBACK.pdc"
 
 #
-# // Import floor planning constraints
-#
-
-import_files -convert_EDN_to_HDL 0 -fp_pdc "${constraint_path}/CCC.pdc"
-
-#
 # // Associate imported constraints with the design flow
 #
 
@@ -175,7 +174,6 @@ organize_tool_files \
     -file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
     -file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
     -file "${project_dir}/constraint/io/ICICLE_RPi.pdc" \
-    -file "${project_dir}/constraint/fp/CCC.pdc" \
     -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
     -input_type {constraint}
 
@@ -218,7 +216,9 @@ if {[info exists I2C_LOOPBACK]} {
     update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "SPI_1_SS1                                " "FABRIC"
     exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_SPI_LOOPBACK
     source ./script_support/additional_configurations/SPI_LOOPBACK/SPI_LOOPBACK.tcl
-}
+} elseif {[info exists DRI_CCC_DEMO]} {
+    source ./script_support/additional_configurations/DRI_CCC_DEMO/DRI_CCC_DEMO.tcl
+   }
 
 #
 # // Run the design flow and add eNVM clients if required

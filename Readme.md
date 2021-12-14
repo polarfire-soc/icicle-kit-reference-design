@@ -93,9 +93,9 @@ The following MSS peripherals are enabled:
 
 | MSS Peripheral | Route to Device I/O | Board peripheral            | Board Interface                 | Notes                                                                   |
 |:---------------|:--------------------|:----------------------------|:--------------------------------|:------------------------------------------------------------------------|
-| eMMC           | MSS I/Os BANK 4     | eMMC device                 | N/A                             | See<br> "eMMC and SD card switching"                                    |
+| eMMC           | MSS I/Os BANK 4     | eMMC device                 | N/A                             |                                                                         |
 | USB            | MSS I/Os BANK 2     | USB OTG Phy                 | J16 (Micro USB)                 |                                                                         |
-| SD/SDIO        | MSS I/Os BANK 4     | SD card socket              | N/A                             | See<br> "eMMC and SD card switching"                                    |
+| SD/SDIO        | MSS I/Os BANK 4     | SD card socket              | N/A                             |                                                                         |
 | GEM0           | SGMII I/Os BANK 5   | VSC8662 PHY Port0           | J1 (RJ45 connector)             |                                                                         |
 | GEM1           | SGMII I/Os BANK 5   | VSC8662 PHY Port1           | J2 (RJ45 connector)             | Management through<br> MSS I/Os BANK 2 B                                |
 | QSPI           | Fabric / MSS I/Os   | N/A                         | J8/J44 (mikroBUS&trade; socket) | DATA I/Os [3:2] to fabric.<br> Remaining signals <br>to MSS I/Os Bank 2 |

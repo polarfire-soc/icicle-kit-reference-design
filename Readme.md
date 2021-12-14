@@ -28,7 +28,6 @@ Some bare metal examples and tutorials require a specific fabric configuration w
 | Argument       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |:---------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | I2C_LOOPBACK   | Routes I2C0 and I2C1 to the fabric and connects them to bibufs routed to Raspberry Pi® I/Os. <br>Associates I2C loopback constraints for I/O. <br>This design can be used with the I2C loopback bare metal example project and will still boot Linux but the PAC1934 will be inaccessible. <br>I2C0_SCL is routed to pin 29 and I2C1_SCL is routed to pin 31 of the Raspberry Pi I/O header. <br>I2C0_SDA is routed to pin 35 and I2C1_SDA is routed to pin 37 of the Raspberry Pi I/O header. <br>Connecting / closing pins 29 and 31 and pins 35 and 37 of the Raspberry Pi I/O header will achieve I2C loopback. |
-| SPI_LOOPBACK   | Disables QSPI and enables SPI1 which is connected to MSS I/Os bank 2 and directly to the mikroBUS header. <br>Associates SPI loopback constraints for I/O.<br>SPI_0 MOSI is routed to RPi I/O pin 19 and SPI_1 MOSI is routed to mikroBUS pin 6.<br>SPI_0 MISO is routed to RPi I/O pin 21 and SPI_1 MISO is routed to mikroBUS pin 5.<br>SPI_0 SCLK is routed to RPi I/O pin 23 and SPI_1 MISO is routed to mikroBUS pin 4.<br>SPI_0 CE is routed to RPi I/O pin 24 and SPI_1 CE is routed to mikroBUS pin 3.<br>Using this configuration SPI0 and SPI1 can be connected for loop back.                            |
 | BFM_SIMULATION | Generates a smart design test bench based on the reference design and imports custom BFM scripts to generate transactions on MSS FICs. <br>A custom DO file is also imported to add waves and run the simulation                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 Arguments in the table above can only be used exclusively - i.e you cannot pass "I2C_LOOPBACK" and "BFM_SIMULATION" as arguments.
@@ -115,43 +114,44 @@ The following MSS peripherals are enabled:
 
 ### Fabric memory map
 
-| Initiator      | Bus                        | Target                    | Board peripheral        | Board interface      | Address range                    |
-|:---------------|:---------------------------|:--------------------------|:------------------------|:---------------------|:---------------------------------|
-| MSS: FIC0      | AXI4_mslave0               | PF_PCIE_C0_0              | N/A                     | PCIe edge connector  | 0x20_0000_0000 -> 0x2F_FFFF_FFFF |
-| MSS: FIC0      | AXI4_mslave1               | MSS_LSRAM                 | N/A                     | N/A                  | 0x6100_0000 -> 0x6100_1000       |
-| MSS: FIC0      | AXI4_mslave2               | DMA_CONTROLLER            | N/A                     | N/A                  | 0x6002_0000 -> 0x6002_FFFF       |
-| MSS: FIC3      | APBmslave1                 | PWM                       | N/A                     | J8 (mikroBUS socket) | 0x4100_0000 -> 0x41FF_FFFF       |
-| MSS: FIC3      | APBmslave2                 | CoreGPIO                  | LEDs                    | N/A                  | 0x4200_0000 -> 0x42FF_FFFF       |
-| MSS: FIC3      | APBmslave16                | RECONFIGURATION_INTERFACE | N/A                     | N/A                  | 0x4300_0000 -> 0x43FF_FFFF       |
-| MSS: FIC3      | APBmslave16                | RECONFIGURATION_INTERFACE | N/A                     | N/A                  | 0x4800_0000 -> 0x48FF_FFFF       |
-| MSS: FIC3      | APBmslave15                | SDIO_register             | U29 & U44 (SDIO de-mux) | N/A                  | 0x4F00_0000 -> 0x4FFF_FFFF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_1:A    | N/A                     | N/A                  | 0x5000_0000 -> 0x5000_00FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_2:A    | N/A                     | N/A                  | 0x5000_0100 -> 0x5000_01FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_3:A    | N/A                     | N/A                  | 0x5000_0200 -> 0x5000_02FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_4:A    | N/A                     | N/A                  | 0x5000_0300 -> 0x5000_03FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | E51_IRQ_AGGREGATOR        | N/A                     | N/A                  | 0x5000_0400 -> 0x5000_04FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_1:B    | N/A                     | N/A                  | 0x5000_0500 -> 0x5000_05FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_2:A  | N/A                     | N/A                  | 0x5000_0600 -> 0x5000_06FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_3:A  | N/A                     | N/A                  | 0x5000_0700 -> 0x5000_07FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_4:A  | N/A                     | N/A                  | 0x5000_0800 -> 0x5000_08FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | U54_1_IRQ_AGGREGATOR      | N/A                     | N/A                  | 0x5000_0900 -> 0x5000_09FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_2:B    | N/A                     | N/A                  | 0x5000_0A00 -> 0x5000_0AFF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_2:B  | N/A                     | N/A                  | 0x5000_0B00 -> 0x5000_0BFF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_3:A  | N/A                     | N/A                  | 0x5000_0C00 -> 0x5000_0CFF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_4:A  | N/A                     | N/A                  | 0x5000_0D00 -> 0x5000_0DFF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | U54_2_IRQ_AGGREGATOR      | N/A                     | N/A                  | 0x5000_0E00 -> 0x5000_0EFF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_3:B    | N/A                     | N/A                  | 0x5000_0F00 -> 0x5000_0FFF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_3:B  | N/A                     | N/A                  | 0x5000_1000 -> 0x5000_10FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_3:B  | N/A                     | N/A                  | 0x5000_1100 -> 0x5000_11FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_3_TO_U54_4:A  | N/A                     | N/A                  | 0x5000_1200 -> 0x5000_12FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | U54_3_IRQ_AGGREGATOR      | N/A                     | N/A                  | 0x5000_1300 -> 0x5000_13FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_4:B    | N/A                     | N/A                  | 0x5000_1400 -> 0x5000_14FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_4:B  | N/A                     | N/A                  | 0x5000_1500 -> 0x5000_15FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_4:B  | N/A                     | N/A                  | 0x5000_1600 -> 0x5000_16FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_3_TO_U54_4:B  | N/A                     | N/A                  | 0x5000_1700 -> 0x5000_17FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | U54_4_IRQ_AGGREGATOR      | N/A                     | N/A                  | 0x5000_1800 -> 0x5000_18FF       |
-| PF_PCIE_C0_0   | AXI4_mslave0               | MSS: FIC0                 | N/A                     | N/A                  | 0x6000_0000 -> 0xBFFF_FFFF       |
-| DMA_CONTROLLER | AXI4_mslave0               | MSS: FIC1                 | N/A                     | N/A                  | 0xC000_0000 -> 0xCFFF_FFFF       |
+| Initiator      | Bus                        | Target                    | Board peripheral        | Board interface              | Address range                    |
+|:---------------|:---------------------------|:--------------------------|:------------------------|:-----------------------------|:---------------------------------|
+| MSS: FIC0      | AXI4_mslave0               | PF_PCIE_C0_0              | N/A                     | PCIe edge connector          | 0x20_0000_0000 -> 0x2F_FFFF_FFFF |
+| MSS: FIC0      | AXI4_mslave1               | MSS_LSRAM                 | N/A                     | N/A                          | 0x6100_0000 -> 0x6100_1000       |
+| MSS: FIC0      | AXI4_mslave2               | DMA_CONTROLLER            | N/A                     | N/A                          | 0x6002_0000 -> 0x6002_FFFF       |
+| MSS: FIC3      | APBmslave1                 | PWM                       | N/A                     | J8 (mikroBUS socket)         | 0x4100_0000 -> 0x41FF_FFFF       |
+| MSS: FIC3      | APBmslave2                 | CoreGPIO                  | LEDs                    | N/A                          | 0x4200_0000 -> 0x42FF_FFFF       |
+| MSS: FIC3      | APBmslave4                 | CoreI2C                   | N/A                     | J26 (Raspberry Pi connector) | 0x4300_0000 -> 0x43FF_FFFF       |
+| MSS: FIC3      | APBmslave5                 | CoreUART                  | N/A                     | J26 (Raspberry Pi connector) | 0x4400_0000 -> 0x44FF_FFFF       |
+| MSS: FIC3      | APBmslave16                | RECONFIGURATION_INTERFACE | N/A                     | N/A                          | 0x4800_0000 -> 0x48FF_FFFF       |
+| MSS: FIC3      | APBmslave15                | SDIO_register             | U29 & U44 (SDIO de-mux) | N/A                          | 0x4F00_0000 -> 0x4FFF_FFFF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_1:A    | N/A                     | N/A                          | 0x5000_0000 -> 0x5000_00FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_2:A    | N/A                     | N/A                          | 0x5000_0100 -> 0x5000_01FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_3:A    | N/A                     | N/A                          | 0x5000_0200 -> 0x5000_02FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_4:A    | N/A                     | N/A                          | 0x5000_0300 -> 0x5000_03FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | E51_IRQ_AGGREGATOR        | N/A                     | N/A                          | 0x5000_0400 -> 0x5000_04FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_1:B    | N/A                     | N/A                          | 0x5000_0500 -> 0x5000_05FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_2:A  | N/A                     | N/A                          | 0x5000_0600 -> 0x5000_06FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_3:A  | N/A                     | N/A                          | 0x5000_0700 -> 0x5000_07FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_4:A  | N/A                     | N/A                          | 0x5000_0800 -> 0x5000_08FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | U54_1_IRQ_AGGREGATOR      | N/A                     | N/A                          | 0x5000_0900 -> 0x5000_09FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_2:B    | N/A                     | N/A                          | 0x5000_0A00 -> 0x5000_0AFF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_2:B  | N/A                     | N/A                          | 0x5000_0B00 -> 0x5000_0BFF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_3:A  | N/A                     | N/A                          | 0x5000_0C00 -> 0x5000_0CFF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_4:A  | N/A                     | N/A                          | 0x5000_0D00 -> 0x5000_0DFF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | U54_2_IRQ_AGGREGATOR      | N/A                     | N/A                          | 0x5000_0E00 -> 0x5000_0EFF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_3:B    | N/A                     | N/A                          | 0x5000_0F00 -> 0x5000_0FFF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_3:B  | N/A                     | N/A                          | 0x5000_1000 -> 0x5000_10FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_3:B  | N/A                     | N/A                          | 0x5000_1100 -> 0x5000_11FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_3_TO_U54_4:A  | N/A                     | N/A                          | 0x5000_1200 -> 0x5000_12FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | U54_3_IRQ_AGGREGATOR      | N/A                     | N/A                          | 0x5000_1300 -> 0x5000_13FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_4:B    | N/A                     | N/A                          | 0x5000_1400 -> 0x5000_14FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_4:B  | N/A                     | N/A                          | 0x5000_1500 -> 0x5000_15FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_4:B  | N/A                     | N/A                          | 0x5000_1600 -> 0x5000_16FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_3_TO_U54_4:B  | N/A                     | N/A                          | 0x5000_1700 -> 0x5000_17FF       |
+| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | U54_4_IRQ_AGGREGATOR      | N/A                     | N/A                          | 0x5000_1800 -> 0x5000_18FF       |
+| PF_PCIE_C0_0   | AXI4_mslave0               | MSS: FIC0                 | N/A                     | N/A                          | 0x6000_0000 -> 0xBFFF_FFFF       |
+| DMA_CONTROLLER | AXI4_mslave0               | MSS: FIC1                 | N/A                     | N/A                          | 0xC000_0000 -> 0xCFFF_FFFF       |
 
 ### Interrupt map
 

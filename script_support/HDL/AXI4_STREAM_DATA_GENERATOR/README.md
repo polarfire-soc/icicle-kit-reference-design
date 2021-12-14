@@ -1,4 +1,4 @@
-# SDIO register readme
+# AXI4 Stream Data Generator Readme
 
 ## Introduction
 
@@ -16,8 +16,8 @@ The following table describes the ports that are used in the AXI4 Stream interfa
 | TVALID    |   1   |   Output  |   TVALID indicates that the master is driving a valid transfer. |
 | TREADY    |   1   |   Input   |   TREADY indicates that the slave can accept a transfer in the current cycle.  |
 | TDATA     |   32  |   Output  |   TDATA is the primary payload that is used to provide the data that is passing across the interface.   |
-| TSTRB     |   32  |   Output  |   Used to indicate data or null bytes. TSTRB mirrors TKEEP.   |   
-| TKEEP     |   4   |   Output  |   Used to indicate data or null bytes. TKEEP mirrors TSTRB.   |   
+| TSTRB     |   32  |   Output  |   Each bit of TSTRB mirrors TKEEP.
+| TKEEP     |   4   |   Output  |   Asserting TKEEP is used to indicate a transaction of data bytes, de asserting TKEEP indicates a transaction of null bytes.
 | TLAST     |   1   |   Output  |   TLAST indicates the boundary of a packet.   |
 | TID       |   8   |   Output  |   The identifier that indicates different streams of data.    |
 | TDEST     |   2   |   Output  |   Provides routing information for the data stream.   |
@@ -28,16 +28,16 @@ The following table describes the ports that are used in the APB interface:
 
 | Signal  | Width | Direction | Description                                                   |
 |:--------|:------|:----------|:--------------------------------------------------------------|
-| pclk    | 1     | Input     | Clock source for the peripheral                               |
-| presetn | 1     | Input     | Active high reset for the peripheral                          |
-| penable | 1     | Input     | Indicates a transaction has begun                             |
-| psel    | 1     | Input     | Indicates this target has been selected                       |
-| paddr   | 32    | Input     | Address selected                                              |
+| pclk    | 1     | Input     | Clock source for the peripheral.                               |
+| presetn | 1     | Input     | Active high reset for the peripheral.                         |
+| penable | 1     | Input     | Indicates a transaction has begun.                            |
+| psel    | 1     | Input     | Indicates this target has been selected.                       |
+| paddr   | 32    | Input     | Address selected.                                              |
 | pwrite  | 1     | Input     | If high indicates the transaction is a write, otherwise read. |
-| pwdata  | 32    | Input     | Data to be written to the peripheral                          |
-| prdata  | 32    | Output    | Data read from the peripheral                                 |
-| pready  | 1     | Output    | Indicates a successful transaction                            |
-| pslverr | 1     | Output    | Always 0, if high, indicates an error has occurred            |
+| pwdata  | 32    | Input     | Data to be written to the peripheral.                          |
+| prdata  | 32    | Output    | Data read from the peripheral.                                 |
+| pready  | 1     | Output    | Indicates a successful transaction.                            |
+| pslverr | 1     | Output    | Always 0, if high, indicates an error has occurred.            |
 
 ### Misc
 
@@ -53,12 +53,10 @@ The following table describes the remaining ports:
 
 ## Design
 
-The stream transaction generation block is comprised of 2 sub-modules `data_gen.v` and `axi4_stream.v`.
-`data_gen.v` generates a stream of incrementing sequential numbers. `axi4_stream.v` manages the control signals used for addressing and to signal the beginning and end of transfers.
+The stream transaction generation block is comprised of 2 sub-modules `AXI4_STREAM_DATA_GENERATOR_gen.v` and `AXI4_STREAM_DATA_GENERATOR_control.v`.
+`AXI4_STREAM_DATA_GENERATOR_gen.v` generates a stream of incrementing sequential numbers. `AXI4_STREAM_DATA_GENERATOR_control.v` manages the control signals used for addressing and to signal the beginning and end of transfers.
 
 
-
-The SDIO register has a simple design, a single register bit at offset 0x0 can be accessed using the APB target interface of the core. Internally the register bit is brought out as a top level output.
 
 ![Module Design](./AXI4_STREAM_DATA_GENERATOR.svg)
 

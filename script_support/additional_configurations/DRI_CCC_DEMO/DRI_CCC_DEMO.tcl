@@ -48,15 +48,25 @@ sd_update_instance -sd_name ${sd_name} -instance_name {CLOCKS_AND_RESETS}
 
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:PLL0_DRI" "RECONFIGURATION_INTERFACE_0:PLL0_SW_DRI" }
 
-sd_clear_pin_attributes -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {RPi_GPIO12} 
-sd_clear_pin_attributes -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {RPi_GPIO16} 
-sd_clear_pin_attributes -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {RPi_GPIO20} 
-sd_clear_pin_attributes -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {RPi_GPIO21} 
+sd_disconnect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_2_IO:D"} 
+sd_disconnect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_2_IO:E"} 
+sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {GPIO_2_2_IO:E} -value {VCC} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:CLK_100MHz" "GPIO_2_2_IO:D"} 
 
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_100MHz" "RPi_GPIO12" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_75MHz" "RPi_GPIO16" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_50MHz" "RPi_GPIO20" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_25MHz" "RPi_GPIO21" }
+sd_disconnect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_4_IO:D"} 
+sd_disconnect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_4_IO:E"} 
+sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {GPIO_2_4_IO:E} -value {VCC} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:CLK_75MHz" "GPIO_2_4_IO:D"} 
+
+sd_disconnect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_8_IO:D"} 
+sd_disconnect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_8_IO:E"} 
+sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {GPIO_2_8_IO:E} -value {VCC} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:CLK_50MHz" "GPIO_2_8_IO:D"} 
+
+sd_disconnect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_9_IO:D"} 
+sd_disconnect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"GPIO_2_9_IO:E"} 
+sd_connect_pins_to_constant -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {GPIO_2_9_IO:E} -value {VCC} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:CLK_25MHz" "GPIO_2_9_IO:D"} 
 
 # Re-enable auto promotion of pins of type 'pad'
 auto_promote_pad_pins -promote_all 1

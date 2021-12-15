@@ -158,14 +158,16 @@ The following MSS peripherals are enabled:
 
 | Source                  | IRQ                |
 |:------------------------|:-------------------|
-| MSS_GPIO_2_28 OR SW1    | MSS_INT_FTM[0]     |
-| PF_PCIE                 | MSS_INT_FTM[1]     |
-| DMA_CONTROLLER          | MSS_INT_FTM[2]     |
-| IHC_SUBSYSTEM:E51_IRQ   | MSS_INT_FTM[63]    |
-| IHC_SUBSYSTEM:U54_1_IRQ | MSS_INT_FTM[62]    |
-| IHC_SUBSYSTEM:U54_2_IRQ | MSS_INT_FTM[61]    |
-| IHC_SUBSYSTEM:U54_3_IRQ | MSS_INT_FTM[60]    |
-| IHC_SUBSYSTEM:U54_4_IRQ | MSS_INT_FTM[59]    |
+| MSS_GPIO_2_28 OR SW1    | MSS_INT_F2M[0]     |
+| PF_PCIE                 | MSS_INT_F2M[1]     |
+| DMA_CONTROLLER          | MSS_INT_F3M[2]     |
+| mBUS_INT                | MSS_INT_F2M[3]     |
+| CoreI2C_INT[0]          | MSS_INT_F2M[4]     |
+| IHC_SUBSYSTEM:E51_IRQ   | MSS_INT_F3M[63]    |
+| IHC_SUBSYSTEM:U54_1_IRQ | MSS_INT_F3M[62]    |
+| IHC_SUBSYSTEM:U54_2_IRQ | MSS_INT_F3M[61]    |
+| IHC_SUBSYSTEM:U54_3_IRQ | MSS_INT_F3M[60]    |
+| IHC_SUBSYSTEM:U54_4_IRQ | MSS_INT_F3M[59]    |
 | MSS_GPIO_2_26 OR SW2    | MSS_GPIO_2_INT[30] |
 | MSS_GPIO_2_27 OR SW3    | MSS_GPIO_2_INT[31] |
 

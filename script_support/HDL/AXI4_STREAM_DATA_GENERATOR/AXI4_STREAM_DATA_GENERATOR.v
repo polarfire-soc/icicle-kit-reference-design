@@ -55,9 +55,9 @@ output [31:0] prdata;
 output      pready;
 output      pslverr;
 
-reg [31:0] register;
+reg [31:0] tx_size_reg;
 reg [31:0] pr_data_int;
-reg pready_int;
+reg pready_int, started;
 
 assign prdata = pr_data_int;
 assign pready = pready_int;
@@ -71,7 +71,6 @@ output   [3:0]   TKEEP;
 output   TLAST,  TVALID;
 output   [31:0]  TSTRB, TDATA;
 
-reg started;
 assign TVALID = started;
 
     always @(posedge ACLK) begin
@@ -89,15 +88,15 @@ assign TVALID = started;
     always @(posedge pclk)
       begin
         if (!presetn) begin
-            register <= 0;
+            tx_size_reg <= 0;
             pr_data_int <= 0;
             pready_int <= 0;
         end else if (!pwrite && psel) begin
-            pr_data_int <= register;
+            pr_data_int <= tx_size_reg;
             pready_int <= 1;
         end else if (pwrite && psel) begin
             pr_data_int <= 0;
-            register <= pwdata[31:0];
+            tx_size_reg <= pwdata[31:0];
             pready_int <= 1;
         end else begin
             pr_data_int <= 0;
@@ -105,7 +104,7 @@ assign TVALID = started;
         end
     end
     
-    AXI4_STREAM_DATA_GENERATOR_control control (.ACLK(ACLK), .RSTN(RSTN), .TLAST(TLAST), .TDEST(TDEST), .TID(TID), .TKEEP(TKEEP), .TSTRB(TSTRB), .VALID((!started) ? started : TREADY), .trans_size(register));
+    AXI4_STREAM_DATA_GENERATOR_control control (.ACLK(ACLK), .RSTN(RSTN), .TLAST(TLAST), .TDEST(TDEST), .TID(TID), .TKEEP(TKEEP), .TSTRB(TSTRB), .VALID((!started) ? started : TREADY), .trans_size(tx_size_reg));
     AXI4_STREAM_DATA_GENERATOR_gen generator  (.ACLK(ACLK), .RSTN(RSTN), .en(TREADY), .TDATA(TDATA), .VALID());
     
 endmodule

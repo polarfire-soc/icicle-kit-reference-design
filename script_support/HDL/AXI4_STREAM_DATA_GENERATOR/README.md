@@ -1,7 +1,7 @@
 # AXI4 Stream Data Generator Readme
 
 ## Introduction
-The AXI4_STREAM_DATA_GENERATOR module generates incrementing data which is outputted over an AXI4 Stream interface. The data is used in transfers as part of a AXI4 Stream transaction.
+The AXI4_STREAM_DATA_GENERATOR module generates incrementing data which is output over an AXI4 Stream interface. The data is used in transfers as part of a AXI4 Stream transaction.
 
 
 ## Ports
@@ -33,6 +33,7 @@ The following table describes the ports that are used in the APB interface:
 | pwrite  | 1     | Input     | If high indicates the transaction is a write, otherwise read. |
 | prdata  | 32    | Output    | Data read from the peripheral.                                 |
 | pready  | 1     | Output    | Indicates a successful transaction.                            |
+| pwdata  | 32    | Input     | Input used to set the transfer size.                          |
 | pslverr | 1     | Output    | Always 0, if high, indicates an error has occurred.            |
 
 ### Misc
@@ -46,9 +47,15 @@ The following table describes the remaining ports:
 | pclk    | 1     | Input     | Clock signal for APB interface exclusively.
 | presetn | 1     | Input     | Active high reset signal for APB interface exclusively.                         |
 | start     |   1   |   Input   |   Signal to initiate an AXI4 Stream transfer.   |
-| pwdata  | 32    | Input     | Input used to set the transfer size.                          |
+
 
 ## Register Description
+
+| Register 	| Offset 	| Width 	| R/W 	| Reset value 	| Description                                                                         	|
+|----------	|--------	|-------	|-----	|-------------	|-------------------------------------------------------------------------------------	|
+| tx_size_reg  	|   0x0 |   32      | R/W  	| 0x0         	|   Sets the number of transfers in a AXI4 stream transaction.                    |
+
+
 
 ## Design
 

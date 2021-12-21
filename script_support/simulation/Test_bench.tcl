@@ -48,12 +48,24 @@ sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_B
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SGMII_RX1_P} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:QSPI_DATA0} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:QSPI_DATA1} -value {GND} 
-sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:QSPI_DATA2} -value {GND} 
-sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:QSPI_DATA3_OR_PWM} -value {GND} 
-sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:I2C0_SCL} -value {GND} 
-sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:I2C0_SDA} -value {GND} 
-sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:MMUART_4_RXD_F2M} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:mBUS_QSPI_DATA2} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:mBUS_QSPI_DATA3_OR_PWM} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:mBUS_I2C_SCL} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:mBUS_I2C_SDA} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:mBUS_UART_RX} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SPI_0_DI_F2M} -value {GND} 
+sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:COREUART_RX} -value {GND} 
+sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:mBUS_INT} -value {GND} 
+sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:COREI2C_C0_SDA} -value {GND} 
+sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_GPIO27} -value {GND} 
+sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_GPIO26} -value {GND} 
+sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_GPIO25} -value {GND} 
+sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_GPIO24} -value {GND} 
+sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_GPIO23} -value {GND} 
+sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_GPIO22} -value {GND} 
+sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_GPIO18} -value {GND} 
+sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_GPIO17} -value {GND} 
+sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:COREI2C_C0_SCL} -value {GND} 
 
 # Promote pins to top level
 sd_connect_pin_to_port -sd_name ${sd_tb_name} -pin_name {MPFS_ICICLE_KIT_BASE_DESIGN_0:SDIO_SW_SEL1} -port_name {} 
@@ -123,7 +135,7 @@ sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESI
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:DQ} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:CA} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SDIO_SW_EN_N} 
-sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:MMUART_4_TXD_M2F} 
+sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:mBUS_UART_TX} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SPI_0_CLK_M2F}
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SPI_0_DO_M2F}  
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SPI_0_SS1_M2F} 
@@ -145,6 +157,7 @@ sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESI
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SD_VOLT_CMD_DIR_EMMC_DATA7} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SD_VOLT_DIR_1_3_EMMC_UNUSED} 
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SD_VOLT_DIR_0_EMMC_UNUSED} 
+sd_mark_pins_unused -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:COREUART_TX} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SD_CD_EMMC_STRB} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SD_WP_EMMC_RSTN} -value {GND} 
 

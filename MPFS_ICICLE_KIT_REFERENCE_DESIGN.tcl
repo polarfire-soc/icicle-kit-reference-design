@@ -191,6 +191,9 @@ derive_constraints_sdc
 if {[info exists BFM_SIMULATION]} {
     source script_support/simulation/Test_bench.tcl
 }
+if {[info exists AXI4_STREAM_DEMO]} {
+    source ./script_support/additional_configurations/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR.tcl
+}
 
 if {[info exists I2C_LOOPBACK]} {
     if {[file isdirectory $local_dir/script_support/components/MSS_I2C_LOOPBACK]} {
@@ -219,6 +222,7 @@ if {[info exists I2C_LOOPBACK]} {
 } elseif {[info exists DRI_CCC_DEMO]} {
     source ./script_support/additional_configurations/DRI_CCC_DEMO/DRI_CCC_DEMO.tcl
    }
+
 
 #
 # // Run the design flow and add eNVM clients if required
@@ -263,3 +267,5 @@ if {[info exists GENERATE_PROGRAMMING_DATA]} {
 }
 
 save_project 
+
+

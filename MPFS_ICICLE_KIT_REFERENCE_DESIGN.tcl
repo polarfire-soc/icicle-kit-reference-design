@@ -8,7 +8,7 @@
 
 set libero_release [split [get_libero_version] .]
 
-if {[string compare [lindex $libero_release 0] "2021"] == 0 && [string compare [lindex $libero_release 1] "2"] == 0} {
+if {[string compare [lindex $libero_release 0] "2021"] == 0 && [string compare [lindex $libero_release 1] "3"] == 0} {
     puts "Libero v2021.2 detected."
 } else {
     error "Incorrect Libero version detected. Please use Libero v2021.2 to run these scripts."
@@ -69,6 +69,14 @@ if {[info exists I2C_LOOPBACK]} {
     set project_dir "$local_dir/MPFS_ICICLE"
 }
 
+if {[info exists MSS_LINUX]} {
+    set target "Linux"
+} elseif {[info exists MSS_BAREMETAL]} {
+
+} else {
+    set target "Linux"
+}
+
 source ./script_support/additional_configurations/functions.tcl
 
 #
@@ -116,7 +124,7 @@ download_core -vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -location {w
 download_core -vlnv {Actel:SgCore:PF_CLK_DIV:1.0.103} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:SgCore:PF_DRI:1.1.104} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:SgCore:PF_NGMUX:1.0.101} -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:SgCore:PF_PCIE:2.0.104} -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv {Actel:SgCore:PF_PCIE:2.0.106} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:SgCore:PF_TX_PLL:2.0.300} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:SgCore:PF_XCVR_REF_CLK:1.0.103} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:DirectCore:CoreAPB3:4.2.100} -location {www.microchip-ip.com/repositories/DirectCore}
@@ -130,10 +138,30 @@ download_core -vlnv {Actel:DirectCore:COREI2C:7.2.101} -location {www.microchip-
 download_core -vlnv {Actel:DirectCore:CoreUARTapb:5.7.100} -location {www.microchip-ip.com/repositories/DirectCore} 
 
 #
+#  // Generate and import MSS component
+#
+
+if {[file isdirectory $local_dir/script_support/components/MSS]} {
+    file delete -force $local_dir/script_support/components/MSS
+}
+file mkdir $local_dir/script_support/components/MSS
+
+if {[info exists target]} {
+    exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/MPFS_ICICLE_MSS_linux.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
+} else {
+    exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/MPFS_ICICLE_MSS_baremetal.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
+}
+
+import_mss_component -file "$local_dir/script_support/components/MSS/ICICLE_MSS.cxz"
+
+#
 # // Generate base design
 #
 
-source ./script_support/MPFS_ICICLE_recursive.tcl
+cd ./script_support/
+source MPFS_ICICLE_KIT_BASE_DESIGN_recursive.tcl
+cd ../
+set_root -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} 
 
 #
 # // Import I/O constraints
@@ -191,8 +219,14 @@ derive_constraints_sdc
 if {[info exists BFM_SIMULATION]} {
     source script_support/simulation/Test_bench.tcl
 }
+
+
 if {[info exists AXI4_STREAM_DEMO]} {
-    source ./script_support/additional_configurations/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR.tcl
+    if {[info exists BFM_SIMULATION]} {
+        source script_support/additional_configurations/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR_BFM.tcl    
+    } else {
+        source script_support/additional_configurations/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR.tcl    
+    }
 }
 
 if {[info exists I2C_LOOPBACK]} {
@@ -222,6 +256,14 @@ if {[info exists I2C_LOOPBACK]} {
 } elseif {[info exists DRI_CCC_DEMO]} {
     source ./script_support/additional_configurations/DRI_CCC_DEMO/DRI_CCC_DEMO.tcl
    }
+   
+#
+# // Auto layout SmartDesigns
+#
+save_project 
+sd_reset_layout -sd_name {CLOCKS_AND_RESETS}
+sd_reset_layout -sd_name {IHC_SUBSYSTEM}
+sd_reset_layout -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
 
 
 #

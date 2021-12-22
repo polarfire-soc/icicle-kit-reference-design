@@ -40,66 +40,51 @@
 // limitations under the License.
 ////////////////////////////////////////////////////////////////////////////////
 
-module AXI4_STREAM_DATA_GENERATOR(ACLK, RSTN, TREADY, TDEST, TID, TKEEP, TLAST, TVALID, TSTRB, TDATA, PCLK, PRESETN, PENABLE, PSEL, PADDR, PWRITE, PWDATA, PRDATA, PREADY, PSLVERR );
+module AXI4_STREAM_DATA_GENERATOR_ABP_Reg( 
+    input wire pclk,
+    input wire presetn,
+    input wire psel,
+    input wire pwrite,
+    input wire [31:0] pwdata,
+    input wire [31:0] paddr,
+    output wire pslverr,
+    output reg start,
+    output reg pready,
+    output reg [31:0] prdata,
+    output reg [31:0] trans_size
+    );    
 
-input PCLK;
-input PRESETN;
-input PENABLE;
-input PSEL;
-input PWRITE;
-input [31:0] PADDR;
-input [31:0] PWDATA;
-output PREADY;
-output PSLVERR;
-output [31:0] PRDATA;
+    always @(posedge pclk)
+      begin
+        if (!presetn) begin            
+            prdata <= 32'b0;
+            pready <= 1'b0;    
+            trans_size <= 32'b0;
+            start <= 1'b0;            
+        end else if (psel && pwrite) begin
+            prdata <= 32'b0;
+            case (paddr[3:0])
+                4'b0000: begin
+                    trans_size <= pwdata[31:0];
+                    pready <= 1'b1;
+                end
+                4'b0100: begin
+                    start <= pwdata[0];
+                    pready <= 1'b1;
+                end
+                default: begin
+                    pready <= 1'b1;
+                end
+            endcase
+        end else if (psel && !pwrite) begin
+            prdata <= trans_size;
+            pready <= 1'b1;
+        end else begin
+            prdata <= 32'b0;
+            pready <= 1'b0;
+        end
+    end
 
-input ACLK, RSTN, TREADY;
+    assign pslverr = 1'b0;    
 
-output   [1:0]   TDEST;
-output   [7:0]   TID;
-output   [3:0]   TKEEP;
-output   TLAST,  TVALID;
-output   [31:0]  TSTRB, TDATA;
-
-    wire ENABLE_GEN;
-    wire ENABLE_FSM;
-    wire [31:0] TX_SIZE;
-    
-    
-    AXI4_STREAM_DATA_GENERATOR_ABP_Reg  TRANS_SIZE (
-        .pclk(PCLK),
-        .presetn(PRESETN),
-        .psel(PSEL),
-        .pwrite(PWRITE),
-        .pwdata(PWDATA),
-        .pslverr(PSLVERR),
-        .pready(PREADY),
-        .prdata(PRDATA),
-        .trans_size(TX_SIZE),
-        .paddr(PADDR),
-        .start(ENABLE_FSM)
-    );
-    
-    AXI4_STREAM_DATA_GENERATOR_FSM FSM (
-        .clk(ACLK),
-        .rst_n(RSTN),
-        .start(ENABLE_FSM),
-        .ready(TREADY),
-        .en(ENABLE_GEN)
-    );
-    
-    AXI4_STREAM_DATA_GENERATOR_gen generator (
-        .clk(ACLK),
-        .rst_n(RSTN),
-        .en(ENABLE_GEN),
-        .tdata(TDATA),
-        .tvalid(TVALID),
-        .tlast(TLAST),
-        .trans_size(TX_SIZE),
-        .tkeep(TKEEP),
-        .tstrb(TSTRB),
-        .tdest(TDEST),
-        .tid(TID)
-    );
-    
 endmodule

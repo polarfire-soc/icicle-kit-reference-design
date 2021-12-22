@@ -23,6 +23,7 @@ sd_create_bif_port -sd_name ${sd_name} -port_name {PLL0_DRI} -port_bif_vlnv {Act
 
 
 # Add CCC instance
+source ./script_support/additional_configurations/DRI_CCC_DEMO/PF_CCC_C0.tcl
 sd_instantiate_component -sd_name ${sd_name} -component_name {PF_CCC_C0} -instance_name {CCC}
 
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLK_100MHz" "CCC:OUT0_FABCLK_0" }

@@ -1,0 +1,44 @@
+#===========================================================
+# NOTES about this specific file:
+#       In this file, 'ICICLE_MSS_PFSOC_MSS_FIC3_user.bfm': 
+#       The AXI4 stream transfer size is set on the stream
+#       generator module by writing to its transfer size
+#       register.       
+#       The data stream is started by writing to the start
+#       register on the stream generator module.
+#===========================================================                                                                                                    
+#                                                           
+# memmap    resource_name base_address;   
+memmap  streamCtrl  0x4A00_0000
+#-----------------------------------------------------------
+procedure main;
+#-----------------------------------------------------------
+# START of BFM
+#-----------------------------------------------------------
+print "-"
+print "MESSAGE:  START Running BFM file 'ICICLE_MSS_PFSOC_MSS_FIC3_user.bfm'"
+print "MESSAGE:  to access FIC3"
+print "-"
+
+#command systax
+#write x <address> <address_increment> <32 bit data>
+#read x <address> <address_increment>
+
+
+int     transSize
+set     transSize   1024
+
+# setting the transfer size
+write   w   streamCtrl  0x0  transSize
+wait 50
+# starting the stream
+write   w   streamCtrl  0x4  0x1
+
+#-----------------------------------------------------------
+# END of BFM
+#-----------------------------------------------------------
+print "-"
+print "MESSAGE:  END running BFM file 'ICICLE_MSS_PFSOC_MSS_FIC3_user.bfm'"
+print "-"
+
+return

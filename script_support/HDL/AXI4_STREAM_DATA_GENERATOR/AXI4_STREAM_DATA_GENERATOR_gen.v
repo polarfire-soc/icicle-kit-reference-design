@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Copyright (c) 2021, Microchip Corporation
+// Copyright (c) 2022, Microchip Corporation
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -25,7 +25,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // APACHE LICENSE
-// Copyright (c) 2021, Microchip Corporation 
+// Copyright (c) 2022, Microchip Corporation 
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -40,40 +40,70 @@
 // limitations under the License.
 ////////////////////////////////////////////////////////////////////////////////
 
-
-//`timescale <time_units> / <precision>
-
 module AXI4_STREAM_DATA_GENERATOR_gen (
-                //input
-                ACLK,
-                RSTN,
-                en,
-                //output
-                TDATA,
-                VALID
+                input wire clk,
+                input wire rst_n,
+                input en,
+                input wire [31:0] trans_size,                
+                output wire tlast,
+                output wire tvalid,
+                output wire [1:0] tdest,                
+                output wire [3:0] tkeep,
+                output wire [7:0] tid,                              
+                output wire [31:0] tstrb,
+                output wire [31:0] tdata
                 );
-                
-input ACLK, RSTN, en;
-output [31:0] TDATA;
-output VALID;
+
+    localparam
+        INC = 32'b1;
     
-parameter
-    INC = 1'b1;
+    localparam
+        TKEEP_WIDTH = 4,
+        TSTRB_WIDTH = 32;
     
-    reg [31:0] tdata_ff, tdata_nxt;
+    reg tlast_ff;
+    reg [31:0] tdata_ff;
+    wire [31:0] transSize_inter;
+    wire [31:0] transSize_out;
     
-    always @(posedge ACLK, negedge RSTN) begin
-        if (!RSTN)  tdata_ff <= 0;
-        else        tdata_ff <= tdata_nxt;                    
-    end
+    AXI4_STREAM_DATA_GENERATOR_DFF #(.N(32)) flipFlop_one (
+        .clk(clk),
+        .rst_n(rst_n),
+        .in(trans_size),
+        .out(transSize_inter)
+    );
+    AXI4_STREAM_DATA_GENERATOR_DFF #(.N(32)) flipFlop_two (
+        .clk(clk),
+        .rst_n(rst_n),
+        .in(transSize_inter),
+        .out(transSize_out)
+    );
     
-    always @* begin        
-        tdata_nxt = tdata_ff;                
-        if ( en )   tdata_nxt = tdata_ff + INC;
+    always @(posedge clk, negedge rst_n) begin
+        if (!rst_n) begin
+            tdata_ff <= 32'b0;
+            tlast_ff <= 1'b0;
+        end else begin
+            if (en) begin
+                if (tdata_ff == transSize_out) begin
+                    tdata_ff <= 32'b0;
+                    tlast_ff <= 1'b1;
+                end else begin
+                    tdata_ff <= tdata_ff + INC;
+                    tlast_ff <= 1'b0;
+                end
+            end
+        end
     end
 
-    assign TDATA = tdata_ff;
-    assign VALID = | tdata_ff;
+    assign tdest = 2'b0;
+    assign tid = 8'b0;
+
+    assign tdata = tdata_ff;
+    assign tvalid = (| tdata_ff);
+    assign tlast = tlast_ff;
+    
+    assign tkeep = {TKEEP_WIDTH{(!(trans_size == tdata_ff) & (| tdata_ff))}};
+    assign tstrb = {{(TSTRB_WIDTH - 4){1'b0}},{TKEEP_WIDTH{(!(trans_size == tdata_ff) & (| tdata_ff))}}};
 
 endmodule
-

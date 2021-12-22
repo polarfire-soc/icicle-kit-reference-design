@@ -1,0 +1,75 @@
+#===========================================================
+# NOTES about this specific file:
+#       In this file, 'ICICLE_MSS_PFSOC_MSS_FIC0_user.bfm':
+#       The stream configuration register (descriptor valid,
+#       destination data ready, destination operand), the 
+#       byte count register and the destination address
+#       register are written to SRAM.
+#       The memory address of these parameters is written to
+#       the stream descriptor address of the DMA controller.
+#       Interrupts are enabled on the DMA controller by 
+#       writing to the interrupt 0 mask register.
+#===========================================================                                                                                                    
+#                                                           
+# memmap    resource_name base_address;    
+#memmap FIC_0_0x61000000 0x6100_0000;                 
+#-----------------------------------------------------------
+
+int     streamDescAddr
+
+int     transSize
+int     transSizeBytes
+int     destOffset
+
+int memDest
+
+memmap  dmaCtrl     0x6002_0000
+memmap  SRAM       0x6800_0000    # memory address of SRAM
+memmap fabricSRAM 0x6000_0000
+
+procedure main;
+#-----------------------------------------------------------
+# START of BFM
+#-----------------------------------------------------------
+print "-"
+print "MESSAGE:  START Running BFM file 'ICICLE_MSS_PFSOC_MSS_FIC0_user.bfm'"
+print "MESSAGE:  to access FIC0"
+print "-"
+
+set     destOffset 0x20
+set     streamDescAddr  0x6000_0000
+
+# setting up the DMA controller and the SRAM
+
+# configuration register
+# 4'b1101 {Descriptor Valid, Destination Data Ready, Destination Operand}
+write   w   SRAM       0x0000      0x0D		
+
+set     transSize       1024;
+set     transSizeBytes  transSize * 4
+
+# Byte Count register
+write   w   SRAM       0x0004      transSizeBytes
+
+
+# Memory destination for stream (SRAM)
+set     memDest     fabricSRAM + destOffset
+write   w   SRAM       0x0008      memDest
+
+
+# Stream Descriptor Address 0 Register
+write   w   dmaCtrl     0x0460  streamDescAddr	
+
+
+# Enable IRQs - Interrupt 0 mask register
+write   w   dmaCtrl     0x0014      0x0F
+
+
+#-----------------------------------------------------------
+# END of BFM
+#-----------------------------------------------------------
+print "-"
+print "MESSAGE:  END running BFM file 'ICICLE_MSS_PFSOC_MSS_FIC0_user.bfm'"
+print "-"
+
+return

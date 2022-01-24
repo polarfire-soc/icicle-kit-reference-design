@@ -1,6 +1,5 @@
 set sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
 open_smartdesign -sd_name ${sd_name}
-delete_component -component_name {ICICLE_MSS} 
 import_mss_component -file "$local_dir/script_support/components/MSS_I2C_LOOPBACK/ICICLE_MSS.cxz"
 sd_update_instance -sd_name ${sd_name} -instance_name {ICICLE_MSS} 
 

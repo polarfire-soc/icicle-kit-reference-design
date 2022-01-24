@@ -1,7 +1,7 @@
-# Exporting Component Description of LSRAM to TCL
+# Exporting Component Description of MSS_LSRAM to TCL
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
-# Create and Configure the core component LSRAM
+# Create and Configure the core component MSS_LSRAM
 create_and_configure_core -core_vlnv {Actel:SystemBuilder:PF_SRAM_AHBL_AXI:1.2.108} -component_name {MSS_LSRAM} -params {\
 "AXI4_AWIDTH:32" \
 "AXI4_DWIDTH:64" \
@@ -24,4 +24,4 @@ create_and_configure_core -core_vlnv {Actel:SystemBuilder:PF_SRAM_AHBL_AXI:1.2.1
 "USE_NATIVE_INTERFACE:F" \
 "WDEPTH:2048" \
 "WWIDTH:80" }
-# Exporting Component Description of LSRAM to TCL done
+# Exporting Component Description of MSS_LSRAM to TCL done

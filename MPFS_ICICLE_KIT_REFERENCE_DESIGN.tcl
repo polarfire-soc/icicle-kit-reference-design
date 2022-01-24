@@ -130,10 +130,24 @@ download_core -vlnv {Actel:DirectCore:COREI2C:7.2.101} -location {www.microchip-
 download_core -vlnv {Actel:DirectCore:CoreUARTapb:5.7.100} -location {www.microchip-ip.com/repositories/DirectCore} 
 
 #
+#  // Generate and import MSS component
+#
+
+if {[file isdirectory $local_dir/script_support/components/MSS]} {
+    file delete -force $local_dir/script_support/components/MSS
+}
+file mkdir $local_dir/script_support/components/MSS
+exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/PF_SoC_MSS_Icicle.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
+import_mss_component -file "$local_dir/script_support/components/MSS/ICICLE_MSS.cxz"
+
+#
 # // Generate base design
 #
 
-source ./script_support/MPFS_ICICLE_recursive.tcl
+cd ./script_support/
+source MPFS_ICICLE_recursive.tcl
+cd ../
+set_root -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} 
 
 #
 # // Import I/O constraints

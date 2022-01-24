@@ -1458,4 +1458,4 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.
 "SLV_AXI4PRT_ADDRDEPTH:8"  \
 "SLV_AXI4PRT_DATADEPTH:9"  \
 "USER_WIDTH:1"   }
-# Exporting Component Description of AXI4INTERCONNECT to TCL done
+# Exporting Component Description of DMA_INITIATOR to TCL done

@@ -1,33 +1,39 @@
-if {[file isdirectory $local_dir/script_support/components/MSS]} {
-    file delete -force $local_dir/script_support/components/MSS
-}
-file mkdir $local_dir/script_support/components/MSS
-exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/PF_SoC_MSS_Icicle.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
-import_mss_component -file "$local_dir/script_support/components/MSS/ICICLE_MSS.cxz"
-source script_support/hdl_source.tcl
-source script_support/components/CORERESET_0.tcl
-source script_support/components/INIT_MONITOR.tcl 
-source script_support/components/PCIE_INITIATOR.tcl 
-source script_support/components/FIC0_INITIATOR.tcl 
-source script_support/components/CLK_DIV.tcl 
-source script_support/components/PF_CCC_C0.tcl 
-source script_support/components/RECONFIGURATION_INTERFACE.tcl 
-source script_support/components/GLITCHLESS_MUX.tcl 
-source script_support/components/PF_PCIE_C0.tcl 
-source script_support/components/TRANSMIT_PLL.tcl 
-source script_support/components/PCIE_REF_CLK.tcl 
-source script_support/components/PCIE_LSRAM.tcl 
-source script_support/components/MSS_LSRAM.tcl 
-source script_support/components/DMA_CONTROLLER.tcl
-source script_support/components/DMA_INITIATOR.tcl
-source script_support/components/GPIO.tcl
-source script_support/components/FIC3_INITIATOR.tcl
-source script_support/components/OSCILLATOR_160MHz.tcl
-source script_support/components/COREPWM_C0.tcl
-source script_support/components/COREI2C.tcl
-source script_support/components/CoreUARTapb_C0.tcl
-source script_support/components/CLOCKS_AND_RESETS.tcl 
-source script_support/components/IHC_APB.tcl
-source script_support/components/IHC_SUBSYSTEM.tcl
-source script_support/components/MPFS_ICICLE_BASE_DESIGN.tcl 
-set_root -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} 
+#This Tcl file sources other Tcl files to build the design(on which recursive export is run) in a bottom-up fashion
+
+#Sourcing the Tcl file in which all the HDL source files used in the design are imported or linked
+source hdl_source.tcl
+build_design_hierarchy
+
+#Sourcing the Tcl files in which HDL+ core definitions are created for HDL modules
+source components/APB_ARBITER.tcl 
+source components/AXI_ADDRESS_SHIM.tcl 
+source components/MIV_IHCIA.tcl 
+source components/MIV_IHCC.tcl 
+source components/sdio_register.tcl 
+build_design_hierarchy
+
+#Sourcing the Tcl files for creating individual components under the top level
+source components/CLK_DIV.tcl 
+source components/CORERESET.tcl 
+source components/GLITCHLESS_MUX.tcl 
+source components/INIT_MONITOR.tcl 
+source components/OSCILLATOR_160MHz.tcl 
+source components/PCIE_REF_CLK.tcl 
+source components/TRANSMIT_PLL.tcl 
+source components/CLOCKS_AND_RESETS.tcl 
+source components/COREI2C_C0.tcl 
+source components/CoreUARTapb_C0.tcl 
+source components/DMA_CONTROLLER.tcl 
+source components/DMA_INITIATOR.tcl 
+source components/FIC0_INITIATOR.tcl 
+source components/FIC3_INITIATOR.tcl 
+source components/GPIO.tcl 
+source components/IHC_APB.tcl 
+source components/IHC_SUBSYSTEM.tcl 
+source components/MSS_LSRAM.tcl 
+source components/PCIE_INITIATOR.tcl 
+source components/PF_PCIE_C0.tcl 
+source components/RECONFIGURATION_INTERFACE.tcl 
+source components/corepwm_C0.tcl 
+source components/MPFS_ICICLE_KIT_BASE_DESIGN.tcl 
+build_design_hierarchy

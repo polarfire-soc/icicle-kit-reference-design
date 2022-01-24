@@ -85,4 +85,4 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4DMACONTROLLER:2.0
 "PRI_5_NUM_OF_BEATS:8"  \
 "PRI_6_NUM_OF_BEATS:4"  \
 "PRI_7_NUM_OF_BEATS:1"   }
-# Exporting Component Description of DMACONTROLLER to TCL done
+# Exporting Component Description of DMA_CONTROLLER to TCL done

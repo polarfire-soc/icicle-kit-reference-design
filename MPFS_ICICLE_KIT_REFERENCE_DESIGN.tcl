@@ -233,6 +233,14 @@ if {[info exists I2C_LOOPBACK]} {
 } elseif {[info exists DRI_CCC_DEMO]} {
     source ./script_support/additional_configurations/DRI_CCC_DEMO/DRI_CCC_DEMO.tcl
    }
+   
+#
+# // Auto layout SmartDesigns
+#
+save_project 
+sd_reset_layout -sd_name {CLOCKS_AND_RESETS}
+sd_reset_layout -sd_name {IHC_SUBSYSTEM}
+sd_reset_layout -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
 
 #
 # // Run the design flow and add eNVM clients if required

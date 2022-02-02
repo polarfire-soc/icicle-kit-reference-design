@@ -33,6 +33,7 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_RX0_P} -port_directi
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_RX1_N} -port_direction {IN} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_RX1_P} -port_direction {IN} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SPI_0_DI_F2M} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SPI_1_DI} -port_direction {IN} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SW1} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SW2} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SW3} -port_direction {IN}
@@ -70,8 +71,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD2_N} -port_
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD2_P} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD3_N} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD3_P} -port_direction {OUT} -port_is_pad {1}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_CLK} -port_direction {OUT} -port_is_pad {1}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_CS} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RESET_N} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_EN_N} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_SEL0} -port_direction {OUT}
@@ -90,6 +89,7 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {SGMII_TX1_P} -port_directi
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SPI_0_CLK_M2F} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SPI_0_DO_M2F} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SPI_0_SS1_M2F} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SPI_1_DO} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {USB_STP} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {USB_ULPI_RESET} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {VSC_8662_CMODE3} -port_direction {OUT}
@@ -101,6 +101,7 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {VSC_8662_OSCEN} -port_dire
 sd_create_scalar_port -sd_name ${sd_name} -port_name {VSC_8662_PLLMODE} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {VSC_8662_RESETN} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {VSC_8662_SRESET} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {mBUS_PWM} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {mBUS_UART_TX} -port_direction {OUT}
 
 sd_create_scalar_port -sd_name ${sd_name} -port_name {COREI2C_C0_SCL} -port_direction {INOUT} -port_is_pad {1}
@@ -108,8 +109,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {COREI2C_C0_SDA} -port_dire
 sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C_1_SCL} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {I2C_1_SDA} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MAC_1_MDIO} -port_direction {INOUT} -port_is_pad {1}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA0} -port_direction {INOUT} -port_is_pad {1}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {QSPI_DATA1} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO12} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO13} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO16} -port_direction {INOUT} -port_is_pad {1}
@@ -131,6 +130,8 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA0_EMMC_DATA0} -port
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA1_EMMC_DATA1} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA2_EMMC_DATA2} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA3_EMMC_DATA3} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SPI_1_CLK} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {SPI_1_SS0} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {USB_DATA0} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {USB_DATA1} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {USB_DATA2} -port_direction {INOUT} -port_is_pad {1}
@@ -141,8 +142,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {USB_DATA6} -port_direction
 sd_create_scalar_port -sd_name ${sd_name} -port_name {USB_DATA7} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {mBUS_I2C_SCL} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {mBUS_I2C_SDA} -port_direction {INOUT} -port_is_pad {1}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {mBUS_QSPI_DATA2} -port_direction {INOUT} -port_is_pad {1}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {mBUS_QSPI_DATA3_OR_PWM} -port_direction {INOUT} -port_is_pad {1}
 
 # Create top level Bus Ports
 sd_create_bus_port -sd_name ${sd_name} -port_name {CA} -port_direction {OUT} -port_range {[5:0]} -port_is_pad {1}
@@ -152,16 +151,16 @@ sd_create_bus_port -sd_name ${sd_name} -port_name {DQS_N} -port_direction {INOUT
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQS} -port_direction {INOUT} -port_range {[3:0]} -port_is_pad {1}
 sd_create_bus_port -sd_name ${sd_name} -port_name {DQ} -port_direction {INOUT} -port_range {[31:0]} -port_is_pad {1}
 
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_EN_N} -value {GND}
+sd_invert_pins -sd_name ${sd_name} -pin_names {USB_ULPI_RESET}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_CMODE3} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_CMODE4} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_CMODE5} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_CMODE6} -value {VCC}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_CMODE7} -value {GND}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_SRESET} -value {VCC}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_OSCEN} -value {VCC}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_PLLMODE} -value {VCC}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_CMODE3} -value {GND}
-sd_invert_pins -sd_name ${sd_name} -pin_names {USB_ULPI_RESET}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {SDIO_SW_EN_N} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {VSC_8662_SRESET} -value {VCC}
 # Add APB_ARBITER_0 instance
 sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {APB_ARBITER} -instance_name {APB_ARBITER_0}
 # Exporting Parameters of instance APB_ARBITER_0
@@ -451,26 +450,6 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {corepwm_C0} -insta
 
 
 
-# Add QSPI_DATA2_BIBUF instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {QSPI_DATA2_BIBUF}
-
-
-
-# Add QSPI_DATA3_OR_PWM_BIBUF instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {QSPI_DATA3_OR_PWM_BIBUF}
-
-
-
-# Add QSPI_DATA3_OR_PWM_D_OR instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {OR2} -instance_name {QSPI_DATA3_OR_PWM_D_OR}
-
-
-
-# Add QSPI_DATA3_OR_PWM_EN_OR instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {OR2} -instance_name {QSPI_DATA3_OR_PWM_EN_OR}
-
-
-
 # Add RECONFIGURATION_INTERFACE_0 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {RECONFIGURATION_INTERFACE} -instance_name {RECONFIGURATION_INTERFACE_0}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {RECONFIGURATION_INTERFACE_0:PINTERRUPT}
@@ -644,16 +623,6 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[62:62]" 
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[63:63]" "IHC_SUBSYSTEM_0:E51_IRQ" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_RESET_N_F2M" "SW4" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:ODT" "ODT" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_CLK" "QSPI_CLK" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA0" "QSPI_DATA0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA1" "QSPI_DATA1" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA2_F2M" "QSPI_DATA2_BIBUF:Y" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA2_M2F" "QSPI_DATA2_BIBUF:D" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA2_OE_M2F" "QSPI_DATA2_BIBUF:E" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA3_F2M" "QSPI_DATA3_OR_PWM_BIBUF:Y" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA3_M2F" "QSPI_DATA3_OR_PWM_D_OR:A" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA3_OE_M2F" "QSPI_DATA3_OR_PWM_EN_OR:A" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_SS0" "QSPI_CS" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:REFCLK" "REFCLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:REFCLK_N" "REFCLK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:RESET_N" "RESET_N" }
@@ -683,6 +652,10 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SPI_0_CLK_M2F" "SPI_
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SPI_0_DI_F2M" "SPI_0_DI_F2M" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SPI_0_DO_M2F" "SPI_0_DO_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SPI_0_SS1_M2F" "SPI_0_SS1_M2F" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SPI_1_CLK" "SPI_1_CLK" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SPI_1_DI" "SPI_1_DI" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SPI_1_DO" "SPI_1_DO" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SPI_1_SS0" "SPI_1_SS0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:USB_CLK" "USB_CLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:USB_DATA0" "USB_DATA0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:USB_DATA1" "USB_DATA1" }
@@ -716,11 +689,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE_TXD2_P" "PCIES
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE_TXD3_N" "PCIESS_LANE_TXD3_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE_TXD3_P" "PCIESS_LANE_TXD3_P" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIE_1_PERST_N" "PCIE_1_PERST_N" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PWM:PWM" "QSPI_DATA3_OR_PWM_D_OR:B" "QSPI_DATA3_OR_PWM_EN_OR:B" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA2_BIBUF:PAD" "mBUS_QSPI_DATA2" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA3_OR_PWM_BIBUF:D" "QSPI_DATA3_OR_PWM_D_OR:Y" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA3_OR_PWM_BIBUF:E" "QSPI_DATA3_OR_PWM_EN_OR:Y" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA3_OR_PWM_BIBUF:PAD" "mBUS_QSPI_DATA3_OR_PWM" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PWM:PWM" "mBUS_PWM" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SDIO_SW_SEL0" "SDIO_SW_SEL1" "sdio_register_0:SDIO_control" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SW1" "SW1_OR_GPIO_2_28:A" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SW2" "SW2_OR_GPIO_2_26:A" }

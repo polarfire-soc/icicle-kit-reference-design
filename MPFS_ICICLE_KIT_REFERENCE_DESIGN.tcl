@@ -145,7 +145,7 @@ import_mss_component -file "$local_dir/script_support/components/MSS/ICICLE_MSS.
 #
 
 cd ./script_support/
-source MPFS_ICICLE_recursive.tcl
+source MPFS_ICICLE_KIT_BASE_DESIGN_recursive.tcl
 cd ../
 set_root -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} 
 

@@ -1,10 +1,10 @@
   <mss xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="mpfs_hw_description.xsd">
     <design_information>
-      <libero_version>2021.2</libero_version>
+      <libero_version>2021.3</libero_version>
       <design_name>ICICLE_MSS</design_name>
       <mpfs_part_no>MPFS250T_ES</mpfs_part_no>
       <mpfs_package>FCVG484</mpfs_package>
-      <creation_date_time>08-04-2021_12:25:08</creation_date_time>
+      <creation_date_time>02-03-2022_14:25:05</creation_date_time>
       <xml_format_version>0.5.6</xml_format_version>
     </design_information>
     <mss_memory_map>
@@ -1287,10 +1287,10 @@
             <field Type="RW" name="PAD29" offset="28" width="4">0x8</field>
           </register>
           <register address="0x00000214" description="Configures the IO Mux structure for each IO pad.  0  implies  SD/SDIO, 1 implies  EMMC, 2 implies QSPI, 3 implies SPI,4 implies USB,5 implies MMUART,6 implies I2C,7 implies CAN,8 implies MDIO,9 implies Miscellaneous,0xA implies Reserved (Equivalent to Tristate),0xB implies GPIO ,0xC implies Fabric-test,0xD implies Logic 0,0xE implies Logic 1, 0xF implies Tristate" name="IOMUX5_CR">
-            <field Type="RW" name="PAD30" offset="0" width="4">0x2</field>
-            <field Type="RW" name="PAD31" offset="4" width="4">0x2</field>
-            <field Type="RW" name="PAD32" offset="8" width="4">0x2</field>
-            <field Type="RW" name="PAD33" offset="12" width="4">0x2</field>
+            <field Type="RW" name="PAD30" offset="0" width="4">0x3</field>
+            <field Type="RW" name="PAD31" offset="4" width="4">0x3</field>
+            <field Type="RW" name="PAD32" offset="8" width="4">0x3</field>
+            <field Type="RW" name="PAD33" offset="12" width="4">0x3</field>
             <field Type="RW" name="PAD34" offset="16" width="4">0x7</field>
             <field Type="RW" name="PAD35" offset="20" width="4">0x7</field>
             <field Type="RW" name="PAD36" offset="24" width="4">0x7</field>
@@ -1499,10 +1499,10 @@
             <field Type="RW" name="PAD29" offset="28" width="4">0x8</field>
           </register>
           <register address="0x00000214" description="Configures the IO Mux structure for each IO pad.  0  implies  SD/SDIO, 1 implies  EMMC, 2 implies QSPI, 3 implies SPI,4 implies USB,5 implies MMUART,6 implies I2C,7 implies CAN,8 implies MDIO,9 implies Miscellaneous,0xA implies Reserved (Equivalent to Tristate),0xB implies GPIO ,0xC implies Fabric-test,0xD implies Logic 0,0xE implies Logic 1, 0xF implies Tristate" name="ALT_IOMUX5_CR">
-            <field Type="RW" name="PAD30" offset="0" width="4">0x2</field>
-            <field Type="RW" name="PAD31" offset="4" width="4">0x2</field>
-            <field Type="RW" name="PAD32" offset="8" width="4">0x2</field>
-            <field Type="RW" name="PAD33" offset="12" width="4">0x2</field>
+            <field Type="RW" name="PAD30" offset="0" width="4">0x3</field>
+            <field Type="RW" name="PAD31" offset="4" width="4">0x3</field>
+            <field Type="RW" name="PAD32" offset="8" width="4">0x3</field>
+            <field Type="RW" name="PAD33" offset="12" width="4">0x3</field>
             <field Type="RW" name="PAD34" offset="16" width="4">0x7</field>
             <field Type="RW" name="PAD35" offset="20" width="4">0x7</field>
             <field Type="RW" name="PAD36" offset="24" width="4">0x7</field>
@@ -2287,7 +2287,7 @@
             <field Type="RW" name="LOCKED" offset="31" width="1">0x1</field>
           </register>
           <register address="0x00000004" description="Cached access at 0x10_0000_000" name="SEG0_1">
-            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x7030</field>
+            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x7002</field>
             <field Type="RW" name="RESERVED" offset="15" width="16">0x0</field>
             <field Type="RW" name="LOCKED" offset="31" width="1">0x1</field>
           </register>
@@ -2332,7 +2332,7 @@
             <field Type="RW" name="LOCKED" offset="31" width="1">0x0</field>
           </register>
           <register address="0x00000008" description="Non-Cached access at 0x00_c000_0000" name="SEG1_2">
-            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x7FB0</field>
+            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x7FB8</field>
             <field Type="RW" name="RESERVED" offset="15" width="16">0x0</field>
             <field Type="RW" name="LOCKED" offset="31" width="1">0x1</field>
           </register>
@@ -2342,7 +2342,7 @@
             <field Type="RW" name="LOCKED" offset="31" width="1">0x1</field>
           </register>
           <register address="0x00000016" description="Non-Cached WCB access at 0x00_d000_0000" name="SEG1_4">
-            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x7FA0</field>
+            <field Type="RW" name="ADDRESS_OFFSET" offset="0" width="15">0x7FA8</field>
             <field Type="RW" name="RESERVED" offset="15" width="16">0x0</field>
             <field Type="RW" name="LOCKED" offset="31" width="1">0x1</field>
           </register>

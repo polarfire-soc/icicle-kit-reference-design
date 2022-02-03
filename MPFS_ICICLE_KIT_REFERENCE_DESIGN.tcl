@@ -69,6 +69,14 @@ if {[info exists I2C_LOOPBACK]} {
     set project_dir "$local_dir/MPFS_ICICLE"
 }
 
+if {[info exists MSS_LINUX]} {
+    set target "Linux"
+} elseif {[info exists MSS_BAREMETAL]} {
+
+} else {
+    set target "Linux"
+}
+
 source ./script_support/additional_configurations/functions.tcl
 
 #
@@ -137,7 +145,13 @@ if {[file isdirectory $local_dir/script_support/components/MSS]} {
     file delete -force $local_dir/script_support/components/MSS
 }
 file mkdir $local_dir/script_support/components/MSS
-exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/PF_SoC_MSS_Icicle.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
+
+if {[info exists target]} {
+    exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/MPFS_ICICLE_MSS_linux.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
+} else {
+    exec $mss_config_loc -CONFIGURATION_FILE:$local_dir/script_support/MPFS_ICICLE_MSS_baremetal.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
+}
+
 import_mss_component -file "$local_dir/script_support/components/MSS/ICICLE_MSS.cxz"
 
 #

@@ -82,11 +82,11 @@ To generate a design from the command line:
 
 The diagram below outlines the top level configuration of the FPGA fabric and shows MSS I/Os used in this design:
 
-![Block diagram](./block_diagram.svg)
+![Block diagram](./diagrams/block_diagram.svg)
 
 The diagram below shows the Inter Hart Communication (IHC) subsystem configuration used in the reference design:
 
-![IHC subsystem block diagram](./IHC_SUBSYSTEM_block_diagram.svg)
+![IHC subsystem block diagram](./diagrams/IHC_SUBSYSTEM_block_diagram.svg)
 
 ### MSS peripherals
 The following MSS peripherals are enabled:

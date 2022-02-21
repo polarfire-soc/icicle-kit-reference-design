@@ -101,6 +101,7 @@ The following MSS peripherals are enabled:
 | GEM0           | SGMII I/Os BANK 5   | VSC8662 PHY Port0           | J1 (RJ45 connector)          |                                          |
 | GEM1           | SGMII I/Os BANK 5   | VSC8662 PHY Port1           | J2 (RJ45 connector)          | Management through<br> MSS I/Os BANK 2 B |
 | SPI0           | Fabric              | N/A                         | J26 (Raspberry Pi connector) |                                          |
+| SPI1           | MSS I/Os BANK 2 B   | M/A                         | J44 (mikroBUS socket)        |                                          |
 | MMUART0        | Fabric              | USB-UART PHY                | J11 (Micro USB)              |                                          |
 | MMUART1        | Fabric              | USB-UART PHY                | J11 (Micro USB)              |                                          |
 | MMUART2        | Fabric              | USB-UART PHY                | J11 (Micro USB)              |                                          |

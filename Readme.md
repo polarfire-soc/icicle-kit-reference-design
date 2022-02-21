@@ -10,7 +10,11 @@ This repository supports Libero SoC v2021.3, which is available for download [he
 
 ## Using the reference design generation Tcl script
 
-#### Standard design generation
+### Licensing
+
+The Icicle Kit Reference Design can be generated using any of the free or paid Libero licenses. Licensing information is available on the Microchip website [here](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/licensing).
+
+### Standard design generation
 
 To generate the standard reference design which is capable of running the majority of bare metal example applications and run Linux&reg; the following flow can be used:
 
@@ -21,7 +25,7 @@ To generate the standard reference design which is capable of running the majori
 5. Configure the design if required
 6. Run the Libero SoC design flow to program a device
 
-#### Argument based design generation
+### Argument based design generation
 
 Some bare metal examples and tutorials require a specific fabric configuration which cannot be achieved in the standard base design, for example to test I2C loopback the MSS must be reconfigured to route I2C1 to the fabric and bi directional buffers then need to be instantiated along with additional constraints. These configurations are achieved by passing an argument to Libero when generating the design. Arguments will generate a standard base design and apply design changes on top of that configuration. Supported arguments are:
 
@@ -63,7 +67,7 @@ The design flow for using arguments is the same as the standard flow, ensuring t
 7. Configure the design if required
 8. Run the Libero SoC design flow to program a device
 
-#### Generating designs from the command line - no GUI
+### Generating designs from the command line - no GUI
 
 Libero has support to run Tcl scripts without launching a GUI, this can significantly reduce design generation time. Arguments can also be passed when generating from the command line.
 

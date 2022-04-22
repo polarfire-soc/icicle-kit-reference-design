@@ -104,7 +104,7 @@ The following MSS peripherals are enabled:
 | SD/SDIO        | MSS I/Os BANK 4     | SD card socket              | N/A                          |                                          |
 | GEM0           | SGMII I/Os BANK 5   | VSC8662 PHY Port0           | J1 (RJ45 connector)          |                                          |
 | GEM1           | SGMII I/Os BANK 5   | VSC8662 PHY Port1           | J2 (RJ45 connector)          | Management through<br> MSS I/Os BANK 2 B |
-| SPI0           | Fabric              | N/A                         | J26 (Raspberry Pi connector) |                                          |
+| QSPI           | Fabric              | N/A                         | J26 (Raspberry Pi connector) |                                          |
 | SPI1           | MSS I/Os BANK 2 B   | M/A                         | J44 (mikroBUS socket)        |                                          |
 | MMUART0        | Fabric              | USB-UART PHY                | J11 (Micro USB)              |                                          |
 | MMUART1        | Fabric              | USB-UART PHY                | J11 (Micro USB)              |                                          |
@@ -181,13 +181,10 @@ The following MSS peripherals are enabled:
 
 | Bit | Direction | Source / sink | Notes         |
 |:----|:----------|:--------------|:--------------|
-| 0   | I/O       | RPi_GPIO5     |               |
-| 1   | I/O       | RPi_GPIO6     |               |
 | 2   | I/O       | RPi_GPIO12    |               |
 | 3   | I/O       | RPi_GPIO13    |               |
 | 4   | I/O       | RPi_GPIO16    |               |
 | 5   | I/O       | RPi_GPIO17    |               |
-| 6   | I/O       | RPi_GPIO18    |               |
 | 7   | I/O       | RPi_GPIO19    |               |
 | 8   | I/O       | RPi_GPIO20    |               |
 | 9   | I/O       | RPi_GPIO21    |               |

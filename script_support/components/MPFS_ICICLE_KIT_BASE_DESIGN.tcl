@@ -116,7 +116,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO12} -port_directio
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO13} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO16} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO17} -port_direction {INOUT} -port_is_pad {1}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO18} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO19} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO20} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO21} -port_direction {INOUT} -port_is_pad {1}
@@ -126,7 +125,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO24} -port_directio
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO25} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO26} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO27} -port_direction {INOUT} -port_is_pad {1}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO5} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CMD_EMMC_CMD} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA0_EMMC_DATA0} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA1_EMMC_DATA1} -port_direction {INOUT} -port_is_pad {1}
@@ -282,11 +280,6 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {FIC3_INITIATOR} -i
 
 
 
-# Add GPIO_2_0_IO instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {GPIO_2_0_IO}
-
-
-
 # Add GPIO_2_2_IO instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {GPIO_2_2_IO}
 
@@ -304,11 +297,6 @@ sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {GPI
 
 # Add GPIO_2_5_IO instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {GPIO_2_5_IO}
-
-
-
-# Add GPIO_2_6_IO instance
-sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {GPIO_2_6_IO}
 
 
 
@@ -396,15 +384,25 @@ sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:QSPI_DATA_OE_M2F}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:QSPI_DATA_OE_M2F} -pin_slices {[2:2]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:QSPI_DATA_OE_M2F} -pin_slices {[3:3]}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {ICICLE_MSS:SPI_0_SS_F2M} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {ICICLE_MSS:SPI_0_DI_F2M} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {ICICLE_MSS:SPI_0_CLK_F2M} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {ICICLE_MSS:GPIO_2_F2M_6} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {ICICLE_MSS:GPIO_2_F2M_1} -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {ICICLE_MSS:GPIO_2_F2M_0} -value {GND}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:FIC_3_APB_M_PSTRB}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:MMUART_0_TXD_OE_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:MMUART_1_TXD_OE_M2F}
 sd_invert_pins -sd_name ${sd_name} -pin_names {ICICLE_MSS:CAN_0_TX_EBL_M2F}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:SPI_0_SS1_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:SPI_0_SS1_OE_M2F}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:SPI_0_DO_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:SPI_0_DO_OE_M2F}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:SPI_0_CLK_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:SPI_0_CLK_OE_M2F}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:GPIO_2_M2F_6}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:GPIO_2_M2F_0}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:GPIO_2_OE_M2F_6}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:GPIO_2_OE_M2F_0}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:MSS_INT_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:PLL_CPU_LOCK_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:PLL_DDR_LOCK_M2F}
@@ -580,10 +578,6 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"COREUART_RX" "CoreUARTapb_C0_0:
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREUART_TX" "CoreUARTapb_C0_0:TX" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CS" "ICICLE_MSS:CS" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_CONTROLLER:INTERRUPT" "ICICLE_MSS:MSS_INT_F2M[2:2]" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_0_IO:D" "ICICLE_MSS:GPIO_2_M2F_0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_0_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_0_IO:PAD" "RPi_GPIO5" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_0_IO:Y" "ICICLE_MSS:GPIO_2_F2M_0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_10_IO:D" "ICICLE_MSS:GPIO_2_M2F_10" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_10_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_10" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_10_IO:PAD" "RPi_GPIO22" }
@@ -624,10 +618,6 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_5_IO:D" "ICICLE_MSS:GPIO
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_5_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_5" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_5_IO:PAD" "RPi_GPIO17" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_5_IO:Y" "ICICLE_MSS:GPIO_2_F2M_5" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_6_IO:D" "ICICLE_MSS:GPIO_2_M2F_6" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_6_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_6" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_6_IO:PAD" "RPi_GPIO18" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_6_IO:Y" "ICICLE_MSS:GPIO_2_F2M_6" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_7_IO:D" "ICICLE_MSS:GPIO_2_M2F_7" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_7_IO:E" "ICICLE_MSS:GPIO_2_OE_M2F_7" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_7_IO:PAD" "RPi_GPIO19" }
@@ -708,7 +698,6 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SGMII_TX0_N" "SGMII_
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SGMII_TX0_P" "SGMII_TX0_P" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SGMII_TX1_N" "SGMII_TX1_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SGMII_TX1_P" "SGMII_TX1_P" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SPI_0_DI_F2M" "SPI_0_DI_F2M" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SPI_1_CLK" "SPI_1_CLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SPI_1_DI" "SPI_1_DI" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:SPI_1_DO" "SPI_1_DO" }

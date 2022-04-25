@@ -17,7 +17,7 @@ sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"Vectorblox_s
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"Vectorblox_ss_0:aclk_control" "FIC0_INITIATOR:S_CLK3"} 
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"Vectorblox_ss_0:aclk" "ICICLE_MSS:FIC_2_ACLK"} 
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"Vectorblox_ss_0:EXT_RST_N" "ICICLE_MSS:MSS_RESET_N_M2F"} 
-sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"Vectorblox_ss_0:AXIM"     "ICICLE_MSS:FIC_2_AXI4_SLAVE"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"Vectorblox_ss_0:AXIM"     "ICICLE_MSS:FIC_2_AXI4_TARGET"} 
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:DEVICE_INIT_DONE" "Vectorblox_ss_0:INIT_DONE"} 
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:RCOSC_160MHZ_GL" "Vectorblox_ss_0:REF_CLK_0"} 
 

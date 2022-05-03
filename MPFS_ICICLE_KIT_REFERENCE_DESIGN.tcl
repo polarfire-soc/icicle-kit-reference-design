@@ -264,10 +264,6 @@ save_project
 sd_reset_layout -sd_name {CLOCKS_AND_RESETS}
 sd_reset_layout -sd_name {IHC_SUBSYSTEM}
 sd_reset_layout -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
 
 #
 # // Run the design flow and add eNVM clients if required
@@ -312,5 +308,3 @@ if {[info exists GENERATE_PROGRAMMING_DATA]} {
 }
 
 save_project 
-
-

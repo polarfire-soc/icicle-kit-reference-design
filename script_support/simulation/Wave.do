@@ -1,8 +1,6 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
 
-add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/RPi_GPIO5
-add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/RPi_GPIO6
 add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/RPi_GPIO13
 add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/RPi_GPIO19
 add wave -noupdate -expand -group {Test_bench_LEVEL: ports} /Test_bench/MPFS_ICICLE_KIT_BASE_DESIGN_0/MSS/MSS_RESET_N_F2M

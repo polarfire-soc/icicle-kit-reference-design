@@ -6,7 +6,7 @@ set_iobank -bank_name Bank1  \
 set_io -port_name PCIE_1_PERST_N \
     -pin_name D19 \
     -fixed true \
-    -DIRECTION INPUT \
+    -DIRECTION OUTPUT \
     -io_std LVCMOS33 
 
 set_io -port_name PCIESS_LANE_RXD0_N    \

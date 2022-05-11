@@ -8,10 +8,10 @@
 
 set libero_release [split [get_libero_version] .]
 
-if {[string compare [lindex $libero_release 0] "2021"] == 0 && [string compare [lindex $libero_release 1] "3"] == 0} {
-    puts "Libero v2021.3 detected."
+if {[string compare [lindex $libero_release 0] "2022"] == 0 && [string compare [lindex $libero_release 1] "1"] == 0} {
+    puts "Libero v2022.1 detected."
 } else {
-    error "Incorrect Libero version detected. Please use Libero v2021.3 to run these scripts."
+    error "Incorrect Libero version detected. Please use Libero v2022.1 to run these scripts."
 }
 
 if { [lindex $tcl_platform(os) 0]  == "Windows" } {
@@ -119,12 +119,12 @@ new_project \
 download_core -vlnv {Actel:SgCore:PF_OSC:1.0.102} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:SgCore:PF_CCC:2.2.100} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:DirectCore:CORERESET_PF:2.3.100} -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv {Microsemi:SgCore:PFSOC_INIT_MONITOR:1.0.205} -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv {Microsemi:SgCore:PFSOC_INIT_MONITOR:1.0.302} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -location {www.microchip-ip.com/repositories/DirectCore}
 download_core -vlnv {Actel:SgCore:PF_CLK_DIV:1.0.103} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:SgCore:PF_DRI:1.1.104} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:SgCore:PF_NGMUX:1.0.101} -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:SgCore:PF_PCIE:2.0.106} -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv {Actel:SgCore:PF_PCIE:2.0.116} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:SgCore:PF_TX_PLL:2.0.300} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:SgCore:PF_XCVR_REF_CLK:1.0.103} -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv {Actel:DirectCore:CoreAPB3:4.2.100} -location {www.microchip-ip.com/repositories/DirectCore}
@@ -218,15 +218,6 @@ derive_constraints_sdc
 
 if {[info exists BFM_SIMULATION]} {
     source script_support/simulation/Test_bench.tcl
-}
-
-
-if {[info exists AXI4_STREAM_DEMO]} {
-    if {[info exists BFM_SIMULATION]} {
-        source script_support/additional_configurations/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR_BFM.tcl    
-    } else {
-        source script_support/additional_configurations/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR.tcl    
-    }
 }
 
 if {[info exists I2C_LOOPBACK]} {

@@ -21,7 +21,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_RXD2_N} -port_
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_RXD2_P} -port_direction {IN} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_RXD3_N} -port_direction {IN} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_RXD3_P} -port_direction {IN} -port_is_pad {1}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIE_1_PERST_N} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {REFCLK_N} -port_direction {IN} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {REFCLK} -port_direction {IN} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {REF_CLK_PAD_N} -port_direction {IN} -port_is_pad {1}
@@ -71,6 +70,7 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD2_N} -port_
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD2_P} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD3_N} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD3_P} -port_direction {OUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIE_1_PERST_N} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RESET_N} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_EN_N} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_SW_SEL0} -port_direction {OUT}
@@ -474,7 +474,6 @@ sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE:PCIE_1_S_WDERR}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PCIE:PCIE_1_LTSSM}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PCIE:PCIE_1_M_WDERR}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PCIE:PCIE_1_S_RDERR}
-sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PCIE:PCIE_1_L2_EXIT}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PCIE:PCIE_1_HOT_RST_EXIT}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {PCIE:PCIE_1_DLUP_EXIT}
 
@@ -522,7 +521,7 @@ sd_invert_pins -sd_name ${sd_name} -pin_names {SW3_OR_GPIO_2_27:A}
 
 
 # Add scalar net connections
-sd_connect_pins -sd_name ${sd_name} -pin_names {"AXI_ADDRESS_SHIM_0:RESETN" "CLOCKS_AND_RESETS:RESETN_CLK_125MHz" "DMA_CONTROLLER:RESETN" "DMA_INITIATOR:ARESETN" "FIC0_INITIATOR:ARESETN" "MSS_LSRAM:ARESETN" "PCIE:AXI_CLK_STABLE" "PCIE_INITIATOR:ARESETN" "USB_ULPI_RESET" "VSC_8662_RESETN" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"AXI_ADDRESS_SHIM_0:RESETN" "CLOCKS_AND_RESETS:RESETN_CLK_125MHz" "DMA_CONTROLLER:RESETN" "DMA_INITIATOR:ARESETN" "FIC0_INITIATOR:ARESETN" "MSS_LSRAM:ARESETN" "PCIE:AXI_CLK_STABLE" "PCIE:INIT_DONE" "PCIE_INITIATOR:ARESETN" "USB_ULPI_RESET" "VSC_8662_RESETN" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_0:D" "ICICLE_MSS:QSPI_CLK_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_0:E" "ICICLE_MSS:QSPI_CLK_OE_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_0:PAD" "QSPI_CLK" }
@@ -555,14 +554,14 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "ICICLE_MSS:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CKE" "ICICLE_MSS:CKE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "ICICLE_MSS:CK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_125MHz" "DMA_CONTROLLER:CLOCK" "DMA_INITIATOR:ACLK" "FIC0_INITIATOR:ACLK" "ICICLE_MSS:FIC_0_ACLK" "ICICLE_MSS:FIC_1_ACLK" "ICICLE_MSS:FIC_2_ACLK" "MSS_LSRAM:ACLK" "PCIE:AXI_CLK" "PCIE_INITIATOR:ACLK" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_62_5MHz" "COREGPIO_C0:PCLK" "COREI2C_C0_0:PCLK" "CoreUARTapb_C0_0:PCLK" "ICICLE_MSS:FIC_3_PCLK" "IHC_SUBSYSTEM_0:pclk" "PWM:PCLK" "RECONFIGURATION_INTERFACE_0:PCLK" "sdio_register_0:pclk" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_62_5MHz" "COREGPIO_C0:PCLK" "COREI2C_C0_0:PCLK" "CoreUARTapb_C0_0:PCLK" "ICICLE_MSS:FIC_3_PCLK" "IHC_SUBSYSTEM_0:pclk" "PCIE:APB_S_PCLK" "PWM:PCLK" "RECONFIGURATION_INTERFACE_0:PCLK" "sdio_register_0:pclk" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:EXT_RST_N" "ICICLE_MSS:MSS_RESET_N_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:MSS_PLL_LOCKS" "MSS_PLL_LOCKS:Y" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:PCIe_CLK_125MHz" "PCIE:PCIE_1_TL_CLK_125MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:PCIe_REFERENCE_CLK" "PCIE:PCIESS_LANE0_CDR_REF_CLK_0" "PCIE:PCIESS_LANE1_CDR_REF_CLK_0" "PCIE:PCIESS_LANE2_CDR_REF_CLK_0" "PCIE:PCIESS_LANE3_CDR_REF_CLK_0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:REF_CLK_PAD_N" "REF_CLK_PAD_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:REF_CLK_PAD_P" "REF_CLK_PAD_P" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:RESETN_CLK_62_5MHz" "COREGPIO_C0:PRESETN" "COREI2C_C0_0:PRESETN" "CoreUARTapb_C0_0:PRESETN" "IHC_SUBSYSTEM_0:presetn" "PWM:PRESETN" "RECONFIGURATION_INTERFACE_0:PRESETN" "sdio_register_0:presetn" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:RESETN_CLK_62_5MHz" "COREGPIO_C0:PRESETN" "COREI2C_C0_0:PRESETN" "CoreUARTapb_C0_0:PRESETN" "IHC_SUBSYSTEM_0:presetn" "PCIE:APB_S_PRESET_N" "PWM:PRESETN" "RECONFIGURATION_INTERFACE_0:PRESETN" "sdio_register_0:presetn" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[0:0]" "MSS_GPIO_2_16_OR_COREGPIO_C0_GPIO_OUT_0:B" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[1:1]" "MSS_GPIO_2_17_OR_COREGPIO_C0_GPIO_OUT_1:B" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[2:2]" "MSS_GPIO_2_18_OR_COREGPIO_C0_GPIO_OUT_2:B" }
@@ -734,7 +733,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE_TXD2_N" "PCIES
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE_TXD2_P" "PCIESS_LANE_TXD2_P" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE_TXD3_N" "PCIESS_LANE_TXD3_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE_TXD3_P" "PCIESS_LANE_TXD3_P" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIE_1_PERST_N" "PCIE_1_PERST_N" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIE_1_PERST_OUT_N" "PCIE_1_PERST_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PWM:PWM" "mBUS_PWM" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SDIO_SW_SEL0" "SDIO_SW_SEL1" "sdio_register_0:SDIO_control" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SW1" "SW1_OR_GPIO_2_28:A" }

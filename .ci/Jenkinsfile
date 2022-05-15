@@ -1,2 +1,2 @@
-@library("dev-shared-library") _
+@Library('dev-shared-library') _
 pipelineReferenceDesign()

@@ -47,12 +47,12 @@ sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"DMA_CONTROLL
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"DMA_CONTROLLER:TDEST" "AXI4_STREAM_DATA_GENERATOR_0:TDEST"} 
 
 #   connecting ACLK and reset
-sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:CLK_125MHz" "AXI4_STREAM_DATA_GENERATOR_0:ACLK"} 
-sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:RESETN_CLK_125MHz" "AXI4_STREAM_DATA_GENERATOR_0:RSTN"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"DMA_CONTROLLER:CLOCK" "AXI4_STREAM_DATA_GENERATOR_0:ACLK"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"DMA_CONTROLLER:RESETN" "AXI4_STREAM_DATA_GENERATOR_0:RSTN"} 
 
 #	connecting the PCLK and PRESET_n
-sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:CLK_62_5MHz" "AXI4_STREAM_DATA_GENERATOR_0:PCLK"} 
-sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:RESETN_CLK_62_5MHz" "AXI4_STREAM_DATA_GENERATOR_0:PRESETN"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:FIC_3_CLK" "AXI4_STREAM_DATA_GENERATOR_0:PCLK"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:RESETN_FIC_3_CLK" "AXI4_STREAM_DATA_GENERATOR_0:PRESETN"} 
 save_smartdesign -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} 
 generate_component -component_name {MPFS_ICICLE_KIT_BASE_DESIGN} -recursive 0 
 build_design_hierarchy

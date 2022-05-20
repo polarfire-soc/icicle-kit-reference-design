@@ -9,7 +9,6 @@ create_and_configure_core -core_vlnv {Actel:Simulation:RESET_GEN:1.0.1} -compone
 sd_instantiate_component -sd_name ${sd_tb_name} -component_name {RESET_GEN_C0} -instance_name {} 
 
 # Make connections
-sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"RESET_GEN_C0_0:RESET" "MPFS_ICICLE_KIT_BASE_DESIGN_0:PCIE_1_PERST_N"} 
 sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"RESET_GEN_C0_0:RESET" "MPFS_ICICLE_KIT_BASE_DESIGN_0:SW4"} 
 sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"CLK_GEN_C0_0:CLK" "MPFS_ICICLE_KIT_BASE_DESIGN_0:REFCLK"} 
 sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"CLK_GEN_C0_0:CLK" "MPFS_ICICLE_KIT_BASE_DESIGN_0:REFCLK_N"} 
@@ -159,6 +158,7 @@ sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESI
 sd_mark_pins_unused -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:COREUART_TX}
 sd_mark_pins_unused -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:mBUS_PWM} 
 sd_mark_pins_unused -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SPI_1_DO} 
+sd_mark_pins_unused -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:PCIE_1_PERST_N} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SD_CD_EMMC_STRB} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SD_WP_EMMC_RSTN} -value {GND} 
 

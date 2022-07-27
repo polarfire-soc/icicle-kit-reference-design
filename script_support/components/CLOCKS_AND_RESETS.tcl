@@ -8,6 +8,7 @@ auto_promote_pad_pins -promote_all 0
 # Create top level Scalar Ports
 sd_create_scalar_port -sd_name ${sd_name} -port_name {EXT_RST_N} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MSS_PLL_LOCKS} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {REF_CLK_50MHz} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {REF_CLK_PAD_N} -port_direction {IN} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {REF_CLK_PAD_P} -port_direction {IN} -port_is_pad {1}
 
@@ -46,6 +47,11 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {PF_CCC_C0} -instan
 
 # Add CLK_160MHz_to_CLK_80MHz instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {CLK_DIV} -instance_name {CLK_160MHz_to_CLK_80MHz}
+
+
+
+# Add CLKINT_REF_CLK_50MHz instance
+sd_instantiate_macro -sd_name ${sd_name} -macro_name {CLKINT} -instance_name {CLKINT_REF_CLK_50MHz}
 
 
 
@@ -141,7 +147,8 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"CCC_FIC_x_CLK:OUT1_FABCLK_0" "F
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CCC_FIC_x_CLK:OUT2_FABCLK_0" "FIC_2_CLK" "RESET_FIC_2_CLK:CLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CCC_FIC_x_CLK:OUT3_FABCLK_0" "FIC_3_CLK" "RESET_FIC_3_CLK:CLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CCC_FIC_x_CLK:PLL_LOCK_0" "RESET_FIC_0_CLK:PLL_LOCK" "RESET_FIC_1_CLK:PLL_LOCK" "RESET_FIC_2_CLK:PLL_LOCK" "RESET_FIC_3_CLK:PLL_LOCK" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CCC_FIC_x_CLK:REF_CLK_0" "OSCILLATOR_160MHz:RCOSC_160MHZ_GL" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CCC_FIC_x_CLK:REF_CLK_0" "CLKINT_REF_CLK_50MHz:Y" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CLKINT_REF_CLK_50MHz:A" "REF_CLK_50MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLK_160MHz_to_CLK_80MHz:CLK_IN" "OSCILLATOR_160MHz:RCOSC_160MHZ_CLK_DIV" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLK_160MHz_to_CLK_80MHz:CLK_OUT" "GLITCHLESS_MUX:CLK0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"EXTERNAL_RESETN:A" "EXT_RST_N" }

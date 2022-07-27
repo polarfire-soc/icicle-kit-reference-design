@@ -3,15 +3,18 @@ set sd_tb_name {Test_bench}
 new_testbench_file_for_design -type {SmartDesignTestBench} -name ${sd_tb_name} -SetAsActiveStimulus 1 -source {MPFS_ICICLE_KIT_BASE_DESIGN} -library {work} 
 
 # Add clk gen components
-create_and_configure_core -core_vlnv {Actel:Simulation:CLK_GEN:1.0.1} -component_name {CLK_GEN_C0} -params {"CLK_PERIOD:8000" "DUTY_CYCLE:50"} 
-sd_instantiate_component -sd_name ${sd_tb_name} -component_name {CLK_GEN_C0} -instance_name {} 
+create_and_configure_core -core_vlnv {Actel:Simulation:CLK_GEN:1.0.1} -component_name {CLK_GEN_125MHz} -params {"CLK_PERIOD:8000" "DUTY_CYCLE:50"} 
+sd_instantiate_component -sd_name ${sd_tb_name} -component_name {CLK_GEN_125MHz} -instance_name {} 
+create_and_configure_core -core_vlnv {Actel:Simulation:CLK_GEN:1.0.1} -component_name {CLK_GEN_50MHz} -params {"CLK_PERIOD:20000" "DUTY_CYCLE:50"} 
+sd_instantiate_component -sd_name ${sd_tb_name} -component_name {CLK_GEN_50MHz} -instance_name {} 
 create_and_configure_core -core_vlnv {Actel:Simulation:RESET_GEN:1.0.1} -component_name {RESET_GEN_C0} -params {"DELAY:1000" "LOGIC_LEVEL:0"} 
 sd_instantiate_component -sd_name ${sd_tb_name} -component_name {RESET_GEN_C0} -instance_name {} 
 
 # Make connections
 sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"RESET_GEN_C0_0:RESET" "MPFS_ICICLE_KIT_BASE_DESIGN_0:SW4"} 
-sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"CLK_GEN_C0_0:CLK" "MPFS_ICICLE_KIT_BASE_DESIGN_0:REFCLK"} 
-sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"CLK_GEN_C0_0:CLK" "MPFS_ICICLE_KIT_BASE_DESIGN_0:REFCLK_N"} 
+sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"CLK_GEN_125MHz_0:CLK" "MPFS_ICICLE_KIT_BASE_DESIGN_0:REFCLK"} 
+sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"CLK_GEN_125MHz_0:CLK" "MPFS_ICICLE_KIT_BASE_DESIGN_0:REFCLK_N"} 
+sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"CLK_GEN_50MHz_0:CLK" "MPFS_ICICLE_KIT_BASE_DESIGN_0:REF_CLK_50MHz"} 
 sd_invert_pins -sd_name ${sd_tb_name} -pin_names {"MPFS_ICICLE_KIT_BASE_DESIGN_0:REFCLK_N"} 
 sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"MPFS_ICICLE_KIT_BASE_DESIGN_0:SGMII_RX0_P" "MPFS_ICICLE_KIT_BASE_DESIGN_0:SGMII_RX0_N"} 
 sd_connect_pins -sd_name ${sd_tb_name} -pin_names {"MPFS_ICICLE_KIT_BASE_DESIGN_0:SGMII_RX0_P" "MPFS_ICICLE_KIT_BASE_DESIGN_0:REF_CLK_PAD_P"} 
@@ -167,8 +170,8 @@ generate_component -component_name ${sd_tb_name} -recursive 0
 
 # Import stimulus files
 build_design_hierarchy 
-organize_tool_files -tool {SIM_PRESYNTH} -file "$project_dir/component/Actel/Simulation/CLK_GEN/1.0.1/CLK_GEN.v" -file "$project_dir/component/work/CLK_GEN_C0/CLK_GEN_C0.v" -file "$project_dir/component/Actel/Simulation/RESET_GEN/1.0.1/RESET_GEN.v" -file "$project_dir/component/work/RESET_GEN_C0/RESET_GEN_C0.v" -file "$project_dir/component/work/Test_bench/Test_bench.v" -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} -input_type {stimulus} 
-organize_tool_files -tool {SIM_POSTSYNTH}  -file "$project_dir/component/Actel/Simulation/CLK_GEN/1.0.1/CLK_GEN.v" -file "$project_dir/component/work/CLK_GEN_C0/CLK_GEN_C0.v" -file "$project_dir/component/Actel/Simulation/RESET_GEN/1.0.1/RESET_GEN.v" -file "$project_dir/component/work/RESET_GEN_C0/RESET_GEN_C0.v" -file "$project_dir/component/work/Test_bench/Test_bench.v" -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} -input_type {stimulus} 
+organize_tool_files -tool {SIM_PRESYNTH} -file "$project_dir/component/Actel/Simulation/CLK_GEN/1.0.1/CLK_GEN.v" -file "$project_dir/component/work/CLK_GEN_125MHz/CLK_GEN_125MHz.v" -file "$project_dir/component/work/CLK_GEN_50MHz/CLK_GEN_50MHz.v" -file "$project_dir/component/Actel/Simulation/RESET_GEN/1.0.1/RESET_GEN.v" -file "$project_dir/component/work/RESET_GEN_C0/RESET_GEN_C0.v" -file "$project_dir/component/work/Test_bench/Test_bench.v" -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} -input_type {stimulus} 
+organize_tool_files -tool {SIM_POSTSYNTH}  -file "$project_dir/component/Actel/Simulation/CLK_GEN/1.0.1/CLK_GEN.v" -file "$project_dir/component/work/CLK_GEN_125MHz/CLK_GEN_125MHz.v" -file "$project_dir/component/work/CLK_GEN_50MHz/CLK_GEN_50MHz.v" -file "$project_dir/component/Actel/Simulation/RESET_GEN/1.0.1/RESET_GEN.v" -file "$project_dir/component/work/RESET_GEN_C0/RESET_GEN_C0.v" -file "$project_dir/component/work/Test_bench/Test_bench.v" -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} -input_type {stimulus} 
 import_files \
          -convert_EDN_to_HDL 0 \
          -library {work} \

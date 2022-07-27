@@ -7,7 +7,7 @@ configure_core -component_name {FIC0_INITIATOR} -params {"ADDR_WIDTH:38" "CROSSB
 sd_update_instance -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -instance_name {FIC0_INITIATOR} 
 
 # Update clock configuration
-sd_connect_pin_to_port -sd_name {CLOCKS_AND_RESETS} -pin_name {OSCILLATOR_160MHz:RCOSC_160MHZ_GL} -port_name {} 
+sd_connect_pin_to_port -sd_name {CLOCKS_AND_RESETS} -pin_name {CLKINT_REF_CLK_50MHz:Y} -port_name {CLKINT_REF_CLK_50MHz_Y} 
 sd_connect_pin_to_port -sd_name {CLOCKS_AND_RESETS} -pin_name {INIT_MONITOR_0:DEVICE_INIT_DONE} -port_name {} 
 generate_component -component_name {CLOCKS_AND_RESETS} -recursive 0 
 sd_update_instance -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -instance_name {CLOCKS_AND_RESETS} 
@@ -19,7 +19,7 @@ sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"Vectorblox_s
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"Vectorblox_ss_0:EXT_RST_N" "ICICLE_MSS:MSS_RESET_N_M2F"} 
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"Vectorblox_ss_0:AXIM"     "ICICLE_MSS:FIC_2_AXI4_TARGET"} 
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:DEVICE_INIT_DONE" "Vectorblox_ss_0:INIT_DONE"} 
-sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:RCOSC_160MHZ_GL" "Vectorblox_ss_0:REF_CLK_0"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:CLKINT_REF_CLK_50MHz_Y" "Vectorblox_ss_0:REF_CLK_0"} 
 
 
 #get ready for building

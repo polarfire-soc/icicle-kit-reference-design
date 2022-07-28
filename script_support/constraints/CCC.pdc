@@ -26,4 +26,4 @@
 #
 
 set_location -inst_name CLOCKS_AND_RESETS_inst_0/PCIE_REF_CLK_0/PCIE_REF_CLK_0/I_IO -fixed true -x 2468 -y 236
-set_location -inst_name CLOCKS_AND_RESETS_inst_0/CCC/PF_CCC_C0_0/pll_inst_0 -fixed true -x 0 -y 5
+set_location -inst_name CLOCKS_AND_RESETS_inst_0/CCC/PF_CCC_C1_0/pll_inst_0 -fixed true -x 0 -y 5

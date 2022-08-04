@@ -31,6 +31,11 @@
             "name":"vectorblox",
             "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
             "script_args":"EXPORT_FPE+HSS_UPDATE+VECTORBLOX"
+        },
+		{
+            "name":"micron_qspi",
+            "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
+            "script_args":"EXPORT_FPE+HSS_UPDATE+MICRON_QSPI"
         }
     ]
 }

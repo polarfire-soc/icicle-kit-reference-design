@@ -64,6 +64,9 @@ if {[info exists I2C_LOOPBACK]} {
 } elseif {[info exists DRI_CCC_DEMO]} {
     set project_name "MPFS_ICICLE_DRI_CCC_DEMO"
     set project_dir "$local_dir/MPFS_ICICLE_DRI_CCC_DEMO"
+} elseif {[info exists MICRON_QSPI]} {
+    set project_name "MPFS_ICICLE_MICRON_QSPI"
+    set project_dir "$local_dir/MPFS_ICICLE_MICRON_QSPI"
 } else {
     set project_name "MPFS_ICICLE"
     set project_dir "$local_dir/MPFS_ICICLE"
@@ -182,29 +185,48 @@ import_files \
     -io_pdc "${constraint_path}/ICICLE_SDIO.pdc" \
     -io_pdc "${constraint_path}/ICICLE_RPi.pdc" \
     -io_pdc "${constraint_path}/ICICLE_I2C_LOOPBACK.pdc" \
-    -io_pdc "${constraint_path}/ICICLE_SPI_LOOPBACK.pdc"
+    -io_pdc "${constraint_path}/ICICLE_SPI_LOOPBACK.pdc" \
+    -io_pdc "${constraint_path}/ICICLE_RPi_MICRON_QSPI.pdc" 
 
 #
 # // Associate imported constraints with the design flow
 #
 
-organize_tool_files \
-    -tool {PLACEROUTE} \
-    -file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" \
-    -file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" \
-    -file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" \
-    -file "${project_dir}/constraint/io/ICICLE_USB.pdc" \
-    -file "${project_dir}/constraint/io/ICICLE.pdc" \
-    -file "${project_dir}/constraint/io/ICICLE_MAC.pdc" \
-    -file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" \
-    -file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" \
-    -file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" \
-    -file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
-    -file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
-    -file "${project_dir}/constraint/io/ICICLE_RPi.pdc" \
-    -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
-    -input_type {constraint}
-
+if {[info exists MICRON_QSPI]} {
+	organize_tool_files \
+		-tool {PLACEROUTE} \
+		-file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_USB.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MAC.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_RPi_MICRON_QSPI.pdc" \
+		-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+		-input_type {constraint}
+} else {
+	organize_tool_files \
+		-tool {PLACEROUTE} \
+		-file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_USB.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MAC.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_RPi.pdc" \
+		-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+		-input_type {constraint}
+		}
 #
 # // Derive timing constraints
 #

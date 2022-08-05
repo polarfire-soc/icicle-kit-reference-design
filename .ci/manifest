@@ -18,9 +18,14 @@
             "script_args":"EXPORT_FPE+HSS_UPDATE+I2C_LOOPBACK"
         },
         {
-            "name":"bfm_simulation",
+            "name":"axi4_stream_demo",
             "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
-            "script_args":"EXPORT_FPE+HSS_UPDATE+AXI4_STREAM_DEMO+BFM_SIMULATION"
+            "script_args":"EXPORT_FPE+HSS_UPDATE+AXI4_STREAM_DEMO"
+        },
+        {
+            "name":"axi4_stream_demo_bfm",
+            "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
+            "script_args":"AXI4_STREAM_DEMO+BFM_SIMULATION"
         },
         {
             "name":"dri_demo",

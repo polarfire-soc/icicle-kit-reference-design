@@ -1,4 +1,4 @@
-# PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2022.1
+# PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2022.2
 
 ## Description
 
@@ -6,7 +6,7 @@ This repository can be used to generate a reference design for the PolarFire SoC
 
 A Libero SoC Tcl script is provided to generate the reference design using Libero SoC along with device specific I/O constraints. For Tcl scripts supporting previous versions of Libero SoC see [Releases](https://github.com/polarfire-soc/icicle-kit-reference-design/releases).
 
-This repository supports Libero SoC v2022.1, which is available for download [here](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions#Documents%20and%20Downloads).
+This repository supports Libero SoC v2022.2, which is available for download [here](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions#Documents%20and%20Downloads).
 
 ## Using the reference design generation Tcl script
 
@@ -19,7 +19,7 @@ The Icicle Kit Reference Design can be generated using any of the free or paid L
 To generate the standard reference design which is capable of running the majority of bare metal example applications and run Linux&reg; the following flow can be used:
 
 1. Clone or download the repository
-2. Open Libero v2022.1
+2. Open Libero v2022.2
 3. Open the execute script dialog (CTRL + U)
 4. Execute the "MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl" script
 5. Configure the design if required
@@ -60,7 +60,7 @@ Additional arguments are also supported to modify or configure aspects of the de
 The design flow for using arguments is the same as the standard flow, ensuring the argument is passed at script execution time:
 
 1. Clone or download the repository
-2. Open Libero v2022.1
+2. Open Libero v2022.2
 3. Open the execute script dialog (CTRL + U)
 4. Execute the "MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl" script
 6. Add any required arguments (e.g "I2C_LOOPBACK HSS_UPDATE PROGRAM")

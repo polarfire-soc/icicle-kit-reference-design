@@ -1,11 +1,11 @@
   <mss xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="mpfs_hw_description.xsd">
     <design_information>
-      <libero_version>2022.1</libero_version>
+      <libero_version>2022.2</libero_version>
       <design_name>ICICLE_MSS</design_name>
       <mpfs_part_no>MPFS250T_ES</mpfs_part_no>
       <mpfs_package>FCVG484</mpfs_package>
-      <creation_date_time>07-27-2022_14:27:58</creation_date_time>
-      <xml_format_version>0.5.9</xml_format_version>
+      <creation_date_time>08-08-2022_14:13:38</creation_date_time>
+      <xml_format_version>0.6.5</xml_format_version>
     </design_information>
     <mss_memory_map>
       <map>
@@ -1316,32 +1316,32 @@
             <field Type="RW" name="RESERVED2" offset="20" width="12">0x0</field>
           </register>
           <register address="0x00000234" description="IO electrical configuration for MSSIO pad" name="MSSIO_BANK4_IO_CFG_0_1_CR">
-            <field Type="RW" name="IO_CFG_0" offset="0" width="16">0x0938</field>
-            <field Type="RW" name="IO_CFG_1" offset="16" width="16">0x0938</field>
+            <field Type="RW" name="IO_CFG_0" offset="0" width="16">0x0930</field>
+            <field Type="RW" name="IO_CFG_1" offset="16" width="16">0x0930</field>
           </register>
           <register address="0x00000238" description="IO electrical configuration for MSSIO pad" name="MSSIO_BANK4_IO_CFG_2_3_CR">
-            <field Type="RW" name="IO_CFG_2" offset="0" width="16">0x0938</field>
-            <field Type="RW" name="IO_CFG_3" offset="16" width="16">0x0938</field>
+            <field Type="RW" name="IO_CFG_2" offset="0" width="16">0x0930</field>
+            <field Type="RW" name="IO_CFG_3" offset="16" width="16">0x0930</field>
           </register>
           <register address="0x0000023C" description="IO electrical configuration for MSSIO pad" name="MSSIO_BANK4_IO_CFG_4_5_CR">
-            <field Type="RW" name="IO_CFG_4" offset="0" width="16">0x0938</field>
-            <field Type="RW" name="IO_CFG_5" offset="16" width="16">0x0938</field>
+            <field Type="RW" name="IO_CFG_4" offset="0" width="16">0x0930</field>
+            <field Type="RW" name="IO_CFG_5" offset="16" width="16">0x0930</field>
           </register>
           <register address="0x00000240" description="IO electrical configuration for MSSIO pad" name="MSSIO_BANK4_IO_CFG_6_7_CR">
             <field Type="RW" name="IO_CFG_6" offset="0" width="16">0x0928</field>
             <field Type="RW" name="IO_CFG_7" offset="16" width="16">0x0928</field>
           </register>
           <register address="0x00000244" description="IO electrical configuration for MSSIO pad" name="MSSIO_BANK4_IO_CFG_8_9_CR">
-            <field Type="RW" name="IO_CFG_8" offset="0" width="16">0x0938</field>
-            <field Type="RW" name="IO_CFG_9" offset="16" width="16">0x0938</field>
+            <field Type="RW" name="IO_CFG_8" offset="0" width="16">0x0930</field>
+            <field Type="RW" name="IO_CFG_9" offset="16" width="16">0x0930</field>
           </register>
           <register address="0x00000248" description="IO electrical configuration for MSSIO pad" name="MSSIO_BANK4_IO_CFG_10_11_CR">
-            <field Type="RW" name="IO_CFG_10" offset="0" width="16">0x0938</field>
-            <field Type="RW" name="IO_CFG_11" offset="16" width="16">0x0938</field>
+            <field Type="RW" name="IO_CFG_10" offset="0" width="16">0x0930</field>
+            <field Type="RW" name="IO_CFG_11" offset="16" width="16">0x0930</field>
           </register>
           <register address="0x0000024C" description="IO electrical configuration for MSSIO pad" name="MSSIO_BANK4_IO_CFG_12_13_CR">
-            <field Type="RW" name="IO_CFG_12" offset="0" width="16">0x0938</field>
-            <field Type="RW" name="IO_CFG_13" offset="16" width="16">0x0938</field>
+            <field Type="RW" name="IO_CFG_12" offset="0" width="16">0x0930</field>
+            <field Type="RW" name="IO_CFG_13" offset="16" width="16">0x0930</field>
           </register>
           <register address="0x00000250" description="Configures the MSSIO block using SCB write" name="MSSIO_BANK2_CFG_CR">
             <field Type="RW" name="BANK_PCODE" offset="0" width="6">0x7</field>
@@ -1440,6 +1440,40 @@
             <field Type="RW" name="SD_CONFIGURED" offset="1" width="1">0x1</field>
             <field Type="RW" name="DEFAULT_ON_START" offset="2" width="1">0x1</field>
           </register>
+          <register address="0x0000027C" description="To limit the number of interrupts fed to the PLINT, the seventy GPIO interrupts (GPIO0=14, GPIO1=24, GPIO2=32) are multiplexed down to 41 interrupts. The muxing is controlled by a 32-bit system register (GPIO_INTERRUPT_FAB_CR).  For example, if bit 0 of thei register is set to 1, gpio2_0 is chosen as a direct interrupt and gpio0_0 will be added to the muxed interrupt for gpio0. Please see the GPIO driver for more detail." name="GPIO_INTERRUPT_FAB_CR">
+            <field Type="RW" name="GPIO0_0_OR_GPIO2_0" offset="0" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_1_OR_GPIO2_1" offset="1" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_2_OR_GPIO2_2" offset="2" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_3_OR_GPIO2_3" offset="3" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_4_OR_GPIO2_4" offset="4" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_5_OR_GPIO2_5" offset="5" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_6_OR_GPIO2_6" offset="6" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_7_OR_GPIO2_7" offset="7" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_8_OR_GPIO2_8" offset="8" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_9_OR_GPIO2_9" offset="9" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_10_OR_GPIO2_10" offset="10" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_11_OR_GPIO2_11" offset="11" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_12_OR_GPIO2_12" offset="12" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_13_OR_GPIO2_13" offset="13" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_0_OR_GPIO2_14" offset="14" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_1_OR_GPIO2_15" offset="15" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_2_OR_GPIO2_16" offset="16" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_3_OR_GPIO2_17" offset="17" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_4_OR_GPIO2_18" offset="18" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_5_OR_GPIO2_19" offset="19" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_6_OR_GPIO2_20" offset="20" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_7_OR_GPIO2_21" offset="21" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_8_OR_GPIO2_22" offset="22" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_9_OR_GPIO2_23" offset="23" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_10_OR_GPIO2_24" offset="24" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_11_OR_GPIO2_25" offset="25" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_12_OR_GPIO2_26" offset="26" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_13_OR_GPIO2_27" offset="27" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_14_OR_GPIO2_28" offset="28" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_15_OR_GPIO2_29" offset="29" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_16_OR_GPIO2_30" offset="30" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_17_OR_GPIO2_31" offset="31" width="1">0x0</field>
+          </register>
         </registers>
       </io_mux>
       <io_mux_alt>
@@ -1528,28 +1562,28 @@
             <field Type="RW" name="RESERVED2" offset="20" width="12">0x0</field>
           </register>
           <register address="0x00000234" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK4_IO_CFG_0_1_CR">
-            <field Type="RW" name="IO_CFG_0" offset="0" width="16">0x0938</field>
-            <field Type="RW" name="IO_CFG_1" offset="16" width="16">0x0938</field>
+            <field Type="RW" name="IO_CFG_0" offset="0" width="16">0x0930</field>
+            <field Type="RW" name="IO_CFG_1" offset="16" width="16">0x0930</field>
           </register>
           <register address="0x00000238" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK4_IO_CFG_2_3_CR">
-            <field Type="RW" name="IO_CFG_2" offset="0" width="16">0x0938</field>
-            <field Type="RW" name="IO_CFG_3" offset="16" width="16">0x0938</field>
+            <field Type="RW" name="IO_CFG_2" offset="0" width="16">0x0930</field>
+            <field Type="RW" name="IO_CFG_3" offset="16" width="16">0x0930</field>
           </register>
           <register address="0x0000023C" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK4_IO_CFG_4_5_CR">
-            <field Type="RW" name="IO_CFG_4" offset="0" width="16">0x0938</field>
-            <field Type="RW" name="IO_CFG_5" offset="16" width="16">0x0938</field>
+            <field Type="RW" name="IO_CFG_4" offset="0" width="16">0x0930</field>
+            <field Type="RW" name="IO_CFG_5" offset="16" width="16">0x0930</field>
           </register>
           <register address="0x00000240" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK4_IO_CFG_6_7_CR">
             <field Type="RW" name="IO_CFG_6" offset="0" width="16">0x0928</field>
-            <field Type="RW" name="IO_CFG_7" offset="16" width="16">0x0938</field>
+            <field Type="RW" name="IO_CFG_7" offset="16" width="16">0x0930</field>
           </register>
           <register address="0x00000244" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK4_IO_CFG_8_9_CR">
-            <field Type="RW" name="IO_CFG_8" offset="0" width="16">0x0938</field>
-            <field Type="RW" name="IO_CFG_9" offset="16" width="16">0x0938</field>
+            <field Type="RW" name="IO_CFG_8" offset="0" width="16">0x0930</field>
+            <field Type="RW" name="IO_CFG_9" offset="16" width="16">0x0930</field>
           </register>
           <register address="0x00000248" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK4_IO_CFG_10_11_CR">
-            <field Type="RW" name="IO_CFG_10" offset="0" width="16">0x0938</field>
-            <field Type="RW" name="IO_CFG_11" offset="16" width="16">0x0938</field>
+            <field Type="RW" name="IO_CFG_10" offset="0" width="16">0x0930</field>
+            <field Type="RW" name="IO_CFG_11" offset="16" width="16">0x0930</field>
           </register>
           <register address="0x0000024C" description="IO electrical configuration for MSSIO pad" name="ALT_MSSIO_BANK4_IO_CFG_12_13_CR">
             <field Type="RW" name="IO_CFG_12" offset="0" width="16">0x0928</field>
@@ -1647,6 +1681,40 @@
             <field Type="RW" name="DPC_IO_CFG_LP_BYPASS_EN" offset="14" width="1">0x0</field>
             <field Type="R" name="RESERVED" offset="15" width="17">0x0</field>
           </register>
+          <register address="0x0000027C" description="To limit the number of interrupts fed to the PLINT, the seventy GPIO interrupts (GPIO0=14, GPIO1=24, GPIO2=32) are multiplexed down to 41 interrupts. The muxing is controlled by a 32-bit system register (GPIO_INTERRUPT_FAB_CR).  For example, if bit 0 of thei register is set to 1, gpio2_0 is chosen as a direct interrupt and gpio0_0 will be added to the muxed interrupt for gpio0. Please see the GPIO driver for more detail." name="ALT_GPIO_INTERRUPT_FAB_CR">
+            <field Type="RW" name="GPIO0_0_OR_GPIO2_0" offset="0" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_1_OR_GPIO2_1" offset="1" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_2_OR_GPIO2_2" offset="2" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_3_OR_GPIO2_3" offset="3" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_4_OR_GPIO2_4" offset="4" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_5_OR_GPIO2_5" offset="5" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_6_OR_GPIO2_6" offset="6" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_7_OR_GPIO2_7" offset="7" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_8_OR_GPIO2_8" offset="8" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_9_OR_GPIO2_9" offset="9" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_10_OR_GPIO2_10" offset="10" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_11_OR_GPIO2_11" offset="11" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_12_OR_GPIO2_12" offset="12" width="1">0x0</field>
+            <field Type="RW" name="GPIO0_13_OR_GPIO2_13" offset="13" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_0_OR_GPIO2_14" offset="14" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_1_OR_GPIO2_15" offset="15" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_2_OR_GPIO2_16" offset="16" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_3_OR_GPIO2_17" offset="17" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_4_OR_GPIO2_18" offset="18" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_5_OR_GPIO2_19" offset="19" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_6_OR_GPIO2_20" offset="20" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_7_OR_GPIO2_21" offset="21" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_8_OR_GPIO2_22" offset="22" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_9_OR_GPIO2_23" offset="23" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_10_OR_GPIO2_24" offset="24" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_11_OR_GPIO2_25" offset="25" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_12_OR_GPIO2_26" offset="26" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_13_OR_GPIO2_27" offset="27" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_14_OR_GPIO2_28" offset="28" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_15_OR_GPIO2_29" offset="29" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_16_OR_GPIO2_30" offset="30" width="1">0x0</field>
+            <field Type="RW" name="GPIO1_17_OR_GPIO2_31" offset="31" width="1">0x0</field>
+          </register>
         </registers>
       </io_mux_alt>
       <hsio>
@@ -1679,7 +1747,7 @@
             <field Type="RW" name="REG_TX1_EN" offset="6" width="1">0x1</field>
             <field Type="RW" name="REG_RX1_EN" offset="7" width="1">0x1</field>
             <field Type="RW" name="REG_DLL_LOCK_FLT" offset="8" width="2">0x2</field>
-            <field Type="RW" name="REG_DLL_ADJ_CODE" offset="10" width="4">0x9</field>
+            <field Type="RW" name="REG_DLL_ADJ_CODE" offset="10" width="4">0xC</field>
             <field Type="RW" name="REG_CH0_CDR_RESET_B" offset="14" width="1">0x1</field>
             <field Type="RW" name="REG_CH1_CDR_RESET_B" offset="15" width="1">0x1</field>
             <field Type="RW" name="REG_BC_VRGEN" offset="16" width="6">0x0</field>
@@ -1864,13 +1932,13 @@
             <field Type="RW" name="DPC_VRGEN_H" offset="4" width="6">0x2</field>
             <field Type="RW" name="DPC_VRGEN_EN_H" offset="10" width="1">0x1</field>
             <field Type="RW" name="DPC_MOVE_EN_H" offset="11" width="1">0x0</field>
-            <field Type="RW" name="DPC_VRGEN_V" offset="12" width="6">0xC</field>
+            <field Type="RW" name="DPC_VRGEN_V" offset="12" width="6">0x10</field>
             <field Type="RW" name="DPC_VRGEN_EN_V" offset="18" width="1">0x1</field>
             <field Type="RW" name="DPC_MOVE_EN_V" offset="19" width="1">0x0</field>
             <field Type="RSVD" name="RESERVE01" offset="20" width="12">0x0</field>
           </register>
           <register address="0x00000008" description="Need to be set by software in all modes but OFF mode. Decoding options should follow ODT_STR table, depends on drive STR setting" name="RPC_ODT_DQ">
-            <field Type="RW" name="RPC_ODT_DQ" offset="0" width="32">0x6</field>
+            <field Type="RW" name="RPC_ODT_DQ" offset="0" width="32">0x3</field>
           </register>
           <register address="0x00000012" description="Need to be set by software in all modes but OFF mode. Decoding options should follow ODT_STR table, depends on drive STR setting" name="RPC_ODT_DQS">
             <field Type="RW" name="RPC_ODT_DQS" offset="0" width="32">0x6</field>
@@ -2219,6 +2287,9 @@
             <field Type="RW" name="MSS_DDR_DQS_P4" offset="4" width="1">0x1</field>
             <field Type="RW" name="MSS_DDR_DQS_N4" offset="5" width="1">0x1</field>
             <field Type="RW" name="MSS_DDR_DM4" offset="6" width="1">0x1</field>
+          </register>
+          <register address="0x00000064" description="Sets starting DQDQS start training window offset. It should default to 1." name="RPC_156_VALUE">
+            <field Type="RW" name="VALUE" offset="0" width="32">0x1</field>
           </register>
         </registers>
       </io_bank>
@@ -3065,7 +3136,7 @@
             <field Type="RW" name="CFG_RD_POSTAMBLE" offset="0" width="32">0x0</field>
           </register>
           <register address="0x00004274" description="IP Blk = MC_BASE2 Access=RW " name="CFG_PU_CAL">
-            <field Type="RW" name="CFG_PU_CAL" offset="0" width="32">0x1</field>
+            <field Type="RW" name="CFG_PU_CAL" offset="0" width="32">0x0</field>
           </register>
           <register address="0x00004278" description="IP Blk = MC_BASE2 Access=RW " name="CFG_DQ_ODT">
             <field Type="RW" name="CFG_DQ_ODT" offset="0" width="32">0x2</field>
@@ -3524,7 +3595,7 @@
             <field Type="RW" name="PERIOD" offset="0" width="12">0x7D</field>
           </register>
           <register address="0x0000000C" description="ENVM AHB Controller setup - - Clock period = (Value+1) * (1000/AHBFREQMHZ) e.g. 7 will generate a 40ns period 25MHz clock if the AHB clock is 200MHz" name="ENVM_CR">
-            <field Type="RW" name="CLOCK_PERIOD" offset="0" width="6">0x6</field>
+            <field Type="RW" name="CLOCK_PERIOD" offset="0" width="6">0x5</field>
             <field Type="RW" name="CLOCK_CONTINUOUS" offset="8" width="1">0x0</field>
             <field Type="RW" name="CLOCK_SUPPRESS" offset="9" width="1">0x0</field>
             <field Type="RW" name="READAHEAD" offset="16" width="1">0x1</field>
@@ -4019,7 +4090,7 @@
     <mss_general>
       <mss_peripherals>
         <registers>
-          <register address="0x0000009C" description="GPIO Blocks reset control- (soft_reset options  chossen in Libero confgurator)" name="GPIO_CR">
+          <register address="0x00000000" description="GPIO Blocks reset control- (soft_reset options  chossen in Libero confgurator)" name="GPIO_CR">
             <field Type="RW" name="GPIO0_SOFT_RESET_SELECT" offset="0" width="2">0x3</field>
             <field Type="RW" name="GPIO0_DEFAULT" offset="4" width="2">0x0</field>
             <field Type="RW" name="GPIO1_SOFT_RESET_SELECT" offset="8" width="3">0x7</field>
@@ -4032,6 +4103,28 @@
             <field Type="RO" name="RESERVED" offset="2" width="1">0x0</field>
             <field Type="RO" name="STREAM_ENABLE" offset="3" width="1">0x0</field>
             <field Type="RO" name="RESERVED1" offset="4" width="28">0x0</field>
+          </register>
+          <register address="0x00000000" description="MSS peripherals configured in this instance of MSS Configurator generated output. 1 implies it has been configured, 0 it has not been configured." name="CONFIGURED_PERIPHERALS">
+            <field Type="RW" name="EMMC" offset="0" width="1">0x1</field>
+            <field Type="RW" name="SD_SDIO" offset="1" width="1">0x1</field>
+            <field Type="RW" name="USB" offset="2" width="1">0x1</field>
+            <field Type="RW" name="MAC0" offset="3" width="1">0x1</field>
+            <field Type="RW" name="MAC1" offset="4" width="1">0x1</field>
+            <field Type="RW" name="QSPI" offset="5" width="1">0x0</field>
+            <field Type="RW" name="SPI0" offset="6" width="1">0x1</field>
+            <field Type="RW" name="SPI1" offset="7" width="1">0x1</field>
+            <field Type="RW" name="MMUART0" offset="8" width="1">0x1</field>
+            <field Type="RW" name="MMUART1" offset="9" width="1">0x1</field>
+            <field Type="RW" name="MMUART2" offset="10" width="1">0x1</field>
+            <field Type="RW" name="MMUART3" offset="11" width="1">0x1</field>
+            <field Type="RW" name="MMUART4" offset="12" width="1">0x1</field>
+            <field Type="RW" name="I2C0" offset="13" width="1">0x1</field>
+            <field Type="RW" name="I2C1" offset="14" width="1">0x1</field>
+            <field Type="RW" name="CAN0" offset="15" width="1">0x1</field>
+            <field Type="RW" name="CAN1" offset="16" width="1">0x1</field>
+            <field Type="RW" name="GPIO0" offset="17" width="1">0x0</field>
+            <field Type="RW" name="GPIO1" offset="18" width="1">0x0</field>
+            <field Type="RW" name="GPIO2" offset="19" width="1">0x1</field>
           </register>
         </registers>
       </mss_peripherals>

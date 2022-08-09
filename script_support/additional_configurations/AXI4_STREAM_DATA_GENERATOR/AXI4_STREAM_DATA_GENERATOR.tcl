@@ -2,11 +2,11 @@
 import_files \
          -convert_EDN_to_HDL 0 \
          -library {work} \
-         -hdl_source {./script_support/HDL/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR.v} \
-         -hdl_source {./script_support/HDL/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR_gen.v} \
-         -hdl_source {./script_support/HDL/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR_FSM.v} \
-         -hdl_source {./script_support/HDL/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR_ABP_Reg.v} \
-         -hdl_source {./script_support/HDL/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR_DFF.v} 
+         -hdl_source {./script_support/hdl/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR.v} \
+         -hdl_source {./script_support/hdl/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR_gen.v} \
+         -hdl_source {./script_support/hdl/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR_FSM.v} \
+         -hdl_source {./script_support/hdl/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR_ABP_Reg.v} \
+         -hdl_source {./script_support/hdl/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR_DFF.v} 
 build_design_hierarchy 
 
 #	updating the dma controller to include the axi stream inputs

@@ -29,6 +29,38 @@ proc update_param {config param_to_update value_to_set} {
     close $config_file
 }
 
+proc update_snvm_to_spi_ram_cfg { ramcfg } {
+    set fd [open $ramcfg r]
+    set newFilename "[file rootname $ramcfg].new.cfg"
+    puts "update_snvm_to_spi_ram_cfg: Creating $newFilename"
+    set newfd [open $newFilename w]
+    set use_spi 0
+    while {[gets $fd line] >= 0} {
+        if {[string first "-storage_type" $line] != -1} {
+            set prev_line $line
+            set prev_line_spi [string map {"SNVM" "SPI"} $line]
+        } elseif {[string first "-content_type" $line] != -1} {
+            if {[string first "NO_CONTENT" $line] != -1} {
+                puts $newfd $prev_line
+                puts $newfd $line
+            } else {
+                puts $newfd $prev_line_spi
+                puts $newfd $line
+                set use_spi 1
+            }
+        } else {
+            puts $newfd $line
+        }
+    }
+    close $fd
+    close $newfd
+    configure_ram -cfg_file $newFilename
+    if {$use_spi} {
+        puts "NOTE: Using SPI instead of SNVM for RAM"
+    }
+    return $use_spi
+}
+
 proc create_eNVM_config {config client} {
     set envm_config [open $config w]
     
@@ -51,7 +83,7 @@ proc create_eNVM_config {config client} {
     close $envm_config
 }
 
-proc export_fpe_job {name directory components} {
+proc export_fpe_job {name directory components use_spi} {
     export_prog_job \
         -job_file_name $name \
         -export_dir $directory \
@@ -60,7 +92,7 @@ proc export_fpe_job {name directory components} {
         -zeroization_likenew_action 0 \
         -zeroization_unrecoverable_action 0 \
         -program_design 1 \
-        -program_spi_flash 0 \
+        -program_spi_flash $use_spi \
         -include_plaintext_passkey 0 \
         -design_bitstream_format {PPD} \
         -prog_optional_procedures {} \

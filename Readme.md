@@ -1,5 +1,34 @@
 # PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2022.2
 
+## Table of Contents
+
+- [PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2022.2](#polarfire-soc-icicle-kit-reference-design-generation-tcl-scripts---libero-soc-v20222)
+  - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [Using the reference design generation Tcl script](#using-the-reference-design-generation-tcl-script)
+    - [Licensing](#licensing)
+    - [Standard design generation](#standard-design-generation)
+    - [Argument based design generation](#argument-based-design-generation)
+    - [Generating designs from the command line - no GUI](#generating-designs-from-the-command-line---no-gui)
+  - [Design description](#design-description)
+    - [Block diagrams](#block-diagrams)
+    - [MSS peripherals](#mss-peripherals)
+    - [MSS LPDDR4 configuration](#mss-lpddr4-configuration)
+    - [Fabric memory map](#fabric-memory-map)
+    - [Interrupt map](#interrupt-map)
+    - [GPIO2 connections](#gpio2-connections)
+  - [Programming the FPGA](#programming-the-fpga)
+  - [Board configuration](#board-configuration)
+  - [MSS Configuration](#mss-configuration)
+  - [XML](#xml)
+  - [BFM Simulation](#bfm-simulation)
+  - [Setting the boot mode and programming the eNVM](#setting-the-boot-mode-and-programming-the-envm)
+    - [Boot mode 0](#boot-mode-0)
+    - [Boot mode 1](#boot-mode-1)
+      - [Boot mode 1: SoftConsole](#boot-mode-1-softconsole)
+      - [Boot mode 1: Libero SoC](#boot-mode-1-libero-soc)
+
+<a name="description"></a>
 ## Description
 
 This repository can be used to generate a reference design for the PolarFire SoC Icicle Kit. This reference design will have the same or extended functionality compared to the pre-programmed FPGA design on the Icicle Kit.
@@ -8,12 +37,15 @@ A Libero SoC Tcl script is provided to generate the reference design using Liber
 
 This repository supports Libero SoC v2022.2, which is available for download [here](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions#Documents%20and%20Downloads).
 
+<a name="using-the-reference-design-generation-tcl-script"></a>
 ## Using the reference design generation Tcl script
 
+<a name="licensing"></a>
 ### Licensing
 
 The Icicle Kit Reference Design can be generated using any of the free or paid Libero licenses. Licensing information is available on the Microchip website [here](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/licensing).
 
+<a name="standard-design-generation"></a>
 ### Standard design generation
 
 To generate the standard reference design which is capable of running the majority of bare metal example applications and run Linux&reg; the following flow can be used:
@@ -25,6 +57,7 @@ To generate the standard reference design which is capable of running the majori
 5. Configure the design if required
 6. Run the Libero SoC design flow to program a device
 
+<a name="argument-based-design-generation"></a>
 ### Argument based design generation
 
 Some bare metal examples and tutorials require a specific fabric configuration which cannot be achieved in the standard base design, for example to test I2C loopback the MSS must be reconfigured to route I2C1 to the fabric and bi directional buffers then need to be instantiated along with additional constraints. These configurations are achieved by passing an argument to Libero when generating the design. Arguments will generate a standard base design and apply design changes on top of that configuration. Supported arguments are:
@@ -70,6 +103,7 @@ The design flow for using arguments is the same as the standard flow, ensuring t
 6. Configure the design if required
 7. Run the Libero SoC design flow to program a device
 
+<a name="generating-designs-from-the-command-line---no-gui"></a>
 ### Generating designs from the command line - no GUI
 
 Libero has support to run Tcl scripts without launching a GUI, this can significantly reduce design generation time. Arguments can also be passed when generating from the command line.
@@ -85,8 +119,10 @@ To generate a design from the command line:
 
 **Note:** The script will automatically generate an MSS component, using the PolarFire SoC MSS Configurator in batch mode, then, generate, instantiate and connect components and top level I/Os. Constraints are imported for top level I/O and floor planning which associated with Place and Route. Timing constraints are then generated and associated with Synthesis, Place and Route and Timing Verification. Some arguments may require part of the design flow to be run while executing the script.
 
+<a name="design-description"></a>
 ## Design description
 
+<a name="block-diagrams"></a>
 ### Block diagrams
 
 The diagram below outlines the top level configuration of the FPGA fabric and shows MSS I/Os used in this design:
@@ -97,6 +133,7 @@ The diagram below shows the Inter Hart Communication (IHC) subsystem configurati
 
 ![IHC subsystem block diagram](./diagrams/IHC_SUBSYSTEM_block_diagram.svg)
 
+<a name="mss-peripherals"></a>
 ### MSS peripherals
 
 The following MSS peripherals are enabled:
@@ -123,6 +160,7 @@ The following MSS peripherals are enabled:
 
 **Note:** “Raspberry Pi is a trademark of the Raspberry Pi Foundation”.
 
+<a name="mss-lpddr4-configuration"></a>
 ### MSS LPDDR4 configuration
 
 The Icicle Kit has 2GB of LPDDR4 on board and the PolarFire SoC MSS Configurator contains an "MSS_LPDDR4_default_configuration" preset that should be used with for the Icicle Kit.
@@ -136,6 +174,7 @@ Note: These settings should be the defaults in the profile from MSS configurator
 | DDR Controller            | DQ ODT                    | 40            | 80             |
 | DDR Memory Initialization | Pull-up Calibration Point | VDDQ/3        | VDDQ/2.5       |
 
+<a name="fabric-memory-map"></a>
 ### Fabric memory map
 
 | Initiator      | Bus                        | Target                    | Board peripheral        | Board interface              | Address range |
@@ -177,6 +216,7 @@ Note: These settings should be the defaults in the profile from MSS configurator
 | PF_PCIE_C0_0   | AXI4_mslave0               | MSS: FIC0                 | N/A                     | N/A                          | 0x6000_0000 -> 0xBFFF_FFFF |
 | DMA_CONTROLLER | AXI4_mslave0               | MSS: FIC1                 | N/A                     | N/A                          | 0xC000_0000 -> 0xCFFF_FFFF |
 
+<a name="interrupt-map"></a>
 ### Interrupt map
 
 | Source                  | IRQ                |
@@ -194,6 +234,7 @@ Note: These settings should be the defaults in the profile from MSS configurator
 | MSS_GPIO_2_26 OR SW2    | MSS_GPIO_2_INT[30] |
 | MSS_GPIO_2_27 OR SW3    | MSS_GPIO_2_INT[31] |
 
+<a name="gpio2-connections"></a>
 ### GPIO2 connections
 
 | Bit | Direction | Source / sink | Notes         |
@@ -221,14 +262,17 @@ Note: These settings should be the defaults in the profile from MSS configurator
 | 30  | In        | GPIO2 bit 26  |               |
 | 31  | In        | GPIO2 bit 27  |               |
 
+<a name="programming-the-fpga"></a>
 ## Programming the FPGA
 
 Once the script has completed the design can be configured further if needed and the Libero SoC design flow can be run by double clicking on a stage in the design flow on the left hand side of Libero. Selecting an option requiring previous steps to be completed will run the full flow, i.e double clicking "Run Program Action" will run any required steps, such as, "Synthesize", "Place and Route", etc and then program the device.
 
+<a name="board-configuration"></a>
 ## Board configuration
 
 For Icicle Kit jumper configurations used by this design and Linux images for eMMC and SD Cards see: [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md).
 
+<a name="mss-configuration"></a>
 ## MSS Configuration
 
 The Microprocessor Subsystem (MSS) is configured using the PolarFire SoC MSS Configurator.
@@ -238,12 +282,14 @@ The MSS component file can be imported into a Libero SoC design and used in the 
 
 A saved configuration for the PolarFire SoC MSS Configurator is available in the "script_support" folder and can be opened by the PolarFire SoC MSS Configurator. These configurations will match the MSS configuration used in the design and can be used to regenerate XML and a Libero component. For argument based designs, MSS configuration files will be generated in the script_support/additional_configurations/[configuration name] directory when a design is generated.
 
+<a name="xml"></a>
 ## XML
 
 The Microcontroller Subsystem (MSS) configuration is captured in an XML file that is then used by the PolarFire SoC Configuration Generator to generate configuration header files. These header files are compiled as part of the MPFS HAL startup code to configure the system at power on.
 
 XML generated for all available configurations is provided in the "XML" folder.
 
+<a name="bfm-simulation"></a>
 ## BFM Simulation
 
 A SmartDesign test bench can be generated along with the SmartDesign containing the reference design by passing the "BFM_SIMULATION" argument when generating the design. This test bench will allow the user to run BFM simulations of the PolarFire SoC MSS. A custom wave.do file is imported to add signals and updated BFM scripts are also imported. To run a BFM simulation:
@@ -254,8 +300,10 @@ A SmartDesign test bench can be generated along with the SmartDesign containing 
 
 Commands for BFM simulations can be updated by editing the ".vec" files in the Simulation folder which is accessible under the "Files" tab of Libero SoC.
 
+<a name="setting-the-boot-mode-and-programming-the-envm"></a>
 ## Setting the boot mode and programming the eNVM
 
+<a name="boot-mode-0"></a>
 ### Boot mode 0
 
 Boot mode 0 will put all of the MSS cores into WFI (Wait For Interrupt) mode on power on, the cores will not boot until debugged. SoftConsole v6.5 or later can be used to set the PolarFire SoC boot mode to 0:
@@ -264,12 +312,14 @@ Boot mode 0 will put all of the MSS cores into WFI (Wait For Interrupt) mode on 
 2. In SoftConsole select the "External Tool" drop down menu
 3. Select the "PolarFire SoC idle boot mode 0" configuration and run
 
+<a name="boot-mode-1"></a>
 ### Boot mode 1
 
 Boot mode 1 configures all of the MSS cores to boot from the eNVM, when setting the boot mode to 1 an eNVM client must also be provided An eNVM client can be a zero stage boot loader, such as the HSS, or a bare metal application. SoftConsole v6.4 and above or Libero SoC v12.6 and above can be used to set the boot mode and program the eNVM.
 
 Build the bare metal application using the reference XML provided to configure the MPFS HAL (XML will also be generated in the script_support/components/[target] folder when an MSS component is generated as part of the flow).
 
+<a name="boot-mode-1-softconsole"></a>
 #### Boot mode 1: SoftConsole
 
 To set the PolarFire SoC boot mode to 1 and program an eNVM client in SoftConsole:
@@ -279,6 +329,7 @@ To set the PolarFire SoC boot mode to 1 and program an eNVM client in SoftConsol
 3. In SoftConsole select the "External Tool" drop down menu
 4. Select the "PolarFire SoC non-secure boot mode 1" configuration and run
 
+<a name="boot-mode-1-libero-soc"></a>
 #### Boot mode 1: Libero SoC
 
 To set the PolarFire SoC boot mode to 1 and program and eNVM client in Libero:

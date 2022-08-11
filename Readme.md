@@ -163,9 +163,9 @@ The following MSS peripherals are enabled:
 <a name="mss-lpddr4-configuration"></a>
 ### MSS LPDDR4 configuration
 
-The Icicle Kit has 2GB of LPDDR4 on board and the PolarFire SoC MSS Configurator contains an "MSS_LPDDR4_default_configuration" preset that should be used with for the Icicle Kit.
+The Icicle Kit has 2GB of LPDDR4 on board and the PolarFire SoC MSS Configurator contains an "MSS_LPDDR4_default_configuration" preset that should be used with the Icicle Kit.
 
-Using the PolarFire SoC MSS Configurator v2022.2 2 settings from the default profile need to updated for the LPDDR4 on the kit to be used.
+With the PolarFire SoC MSS Configurator v2022.2, the following two settings from the default profile need to updated for the LPDDR4 on the kit to be used.
 
 Note: These settings should be the defaults in the profile from MSS configurator v2022.3 and greater.
 

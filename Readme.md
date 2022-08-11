@@ -63,12 +63,12 @@ The design flow for using arguments is the same as the standard flow, ensuring t
 2. Open Libero v2022.2
 3. Open the execute script dialog (CTRL + U)
 4. Execute the "MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl" script
-6. Add any required arguments (e.g "I2C_LOOPBACK HSS_UPDATE PROGRAM")
+5. Add any required arguments (e.g "I2C_LOOPBACK HSS_UPDATE PROGRAM")
 
 **Note:** arguments should not be put in quotes and are separated by a space when using the GUI.
 
-7. Configure the design if required
-8. Run the Libero SoC design flow to program a device
+6. Configure the design if required
+7. Run the Libero SoC design flow to program a device
 
 ### Generating designs from the command line - no GUI
 
@@ -98,6 +98,7 @@ The diagram below shows the Inter Hart Communication (IHC) subsystem configurati
 ![IHC subsystem block diagram](./diagrams/IHC_SUBSYSTEM_block_diagram.svg)
 
 ### MSS peripherals
+
 The following MSS peripherals are enabled:
 
 | MSS Peripheral | Route to Device I/O | Board peripheral            | Board Interface              | Notes |
@@ -207,7 +208,6 @@ The following MSS peripherals are enabled:
 | 30  | In        | GPIO2 bit 26  |               |
 | 31  | In        | GPIO2 bit 27  |               |
 
-
 ## Programming the FPGA
 
 Once the script has completed the design can be configured further if needed and the Libero SoC design flow can be run by double clicking on a stage in the design flow on the left hand side of Libero. Selecting an option requiring previous steps to be completed will run the full flow, i.e double clicking "Run Program Action" will run any required steps, such as, "Synthesize", "Place and Route", etc and then program the device.
@@ -234,6 +234,7 @@ XML generated for all available configurations is provided in the "XML" folder.
 ## BFM Simulation
 
 A SmartDesign test bench can be generated along with the SmartDesign containing the reference design by passing the "BFM_SIMULATION" argument when generating the design. This test bench will allow the user to run BFM simulations of the PolarFire SoC MSS. A custom wave.do file is imported to add signals and updated BFM scripts are also imported. To run a BFM simulation:
+
 1. Open the "Stimulus Hierarchy" in Libero SoC
 2. Right click on "Test_bench" from the hierarchy
 3. Select "Simulate Pre-Synth Design" and "Open Interactively"
@@ -245,6 +246,7 @@ Commands for BFM simulations can be updated by editing the ".vec" files in the S
 ### Boot mode 0
 
 Boot mode 0 will put all of the MSS cores into WFI (Wait For Interrupt) mode on power on, the cores will not boot until debugged. SoftConsole v6.5 or later can be used to set the PolarFire SoC boot mode to 0:
+
 1. Connect the board to the PC using the embedded FlashPro6 or an external FlashPro and power on the board
 2. In SoftConsole select the "External Tool" drop down menu
 3. Select the "PolarFire SoC idle boot mode 0" configuration and run
@@ -258,6 +260,7 @@ Build the bare metal application using the reference XML provided to configure t
 #### Boot mode 1: SoftConsole
 
 To set the PolarFire SoC boot mode to 1 and program an eNVM client in SoftConsole:
+
 1. Select the project folder of the application to be used as an eNVM client in the project explorer
 2. Connect the board to the PC using the embedded FlashPro6 or an external FlashPro and power on the board
 3. In SoftConsole select the "External Tool" drop down menu
@@ -266,6 +269,7 @@ To set the PolarFire SoC boot mode to 1 and program an eNVM client in SoftConsol
 #### Boot mode 1: Libero SoC
 
 To set the PolarFire SoC boot mode to 1 and program and eNVM client in Libero:
+
 1. Run the Libero SoC design flow so that "Generate FPGA Array Data" has completed and open the "Configure Design Initialization Data and Memories" tool
 2. Select the "eNVM" tab
 3. Select the "Add ..." option and select "Add Boot Mode 1" client

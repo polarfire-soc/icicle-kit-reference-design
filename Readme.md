@@ -123,6 +123,19 @@ The following MSS peripherals are enabled:
 
 **Note:** “Raspberry Pi is a trademark of the Raspberry Pi Foundation”.
 
+### MSS LPDDR4 configuration
+
+The Icicle Kit has 2GB of LPDDR4 on board and the PolarFire SoC MSS Configurator contains an "MSS_LPDDR4_default_configuration" preset that should be used with for the Icicle Kit.
+
+Using the PolarFire SoC MSS Configurator v2022.2 2 settings from the default profile need to updated for the LPDDR4 on the kit to be used.
+
+Note: These settings should be the defaults in the profile from MSS configurator v2022.3 and greater.
+
+| DDR Memory Tab            | Option                    | Default Value | Required Value |
+|---------------------------|---------------------------|---------------|----------------|
+| DDR Controller            | DQ ODT                    | 40            | 80             |
+| DDR Memory Initialization | Pull-up Calibration Point | VDDQ/3        | VDDQ/2.5       |
+
 ### Fabric memory map
 
 | Initiator      | Bus                        | Target                    | Board peripheral        | Board interface              | Address range |

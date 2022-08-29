@@ -41,6 +41,11 @@
             "name":"micron_qspi",
             "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
             "script_args":"EXPORT_FPE+HSS_UPDATE+MICRON_QSPI"
+        },
+        {
+            "name":"smarthls",
+            "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
+            "script_args":"SMARTHLS:./script_support/additional_configurations/smarthls/invert_and_threshold+EXPORT_FPE:./soc+HSS_UPDATE:1"
         }
     ]
 }

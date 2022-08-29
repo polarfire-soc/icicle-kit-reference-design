@@ -14,7 +14,7 @@ cd $hlsModuleDir
 catch {set shls_path [exec which shls]}
 set bash_path bash
 if { ![info exists shls_path] } {
-    set base_path [string cat {C:/Microsemi/SmartHLS-} [string range [get_libero_release] 1 end] {.1/}]
+    set base_path [string cat {C:/Microchip/Libero_SoC_v2022.2/SmartHLS-} [string range [get_libero_release] 1 end] {/}]
     set shls_path [string cat $base_path {SmartHLS/bin/shls}]
     set bash_path [string cat $base_path {Cygwin64/bin/bash}]
     set ::env(PATH) [string cat ";" $base_path {Cygwin64/bin/}]

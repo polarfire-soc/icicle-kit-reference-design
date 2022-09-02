@@ -11,17 +11,28 @@ set cwd [pwd]
 set hlsModuleDir [file normalize $SMARTHLS]
 cd $hlsModuleDir
 
+#
+# Check that SmartHLS is in the path, otherwise assume a default
+#
+set OS [lindex $tcl_platform(os) 0]
 catch {set shls_path [exec which shls]}
 set bash_path bash
 if { ![info exists shls_path] } {
-    set base_path [string cat {C:/Microchip/Libero_SoC_v2022.2/SmartHLS-} [string range [get_libero_release] 1 end] {/}]
-    set shls_path [string cat $base_path {SmartHLS/bin/shls}]
-    set bash_path [string cat $base_path {Cygwin64/bin/bash}]
-    set ::env(PATH) [string cat ";" $base_path {Cygwin64/bin/}]
+    if { $OS == "Linux" } {
+        set base_path [string cat {/usr/local/Microchip/Libero_SoC_v2022.2/SmartHLS-} [string range [get_libero_release] 1 end] {/}]
+        set ::env(PATH) [string cat ";" $base_path {SmartHLS/bin}]
+    } else {
+        set base_path [string cat {C:/Microchip/Libero_SoC_v2022.2/SmartHLS-} [string range [get_libero_release] 1 end] {/}]
+        set bash_path [string cat $base_path {Cygwin64/bin/bash}]
+        set ::env(PATH) [string cat ";" $base_path {Cygwin64/bin/}]
+    }
+    set shls_path [string cat $base_path {SmartHLS/bin/shls}]        
 }
 
 if { [file exists "$shls_path"] == 0 } {
-    puts stderr "Error: Cannot find SmartHLS (shls). Please update script. Looked in: $shls_path"
+    puts stderr "Error: Cannot find SmartHLS (shls). "
+    puts stderr "Default path ($shls_path) also did not work."
+    puts stderr "Please update script: [info script]."
     exit 1
 }
 

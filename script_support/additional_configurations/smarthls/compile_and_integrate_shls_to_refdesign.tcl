@@ -20,10 +20,11 @@ set OS [lindex $tcl_platform(os) 0]
 catch {set shls_path [exec which shls]}
 set bash_path bash
 if { ![info exists shls_path] } {
-    set base_path [string cat $install_loc/SmartHLS- [string range [get_libero_release] 1 end] {/}]
     if { $OS == "Linux" } {
+        set base_path [string cat **[string trimright $install_loc Libero]**/SmartHLS- [string range [get_libero_release] 1 end] {/}]
         set ::env(PATH) [string cat ";" $base_path {SmartHLS/bin}]
     } else {
+        set base_path [string cat $install_loc/SmartHLS- [string range [get_libero_release] 1 end] {/}]
         set bash_path [string cat $base_path {Cygwin64/bin/bash}]
         set ::env(PATH) [string cat ";" $base_path {Cygwin64/bin/}]
     }

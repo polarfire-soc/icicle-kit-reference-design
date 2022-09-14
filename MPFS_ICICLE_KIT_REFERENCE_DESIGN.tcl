@@ -8,12 +8,12 @@ puts "TCL_BEGIN: [info script]"
 # // Check Libero version and path length to verify project can be created
 #
 
-set libero_release [split [get_libero_version] .]
+set libero_release [split [get_libero_release] .]
 
 if {[string compare [lindex $libero_release 0] "2022"] == 0 && [string compare [lindex $libero_release 1] "2"] == 0} {
     puts "Libero v2022.2 detected."
 } else {
-    error "Incorrect Libero version detected. Please use Libero v2022.2 to run these scripts."
+    error "Incorrect Libero version detected ($libero_release). Please use Libero v2022.2 to run these scripts."
 }
 
 if { [lindex $tcl_platform(os) 0]  == "Windows" } {

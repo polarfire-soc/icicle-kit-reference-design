@@ -186,7 +186,8 @@ import_files \
     -io_pdc "${constraint_path}/ICICLE_RPi.pdc" \
     -io_pdc "${constraint_path}/ICICLE_I2C_LOOPBACK.pdc" \
     -io_pdc "${constraint_path}/ICICLE_SPI_LOOPBACK.pdc" \
-    -io_pdc "${constraint_path}/ICICLE_RPi_MICRON_QSPI.pdc" 
+    -io_pdc "${constraint_path}/ICICLE_RPi_MICRON_QSPI.pdc" \
+	-fp_pdc "${constraint_path}/NW_PLL.pdc"
 
 #
 # // Associate imported constraints with the design flow
@@ -207,6 +208,7 @@ if {[info exists MICRON_QSPI]} {
 		-file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
 		-file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
 		-file "${project_dir}/constraint/io/ICICLE_RPi_MICRON_QSPI.pdc" \
+		-file "${project_dir}/constraint/fp/NW_PLL.pdc" \
 		-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
 		-input_type {constraint}
 } else {
@@ -224,6 +226,7 @@ if {[info exists MICRON_QSPI]} {
 		-file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
 		-file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
 		-file "${project_dir}/constraint/io/ICICLE_RPi.pdc" \
+		-file "${project_dir}/constraint/fp/NW_PLL.pdc" \
 		-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
 		-input_type {constraint}
 		}

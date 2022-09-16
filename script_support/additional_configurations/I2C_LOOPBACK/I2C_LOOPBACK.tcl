@@ -22,4 +22,19 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:I2C_1_SDA_OE_M2F" "I
 generate_component -component_name ${sd_name} -recursive 0 
 build_design_hierarchy
 
-organize_tool_files -tool {PLACEROUTE} -file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" -file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" -file "${project_dir}/constraint/io/ICICLE_USB.pdc" -file "${project_dir}/constraint/io/ICICLE.pdc" -file "${project_dir}/constraint/io/ICICLE_MAC.pdc" -file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" -file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" -file "${project_dir}/constraint/io/ICICLE_I2C_LOOPBACK.pdc" -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} -input_type {constraint} 
+organize_tool_files \
+	-tool {PLACEROUTE} \
+	-file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_USB.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_MAC.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_I2C_LOOPBACK.pdc" \
+	-file "${project_dir}/constraint/io/NW_PLL.pdc" \
+	-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+	-input_type {constraint} 

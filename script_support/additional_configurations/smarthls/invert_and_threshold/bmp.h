@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "inttypes.h"
+#include <sys/time.h>
 #include "hls/hls_alloc.h"
 
 // make sure the HEIGHT/N_ROWS is an integer number

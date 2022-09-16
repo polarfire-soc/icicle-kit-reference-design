@@ -10,7 +10,7 @@ puts "TCL_BEGIN: [info script]"
 
 set libero_release [split [get_libero_release] .]
 
-if {[string compare [lindex $libero_release 0] "2022"] == 0 && [string compare [lindex $libero_release 1] "2"] == 0} {
+if {[string first 2022 $libero_release] != -1 && [string compare [lindex $libero_release 1] "2"] == 0} {
     puts "Libero v2022.2 detected."
 } else {
     error "Incorrect Libero version detected ($libero_release). Please use Libero v2022.2 to run these scripts."
@@ -366,6 +366,7 @@ if {[info exists GENERATE_PROGRAMMING_DATA]} {
     set gUseSPI 0
     if {[info exists SMARTHLS]} {
         set gUseSPI [update_snvm_to_spi_ram_cfg $project_dir/designer/MPFS_ICICLE_KIT_BASE_DESIGN/MPFS_ICICLE_KIT_BASE_DESIGN_RAM.cfg ]
+        generate_design_initialization_data
     }
     
     set jobPath $local_dir

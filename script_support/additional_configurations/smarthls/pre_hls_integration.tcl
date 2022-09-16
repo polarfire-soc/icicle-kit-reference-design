@@ -34,10 +34,19 @@ save_smartdesign -sd_name $sd_name
 # configure_tool -name {SYNTHESIZE} \
 #   -params {RETIMING:true}
 
+
+# By default try up to 8 times to place and route if timing is not met.
+# Set the HLS_PLACEROUTE_MAX_ITERATIONS environment variable to override the default.
+set pnrIterations 8
+if { [info exists env(HLS_PLACEROUTE_MAX_ITERATIONS)] } {
+    set pnrIterations $env(HLS_PLACEROUTE_MAX_ITERATIONS)
+}
+puts "Maximum place and route iterations:$pnrIterations"
+
 configure_tool -name {PLACEROUTE} \
     -params {MULTI_PASS_CRITERIA:VIOLATIONS} \
     -params {MULTI_PASS_LAYOUT:true} \
-    -params "NUM_MULTI_PASSES:25"  \
+    -params "NUM_MULTI_PASSES:$pnrIterations"  \
     -params {STOP_ON_FIRST_PASS:true}
     
 # Options to verify timing can be added here:

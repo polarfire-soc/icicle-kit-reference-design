@@ -225,27 +225,27 @@ if { [file exists $project_dir/$project_name.prjx] } {
 		-file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
 		-file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
 		-file "${project_dir}/constraint/io/ICICLE_RPi_MICRON_QSPI.pdc" \
-        -file "${project_dir}/constraint/fp/NW_PLL.pdc" \
+        	-file "${project_dir}/constraint/fp/NW_PLL.pdc" \
 		-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
 		-input_type {constraint}
 } else {
 	organize_tool_files \
-        -tool {PLACEROUTE} \
-        -file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" \
-        -file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" \
-        -file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" \
-        -file "${project_dir}/constraint/io/ICICLE_USB.pdc" \
-        -file "${project_dir}/constraint/io/ICICLE.pdc" \
-        -file "${project_dir}/constraint/io/ICICLE_MAC.pdc" \
-        -file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" \
-        -file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" \
-        -file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" \
-        -file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
-        -file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
-        -file "${project_dir}/constraint/io/ICICLE_RPi.pdc" \
-        -file "${project_dir}/constraint/fp/NW_PLL.pdc" \
-        -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
-        -input_type {constraint}
+		-tool {PLACEROUTE} \
+		-file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_USB.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MAC.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
+		-file "${project_dir}/constraint/io/ICICLE_RPi.pdc" \
+		-file "${project_dir}/constraint/fp/NW_PLL.pdc" \
+		-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+		-input_type {constraint}
     }
     #
     # // Apply additional design configurations

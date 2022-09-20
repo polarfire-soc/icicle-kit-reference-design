@@ -229,6 +229,7 @@ create_and_configure_core -core_vlnv {Actel:SgCore:PF_CCC:2.2.214} -component_na
 "PLL_REF_CLK_SEL_1:false"  \
 "PLL_REFDIV_0:4"  \
 "PLL_REFDIV_1:1"  \
+"PLL_RESET_ON_LOCK_0:true"  \
 "PLL_SPREAD_MODE_0:false"  \
 "PLL_SPREAD_MODE_1:false"  \
 "PLL_SSM_DEPTH_0:5"  \

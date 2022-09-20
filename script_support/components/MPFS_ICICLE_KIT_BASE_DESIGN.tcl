@@ -281,6 +281,11 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {FIC3_INITIATOR} -i
 
 
 
+# Add FIC_1_INITIATOR_0 instance
+sd_instantiate_component -sd_name ${sd_name} -component_name {FIC_1_INITIATOR} -instance_name {FIC_1_INITIATOR_0}
+
+
+
 # Add GPIO_2_2_IO instance
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {GPIO_2_2_IO}
 
@@ -522,7 +527,7 @@ sd_invert_pins -sd_name ${sd_name} -pin_names {SW3_OR_GPIO_2_27:A}
 
 
 # Add scalar net connections
-sd_connect_pins -sd_name ${sd_name} -pin_names {"AXI_ADDRESS_SHIM_0:RESETN" "CLOCKS_AND_RESETS:RESETN_FIC_0_CLK" "DMA_CONTROLLER:RESETN" "DMA_INITIATOR:ARESETN" "FIC0_INITIATOR:ARESETN" "MSS_LSRAM:ARESETN" "PCIE:AXI_CLK_STABLE" "PCIE_INITIATOR:ARESETN" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"AXI_ADDRESS_SHIM_0:RESETN" "CLOCKS_AND_RESETS:RESETN_FIC_1_CLK" "FIC_1_INITIATOR_0:ARESETN" "PCIE:AXI_CLK_STABLE" "PCIE_INITIATOR:ARESETN" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_0:D" "ICICLE_MSS:QSPI_CLK_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_0:E" "ICICLE_MSS:QSPI_CLK_OE_M2F" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIBUF_0:PAD" "QSPI_CLK" }
@@ -555,8 +560,8 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "ICICLE_MSS:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CKE" "ICICLE_MSS:CKE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "ICICLE_MSS:CK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:EXT_RST_N" "ICICLE_MSS:MSS_RESET_N_M2F" "USB_ULPI_RESET" "VSC_8662_RESETN" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:FIC_0_CLK" "DMA_CONTROLLER:CLOCK" "DMA_INITIATOR:ACLK" "FIC0_INITIATOR:ACLK" "ICICLE_MSS:FIC_0_ACLK" "MSS_LSRAM:ACLK" "PCIE:AXI_CLK" "PCIE_INITIATOR:ACLK" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:FIC_1_CLK" "DMA_INITIATOR:S_CLK0" "ICICLE_MSS:FIC_1_ACLK" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:FIC_0_CLK" "DMA_CONTROLLER:CLOCK" "DMA_INITIATOR:ACLK" "FIC0_INITIATOR:ACLK" "ICICLE_MSS:FIC_0_ACLK" "MSS_LSRAM:ACLK" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:FIC_1_CLK" "FIC_1_INITIATOR_0:ACLK" "ICICLE_MSS:FIC_1_ACLK" "PCIE:AXI_CLK" "PCIE_INITIATOR:ACLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:FIC_2_CLK" "ICICLE_MSS:FIC_2_ACLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:FIC_3_CLK" "COREGPIO_C0:PCLK" "COREI2C_C0_0:PCLK" "CoreUARTapb_C0_0:PCLK" "ICICLE_MSS:FIC_3_PCLK" "IHC_SUBSYSTEM_0:pclk" "PCIE:APB_S_PCLK" "PWM:PCLK" "RECONFIGURATION_INTERFACE_0:PCLK" "sdio_register_0:pclk" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:MSS_PLL_LOCKS" "MSS_PLL_LOCKS:Y" }
@@ -566,6 +571,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:PCIe_REFERENC
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:REF_CLK_50MHz" "REF_CLK_50MHz" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:REF_CLK_PAD_N" "REF_CLK_PAD_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:REF_CLK_PAD_P" "REF_CLK_PAD_P" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:RESETN_FIC_0_CLK" "DMA_CONTROLLER:RESETN" "DMA_INITIATOR:ARESETN" "FIC0_INITIATOR:ARESETN" "MSS_LSRAM:ARESETN" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:RESETN_FIC_3_CLK" "COREGPIO_C0:PRESETN" "COREI2C_C0_0:PRESETN" "CoreUARTapb_C0_0:PRESETN" "IHC_SUBSYSTEM_0:presetn" "PCIE:APB_S_PRESET_N" "PWM:PRESETN" "RECONFIGURATION_INTERFACE_0:PRESETN" "sdio_register_0:presetn" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[0:0]" "MSS_GPIO_2_16_OR_COREGPIO_C0_GPIO_OUT_0:B" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[1:1]" "MSS_GPIO_2_17_OR_COREGPIO_C0_GPIO_OUT_1:B" }
@@ -763,15 +769,17 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:APB_bif" "FIC3_INIT
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_0:APBslave" "FIC3_INITIATOR:APBmslave4" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:APB_bif" "FIC3_INITIATOR:APBmslave5" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_CONTROLLER:AXI4MasterDMA_IF" "DMA_INITIATOR:AXI4mmaster0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_CONTROLLER:AXI4SlaveCtrl_IF" "FIC0_INITIATOR:AXI4mslave2" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_INITIATOR:AXI4mslave0" "ICICLE_MSS:FIC_1_AXI4_TARGET" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_CONTROLLER:AXI4SlaveCtrl_IF" "FIC0_INITIATOR:AXI4mslave0" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_INITIATOR:AXI4mslave0" "ICICLE_MSS:FIC_0_AXI4_TARGET" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_INITIATOR:AXI4mmaster0" "ICICLE_MSS:FIC_0_AXI4_INITIATOR" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_INITIATOR:AXI4mslave0" "PCIE:AXI_1_SLAVE" }
+
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_INITIATOR:AXI4mslave1" "MSS_LSRAM:AXI4_Slave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_INITIATOR:APBmslave1" "PWM:APBslave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_INITIATOR:APBmslave15" "sdio_register_0:APBslave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC3_INITIATOR:APBmslave16" "RECONFIGURATION_INTERFACE_0:APBS_SLAVE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:FIC_0_AXI4_TARGET" "PCIE_INITIATOR:AXI4mslave0" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_1_INITIATOR_0:AXI4mmaster0" "ICICLE_MSS:FIC_1_AXI4_INITIATOR" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_1_INITIATOR_0:AXI4mslave0" "PCIE:AXI_1_SLAVE" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:FIC_1_AXI4_TARGET" "PCIE_INITIATOR:AXI4mslave0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE0_DRI_SLAVE" "RECONFIGURATION_INTERFACE_0:Q0_LANE0_DRI" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE1_DRI_SLAVE" "RECONFIGURATION_INTERFACE_0:Q0_LANE1_DRI" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE2_DRI_SLAVE" "RECONFIGURATION_INTERFACE_0:Q0_LANE2_DRI" }

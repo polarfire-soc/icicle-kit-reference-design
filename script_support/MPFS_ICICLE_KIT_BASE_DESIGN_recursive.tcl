@@ -26,6 +26,8 @@ source components/CLOCKS_AND_RESETS.tcl
 source components/DMA_CONTROLLER.tcl 
 source components/DMA_INITIATOR.tcl 
 source components/FIC0_INITIATOR.tcl 
+source components/MSS_LSRAM.tcl 
+source components/FIC_0_PERIPHERALS.tcl 
 source components/FIC_1_INITIATOR.tcl 
 source components/COREI2C_C0.tcl 
 source components/CORE_I2C_C0_0_WRAPPER.tcl 
@@ -40,7 +42,6 @@ source components/IHC_SUBSYSTEM.tcl
 source components/RECONFIGURATION_INTERFACE.tcl 
 source components/corepwm_C0.tcl 
 source components/FIC_3_PERIPHERALS.tcl 
-source components/MSS_LSRAM.tcl 
 source components/PCIE_INITIATOR.tcl 
 source components/PF_PCIE_C0.tcl 
 source components/MPFS_ICICLE_KIT_BASE_DESIGN.tcl 

@@ -114,6 +114,8 @@ new_project \
     -adv_options {VCCI_2.5_VOLTR:EXT} \
     -adv_options {VCCI_3.3_VOLTR:EXT} \
     -adv_options {VOLTR:EXT}
+	
+smartdesign -memory_map_drc_change_error_to_warning 1 -bus_interface_data_width_drc_change_error_to_warning 1 -bus_interface_id_width_drc_change_error_to_warning 1 
 
 #
 # // Download required cores

@@ -45,5 +45,6 @@ source components/IHC_SUBSYSTEM.tcl
 source components/RECONFIGURATION_INTERFACE.tcl 
 source components/corepwm_C0.tcl 
 source components/FIC_3_PERIPHERALS.tcl 
+source components/MSS_WRAPPER.tcl 
 source components/MPFS_ICICLE_KIT_BASE_DESIGN.tcl 
 build_design_hierarchy

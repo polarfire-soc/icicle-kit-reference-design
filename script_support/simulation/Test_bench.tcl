@@ -51,7 +51,6 @@ sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_B
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:mBUS_I2C_SCL} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:mBUS_I2C_SDA} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:mBUS_UART_RX} -value {GND} 
-sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:SPI_0_DI_F2M} -value {GND} 
 sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:COREUART_RX} -value {GND} 
 sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:mBUS_INT} -value {GND} 
 sd_connect_pins_to_constant -sd_name {Test_bench} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:COREI2C_C0_SDA} -value {GND} 

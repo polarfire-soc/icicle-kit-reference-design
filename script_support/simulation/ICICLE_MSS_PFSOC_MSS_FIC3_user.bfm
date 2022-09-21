@@ -5,7 +5,7 @@
 #===========================================================                                                                                                    
 #                                                           
 # memmap    resource_name base_address;   
-memmap FIC_3_at_42000000    0x42000000;                 
+memmap FIC_3_at_40000000    0x40000000;                 
 #-----------------------------------------------------------
 procedure main;
 #-----------------------------------------------------------
@@ -42,7 +42,7 @@ waitus 1;
 #            So, we only need to write dat to the Output Register
 #------------------------------------------------------------
 print "-"
-print "MESSAGE: TESTING CoreGPIO at base address 0x4200_0000"
+print "MESSAGE: TESTING CoreGPIO at base address 0x4000_0100"
 print "-"
 
 
@@ -51,20 +51,20 @@ print "-"
 #read x <address> <address_increment>
 
 #Assert CoreGPIO bit0=1
-write w FIC_3_at_42000000 0xA0 0x00000001;
-read w FIC_3_at_42000000 0xA0;
+write w FIC_3_at_40000000 0x1A0 0x00000001;
+read w FIC_3_at_40000000 0x1A0;
 #Assert CoreGPIO bit1=1
-write w FIC_3_at_42000000 0xA0 0x00000002;
-read w FIC_3_at_42000000 0xA0;
+write w FIC_3_at_40000000 0x1A0 0x00000002;
+read w FIC_3_at_40000000 0x1A0;
 #Assert CoreGPIO bit2=1
-write w FIC_3_at_42000000 0xA0 0x00000004;
-read w FIC_3_at_42000000 0xA0;
+write w FIC_3_at_40000000 0x1A0 0x00000004;
+read w FIC_3_at_40000000 0x1A0;
 #Assert CoreGPIO bit3=1
-write w FIC_3_at_42000000 0xA0 0x00000008;
-read w FIC_3_at_42000000 0xA0;
+write w FIC_3_at_40000000 0x1A0 0x00000008;
+read w FIC_3_at_40000000 0x1A0;
 #Assert CoreGPIO bit3,2,1,0=1
-write w FIC_3_at_42000000 0xA0 0x0000000f;
-read w FIC_3_at_42000000 0xA0;
+write w FIC_3_at_40000000 0x1A0 0x0000000f;
+read w FIC_3_at_40000000 0x1A0;
 
 #-----------------------------------------------------------
 # END of BFM

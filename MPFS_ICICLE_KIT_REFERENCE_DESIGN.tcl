@@ -73,11 +73,11 @@ if {[info exists I2C_LOOPBACK]} {
 }
 
 if {[info exists MSS_LINUX]} {
-    set target "Linux"
+
 } elseif {[info exists MSS_BAREMETAL]} {
 
 } else {
-    set target "Linux"
+    set MSS_LINUX 1
 }
 
 source ./script_support/additional_configurations/functions.tcl
@@ -151,7 +151,7 @@ if {[file isdirectory $local_dir/script_support/components/MSS]} {
 }
 file mkdir $local_dir/script_support/components/MSS
 
-if {[info exists target]} {
+if {[info exists MSS_LINUX]} {
     exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/MPFS_ICICLE_MSS_linux.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
 } else {
     exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/MPFS_ICICLE_MSS_baremetal.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
@@ -243,6 +243,10 @@ derive_constraints_sdc
 # // Apply additional design configurations
 #
 
+if {[info exists MSS_BAREMETAL]} {
+	source script_support/additional_configurations/MSS_BAREMETAL/MSS_BAREMETAL.tcl
+}
+
 if {[info exists BFM_SIMULATION]} {
     source script_support/simulation/Test_bench.tcl
 }
@@ -288,8 +292,23 @@ if {[info exists I2C_LOOPBACK]} {
 #
 save_project 
 sd_reset_layout -sd_name {CLOCKS_AND_RESETS}
+save_smartdesign -sd_name {CLOCKS_AND_RESETS}
+sd_reset_layout -sd_name {FIC_0_PERIPHERALS}
+save_smartdesign -sd_name {FIC_0_PERIPHERALS}
+sd_reset_layout -sd_name {FIC_1_PERIPHERALS}
+save_smartdesign -sd_name {FIC_1_PERIPHERALS}
+sd_reset_layout -sd_name {CORE_I2C_C0_0_WRAPPER}
+save_smartdesign -sd_name {CORE_I2C_C0_0_WRAPPER}
+sd_reset_layout -sd_name {FIC_3_ADDRESS_GENERATION}
+save_smartdesign -sd_name {FIC_3_ADDRESS_GENERATION}
 sd_reset_layout -sd_name {IHC_SUBSYSTEM}
+save_smartdesign -sd_name {IHC_SUBSYSTEM}
+sd_reset_layout -sd_name {FIC_3_PERIPHERALS}
+save_smartdesign -sd_name {FIC_3_PERIPHERALS}
+sd_reset_layout -sd_name {MSS_WRAPPER}
+save_smartdesign -sd_name {MSS_WRAPPER}
 sd_reset_layout -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
+save_smartdesign -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
 
 #
 # // Run the design flow and add eNVM clients if required

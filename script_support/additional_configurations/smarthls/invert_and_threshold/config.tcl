@@ -11,11 +11,11 @@ set_parameter SOC_PROFILER_COUNTER 1
 # into a SmartDesign. In this cace: the Icicle Kit Reference design.
 # This will no longer be necessary for the IcicleKit Ref design in the next 
 # release of SmartHLS, but will still be avilable for custom designs.
-set_parameter SOC_BD_NAME                 MPFS_ICICLE_KIT_BASE_DESIGN
+set_parameter SOC_BD_NAME                 FIC_0_PERIPHERALS
 set_parameter SOC_AXI_INITIATOR           AXI2AXI_TO_HLS:AXI4_MASTER
 set_parameter SOC_AXI_TARGET              AXI2AXI_FROM_HLS:AXI4_SLAVE
-set_parameter SOC_RESET                   CLOCKS_AND_RESETS:RESETN_FIC_0_CLK
-set_parameter SOC_CLOCK                   CLOCKS_AND_RESETS:FIC_0_CLK
+set_parameter SOC_RESET                   ACLK
+set_parameter SOC_CLOCK                   ARESETN
 # Using 256MB of FIC-0 address space range: 0x7000_0000 - 0x7040_0000 (4MB)
 set_parameter SOC_FABRIC_BASE_ADDRESS     0x70000000
 set_parameter SOC_FABRIC_SIZE             0x400000

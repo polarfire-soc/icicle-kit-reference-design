@@ -2,7 +2,7 @@
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
 # Create and Configure the core component TRANSMIT_PLL
-create_and_configure_core -core_vlnv {Actel:SgCore:PF_TX_PLL:2.0.300} -component_name {TRANSMIT_PLL} -params {\
+create_and_configure_core -core_vlnv {Actel:SgCore:PF_TX_PLL:*} -component_name {TRANSMIT_PLL} -params {\
 "CORE:PF_TX_PLL"  \
 "INIT:0x0"  \
 "TxPLL_AUX_LOW_SEL:true"  \

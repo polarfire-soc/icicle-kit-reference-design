@@ -3,16 +3,8 @@
 #
 
 #
-# // Check Libero version and path length to verify project can be created
+# // Check path length to verify project can be created
 #
-
-set libero_release [split [get_libero_version] .]
-
-if {[string compare [lindex $libero_release 0] "2022"] == 0 && [string compare [lindex $libero_release 1] "2"] == 0} {
-    puts "Libero v2022.2 detected."
-} else {
-    error "Incorrect Libero version detected. Please use Libero v2022.2 to run these scripts."
-}
 
 if { [lindex $tcl_platform(os) 0]  == "Windows" } {
     if {[string length [pwd]] < 90} {
@@ -47,6 +39,7 @@ if { $::argc > 0 } {
 # // Set required variables and add functions
 #
 
+set libero_release [split [get_libero_version] .]
 set install_loc [defvar_get -name ACTEL_SW_DIR]
 set mss_config_loc "$install_loc/bin64/pfsoc_mss"
 set local_dir [pwd]

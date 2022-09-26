@@ -34,10 +34,13 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {IHC_SUBSYSTEM_U54_4_IRQ} -
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PWM_0} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {Q0_LANE0_DRI_DRI_ARST_N} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {Q0_LANE0_DRI_DRI_CLK} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPI_ID_I2C_IRQ} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SDIO_control} -port_direction {OUT}
 
 sd_create_scalar_port -sd_name ${sd_name} -port_name {COREI2C_C0_SCL} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {COREI2C_C0_SDA} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_ID_SC} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_ID_SD} -port_direction {INOUT} -port_is_pad {1}
 
 # Create top level Bus Ports
 sd_create_bus_port -sd_name ${sd_name} -port_name {APB_MMASTER_in_paddr} -port_direction {IN} -port_range {[31:0]}
@@ -159,6 +162,11 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {RECONFIGURATION_INTERFACE_0:
 
 
 
+# Add RPi_ID_I2C instance
+sd_instantiate_component -sd_name ${sd_name} -component_name {CORE_I2C_C0_0_WRAPPER} -instance_name {RPi_ID_I2C}
+
+
+
 # Add sdio_register_0 instance
 sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {sdio_register} -instance_name {sdio_register_0}
 
@@ -169,8 +177,8 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[0:0]" "GPI
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[1:1]" "GPIO_OUT_1" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[2:2]" "GPIO_OUT_2" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[3:3]" "GPIO_OUT_3" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:PCLK" "CORE_I2C_C0_0_WRAPPER_1:PCLK" "CoreUARTapb_C0_0:PCLK" "IHC_SUBSYSTEM_0:pclk" "PCLK" "PWM:PCLK" "RECONFIGURATION_INTERFACE_0:PCLK" "sdio_register_0:pclk" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:PRESETN" "CORE_I2C_C0_0_WRAPPER_1:PRESETN" "CoreUARTapb_C0_0:PRESETN" "IHC_SUBSYSTEM_0:presetn" "PRESETN" "PWM:PRESETN" "RECONFIGURATION_INTERFACE_0:PRESETN" "sdio_register_0:presetn" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:PCLK" "CORE_I2C_C0_0_WRAPPER_1:PCLK" "CoreUARTapb_C0_0:PCLK" "IHC_SUBSYSTEM_0:pclk" "PCLK" "PWM:PCLK" "RECONFIGURATION_INTERFACE_0:PCLK" "RPi_ID_I2C:PCLK" "sdio_register_0:pclk" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:PRESETN" "CORE_I2C_C0_0_WRAPPER_1:PRESETN" "CoreUARTapb_C0_0:PRESETN" "IHC_SUBSYSTEM_0:presetn" "PRESETN" "PWM:PRESETN" "RECONFIGURATION_INTERFACE_0:PRESETN" "RPi_ID_I2C:PRESETN" "sdio_register_0:presetn" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_SCL" "CORE_I2C_C0_0_WRAPPER_1:COREI2C_C0_SCL" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_SDA" "CORE_I2C_C0_0_WRAPPER_1:COREI2C_C0_SDA" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CORE_I2C_C0_0_WRAPPER_1:INT" "CORE_I2C_C0_INT" }
@@ -182,6 +190,9 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_SUBSYSTEM_0:U54_2_IRQ" "IHC
 sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_SUBSYSTEM_0:U54_3_IRQ" "IHC_SUBSYSTEM_U54_3_IRQ" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_SUBSYSTEM_0:U54_4_IRQ" "IHC_SUBSYSTEM_U54_4_IRQ" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PWM:PWM[0:0]" "PWM_0" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"RPI_ID_I2C_IRQ" "RPi_ID_I2C:INT" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"RPi_ID_I2C:COREI2C_C0_SCL" "RPi_ID_SD" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"RPi_ID_I2C:COREI2C_C0_SDA" "RPi_ID_SC" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"SDIO_control" "sdio_register_0:SDIO_control" }
 
 # Add bus net connections
@@ -193,6 +204,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:APB_bif" "FIC_3_ADD
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CORE_I2C_C0_0_WRAPPER_1:APBslave" "FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_02xx" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:APB_bif" "FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_03xx" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_00xx" "PWM:APBslave" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_04xx" "RPi_ID_I2C:APBslave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x43xx_xxxx_0x48xx_xxxx" "RECONFIGURATION_INTERFACE_0:APBS_SLAVE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4FFF_FFxx" "sdio_register_0:APBslave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x5xxx_xxxx" "IHC_SUBSYSTEM_0:APB3mmaster" }

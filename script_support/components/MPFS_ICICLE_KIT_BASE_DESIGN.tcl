@@ -289,7 +289,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_SUBSYST
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:PWM_0" "mBUS_PWM" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:RPi_ID_SC" "RPi_ID_SC" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:RPi_ID_SD" "RPi_ID_SD" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:SDIO_control" "SDIO_SW_SEL0" "SDIO_SW_SEL1" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:fabric_sd_emmc_demux_select_out" "SDIO_SW_SEL0" "SDIO_SW_SEL1" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C_1_SCL" "MSS_WRAPPER_1:I2C_1_SCL" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C_1_SDA" "MSS_WRAPPER_1:I2C_1_SDA" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"LED0" "MSS_GPIO_2_16_OR_COREGPIO_C0_GPIO_OUT_0:Y" }

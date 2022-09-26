@@ -7,4 +7,4 @@ import_files -library work -hdl_source hdl/miv_ihcc_mem.v
 import_files -library work -hdl_source hdl/miv_ihcc_irqs.v
 import_files -library work -hdl_source hdl/miv_ihcc_ctrl.v
 import_files -library work -hdl_source hdl/miv_ihcc.v
-import_files -library work -hdl_source hdl/SDIO_register.v
+import_files -library work -hdl_source hdl/fabric_sd_emmc_demux_select.v

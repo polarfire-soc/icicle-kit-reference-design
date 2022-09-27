@@ -17,11 +17,11 @@ sd_update_instance -sd_name {FIC_0_PERIPHERALS} -instance_name {DMA_CONTROLLER}
 delete_component -component_name {FIC_3_0x4000_0xxx} 
 source {./script_support/additional_configurations/AXI4_STREAM_DATA_GENERATOR/FIC_3_0x4000_0xxx_AXI_STREAM.tcl}
 sd_update_instance -sd_name {FIC_3_ADDRESS_GENERATION} -instance_name {FIC_3_0x4000_0xxx_0} 
-sd_connect_pin_to_port -sd_name {FIC_3_ADDRESS_GENERATION} -pin_name {FIC_3_0x4000_0xxx_0:APBmslave4} -port_name {} 
-sd_rename_port -sd_name {FIC_3_ADDRESS_GENERATION} -current_port_name {APBmslave4} -new_port_name {FIC_3_0x4000_04xx} 
+sd_connect_pin_to_port -sd_name {FIC_3_ADDRESS_GENERATION} -pin_name {FIC_3_0x4000_0xxx_0:APBmslave15} -port_name {} 
+sd_rename_port -sd_name {FIC_3_ADDRESS_GENERATION} -current_port_name {APBmslave15} -new_port_name {FIC_3_0x4000_0Fxx} 
 generate_component -component_name {FIC_3_ADDRESS_GENERATION} -recursive 0 
 sd_update_instance -sd_name {FIC_3_PERIPHERALS} -instance_name {FIC_3_ADDRESS_GENERATION_1} 
-sd_connect_pin_to_port -sd_name {FIC_3_PERIPHERALS} -pin_name {FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_04xx} -port_name {} 
+sd_connect_pin_to_port -sd_name {FIC_3_PERIPHERALS} -pin_name {FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_0Fxx} -port_name {} 
 generate_component -component_name {FIC_3_PERIPHERALS} -recursive 0 
 sd_update_instance -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -instance_name {FIC_3_PERIPHERALS_1} 
 build_design_hierarchy 
@@ -62,7 +62,7 @@ sd_connect_pin_to_port -sd_name {FIC_0_PERIPHERALS} -pin_name {AXI4_STREAM_DATA_
 sd_connect_pin_to_port -sd_name {FIC_0_PERIPHERALS} -pin_name {AXI4_STREAM_DATA_GENERATOR_0:PCLK} -port_name {} 
 generate_component -component_name {FIC_0_PERIPHERALS} -recursive 0 
 sd_update_instance -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -instance_name {FIC_0_PERIPHERALS_1} 
-sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"FIC_0_PERIPHERALS_1:APB_TARGET" "FIC_3_PERIPHERALS_1:FIC_3_0x4000_04xx"} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"FIC_0_PERIPHERALS_1:APB_TARGET" "FIC_3_PERIPHERALS_1:FIC_3_0x4000_0Fxx"} 
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:RESETN_FIC_3_CLK" "FIC_0_PERIPHERALS_1:PRESETN"} 
 sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"CLOCKS_AND_RESETS:FIC_3_CLK" "FIC_0_PERIPHERALS_1:PCLK"} 
 generate_component -component_name {MPFS_ICICLE_KIT_BASE_DESIGN} -recursive 0 

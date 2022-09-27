@@ -19,7 +19,7 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:CoreAPB3:4.2.100} -compon
 "APBSLOT12ENABLE:false"  \
 "APBSLOT13ENABLE:false"  \
 "APBSLOT14ENABLE:false"  \
-"APBSLOT15ENABLE:false"  \
+"APBSLOT15ENABLE:true"  \
 "IADDR_OPTION:0"  \
 "MADDR_BITS:12"  \
 "SC_0:false"  \

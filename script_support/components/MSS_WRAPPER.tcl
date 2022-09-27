@@ -62,6 +62,7 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {MSS_INT_F2M_1} -port_direc
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MSS_INT_F2M_2} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MSS_INT_F2M_3} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MSS_INT_F2M_4} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {MSS_INT_F2M_5} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MSS_INT_F2M_59} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MSS_INT_F2M_60} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {MSS_INT_F2M_61} -port_direction {IN}
@@ -624,8 +625,9 @@ sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[2:2]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[3:3]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[4:4]}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[58:5]}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {ICICLE_MSS:MSS_INT_F2M[58:5]} -value {GND}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[5:5]}
+sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[58:6]}
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {ICICLE_MSS:MSS_INT_F2M[58:6]} -value {GND}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[59:59]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[60:60]}
 sd_create_pin_slices -sd_name ${sd_name} -pin_name {ICICLE_MSS:MSS_INT_F2M} -pin_slices {[61:61]}
@@ -872,7 +874,9 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[0:0]" "M
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[1:1]" "MSS_INT_F2M_1" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[2:2]" "MSS_INT_F2M_2" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[3:3]" "MSS_INT_F2M_3" }
+
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[4:4]" "MSS_INT_F2M_4" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[5:5]" "MSS_INT_F2M_5" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[59:59]" "MSS_INT_F2M_59" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[60:60]" "MSS_INT_F2M_60" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:MSS_INT_F2M[61:61]" "MSS_INT_F2M_61" }

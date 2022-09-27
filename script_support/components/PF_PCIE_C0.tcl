@@ -2,7 +2,7 @@
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
 # Create and Configure the core component PF_PCIE_C0
-create_and_configure_core -core_vlnv {Actel:SgCore:PF_PCIE:2.0.116} -component_name {PF_PCIE_C0} -params {\
+create_and_configure_core -core_vlnv {Actel:SgCore:PF_PCIE:*} -component_name {PF_PCIE_C0} -params {\
 "EXPOSE_ALL_DEBUG_PORTS:false"  \
 "UI_DLL_JITTER_TOLERANCE:Medium_Low"  \
 "UI_EXPOSE_LANE_DRI_PORTS:true"  \

@@ -23,6 +23,8 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {APBmslave2_PREADYS2} -port
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APBmslave2_PSLVERRS2} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APBmslave3_PREADYS3} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APBmslave3_PSLVERRS3} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {FIC_3_0x4000_04xx_PREADYS4} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {FIC_3_0x4000_04xx_PSLVERRS4} -port_direction {IN}
 
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APB_MASTER_high_out_high_penable} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APB_MASTER_high_out_high_psel} -port_direction {OUT}
@@ -41,6 +43,7 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {APBmslave16_PWRITES} -port
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APBmslave1_PSELS1} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APBmslave2_PSELS2} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APBmslave3_PSELS3} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {FIC_3_0x4000_04xx_PSELS4} -port_direction {OUT}
 
 
 # Create top level Bus Ports
@@ -53,6 +56,7 @@ sd_create_bus_port -sd_name ${sd_name} -port_name {APBmslave16_PRDATAS16} -port_
 sd_create_bus_port -sd_name ${sd_name} -port_name {APBmslave1_PRDATAS1} -port_direction {IN} -port_range {[31:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {APBmslave2_PRDATAS2} -port_direction {IN} -port_range {[31:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {APBmslave3_PRDATAS3} -port_direction {IN} -port_range {[31:0]}
+sd_create_bus_port -sd_name ${sd_name} -port_name {FIC_3_0x4000_04xx_PRDATAS4} -port_direction {IN} -port_range {[31:0]}
 
 sd_create_bus_port -sd_name ${sd_name} -port_name {APB_MASTER_high_out_high_paddr} -port_direction {OUT} -port_range {[31:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {APB_MASTER_high_out_high_pwdata} -port_direction {OUT} -port_range {[31:0]}
@@ -146,6 +150,16 @@ sd_create_bif_port -sd_name ${sd_name} -port_name {FIC_3_0x4000_03xx} -port_bif_
 "PREADY:APBmslave3_PREADYS3" \
 "PSLVERR:APBmslave3_PSLVERRS3" } 
 
+sd_create_bif_port -sd_name ${sd_name} -port_name {FIC_3_0x4000_04xx} -port_bif_vlnv {AMBA:AMBA2:APB:r0p0} -port_bif_role {mirroredSlave} -port_bif_mapping {\
+"PADDR:APBmslave0_PADDRS" \
+"PSELx:FIC_3_0x4000_04xx_PSELS4" \
+"PENABLE:APBmslave0_PENABLES" \
+"PWRITE:APBmslave0_PWRITES" \
+"PRDATA:FIC_3_0x4000_04xx_PRDATAS4" \
+"PWDATA:APBmslave0_PWDATAS" \
+"PREADY:FIC_3_0x4000_04xx_PREADYS4" \
+"PSLVERR:FIC_3_0x4000_04xx_PSLVERRS4" } 
+
 # Add APB_ARBITER_0 instance
 sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {APB_ARBITER} -instance_name {APB_ARBITER_0}
 # Exporting Parameters of instance APB_ARBITER_0
@@ -196,6 +210,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_0x4000_00xx" "FIC_3_0x400
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_0x4000_01xx" "FIC_3_0x4000_0xxx_0:APBmslave1" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_0x4000_02xx" "FIC_3_0x4000_0xxx_0:APBmslave2" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_0x4000_03xx" "FIC_3_0x4000_0xxx_0:APBmslave3" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_0x4000_04xx" "FIC_3_0x4000_0xxx_0:APBmslave4" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_0x43xx_xxxx_0x48xx_xxxx" "FIC_3_0x4xxx_xxxx_0:APBmslave16" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_0x4FFF_FFxx" "FIC_3_0x4FFF_Fxxx_0:APBmslave15" }
 

@@ -3,11 +3,11 @@ set sd_tb_name {Test_bench}
 new_testbench_file_for_design -type {SmartDesignTestBench} -name ${sd_tb_name} -SetAsActiveStimulus 1 -source {MPFS_ICICLE_KIT_BASE_DESIGN} -library {work} 
 
 # Add clk gen components
-create_and_configure_core -core_vlnv {Actel:Simulation:CLK_GEN:1.0.1} -component_name {CLK_GEN_125MHz} -params {"CLK_PERIOD:8000" "DUTY_CYCLE:50"} 
+create_and_configure_core -core_vlnv {Actel:Simulation:CLK_GEN:*} -component_name {CLK_GEN_125MHz} -params {"CLK_PERIOD:8000" "DUTY_CYCLE:50"} 
 sd_instantiate_component -sd_name ${sd_tb_name} -component_name {CLK_GEN_125MHz} -instance_name {} 
-create_and_configure_core -core_vlnv {Actel:Simulation:CLK_GEN:1.0.1} -component_name {CLK_GEN_50MHz} -params {"CLK_PERIOD:20000" "DUTY_CYCLE:50"} 
+create_and_configure_core -core_vlnv {Actel:Simulation:CLK_GEN:*} -component_name {CLK_GEN_50MHz} -params {"CLK_PERIOD:20000" "DUTY_CYCLE:50"} 
 sd_instantiate_component -sd_name ${sd_tb_name} -component_name {CLK_GEN_50MHz} -instance_name {} 
-create_and_configure_core -core_vlnv {Actel:Simulation:RESET_GEN:1.0.1} -component_name {RESET_GEN_C0} -params {"DELAY:1000" "LOGIC_LEVEL:0"} 
+create_and_configure_core -core_vlnv {Actel:Simulation:RESET_GEN:*} -component_name {RESET_GEN_C0} -params {"DELAY:1000" "LOGIC_LEVEL:0"} 
 sd_instantiate_component -sd_name ${sd_tb_name} -component_name {RESET_GEN_C0} -instance_name {} 
 
 # Make connections
@@ -72,6 +72,8 @@ sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_B
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:QSPI_DATA_3} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:QSPI_SEL} -value {GND} 
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:QSPI_CLK} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_ID_SC} -value {GND} 
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names {MPFS_ICICLE_KIT_BASE_DESIGN_0:RPi_ID_SD} -value {GND} 
 
 # Promote pins to top level
 sd_connect_pin_to_port -sd_name ${sd_tb_name} -pin_name {MPFS_ICICLE_KIT_BASE_DESIGN_0:SDIO_SW_SEL1} -port_name {} 

@@ -10,7 +10,7 @@ source components/APB_ARBITER.tcl
 source components/APB_PASS_THROUGH.tcl 
 source components/MIV_IHCIA.tcl 
 source components/MIV_IHCC.tcl 
-source components/sdio_register.tcl 
+source components/fabric_sd_emmc_demux_select.tcl 
 build_design_hierarchy
 
 #Sourcing the Tcl files for creating individual components under the top level

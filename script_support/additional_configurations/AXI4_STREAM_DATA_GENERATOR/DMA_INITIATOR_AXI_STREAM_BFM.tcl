@@ -1,16 +1,16 @@
-# Exporting Component Description of FIC0_INITIATOR to TCL
+# Exporting Component Description of DMA_INITIATOR to TCL
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
-# Create and Configure the core component FIC0_INITIATOR
-create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -component_name {FIC0_INITIATOR} -params {\
-"ADDR_WIDTH:38"  \
+# Create and Configure the core component DMA_INITIATOR
+create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -component_name {DMA_INITIATOR} -params {\
+"ADDR_WIDTH:32"  \
 "CROSSBAR_MODE:0"  \
 "DATA_WIDTH:64"  \
 "DWC_ADDR_FIFO_DEPTH_CEILING:64"  \
 "ID_WIDTH:8"  \
 "MASTER0_CHAN_RS:true"  \
 "MASTER0_CLOCK_DOMAIN_CROSSING:false"  \
-"MASTER0_DATA_WIDTH:64"  \
+"MASTER0_DATA_WIDTH:32"  \
 "MASTER0_DWC_DATA_FIFO_DEPTH:16"  \
 "MASTER0_READ_INTERLEAVE:false"  \
 "MASTER0_READ_SLAVE0:true"  \
@@ -1131,25 +1131,25 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.
 "NUM_MASTERS:1"  \
 "NUM_MASTERS_WIDTH:1"  \
 "NUM_SLAVES:2"  \
-"NUM_THREADS:4"  \
-"OPEN_TRANS_MAX:8"  \
-"OPTIMIZATION:1"  \
-"RD_ARB_EN:false"  \
+"NUM_THREADS:1"  \
+"OPEN_TRANS_MAX:2"  \
+"OPTIMIZATION:3"  \
+"RD_ARB_EN:true"  \
 "SLAVE0_CHAN_RS:true"  \
 "SLAVE0_CLOCK_DOMAIN_CROSSING:false"  \
-"SLAVE0_DATA_WIDTH:32"  \
+"SLAVE0_DATA_WIDTH:64"  \
 "SLAVE0_DWC_DATA_FIFO_DEPTH:16"  \
-"SLAVE0_END_ADDR:0x6001ffff"  \
+"SLAVE0_END_ADDR:0xcfffffff"  \
 "SLAVE0_END_ADDR_UPPER:0x0"  \
 "SLAVE0_READ_INTERLEAVE:false"  \
-"SLAVE0_START_ADDR:0x60010000"  \
+"SLAVE0_START_ADDR:0xc0000000"  \
 "SLAVE0_START_ADDR_UPPER:0x0"  \
-"SLAVE0_TYPE:1"  \
+"SLAVE0_TYPE:0"  \
 "SLAVE1_CHAN_RS:true"  \
 "SLAVE1_CLOCK_DOMAIN_CROSSING:false"  \
-"SLAVE1_DATA_WIDTH:64"  \
+"SLAVE1_DATA_WIDTH:32"  \
 "SLAVE1_DWC_DATA_FIFO_DEPTH:16"  \
-"SLAVE1_END_ADDR:0x60000fff"  \
+"SLAVE1_END_ADDR:0x6fffffff"  \
 "SLAVE1_END_ADDR_UPPER:0x0"  \
 "SLAVE1_READ_INTERLEAVE:false"  \
 "SLAVE1_START_ADDR:0x60000000"  \
@@ -1159,7 +1159,7 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.
 "SLAVE2_CLOCK_DOMAIN_CROSSING:false"  \
 "SLAVE2_DATA_WIDTH:32"  \
 "SLAVE2_DWC_DATA_FIFO_DEPTH:16"  \
-"SLAVE2_END_ADDR:0x60020470"  \
+"SLAVE2_END_ADDR:0x6002ffff"  \
 "SLAVE2_END_ADDR_UPPER:0x0"  \
 "SLAVE2_READ_INTERLEAVE:false"  \
 "SLAVE2_START_ADDR:0x60020000"  \
@@ -1458,4 +1458,4 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.
 "SLV_AXI4PRT_ADDRDEPTH:8"  \
 "SLV_AXI4PRT_DATADEPTH:9"  \
 "USER_WIDTH:1"   }
-# Exporting Component Description of FIC0_INITIATOR to TCL done
+# Exporting Component Description of DMA_INITIATOR to TCL done

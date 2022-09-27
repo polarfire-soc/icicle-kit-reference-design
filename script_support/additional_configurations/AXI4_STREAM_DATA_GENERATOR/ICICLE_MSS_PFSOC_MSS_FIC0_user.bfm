@@ -23,7 +23,7 @@ int     destOffset
 
 int memDest
 
-memmap  dmaCtrl     0x6002_0000
+memmap  dmaCtrl     0x6001_0000
 memmap  SRAM       0x6800_0000    # memory address of SRAM
 memmap fabricSRAM 0x6000_0000
 

@@ -2,6 +2,22 @@ set_iobank -bank_name Bank1  \
     -vcci 3.30               \
     -fixed true              \
     -update_iostd true
+	
+set_io -port_name RPi_ID_SC  \
+    -pin_name F10                  \
+    -fixed true                   \
+    -io_std LVCMOS33              \
+    -CLAMP_DIODE OFF              \
+    -RES_PULL None                \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_ID_SD  \
+    -pin_name B9                  \
+    -fixed true                   \
+    -io_std LVCMOS33              \
+    -CLAMP_DIODE OFF              \
+    -RES_PULL None                \
+    -DIRECTION INOUT
 
 set_io -port_name COREI2C_C0_SCL  \
     -pin_name B8                  \

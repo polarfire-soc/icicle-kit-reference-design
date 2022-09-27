@@ -41,7 +41,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 module 
-    sdio_register(
+    fabric_sd_emmc_demux_select(
         input wire logic        pclk,
         input wire logic        presetn,
         input wire logic        penable,
@@ -52,7 +52,7 @@ module
         output     logic [31:0] prdata,
         output     logic        pready,
         output     logic        pslverr,
-        output     logic        SDIO_control      
+        output     logic        fabric_sd_emmc_demux_select_out      
         );                      
         
         //-----------------------------------------------------------------------------
@@ -69,7 +69,7 @@ module
         // Assignments
         //-----------------------------------------------------------------------------
         assign pslverr = 1'b0;
-        assign SDIO_control = register[0];
+        assign fabric_sd_emmc_demux_select_out = register[0];
         
         //-----------------------------------------------------------------------------
         // Logic 

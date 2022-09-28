@@ -1142,7 +1142,7 @@ configure_core -component_name {DMA_INITIATOR} -params { \
     "SLAVE0_END_ADDR:0xffffffff"  \
     "SLAVE0_END_ADDR_UPPER:0x0"  \
     "SLAVE0_READ_INTERLEAVE:false"  \
-    "SLAVE0_START_ADDR:0x80000000"  \
+    "SLAVE0_START_ADDR:0x0"  \
     "SLAVE0_START_ADDR_UPPER:0x0"  \
     "SLAVE0_TYPE:0"  \
     "SLAVE1_CHAN_RS:true"  \

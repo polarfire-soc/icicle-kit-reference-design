@@ -42,7 +42,7 @@ save_smartdesign -sd_name $hls_sd_name
 
 # By default try up to 8 times to place and route if timing is not met.
 # Set the HLS_PLACEROUTE_MAX_ITERATIONS TCL variable to override the default.
-set pnrIterations 8
+set pnrIterations 25
 if { [info exists HLS_PLACEROUTE_MAX_ITERATIONS] } {
     set pnrIterations $HLS_PLACEROUTE_MAX_ITERATIONS
 }

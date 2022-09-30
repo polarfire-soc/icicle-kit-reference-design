@@ -36,9 +36,9 @@ save_smartdesign -sd_name $hls_sd_name
 #
 
 # Synthesis option could be added here. For example:
-# configure_tool -name {SYNTHESIZE} \
-#   -params {RETIMING:true}
-
+configure_tool -name {SYNTHESIZE} \
+    -params {RETIMING:true} \
+    -params {ROM_TO_LOGIC:false}
 
 # By default try up to 8 times to place and route if timing is not met.
 # Set the HLS_PLACEROUTE_MAX_ITERATIONS TCL variable to override the default.
@@ -49,6 +49,7 @@ if { [info exists HLS_PLACEROUTE_MAX_ITERATIONS] } {
 puts "Maximum place and route iterations:$pnrIterations"
 
 configure_tool -name {PLACEROUTE} \
+    -params {EFFORT_LEVEL:true} \
     -params {MULTI_PASS_CRITERIA:VIOLATIONS} \
     -params {MULTI_PASS_LAYOUT:true} \
     -params "NUM_MULTI_PASSES:$pnrIterations"  \

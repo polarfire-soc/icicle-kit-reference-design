@@ -347,11 +347,11 @@ if {[info exists SYNTHESIZE]} {
 }
 
 if {[info exists HSS_UPDATE]} {
-    if !{[file exists "./script_support/hss-bm1-p0.hex"]} {
-        if {[catch    {exec wget https://github.com/polarfire-soc/hart-software-services/releases/latest/download/hss-bm1-p0.hex -P ./script_support/} issue]} {
+    if !{[file exists "./script_support/hss-envm-wrapper.mpfs-icicle-kit-es.hex"]} {
+        if {[catch    {exec wget https://github.com/polarfire-soc/hart-software-services/releases/latest/download/hss-envm-wrapper.mpfs-icicle-kit-es.hex -P ./script_support/} issue]} {
         }
     }
-    create_eNVM_config "$local_dir/script_support/components/MSS/ENVM.cfg" "$local_dir/script_support/hss-bm1-p0.hex"
+    create_eNVM_config "$local_dir/script_support/components/MSS/ENVM.cfg" "$local_dir/script_support/hss-envm-wrapper.mpfs-icicle-kit-es.hex"
     run_tool -name {GENERATEPROGRAMMINGDATA}
     configure_envm -cfg_file {script_support/components/MSS/ENVM.cfg}
 }

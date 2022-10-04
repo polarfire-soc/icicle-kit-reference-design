@@ -23,12 +23,15 @@ if { ![info exists shls_path] } {
     if { $OS == "Linux" } {
         set base_path [string cat **[string trimright $install_loc Libero]**/SmartHLS- [string range [get_libero_release] 1 end] {/}]
         set ::env(PATH) [string cat ";" $base_path {SmartHLS/bin}]
+        set shls_path [string cat $base_path {SmartHLS/bin/shls}]
     } else {
-        set base_path [string cat $install_loc/SmartHLS- [string range [get_libero_release] 1 end] {/}]
-        set bash_path [string cat $base_path {Cygwin64/bin/bash}]
-        set ::env(PATH) [string cat ";" $base_path {Cygwin64/bin/}]
+        set base_path [string cat [string trimright $install_loc Designer]SmartHLS-[string range [get_libero_release] 1 end] {/}]
+        set base_path [file normalize $base_path]
+        set bash_path [string cat $base_path {/Cygwin64/bin/bash.exe}]
+        set drive [string range $install_loc 0 0]
+        set shls_path "/cygdrive/[string tolower $drive][string trimleft $base_path $drive:]/SmartHLS/bin/shls"
+        set ::env(PATH) [string cat $::env(PATH) ";" $base_path {SmartHLS/bin}]
     }
-    set shls_path [string cat $base_path {SmartHLS/bin/shls}]        
 }
 
 if { [file exists "$shls_path"] == 0 } {
@@ -46,9 +49,10 @@ puts "LEGUP_ROOT_DIR: $::env(LEGUP_ROOT_DIR)"
 #
 # Call SmartHLS.
 #
-set fid [open "| $bash_path $shls_path -a soc_sw_compile_accel" r]
+set fid [open "| $bash_path -c \"$shls_path -a soc_sw_compile_accel\"" r]
 while {[gets $fid line] != -1} { puts $line }
 close $fid
+
 #
 # Integrate into SmartDesign.
 #

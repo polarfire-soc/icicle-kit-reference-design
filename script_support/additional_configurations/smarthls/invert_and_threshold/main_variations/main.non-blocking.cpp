@@ -1,3 +1,4 @@
+#include "hls/utils.hpp"
 #include "hls/ap_int.hpp"
 #include "bmp.h"
 
@@ -9,7 +10,7 @@ void invert(uint32_t *in, uint32_t *out) {
 
     #pragma HLS loop pipeline II(1)
     for (int j = 0; j < WIDTH*N_ROWS; j++) {
-        out[j] = ~in[j];
+        out[j] = hls::hls_reg(~in[j]);
     }
 }
 
@@ -26,7 +27,7 @@ void threshold_to_zero(uint32_t *in, uint32_t *out, uint8_t thresh) {
         p(15,8) = p(15,8) > thresh ? p(15,8) : 0;
         p(23,16) = p(23,16) > thresh ? p(23,16) : 0;
         p(31,24) = p(31,24) > thresh ? p(31,24) : 0;
-        out[j] = p.to_int64();
+        out[j] = hls::hls_reg(p.to_int64());
     }
 }
 

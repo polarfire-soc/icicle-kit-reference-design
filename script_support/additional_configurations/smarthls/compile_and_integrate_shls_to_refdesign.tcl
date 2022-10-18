@@ -26,14 +26,14 @@ if {[info exists shls_path]} {
     set base_path [string trimright $shls_path SmartHLS/bin/shls]
 } else {
     if { $OS == "Linux" } {
-        set base_path [string cat **[string trimright $install_loc Libero]**/SmartHLS-$liberoRelease {/}]
+        set base_path [string cat [string trimright $install_loc Libero]/SmartHLS-$liberoRelease {/}]
         set ::env(PATH) [string cat $::env(PATH) ":" $base_path {SmartHLS/bin}]
         set shls_path [string cat $base_path {SmartHLS/bin/shls}]
     } else {
         set base_path [string cat [string trimright $install_loc Designer]SmartHLS-$liberoRelease {/}]
         set base_path [file normalize $base_path]
         set drive [string range $install_loc 0 0]
-        set shls_path "/cygdrive/[string tolower $drive][string trimleft $base_path $drive:]/SmartHLS/bin/shls"
+        set shls_path "$base_path/SmartHLS/bin/shls"
         set ::env(PATH) [string cat $::env(PATH) ";" $base_path {SmartHLS/bin}]
     }
 }

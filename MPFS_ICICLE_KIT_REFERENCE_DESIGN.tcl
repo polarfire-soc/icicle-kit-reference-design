@@ -60,6 +60,15 @@ if {[info exists I2C_LOOPBACK]} {
 } elseif {[info exists MICRON_QSPI]} {
     set project_name "MPFS_ICICLE_MICRON_QSPI"
     set project_dir "$local_dir/MPFS_ICICLE_MICRON_QSPI"
+} elseif {[info exists BFM_SIMULATION] && [info exists AXI4_STREAM_DEMO]} {
+    set project_name "MPFS_ICICLE_AXI4_STREAM_DEMO_BFM"
+    set project_dir "$local_dir/MPFS_ICICLE_AXI4_STREAM_DEMO_BFM"
+} elseif {[info exists AXI4_STREAM_DEMO]} {
+    set project_name "MPFS_ICICLE_AXI4_STREAM_DEMO"
+    set project_dir "$local_dir/MPFS_ICICLE_AXI4_STREAM_DEMO"
+} elseif {[info exists BFM_SIMULATION]} {
+    set project_name "MPFS_ICICLE_BFM_SIMULATION"
+    set project_dir "$local_dir/MPFS_ICICLE_BFM_SIMULATION"
 } else {
     set project_name "MPFS_ICICLE"
     set project_dir "$local_dir/MPFS_ICICLE"

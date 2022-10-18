@@ -12,11 +12,11 @@ cd $hlsModuleDir
 
 #
 # Find out where SmartHLS is installed in the system, considering the OS as well. 
-# In decresing order of priority, the options are:
+# In decreasing order of priority, the options are:
 #   1) Custom (user-defined) path. Users can specify the path to SmartHLS as an 
 #       argument to the script. For example, on Windows:
 #       script_args:shls_path:C:/fpga_tools/SmartHLS-2022.2.1/SmartHLS/bin/shls
-#       This is typicall for SmartHLS incremental releases.
+#       This is typical for SmartHLS incremental releases.
 #   2) Otherwise, see if the `shls` command is in the PATH environment variable.
 #   3) If not, then check under the Libero installation path
 #

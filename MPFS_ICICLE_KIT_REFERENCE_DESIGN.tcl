@@ -191,11 +191,18 @@ import_files \
     -io_pdc "${constraint_path}/ICICLE_I2C_LOOPBACK.pdc" \
     -io_pdc "${constraint_path}/ICICLE_SPI_LOOPBACK.pdc" \
     -io_pdc "${constraint_path}/ICICLE_RPi_MICRON_QSPI.pdc" \
-	-fp_pdc "${constraint_path}/NW_PLL.pdc"
+	-fp_pdc "${constraint_path}/NW_PLL.pdc" \
+	-sdc "${constraint_path}/fic_clocks.sdc"
 
 #
 # // Associate imported constraints with the design flow
 #
+
+organize_tool_files \
+	-tool {SYNTHESIZE} \
+	-file "${project_dir}/constraint/fic_clocks.sdc" \
+	-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+	-input_type {constraint} 
 
 if {[info exists MICRON_QSPI]} {
 	organize_tool_files \
@@ -213,6 +220,7 @@ if {[info exists MICRON_QSPI]} {
 		-file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
 		-file "${project_dir}/constraint/io/ICICLE_RPi_MICRON_QSPI.pdc" \
 		-file "${project_dir}/constraint/fp/NW_PLL.pdc" \
+		-file "${project_dir}/constraint/fic_clocks.sdc" \
 		-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
 		-input_type {constraint}
 } else {
@@ -231,15 +239,25 @@ if {[info exists MICRON_QSPI]} {
 		-file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
 		-file "${project_dir}/constraint/io/ICICLE_RPi.pdc" \
 		-file "${project_dir}/constraint/fp/NW_PLL.pdc" \
+		-file "${project_dir}/constraint/fic_clocks.sdc" \
 		-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
 		-input_type {constraint}
 		}
+	
+organize_tool_files \
+	-tool {VERIFYTIMING} \
+	-file "${project_dir}/constraint/fic_clocks.sdc" \
+	-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+	-input_type {constraint} 
+	
+	
 #
-# // Derive timing constraints
+# // Build hierarchy before progressing
 #
 
 build_design_hierarchy
-derive_constraints_sdc 
+
+
 
 #
 # // Apply additional design configurations
@@ -311,6 +329,13 @@ sd_reset_layout -sd_name {MSS_WRAPPER}
 save_smartdesign -sd_name {MSS_WRAPPER}
 sd_reset_layout -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
 save_smartdesign -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
+
+#
+# // Derive timing constraints
+#
+
+build_design_hierarchy
+derive_constraints_sdc 
 
 #
 # // Run the design flow and add eNVM clients if required

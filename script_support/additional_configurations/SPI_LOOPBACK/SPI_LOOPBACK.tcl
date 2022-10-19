@@ -53,5 +53,6 @@ organize_tool_files \
 	-file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
 	-file "${project_dir}/constraint/io/ICICLE_SPI_LOOPBACK.pdc" \
 	-file "${project_dir}/constraint/fp/NW_PLL.pdc" \
+	-file "${project_dir}/constraint/fic_clocks.sdc" \
 	-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
 	-input_type {constraint} 

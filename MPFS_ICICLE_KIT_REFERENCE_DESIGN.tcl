@@ -66,6 +66,15 @@ if {[info exists I2C_LOOPBACK]} {
 } elseif {[info exists SMARTHLS]} {
     set project_name "Icicle_SoC"
     set project_dir "$local_dir/soc"
+} elseif {[info exists BFM_SIMULATION] && [info exists AXI4_STREAM_DEMO]} {
+    set project_name "MPFS_ICICLE_AXI4_STREAM_DEMO_BFM"
+    set project_dir "$local_dir/MPFS_ICICLE_AXI4_STREAM_DEMO_BFM"
+} elseif {[info exists AXI4_STREAM_DEMO]} {
+    set project_name "MPFS_ICICLE_AXI4_STREAM_DEMO"
+    set project_dir "$local_dir/MPFS_ICICLE_AXI4_STREAM_DEMO"
+} elseif {[info exists BFM_SIMULATION]} {
+    set project_name "MPFS_ICICLE_BFM_SIMULATION"
+    set project_dir "$local_dir/MPFS_ICICLE_BFM_SIMULATION"
 } else {
     set project_name "MPFS_ICICLE"
     set project_dir "$local_dir/MPFS_ICICLE"
@@ -129,26 +138,26 @@ if { [file exists $project_dir/$project_name.prjx] } {
     # // Download required cores
     #
 
-download_core -vlnv {Actel:SgCore:PF_OSC:*} -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:SgCore:PF_CCC:*} -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:DirectCore:CORERESET_PF:*} -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv {Microsemi:SgCore:PFSOC_INIT_MONITOR:*} -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv {Actel:SgCore:PF_CLK_DIV:*} -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:SgCore:PF_DRI:*} -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:SgCore:PF_NGMUX:*} -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:SgCore:PF_PCIE:*} -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:SgCore:PF_TX_PLL:*} -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:SgCore:PF_XCVR_REF_CLK:*} -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:DirectCore:CoreAPB3:4.2.100} -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv {Actel:DirectCore:COREAXI4DMACONTROLLER:2.0.100} -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv {Actel:DirectCore:CoreGPIO:3.2.102} -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv {Actel:SystemBuilder:PF_SRAM_AHBL_AXI:*} -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:Simulation:CLK_GEN:*} -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:Simulation:RESET_GEN:*} -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv {Actel:DirectCore:corepwm:4.5.100} -location {www.microchip-ip.com/repositories/DirectCore} 
-download_core -vlnv {Actel:DirectCore:COREI2C:7.2.101} -location {www.microchip-ip.com/repositories/DirectCore} 
-download_core -vlnv {Actel:DirectCore:CoreUARTapb:5.7.100} -location {www.microchip-ip.com/repositories/DirectCore} 
+    download_core -vlnv {Actel:SgCore:PF_OSC:*} -location {www.microchip-ip.com/repositories/SgCore}
+    download_core -vlnv {Actel:SgCore:PF_CCC:*} -location {www.microchip-ip.com/repositories/SgCore}
+    download_core -vlnv {Actel:DirectCore:CORERESET_PF:*} -location {www.microchip-ip.com/repositories/DirectCore}
+    download_core -vlnv {Microsemi:SgCore:PFSOC_INIT_MONITOR:*} -location {www.microchip-ip.com/repositories/SgCore}
+    download_core -vlnv {Actel:DirectCore:COREAXI4INTERCONNECT:2.8.103} -location {www.microchip-ip.com/repositories/DirectCore}
+    download_core -vlnv {Actel:SgCore:PF_CLK_DIV:*} -location {www.microchip-ip.com/repositories/SgCore}
+    download_core -vlnv {Actel:SgCore:PF_DRI:*} -location {www.microchip-ip.com/repositories/SgCore}
+    download_core -vlnv {Actel:SgCore:PF_NGMUX:*} -location {www.microchip-ip.com/repositories/SgCore}
+    download_core -vlnv {Actel:SgCore:PF_PCIE:*} -location {www.microchip-ip.com/repositories/SgCore}
+    download_core -vlnv {Actel:SgCore:PF_TX_PLL:*} -location {www.microchip-ip.com/repositories/SgCore}
+    download_core -vlnv {Actel:SgCore:PF_XCVR_REF_CLK:*} -location {www.microchip-ip.com/repositories/SgCore}
+    download_core -vlnv {Actel:DirectCore:CoreAPB3:4.2.100} -location {www.microchip-ip.com/repositories/DirectCore}
+    download_core -vlnv {Actel:DirectCore:COREAXI4DMACONTROLLER:2.0.100} -location {www.microchip-ip.com/repositories/DirectCore}
+    download_core -vlnv {Actel:DirectCore:CoreGPIO:3.2.102} -location {www.microchip-ip.com/repositories/DirectCore}
+    download_core -vlnv {Actel:SystemBuilder:PF_SRAM_AHBL_AXI:*} -location {www.microchip-ip.com/repositories/SgCore}
+    download_core -vlnv {Actel:Simulation:CLK_GEN:*} -location {www.microchip-ip.com/repositories/SgCore}
+    download_core -vlnv {Actel:Simulation:RESET_GEN:*} -location {www.microchip-ip.com/repositories/SgCore}
+    download_core -vlnv {Actel:DirectCore:corepwm:4.5.100} -location {www.microchip-ip.com/repositories/DirectCore} 
+    download_core -vlnv {Actel:DirectCore:COREI2C:7.2.101} -location {www.microchip-ip.com/repositories/DirectCore} 
+    download_core -vlnv {Actel:DirectCore:CoreUARTapb:5.7.100} -location {www.microchip-ip.com/repositories/DirectCore} 
 
     #
     #  // Generate and import MSS component
@@ -197,49 +206,74 @@ download_core -vlnv {Actel:DirectCore:CoreUARTapb:5.7.100} -location {www.microc
         -io_pdc "${constraint_path}/ICICLE_I2C_LOOPBACK.pdc" \
         -io_pdc "${constraint_path}/ICICLE_SPI_LOOPBACK.pdc" \
         -io_pdc "${constraint_path}/ICICLE_RPi_MICRON_QSPI.pdc" \
-	    -fp_pdc "${constraint_path}/NW_PLL.pdc"
+	    -fp_pdc "${constraint_path}/NW_PLL.pdc" \
+	    -sdc "${constraint_path}/fic_clocks.sdc"
 
     #
     # // Associate imported constraints with the design flow
     #
 
+    organize_tool_files \
+        -tool {SYNTHESIZE} \
+        -file "${project_dir}/constraint/fic_clocks.sdc" \
+        -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+        -input_type {constraint} 
+
     if {[info exists MICRON_QSPI]} {
-	organize_tool_files \
-		-tool {PLACEROUTE} \
-		-file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_USB.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_MAC.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_RPi_MICRON_QSPI.pdc" \
-        	-file "${project_dir}/constraint/fp/NW_PLL.pdc" \
-		-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
-		-input_type {constraint}
-} else {
-	organize_tool_files \
-		-tool {PLACEROUTE} \
-		-file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_USB.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_MAC.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
-		-file "${project_dir}/constraint/io/ICICLE_RPi.pdc" \
-		-file "${project_dir}/constraint/fp/NW_PLL.pdc" \
-		-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
-		-input_type {constraint}
-    }
+	    organize_tool_files \
+            -tool {PLACEROUTE} \
+            -file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_USB.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_MAC.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_RPi_MICRON_QSPI.pdc" \
+            -file "${project_dir}/constraint/fp/NW_PLL.pdc" \
+            -file "${project_dir}/constraint/fic_clocks.sdc" \
+            -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+            -input_type {constraint}
+    } else {
+	    organize_tool_files \
+            -tool {PLACEROUTE} \
+            -file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_USB.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_MAC.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
+            -file "${project_dir}/constraint/io/ICICLE_RPi.pdc" \
+            -file "${project_dir}/constraint/fp/NW_PLL.pdc" \
+            -file "${project_dir}/constraint/fic_clocks.sdc" \
+            -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+            -input_type {constraint}
+	}
+	
+    organize_tool_files \
+        -tool {VERIFYTIMING} \
+        -file "${project_dir}/constraint/fic_clocks.sdc" \
+        -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+        -input_type {constraint} 
+        
+        
+    #
+    # // Build hierarchy before progressing
+    #
+
+    build_design_hierarchy
+
+
+
     #
     # // Apply additional design configurations
     #
@@ -333,6 +367,13 @@ if {[info exists SMARTHLS]} {
         source ./script_support/additional_configurations/smarthls/compile_and_integrate_shls_to_refdesign.tcl
     }
 }
+
+#
+# // Derive timing constraints
+#
+
+build_design_hierarchy
+derive_constraints_sdc 
 
 #
 # // Run the design flow and add eNVM clients if required

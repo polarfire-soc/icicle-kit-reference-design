@@ -55,7 +55,7 @@ build_design_hierarchy
 #   creating a HDL core from the data generator
 # sd_instantiate_hdl_module -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -hdl_module_name {AXI4_STREAM_DATA_GENERATOR} -hdl_file {hdl\AXI4_STREAM_DATA_GENERATOR.v} -instance_name {} 
 build_design_hierarchy 
-create_hdl_core -file {./MPFS_ICICLE/hdl/AXI4_STREAM_DATA_GENERATOR.v} -module {AXI4_STREAM_DATA_GENERATOR} -library {work} -package {}
+create_hdl_core -file "${project_dir}/hdl/AXI4_STREAM_DATA_GENERATOR.v" -module {AXI4_STREAM_DATA_GENERATOR} -library {work} -package {}
 
 #   creating the APB BIF on the data generator
 hdl_core_add_bif -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_definition {APB:AMBA:AMBA2:slave} -bif_name {APB_TARGET} -signal_map {} 

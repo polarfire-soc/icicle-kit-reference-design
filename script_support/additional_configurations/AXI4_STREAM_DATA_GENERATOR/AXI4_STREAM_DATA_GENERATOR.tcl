@@ -26,7 +26,7 @@ generate_component -component_name {FIC_3_PERIPHERALS} -recursive 0
 sd_update_instance -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -instance_name {FIC_3_PERIPHERALS_1} 
 build_design_hierarchy 
 
-create_hdl_core -file {./MPFS_ICICLE/hdl/AXI4_STREAM_DATA_GENERATOR.v} -module {AXI4_STREAM_DATA_GENERATOR} -library {work} -package {} 
+create_hdl_core -file "${project_dir}/hdl/AXI4_STREAM_DATA_GENERATOR.v" -module {AXI4_STREAM_DATA_GENERATOR} -library {work} -package {} 
 
 #	adding the signal to the BIF	
 hdl_core_add_bif -hdl_core_name {AXI4_STREAM_DATA_GENERATOR} -bif_definition {APB:AMBA:AMBA2:slave} -bif_name {APB_TARGET} -signal_map {} 

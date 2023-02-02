@@ -1,8 +1,8 @@
-# PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2022.2+
+# PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2022.3+
 
 ## Table of Contents
 
-- [PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2022.2+](#polarfire-soc-icicle-kit-reference-design-generation-tcl-scripts---libero-soc-v20222)
+- [PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2022.3+](#polarfire-soc-icicle-kit-reference-design-generation-tcl-scripts---libero-soc-v20222)
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
   - [Using the reference design generation Tcl script](#using-the-reference-design-generation-tcl-script)
@@ -35,7 +35,7 @@ This repository can be used to generate a reference design for the PolarFire SoC
 
 A Libero SoC Tcl script is provided to generate the reference design using Libero SoC along with device specific I/O constraints. For Tcl scripts supporting previous versions of Libero SoC see [Releases](https://mi-v-ecosystem.github.io/redirects/releases-icicle-kit-reference-design).
 
-This repository supports Libero SoC v2022.2 and above, which is available for download [here](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions#Documents%20and%20Downloads). The release notes will note the version(s) of Libero that these scripts have been tested on.
+This repository supports Libero SoC v2022.3 and above, which is available for download [here](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions#Documents%20and%20Downloads). The release notes will note the version(s) of Libero that these scripts have been tested on.
 
 <a name="using-the-reference-design-generation-tcl-script"></a>
 ## Using the reference design generation Tcl script

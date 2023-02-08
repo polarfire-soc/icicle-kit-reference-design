@@ -1,8 +1,8 @@
-# The HSS Software License
+# Icicle Kit Reference Design Software License
 
-The HSS software is released under the following software license:
+Icicle Kit Reference Design software is released under the following software license:
 
- Copyright 2019-2021 Microchip Corporation.
+ Copyright 2019-2023 Microchip Corporation.
 
  SPDX-License-Identifier: MIT
 

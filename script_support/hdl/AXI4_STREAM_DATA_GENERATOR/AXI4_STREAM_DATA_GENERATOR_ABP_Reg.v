@@ -49,6 +49,7 @@ module AXI4_STREAM_DATA_GENERATOR_ABP_Reg(
     input wire [31:0] paddr,
     output wire pslverr,
     output reg start,
+    output reg reset_generator,
     output reg pready,
     output reg [31:0] prdata,
     output reg [31:0] trans_size
@@ -60,7 +61,8 @@ module AXI4_STREAM_DATA_GENERATOR_ABP_Reg(
             prdata <= 32'b0;
             pready <= 1'b0;    
             trans_size <= 32'b0;
-            start <= 1'b0;            
+            start <= 1'b0;     
+            reset_generator <= 1'b1;       
         end else if (psel && pwrite) begin
             prdata <= 32'b0;
             case (paddr[3:0])
@@ -70,6 +72,10 @@ module AXI4_STREAM_DATA_GENERATOR_ABP_Reg(
                 end
                 4'b0100: begin
                     start <= pwdata[0];
+                    pready <= 1'b1;
+                end
+                4'b1000: begin
+                    reset_generator <= !pwdata[0];
                     pready <= 1'b1;
                 end
                 default: begin

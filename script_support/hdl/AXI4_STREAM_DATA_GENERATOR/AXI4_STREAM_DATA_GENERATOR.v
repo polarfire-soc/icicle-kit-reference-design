@@ -57,18 +57,19 @@ input ACLK, RSTN, TREADY;
 
 output   [1:0]   TDEST;
 output   [7:0]   TID;
-output   [3:0]   TKEEP;
+output   [3:0]   TKEEP, TSTRB;
 output   TLAST,  TVALID;
-output   [31:0]  TSTRB, TDATA;
+output   [31:0]  TDATA;
 
     wire ENABLE_GEN;
     wire ENABLE_FSM;
     wire [31:0] TX_SIZE;
+    wire RESETN_INTERNAL;
     
     
     AXI4_STREAM_DATA_GENERATOR_ABP_Reg  TRANS_SIZE (
         .pclk(PCLK),
-        .presetn(PRESETN),
+        .presetn(PRESETN & RESETN_INTERNAL),
         .psel(PSEL),
         .pwrite(PWRITE),
         .pwdata(PWDATA),
@@ -77,12 +78,13 @@ output   [31:0]  TSTRB, TDATA;
         .prdata(PRDATA),
         .trans_size(TX_SIZE),
         .paddr(PADDR),
-        .start(ENABLE_FSM)
+        .start(ENABLE_FSM),
+        .reset_generator(RESETN_INTERNAL)
     );
     
     AXI4_STREAM_DATA_GENERATOR_FSM FSM (
         .clk(ACLK),
-        .rst_n(RSTN),
+        .rst_n(RSTN & RESETN_INTERNAL),
         .start(ENABLE_FSM),
         .ready(TREADY),
         .en(ENABLE_GEN)
@@ -90,7 +92,7 @@ output   [31:0]  TSTRB, TDATA;
     
     AXI4_STREAM_DATA_GENERATOR_gen generator (
         .clk(ACLK),
-        .rst_n(RSTN),
+        .rst_n(RSTN & RESETN_INTERNAL),
         .en(ENABLE_GEN),
         .tdata(TDATA),
         .tvalid(TVALID),
@@ -99,7 +101,8 @@ output   [31:0]  TSTRB, TDATA;
         .tkeep(TKEEP),
         .tstrb(TSTRB),
         .tdest(TDEST),
-        .tid(TID)
+        .tid(TID),
+        .tready(TREADY)
     );
     
 endmodule

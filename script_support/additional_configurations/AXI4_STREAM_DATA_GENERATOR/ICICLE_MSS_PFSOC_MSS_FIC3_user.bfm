@@ -24,15 +24,23 @@ print "-"
 #write x <address> <address_increment> <32 bit data>
 #read x <address> <address_increment>
 
+int     patternCount
 
-int     transSize
-set     transSize   1024
+# the steam generator will transmit data with an incrementing pattern up to 256
+set     patternCount   256
 
-# setting the transfer size
-write   w   streamCtrl  0x0  transSize
-wait 50
+# writing to the pattern count register
+write   w   streamCtrl  0x0  patternCount
+wait    100
+
 # starting the stream
 write   w   streamCtrl  0x4  0x1
+
+# allow the stream to run for 200 cycles
+wait    200
+
+# stopping the stream
+write   w   streamCtrl  0x4  0x0
 
 #-----------------------------------------------------------
 # END of BFM

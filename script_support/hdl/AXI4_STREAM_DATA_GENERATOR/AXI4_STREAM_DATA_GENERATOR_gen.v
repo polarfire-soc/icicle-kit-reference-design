@@ -47,63 +47,59 @@ module AXI4_STREAM_DATA_GENERATOR_gen (
                 input wire [31:0] trans_size,                
                 output wire tlast,
                 output wire tvalid,
+                input  wire tready,
                 output wire [1:0] tdest,                
                 output wire [3:0] tkeep,
                 output wire [7:0] tid,                              
-                output wire [31:0] tstrb,
+                output wire [3:0]  tstrb,
                 output wire [31:0] tdata
                 );
 
     localparam
-        INC = 32'b1;
+        INC = 32'b 1;
     
     localparam
         TKEEP_WIDTH = 4,
-        TSTRB_WIDTH = 32;
+        TSTRB_WIDTH = 4;
     
-    reg tlast_ff;
+    reg tlast_ff,tvalid_ff;
+    reg en_reg;
     reg [31:0] tdata_ff;
-    wire [31:0] transSize_inter;
-    wire [31:0] transSize_out;
+	wire        txn_done;
     
-    AXI4_STREAM_DATA_GENERATOR_DFF #(.N(32)) flipFlop_one (
-        .clk(clk),
-        .rst_n(rst_n),
-        .in(trans_size),
-        .out(transSize_inter)
-    );
-    AXI4_STREAM_DATA_GENERATOR_DFF #(.N(32)) flipFlop_two (
-        .clk(clk),
-        .rst_n(rst_n),
-        .in(transSize_inter),
-        .out(transSize_out)
-    );
-    
+	assign txn_done = tready & tvalid & tlast;
+	
     always @(posedge clk, negedge rst_n) begin
         if (!rst_n) begin
-            tdata_ff <= 32'b0;
+            tdata_ff <= 32'b1;
             tlast_ff <= 1'b0;
-        end else begin
-            if (en) begin
-                if (tdata_ff == transSize_out) begin
-                    tdata_ff <= 32'b0;
-                    tlast_ff <= 1'b1;
-                end else begin
-                    tdata_ff <= tdata_ff + INC;
-                    tlast_ff <= 1'b0;
-                end
+            tvalid_ff <= 1'b0;
+			en_reg    <= 1'b0;
+        end else if ((en | en_reg) & ~txn_done) begin
+		    en_reg    <= 1'b1;
+            tvalid_ff <= 1'b1;
+            if(tready & tvalid)begin
+			  tdata_ff <= tdata_ff + INC;
+			  if (tdata_ff == trans_size-1) 
+                tlast_ff <= 1'b1;
             end
-        end
+        end else begin 
+            tdata_ff <= 32'b1;
+            tlast_ff <= 1'b0;
+            tvalid_ff <= 1'b0;
+            en_reg    <= 1'b0;
+		end 
+		
     end
 
     assign tdest = 2'b0;
     assign tid = 8'b0;
 
     assign tdata = tdata_ff;
-    assign tvalid = (| tdata_ff);
+    assign tvalid = tvalid_ff;
     assign tlast = tlast_ff;
-    
-    assign tkeep = {TKEEP_WIDTH{(!(trans_size == tdata_ff) & (| tdata_ff))}};
-    assign tstrb = {{(TSTRB_WIDTH - 4){1'b0}},{TKEEP_WIDTH{(!(trans_size == tdata_ff) & (| tdata_ff))}}};
+
+    assign tkeep = {TKEEP_WIDTH{1'b1}};
+    assign tstrb = {TSTRB_WIDTH{1'b1}};
 
 endmodule

@@ -131,6 +131,8 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_16} -port_direc
 sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_17} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_18} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_19} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_20_AN} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_21_RST} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_26} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_27} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_28} -port_direction {OUT}
@@ -847,6 +849,8 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_M2F_16" "ICICLE_MSS:GPIO
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_M2F_17" "ICICLE_MSS:GPIO_2_M2F_17" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_M2F_18" "ICICLE_MSS:GPIO_2_M2F_18" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_M2F_19" "ICICLE_MSS:GPIO_2_M2F_19" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_M2F_20_AN" "ICICLE_MSS:GPIO_2_M2F_20" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_M2F_21_RST" "ICICLE_MSS:GPIO_2_M2F_21" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_M2F_26" "ICICLE_MSS:GPIO_2_M2F_26" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_M2F_27" "ICICLE_MSS:GPIO_2_M2F_27" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_M2F_28" "ICICLE_MSS:GPIO_2_M2F_28" }

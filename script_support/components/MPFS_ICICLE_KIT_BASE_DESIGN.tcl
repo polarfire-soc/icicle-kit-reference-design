@@ -52,6 +52,8 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {CK_N} -port_direction {OUT
 sd_create_scalar_port -sd_name ${sd_name} -port_name {CK} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {COREUART_TX} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {CS} -port_direction {OUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_20_AN} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_21_RST} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {LED0} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {LED1} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {LED2} -port_direction {OUT}
@@ -290,6 +292,8 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:PWM_0" "mBU
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:RPi_ID_SC" "RPi_ID_SC" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:RPi_ID_SD" "RPi_ID_SD" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:fabric_sd_emmc_demux_select_out" "SDIO_SW_SEL0" "SDIO_SW_SEL1" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_M2F_20_AN" "MSS_WRAPPER_1:GPIO_2_M2F_20_AN" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_M2F_21_RST" "MSS_WRAPPER_1:GPIO_2_M2F_21_RST" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C_1_SCL" "MSS_WRAPPER_1:I2C_1_SCL" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"I2C_1_SDA" "MSS_WRAPPER_1:I2C_1_SDA" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"LED0" "MSS_GPIO_2_16_OR_COREGPIO_C0_GPIO_OUT_0:Y" }

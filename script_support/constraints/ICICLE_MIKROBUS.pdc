@@ -40,3 +40,17 @@ set_io -port_name mBUS_INT \
     -io_std LVCMOS33  \
     -RES_PULL Down \
     -DIRECTION INPUT
+
+set_io -port_name GPIO_2_M2F_20_AN    \
+    -pin_name D11    \
+    -fixed true    \
+    -io_std LVCMOS33  \
+    -RES_PULL Down \
+    -DIRECTION OUTPUT
+
+set_io -port_name GPIO_2_M2F_21_RST    \
+    -pin_name E10    \
+    -fixed true    \
+    -io_std LVCMOS33  \
+    -RES_PULL Down \
+    -DIRECTION OUTPUT

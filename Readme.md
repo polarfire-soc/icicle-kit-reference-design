@@ -261,6 +261,8 @@ Note: These settings should be the defaults in the profile from MSS configurator
 | 17  | Out       | LED1          |               |
 | 18  | Out       | LED2          |               |
 | 19  | Out       | LED3          |               |
+| 20  | Out       | GPIO_2_M2F_20_AN   | MBUS_AN  |
+| 21  | Out       | GPIO_2_M2F_21_RST  | MBUS_RST |
 | 26  | Out       | GPIO2 bit 30  | OR'd with SW2 |
 | 27  | Out       | GPIO2 bit 31  | OR'd with SW3 |
 | 28  | Out       | MSS INT F2M 0 | OR'd with SW1 |

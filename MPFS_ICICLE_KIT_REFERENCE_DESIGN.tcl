@@ -113,7 +113,7 @@ if { [file exists $project_dir/$project_name.prjx] } {
         -linked_files_root_dir_env {} \
         -hdl {VERILOG} \
         -family {PolarFireSoC} \
-        -die {MPFS250T_ES} \
+        -die {MPFS250T} \
         -package {FCVG484} \
         -speed {STD} \
         -die_voltage {1.05} \

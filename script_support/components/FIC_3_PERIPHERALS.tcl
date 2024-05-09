@@ -1,4 +1,4 @@
-# Creating SmartDesign FIC_3_PERIPHERALS
+# Creating SmartDesign "FIC_3_PERIPHERALS"
 set sd_name {FIC_3_PERIPHERALS}
 create_smartdesign -sd_name ${sd_name}
 
@@ -31,11 +31,11 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_OUT_0} -port_directio
 sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_OUT_1} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_OUT_2} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_OUT_3} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {IHC_SUBSYSTEM_E51_IRQ} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {IHC_SUBSYSTEM_U54_1_IRQ} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {IHC_SUBSYSTEM_U54_2_IRQ} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {IHC_SUBSYSTEM_U54_3_IRQ} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {IHC_SUBSYSTEM_U54_4_IRQ} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {IHC_MP_APP_E51_IRQ} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {IHC_MP_APP_U54_1_IRQ} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {IHC_MP_APP_U54_2_IRQ} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {IHC_MP_APP_U54_3_IRQ} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {IHC_MP_APP_U54_4_IRQ} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PWM_0} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {Q0_LANE0_DRI_DRI_ARST_N} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {Q0_LANE0_DRI_DRI_CLK} -port_direction {OUT}
@@ -138,13 +138,18 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {CoreUARTapb_C0} -i
 
 
 
+# Add fabric_sd_emmc_demux_select_0 instance
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {fabric_sd_emmc_demux_select} -instance_name {fabric_sd_emmc_demux_select_0}
+
+
+
 # Add FIC_3_ADDRESS_GENERATION_1 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {FIC_3_ADDRESS_GENERATION} -instance_name {FIC_3_ADDRESS_GENERATION_1}
 
 
 
-# Add IHC_SUBSYSTEM_0 instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {IHC_SUBSYSTEM} -instance_name {IHC_SUBSYSTEM_0}
+# Add MIV_IHC_C0_0 instance
+sd_instantiate_component -sd_name ${sd_name} -component_name {MIV_IHC_C0} -instance_name {MIV_IHC_C0_0}
 
 
 
@@ -167,18 +172,13 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {CORE_I2C_C0_0_WRAP
 
 
 
-# Add fabric_sd_emmc_demux_select_0 instance
-sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {fabric_sd_emmc_demux_select} -instance_name {fabric_sd_emmc_demux_select_0}
-
-
-
 # Add scalar net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[0:0]" "GPIO_OUT_0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[1:1]" "GPIO_OUT_1" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[2:2]" "GPIO_OUT_2" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[3:3]" "GPIO_OUT_3" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:PCLK" "CORE_I2C_C0_0_WRAPPER_1:PCLK" "CoreUARTapb_C0_0:PCLK" "IHC_SUBSYSTEM_0:pclk" "PCLK" "PWM:PCLK" "RECONFIGURATION_INTERFACE_0:PCLK" "RPi_ID_I2C:PCLK" "fabric_sd_emmc_demux_select_0:pclk" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:PRESETN" "CORE_I2C_C0_0_WRAPPER_1:PRESETN" "CoreUARTapb_C0_0:PRESETN" "IHC_SUBSYSTEM_0:presetn" "PRESETN" "PWM:PRESETN" "RECONFIGURATION_INTERFACE_0:PRESETN" "RPi_ID_I2C:PRESETN" "fabric_sd_emmc_demux_select_0:presetn" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:PCLK" "CORE_I2C_C0_0_WRAPPER_1:PCLK" "CoreUARTapb_C0_0:PCLK" "MIV_IHC_C0_0:APB_0_PCLK" "MIV_IHC_C0_0:CORE_CLK" "PCLK" "PWM:PCLK" "RECONFIGURATION_INTERFACE_0:PCLK" "RPi_ID_I2C:PCLK" "fabric_sd_emmc_demux_select_0:pclk" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:PRESETN" "CORE_I2C_C0_0_WRAPPER_1:PRESETN" "CoreUARTapb_C0_0:PRESETN" "MIV_IHC_C0_0:APB_0_PRESETN" "MIV_IHC_C0_0:CORE_RESETN" "PRESETN" "PWM:PRESETN" "RECONFIGURATION_INTERFACE_0:PRESETN" "RPi_ID_I2C:PRESETN" "fabric_sd_emmc_demux_select_0:presetn" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_SCL" "CORE_I2C_C0_0_WRAPPER_1:COREI2C_C0_SCL" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_SDA" "CORE_I2C_C0_0_WRAPPER_1:COREI2C_C0_SDA" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CORE_I2C_C0_0_WRAPPER_1:INT" "CORE_I2C_C0_INT" }
@@ -189,16 +189,16 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:RXRDY" "RXRDY"
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:TXRDY" "TXRDY" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:RX" "CoreUARTapb_RX" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:TX" "CoreUARTapb_TX" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_SUBSYSTEM_0:E51_IRQ" "IHC_SUBSYSTEM_E51_IRQ" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_SUBSYSTEM_0:U54_1_IRQ" "IHC_SUBSYSTEM_U54_1_IRQ" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_SUBSYSTEM_0:U54_2_IRQ" "IHC_SUBSYSTEM_U54_2_IRQ" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_SUBSYSTEM_0:U54_3_IRQ" "IHC_SUBSYSTEM_U54_3_IRQ" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_SUBSYSTEM_0:U54_4_IRQ" "IHC_SUBSYSTEM_U54_4_IRQ" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_MP_APP_E51_IRQ" "MIV_IHC_C0_0:APP_IRQ_H0" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_MP_APP_U54_1_IRQ" "MIV_IHC_C0_0:APP_IRQ_H1" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_MP_APP_U54_2_IRQ" "MIV_IHC_C0_0:APP_IRQ_H2" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_MP_APP_U54_3_IRQ" "MIV_IHC_C0_0:APP_IRQ_H3" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_MP_APP_U54_4_IRQ" "MIV_IHC_C0_0:APP_IRQ_H4" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PWM:PWM[0:0]" "PWM_0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"RPI_ID_I2C_IRQ" "RPi_ID_I2C:INT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"RPi_ID_I2C:COREI2C_C0_SCL" "RPi_ID_SD" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"RPi_ID_I2C:COREI2C_C0_SDA" "RPi_ID_SC" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"fabric_sd_emmc_demux_select_out" "fabric_sd_emmc_demux_select_0:fabric_sd_emmc_demux_select_out" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"fabric_sd_emmc_demux_select_0:fabric_sd_emmc_demux_select_out" "fabric_sd_emmc_demux_select_out" }
 
 # Add bus net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PSTRB" "RECONFIGURATION_INTERFACE_0:PSTRB" }
@@ -212,7 +212,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_04xx" "RPi_ID_I2C:APBslave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x43xx_xxxx_0x48xx_xxxx" "RECONFIGURATION_INTERFACE_0:APBS_SLAVE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4FFF_FFxx" "fabric_sd_emmc_demux_select_0:APBslave" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x5xxx_xxxx" "IHC_SUBSYSTEM_0:APB3mmaster" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x5xxx_xxxx" "MIV_IHC_C0_0:APB_0_M_INITIATOR" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PLL0_SW_DRI" "RECONFIGURATION_INTERFACE_0:PLL0_SW_DRI" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"Q0_LANE0_DRI" "RECONFIGURATION_INTERFACE_0:Q0_LANE0_DRI" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"Q0_LANE1_DRI" "RECONFIGURATION_INTERFACE_0:Q0_LANE1_DRI" }
@@ -221,7 +221,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"Q0_LANE3_DRI" "RECONFIGURATION_
 
 # Re-enable auto promotion of pins of type 'pad'
 auto_promote_pad_pins -promote_all 1
-# Save the smartDesign
+# Save the SmartDesign 
 save_smartdesign -sd_name ${sd_name}
-# Generate SmartDesign FIC_3_PERIPHERALS
+# Generate SmartDesign "FIC_3_PERIPHERALS"
 generate_component -component_name ${sd_name}

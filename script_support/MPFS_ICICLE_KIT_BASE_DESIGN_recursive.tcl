@@ -8,8 +8,6 @@ build_design_hierarchy
 source components/AXI_ADDRESS_SHIM.tcl 
 source components/APB_ARBITER.tcl 
 source components/APB_PASS_THROUGH.tcl 
-source components/MIV_IHCIA.tcl 
-source components/MIV_IHCC.tcl 
 source components/fabric_sd_emmc_demux_select.tcl 
 build_design_hierarchy
 
@@ -40,8 +38,7 @@ source components/FIC_3_0x4FFF_Fxxx.tcl
 source components/FIC_3_0x4xxx_xxxx.tcl 
 source components/FIC_3_ADDRESS_GENERATION.tcl 
 source components/GPIO.tcl 
-source components/IHC_APB.tcl 
-source components/IHC_SUBSYSTEM.tcl 
+source components/MIV_IHC_C0.tcl
 source components/RECONFIGURATION_INTERFACE.tcl 
 source components/corepwm_C0.tcl 
 source components/FIC_3_PERIPHERALS.tcl 

@@ -1,4 +1,4 @@
-# Creating SmartDesign MPFS_ICICLE_KIT_BASE_DESIGN
+# Creating SmartDesign "MPFS_ICICLE_KIT_BASE_DESIGN"
 set sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
 create_smartdesign -sd_name ${sd_name}
 
@@ -278,22 +278,22 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_1_PERIPHERALS_1:PCIESS_LANE
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_1_PERIPHERALS_1:PCIE_1_PERST_N" "PCIE_1_PERST_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_1_PERIPHERALS_1:PCIe_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_1" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:CORE_I2C_C0_INT" "MSS_WRAPPER_1:MSS_INT_F2M_4" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:RPI_ID_I2C_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_5" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:GPIO_OUT_0" "MSS_GPIO_2_16_OR_COREGPIO_C0_GPIO_OUT_0:B" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:GPIO_OUT_1" "MSS_GPIO_2_17_OR_COREGPIO_C0_GPIO_OUT_1:B" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:GPIO_OUT_2" "MSS_GPIO_2_18_OR_COREGPIO_C0_GPIO_OUT_2:B" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:GPIO_OUT_3" "MSS_GPIO_2_19_OR_COREGPIO_C0_GPIO_OUT_3:B" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_SUBSYSTEM_E51_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_63" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_SUBSYSTEM_U54_1_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_62" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_SUBSYSTEM_U54_2_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_61" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_SUBSYSTEM_U54_3_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_60" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_SUBSYSTEM_U54_4_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_59" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_MP_APP_E51_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_63" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_MP_APP_U54_1_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_62" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_MP_APP_U54_2_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_61" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_MP_APP_U54_3_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_60" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_MP_APP_U54_4_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_59" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:RXRDY" "MSS_WRAPPER_1:MSS_INT_F2M_6" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:TXRDY" "MSS_WRAPPER_1:MSS_INT_F2M_7" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:PARITY_ERR" "MSS_WRAPPER_1:MSS_INT_F2M_8" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:OVERFLOW" "MSS_WRAPPER_1:MSS_INT_F2M_9" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:FRAMING_ERR" "MSS_WRAPPER_1:MSS_INT_F2M_10" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:PWM_0" "mBUS_PWM" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:RPI_ID_I2C_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_5" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:RPi_ID_SC" "RPi_ID_SC" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:RPi_ID_SD" "RPi_ID_SD" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:fabric_sd_emmc_demux_select_out" "SDIO_SW_SEL0" "SDIO_SW_SEL1" }
@@ -418,7 +418,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:APB_MMASTER
 
 # Re-enable auto promotion of pins of type 'pad'
 auto_promote_pad_pins -promote_all 1
-# Save the smartDesign
+# Save the SmartDesign 
 save_smartdesign -sd_name ${sd_name}
-# Generate SmartDesign MPFS_ICICLE_KIT_BASE_DESIGN
+# Generate SmartDesign "MPFS_ICICLE_KIT_BASE_DESIGN"
 generate_component -component_name ${sd_name}

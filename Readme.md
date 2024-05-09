@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2024.2+](#polarfire-soc-icicle-kit-reference-design-generation-tcl-scripts---libero-soc-v2024.2)
+- [PolarFire® SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero® SoC v2024.2+](#polarfire-soc-icicle-kit-reference-design-generation-tcl-scripts---libero-soc-v20242)
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
   - [Using the reference design generation Tcl script](#using-the-reference-design-generation-tcl-script)
@@ -133,10 +133,6 @@ The diagram below outlines the top level configuration of the FPGA fabric and sh
 
 ![Block diagram](./diagrams/block_diagram.svg)
 
-The diagram below shows the Inter Hart Communication (IHC) subsystem configuration used in the reference design:
-
-![IHC subsystem block diagram](./diagrams/IHC_SUBSYSTEM_block_diagram.svg)
-
 <a name="mss-peripherals"></a>
 ### MSS peripherals
 
@@ -185,31 +181,7 @@ The Icicle Kit has 2GB of LPDDR4 on board and the PolarFire SoC MSS Configurator
 | MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | RECONFIGURATION_INTERFACE   | N/A                     | N/A                          | 0x4300_0000 -> 0x43FF_FFFF       |
 | MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | RECONFIGURATION_INTERFACE   | N/A                     | N/A                          | 0x4800_0000 -> 0x48FF_FFFF       |
 | MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | fabric_sd_emmc_demux_select | U29 & U44 (SDIO de-mux) | N/A                          | 0x4FFF_FF00 -> 0x4FFF_FFFF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_1:A      | N/A                     | N/A                          | 0x5000_0000 -> 0x5000_00FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_2:A      | N/A                     | N/A                          | 0x5000_0100 -> 0x5000_01FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_3:A      | N/A                     | N/A                          | 0x5000_0200 -> 0x5000_02FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_4:A      | N/A                     | N/A                          | 0x5000_0300 -> 0x5000_03FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | E51_IRQ_AGGREGATOR          | N/A                     | N/A                          | 0x5000_0400 -> 0x5000_04FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_1:B      | N/A                     | N/A                          | 0x5000_0500 -> 0x5000_05FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_2:A    | N/A                     | N/A                          | 0x5000_0600 -> 0x5000_06FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_3:A    | N/A                     | N/A                          | 0x5000_0700 -> 0x5000_07FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_4:A    | N/A                     | N/A                          | 0x5000_0800 -> 0x5000_08FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | U54_1_IRQ_AGGREGATOR        | N/A                     | N/A                          | 0x5000_0900 -> 0x5000_09FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_2:B      | N/A                     | N/A                          | 0x5000_0A00 -> 0x5000_0AFF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_2:B    | N/A                     | N/A                          | 0x5000_0B00 -> 0x5000_0BFF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_3:A    | N/A                     | N/A                          | 0x5000_0C00 -> 0x5000_0CFF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_4:A    | N/A                     | N/A                          | 0x5000_0D00 -> 0x5000_0DFF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | U54_2_IRQ_AGGREGATOR        | N/A                     | N/A                          | 0x5000_0E00 -> 0x5000_0EFF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_3:B      | N/A                     | N/A                          | 0x5000_0F00 -> 0x5000_0FFF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_3:B    | N/A                     | N/A                          | 0x5000_1000 -> 0x5000_10FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_3:B    | N/A                     | N/A                          | 0x5000_1100 -> 0x5000_11FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_3_TO_U54_4:A    | N/A                     | N/A                          | 0x5000_1200 -> 0x5000_12FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | U54_3_IRQ_AGGREGATOR        | N/A                     | N/A                          | 0x5000_1300 -> 0x5000_13FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_E51_TO_U54_4:B      | N/A                     | N/A                          | 0x5000_1400 -> 0x5000_14FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_1_TO_U54_4:B    | N/A                     | N/A                          | 0x5000_1500 -> 0x5000_15FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_2_TO_U54_4:B    | N/A                     | N/A                          | 0x5000_1600 -> 0x5000_16FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | CHANNEL_U54_3_TO_U54_4:B    | N/A                     | N/A                          | 0x5000_1700 -> 0x5000_17FF       |
-| MSS: FIC3      | IHC_SUBSYSTEM: APB3mmaster | U54_4_IRQ_AGGREGATOR        | N/A                     | N/A                          | 0x5000_1800 -> 0x5000_18FF       |
+| MSS: FIC3      | FIC_3_ADDRESS_GENERATION | MIV_IHC      | N/A                     | N/A                          | 0x5000_0000 -> 0x500F_FFFF       |
 | PF_PCIE_C0_0   | PCIE_INITIATOR             | MSS: FIC1                   | N/A                     | N/A                          | 0x10_0000_0000 -> 0x10_FFFF_FFFF |
 | DMA_CONTROLLER | DMA_INITIATOR              | MSS: FIC0                   | N/A                     | N/A                          | 0x0000_0000 -> 0xFFFF_FFFF       |
 
@@ -229,11 +201,11 @@ The Icicle Kit has 2GB of LPDDR4 on board and the PolarFire SoC MSS Configurator
 | CoreUARTapb_PARITY_ERR  | MSS_INT_F2M[8]     |
 | CoreUARTapb_OVERFLOW    | MSS_INT_F2M[9]     |
 | CoreUARTapb_FRAMING_ERR | MSS_INT_F2M[10]    |
-| IHC_SUBSYSTEM:E51_IRQ   | MSS_INT_F2M[63]    |
-| IHC_SUBSYSTEM:U54_1_IRQ | MSS_INT_F2M[62]    |
-| IHC_SUBSYSTEM:U54_2_IRQ | MSS_INT_F2M[61]    |
-| IHC_SUBSYSTEM:U54_3_IRQ | MSS_INT_F2M[60]    |
-| IHC_SUBSYSTEM:U54_4_IRQ | MSS_INT_F2M[59]    |
+| MIV_IHC:E51_IRQ         | MSS_INT_F2M[63]    |
+| MIV_IHC:U54_1_IRQ       | MSS_INT_F2M[62]    |
+| MIV_IHC:U54_2_IRQ       | MSS_INT_F2M[61]    |
+| MIV_IHC:U54_3_IRQ       | MSS_INT_F2M[60]    |
+| MIV_IHC:U54_4_IRQ       | MSS_INT_F2M[59]    |
 | MSS_GPIO_2_26 OR SW2    | MSS_GPIO_2_INT[30] |
 | MSS_GPIO_2_27 OR SW3    | MSS_GPIO_2_INT[31] |
 

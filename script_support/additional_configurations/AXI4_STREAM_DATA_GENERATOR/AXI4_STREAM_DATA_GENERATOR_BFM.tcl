@@ -11,7 +11,7 @@ import_files \
 
 open_smartdesign -sd_name {FIC_0_PERIPHERALS} 
 sd_update_instance -sd_name {FIC_0_PERIPHERALS} -instance_name {DMA_CONTROLLER} 
-update_component_version -component_name {DMA_CONTROLLER} -new_version {2.1.102} -download_core 
+update_component_version -component_name {DMA_CONTROLLER} -new_version {*} -download_core 
 
 puts " =============updated DMA controller to latest version"
 
@@ -64,7 +64,7 @@ sd_connect_pins -sd_name {FIC_0_PERIPHERALS} -pin_names {"ARESETN" "COREAXI4INTE
 
 puts " =============Instantiate the SRAM"
 # Instantiate the SRAM 
-create_and_configure_core -core_vlnv {Actel:SystemBuilder:PF_SRAM_AHBL_AXI:1.2.110} -component_name {PF_SRAM_AHBL_AXI_C0} -params {"AXI4_AWIDTH:32" "AXI4_DWIDTH:64" "AXI4_IDWIDTH:8" "AXI4_IFTYPE_RD:T" "AXI4_IFTYPE_WR:T" "AXI4_WRAP_SUPPORT:F" "BYTEENABLES:1" "BYTE_ENABLE_WIDTH:8" "B_REN_POLARITY:2" "CASCADE:1" "ECC_OPTIONS:0" "FABRIC_INTERFACE_TYPE:1" "IMPORT_FILE:" "INIT_RAM:F" "LPM_HINT:0" "PIPELINE_OPTIONS:1" "RDEPTH:2048" "RWIDTH:80" "USE_NATIVE_INTERFACE:F" "WDEPTH:2048" "WWIDTH:80"} 
+create_and_configure_core -core_vlnv {Actel:SystemBuilder:PF_SRAM_AHBL_AXI:*} -component_name {PF_SRAM_AHBL_AXI_C0} -params {"AXI4_AWIDTH:32" "AXI4_DWIDTH:64" "AXI4_IDWIDTH:8" "AXI4_IFTYPE_RD:T" "AXI4_IFTYPE_WR:T" "AXI4_WRAP_SUPPORT:F" "BYTEENABLES:1" "BYTE_ENABLE_WIDTH:8" "B_REN_POLARITY:2" "CASCADE:1" "ECC_OPTIONS:0" "FABRIC_INTERFACE_TYPE:1" "IMPORT_FILE:" "INIT_RAM:F" "LPM_HINT:0" "PIPELINE_OPTIONS:1" "RDEPTH:2048" "RWIDTH:80" "USE_NATIVE_INTERFACE:F" "WDEPTH:2048" "WWIDTH:80"} 
 sd_instantiate_component -sd_name {FIC_0_PERIPHERALS} -component_name {PF_SRAM_AHBL_AXI_C0} -instance_name {} 
 sd_connect_pins -sd_name {FIC_0_PERIPHERALS} -pin_names {"ACLK" "PF_SRAM_AHBL_AXI_C0_0:ACLK"} 
 sd_connect_pins -sd_name {FIC_0_PERIPHERALS} -pin_names {"ARESETN" "PF_SRAM_AHBL_AXI_C0_0:ARESETN"} 

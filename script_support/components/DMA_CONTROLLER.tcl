@@ -2,7 +2,7 @@
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
 # Create and Configure the core component DMA_CONTROLLER
-create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4DMACONTROLLER:2.0.100} -component_name {DMA_CONTROLLER} -params {\
+create_and_configure_core -core_vlnv {Actel:DirectCore:COREAXI4DMACONTROLLER:2.2.107} -component_name {DMA_CONTROLLER} -params {\
 "AXI4_STREAM_IF:false"  \
 "AXI_DMA_DWIDTH:32"  \
 "DSCRPTR_0_INT_ASSOC:0"  \

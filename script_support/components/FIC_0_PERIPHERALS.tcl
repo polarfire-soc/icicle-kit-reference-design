@@ -228,9 +228,9 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_CONTROLLER:INTERRUPT[0:0]" 
 # Add bus interface net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"AXI4mmaster0" "FIC0_INITIATOR:AXI4mmaster0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"AXI4mslave0" "DMA_INITIATOR:AXI4mslave0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_CONTROLLER:AXI4MasterDMA_IF" "DMA_INITIATOR:AXI4mmaster0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_CONTROLLER:AXI4SlaveCtrl_IF" "FIC0_INITIATOR:AXI4mslave0" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_INITIATOR:AXI4mslave1" "MSS_LSRAM:AXI4_Slave" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_CONTROLLER:AXI4InitiatorDMA_IF" "DMA_INITIATOR:AXI4mmaster0"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_CONTROLLER:AXI4TargetCtrl_IF" "FIC0_INITIATOR:AXI4mslave0"} 
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC0_INITIATOR:AXI4mslave1" "MSS_LSRAM:AXI4_Slave"} 
 
 # Re-enable auto promotion of pins of type 'pad'
 auto_promote_pad_pins -promote_all 1

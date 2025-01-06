@@ -1,10 +1,10 @@
   <mss xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="mpfs_hw_description.xsd">
     <design_information>
-      <libero_version>2023.2</libero_version>
+      <libero_version>2024.2</libero_version>
       <design_name>ICICLE_MSS</design_name>
       <mpfs_part_no>MPFS250T_ES</mpfs_part_no>
       <mpfs_package>FCVG484</mpfs_package>
-      <creation_date_time>01-08-2024_10:57:25</creation_date_time>
+      <creation_date_time>01-06-2025_11:19:50</creation_date_time>
       <xml_format_version>0.6.8</xml_format_version>
     </design_information>
     <mss_memory_map>
@@ -3214,7 +3214,7 @@
             <field Type="RW" name="CFG_ZQ_CAL_PER" offset="0" width="32">0x27100</field>
           </register>
           <register address="0x000041C4" description="IP Blk = MC_BASE2 Access=RW " name="CFG_AUTO_ZQ_CAL_EN">
-            <field Type="RW" name="CFG_AUTO_ZQ_CAL_EN" offset="0" width="32">0x0</field>
+            <field Type="RW" name="CFG_AUTO_ZQ_CAL_EN" offset="0" width="32">0x1</field>
           </register>
           <register address="0x000041C8" description="IP Blk = MC_BASE2 Access=RW " name="CFG_MEMORY_TYPE">
             <field Type="RW" name="CFG_MEMORY_TYPE" offset="0" width="32">0x400</field>

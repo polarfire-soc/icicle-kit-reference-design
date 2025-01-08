@@ -172,9 +172,9 @@ if { [file exists $project_dir/$project_name.prjx] } {
     file mkdir $local_dir/script_support/components/MSS
 
     if {[info exists MSS_LINUX]} {
-        exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/MPFS_ICICLE_MSS_linux.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
+        exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/mss_cfg_files/MPFS_ICICLE_MSS_linux.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
     } else {
-        exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/MPFS_ICICLE_MSS_baremetal.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
+        exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/mss_cfg_files/MPFS_ICICLE_MSS_baremetal.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
     }
 
     import_mss_component -file "$local_dir/script_support/components/MSS/ICICLE_MSS.cxz"

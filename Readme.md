@@ -1,8 +1,8 @@
-# PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2022.3+
+# PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2024.2+
 
 ## Table of Contents
 
-- [PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2022.3+](#polarfire-soc-icicle-kit-reference-design-generation-tcl-scripts---libero-soc-v20222)
+- [PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2024.2+](#polarfire-soc-icicle-kit-reference-design-generation-tcl-scripts---libero-soc-v2024.2)
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
   - [Using the reference design generation Tcl script](#using-the-reference-design-generation-tcl-script)
@@ -35,7 +35,7 @@ This repository can be used to generate a reference design for the PolarFire SoC
 
 A Libero SoC Tcl script is provided to generate the reference design using Libero SoC along with device specific I/O constraints. For Tcl scripts supporting previous versions of Libero SoC see [Releases](https://mi-v-ecosystem.github.io/redirects/releases-icicle-kit-reference-design).
 
-This repository supports Libero SoC v2022.3 and above, which is available for download [here](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions#Documents%20and%20Downloads). The release notes will note the version(s) of Libero that these scripts have been tested on.
+This repository supports Libero SoC v2024.2 and above, which is available for download [here](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions#Documents%20and%20Downloads). The release notes will note the version(s) of Libero that these scripts have been tested on.
 
 <a name="using-the-reference-design-generation-tcl-script"></a>
 ## Using the reference design generation Tcl script
@@ -75,6 +75,8 @@ Some bare metal examples and tutorials require a specific fabric configuration w
 | VECTORBLOX     | This argument will add the Vectorblox CNN to the FPGA fabric and connect it to the FIC 0 domain for control register access and FIC 2 for data transfers from the CNN. Note: a special add on Libero license may be required to use the Vectorblox CNN, for more information check the [product page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/vectorblox) and the [Vectorblox GitHub](https://github.com/Microchip-Vectorblox).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
 Arguments in the table above can only be used exclusively - i.e you cannot pass "I2C_LOOPBACK" and "BFM_SIMULATION" as arguments.
+
+The MSS_BAREMETAL argument is an exception to this rule and can be passed with other arguments.
 
 Additional arguments are also supported to modify or configure aspects of the design flow that will be run. Supported arguments are:
 
@@ -167,15 +169,6 @@ The following MSS peripherals are enabled:
 
 The Icicle Kit has 2GB of LPDDR4 on board and the PolarFire SoC MSS Configurator contains an "MSS_LPDDR4_default_configuration" preset that should be used with the Icicle Kit.
 
-With the PolarFire SoC MSS Configurator v2022.2, the following two settings from the default profile need to updated for the LPDDR4 on the kit to be used.
-
-Note: These settings should be the defaults in the profile from MSS configurator v2022.3 and greater.
-
-| DDR Memory Tab            | Option                    | Default Value | Required Value |
-| ------------------------- | ------------------------- | ------------- | -------------- |
-| DDR Controller            | DQ ODT                    | 40            | 80             |
-| DDR Memory Initialization | Pull-up Calibration Point | VDDQ/3        | VDDQ/2.5       |
-
 <a name="fabric-memory-map"></a>
 ### Fabric memory map
 
@@ -227,7 +220,7 @@ Note: These settings should be the defaults in the profile from MSS configurator
 | :---------------------- | :----------------- |
 | MSS_GPIO_2_28 OR SW1    | MSS_INT_F2M[0]     |
 | PF_PCIE                 | MSS_INT_F2M[1]     |
-| DMA_CONTROLLER          | MSS_INT_F3M[2]     |
+| DMA_CONTROLLER          | MSS_INT_F2M[2]     |
 | mBUS_INT                | MSS_INT_F2M[3]     |
 | CoreI2C_INT[0]          | MSS_INT_F2M[4]     |
 | RPi_ID_I2C[0]           | MSS_INT_F2M[5]     |
@@ -294,7 +287,7 @@ A saved configuration for the PolarFire SoC MSS Configurator is available in the
 
 The Microcontroller Subsystem (MSS) configuration is captured in an XML file that is then used by the PolarFire SoC Configuration Generator to generate configuration header files. These header files are compiled as part of the MPFS HAL startup code to configure the system at power on.
 
-XML generated for all available configurations is provided in the "XML" folder.
+XML generated for all available configurations is provided with the assets of the releases.
 
 <a name="bfm-simulation"></a>
 ## BFM Simulation

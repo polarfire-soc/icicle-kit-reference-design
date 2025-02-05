@@ -288,6 +288,11 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_SUBSYST
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_SUBSYSTEM_U54_2_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_61" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_SUBSYSTEM_U54_3_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_60" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:IHC_SUBSYSTEM_U54_4_IRQ" "MSS_WRAPPER_1:MSS_INT_F2M_59" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:RXRDY" "MSS_WRAPPER_1:MSS_INT_F2M_6" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:TXRDY" "MSS_WRAPPER_1:MSS_INT_F2M_7" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:PARITY_ERR" "MSS_WRAPPER_1:MSS_INT_F2M_8" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:OVERFLOW" "MSS_WRAPPER_1:MSS_INT_F2M_9" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:FRAMING_ERR" "MSS_WRAPPER_1:MSS_INT_F2M_10" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:PWM_0" "mBUS_PWM" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:RPi_ID_SC" "RPi_ID_SC" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:RPi_ID_SD" "RPi_ID_SD" }

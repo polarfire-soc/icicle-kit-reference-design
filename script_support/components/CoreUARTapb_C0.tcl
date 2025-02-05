@@ -9,8 +9,8 @@ create_and_configure_core -core_vlnv {Actel:DirectCore:CoreUARTapb:5.7.100} -com
 "FIXEDMODE:0"  \
 "PRG_BIT8:0"  \
 "PRG_PARITY:0"  \
-"RX_FIFO:0"  \
+"RX_FIFO:1"  \
 "RX_LEGACY_MODE:0"  \
-"TX_FIFO:0"  \
+"TX_FIFO:1"  \
 "USE_SOFT_FIFO:0"   }
 # Exporting Component Description of CoreUARTapb_C0 to TCL done

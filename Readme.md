@@ -224,6 +224,11 @@ The Icicle Kit has 2GB of LPDDR4 on board and the PolarFire SoC MSS Configurator
 | mBUS_INT                | MSS_INT_F2M[3]     |
 | CoreI2C_INT[0]          | MSS_INT_F2M[4]     |
 | RPi_ID_I2C[0]           | MSS_INT_F2M[5]     |
+| CoreUARTapb_RXRDY       | MSS_INT_F2M[6]     |
+| CoreUARTapb_TXRDY       | MSS_INT_F2M[7]     |
+| CoreUARTapb_PARITY_ERR  | MSS_INT_F2M[8]     |
+| CoreUARTapb_OVERFLOW    | MSS_INT_F2M[9]     |
+| CoreUARTapb_FRAMING_ERR | MSS_INT_F2M[10]    |
 | IHC_SUBSYSTEM:E51_IRQ   | MSS_INT_F2M[63]    |
 | IHC_SUBSYSTEM:U54_1_IRQ | MSS_INT_F2M[62]    |
 | IHC_SUBSYSTEM:U54_2_IRQ | MSS_INT_F2M[61]    |

@@ -1,15 +1,7 @@
-MPFS_ICICLE/
-MPFS_ICICLE_I2C_LOOPBACK/
-MPFS_ICICLE_SPI_LOOPBACK/
-MPFS_ICICLE_Vectorblox/
-MPFS_ICICLE_DRI_CCC_DEMO/
-MPFS_ICICLE_MICRON_QSPI/
+MPFS_ICICLE*/
 soc/
 script_support/additional_configurations/smarthls/**/hls_output
 script_support/additional_configurations/smarthls/**/component
-MPFS_ICICLE_AXI4_STREAM_DEMO/
-MPFS_ICICLE_AXI4_STREAM_DEMO_BFM/
-MPFS_ICICLE_BFM_SIMULATION/
 script_support/Unsupported_Cores_List.txt
 script_support/components/MSS/
 script_support/components/MSS_I2C_LOOPBACK/

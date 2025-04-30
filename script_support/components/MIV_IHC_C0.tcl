@@ -2,7 +2,7 @@
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
 # Create and Configure the core component MIV_IHC_C0
-create_and_configure_core -core_vlnv {Microchip:MiV:MIV_IHC:*} -component_name {MIV_IHC_C0} -params {\
+create_and_configure_core -core_vlnv {Microchip:MiV:MIV_IHC:2.0.100} -component_name {MIV_IHC_C0} -params {\
 "H0_IHCIM_EN:true"  \
 "H0_MONITOR_EN:false"  \
 "H0_TO_H1_CH_EN:true"  \

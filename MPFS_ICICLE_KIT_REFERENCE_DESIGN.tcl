@@ -207,7 +207,7 @@ if { [file exists $project_dir/$project_name.prjx] } {
     #
 
     cd ./script_support/
-    source MPFS_ICICLE_KIT_BASE_DESIGN_recursive.tcl
+    safe_source MPFS_ICICLE_KIT_BASE_DESIGN_recursive.tcl
     cd ../
     set_root -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} 
 
@@ -305,18 +305,18 @@ if { [file exists $project_dir/$project_name.prjx] } {
     #
 
     if {[info exists MSS_BAREMETAL]} {
-	    source script_support/additional_configurations/MSS_BAREMETAL/MSS_BAREMETAL.tcl
+	    safe_source script_support/additional_configurations/MSS_BAREMETAL/MSS_BAREMETAL.tcl
     }
 
     if {[info exists BFM_SIMULATION]} {
-        source script_support/simulation/Test_bench.tcl
+        safe_source script_support/simulation/Test_bench.tcl
     }
 
     if {[info exists AXI4_STREAM_DEMO]} {
         if {[info exists BFM_SIMULATION]} {
-            source script_support/additional_configurations/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR_BFM.tcl    
+            safe_source script_support/additional_configurations/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR_BFM.tcl    
         } else {
-            source script_support/additional_configurations/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR.tcl    
+            safe_source script_support/additional_configurations/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR.tcl    
         }
     }
 
@@ -328,9 +328,9 @@ if { [file exists $project_dir/$project_name.prjx] } {
         create_config $local_dir/script_support/components/MSS/ICICLE_MSS.cfg $local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg
         update_param $local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg "I2C_1 " "FABRIC"
         exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_I2C_LOOPBACK
-        source ./script_support/additional_configurations/I2C_LOOPBACK/I2C_LOOPBACK.tcl
+        safe_source ./script_support/additional_configurations/I2C_LOOPBACK/I2C_LOOPBACK.tcl
     } elseif {[info exists VECTORBLOX]} {
-        source ./script_support/additional_configurations/Vectorblox/Vectorblox.tcl
+        safe_source ./script_support/additional_configurations/Vectorblox/Vectorblox.tcl
     } elseif {[info exists SPI_LOOPBACK]} {
         if {[file isdirectory $local_dir/script_support/components/MSS_SPI_LOOPBACK]} {
             file delete -force $local_dir/script_support/components/MSS_SPI_LOOPBACK
@@ -343,9 +343,9 @@ if { [file exists $project_dir/$project_name.prjx] } {
         update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "SPI_1                                " "MSSIO_B2_B"
         update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "SPI_1_SS1                                " "FABRIC"
         exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_SPI_LOOPBACK
-        source ./script_support/additional_configurations/SPI_LOOPBACK/SPI_LOOPBACK.tcl
+        safe_source ./script_support/additional_configurations/SPI_LOOPBACK/SPI_LOOPBACK.tcl
     } elseif {[info exists DRI_CCC_DEMO]} {
-        source ./script_support/additional_configurations/DRI_CCC_DEMO/DRI_CCC_DEMO.tcl
+        safe_source ./script_support/additional_configurations/DRI_CCC_DEMO/DRI_CCC_DEMO.tcl
     }
     #
     # // Derive timing constraints
@@ -382,13 +382,13 @@ if { [file exists $project_dir/$project_name.prjx] } {
 if {[info exists SMARTHLS]} {
     if {$isNewProject} {
         # Prepare the SmartDesign for HLS integration 
-        source ./script_support/additional_configurations/smarthls/pre_hls_integration.tcl
+        safe_source ./script_support/additional_configurations/smarthls/pre_hls_integration.tcl
     }
 
     # If the SmartHLS variable points to a valid SmartHLS project directory, then compile it.
     # Otherwise, HLS modules can be added later.
     if {[file isdirectory $SMARTHLS]} {
-        source ./script_support/additional_configurations/smarthls/compile_and_integrate_shls_to_refdesign.tcl
+        safe_source ./script_support/additional_configurations/smarthls/compile_and_integrate_shls_to_refdesign.tcl
     }
 }
 

@@ -100,3 +100,48 @@ proc export_fpe_job {name directory components use_spi} {
         -sanitize_snvm 0 \
         -sanitize_envm 0
 }
+
+proc safe_source {script} {
+    if {![file exists $script]} {
+        error "Script file does not exist: $script"
+    }
+    try {
+        uplevel #0 [list source $script]
+    } on error {errMsg errOpts} {
+        set errorInfo [dict get $errOpts -errorinfo]
+        set errorCode [dict get $errOpts -errorcode]
+
+        set fileInfo "File and line number not available"
+        set callerFileInfo "Caller file and line number not available"
+        set foundPrimaryInfo 0
+        set foundCallerInfo 0
+        set depth 0
+
+        foreach line [split $errorInfo "\n"] {
+            if {[regexp {^\s*\(file "(.*)" line (\d+)\)} $line -> fileName lineNumber]} {
+                incr depth
+                if {!$foundPrimaryInfo} {
+                    set fileInfo "File: $fileName\nLine: $lineNumber\nDepth: $depth"
+                    set foundPrimaryInfo 1
+                } elseif {!$foundCallerInfo} {
+                    set callerFileInfo "Caller File: $fileName\nCaller Line: $lineNumber\nDepth: $depth"
+                    set foundCallerInfo 1
+                }
+            }
+        }
+        set errorLog [list \
+            "                                                  " \
+            "                                                  " \
+            "============= SCRIPT EXECUTION ERROR =============" \
+            "Script:        $script" \
+            "Error Message: $errMsg" \
+            $fileInfo \
+            $callerFileInfo \
+            "Stack Trace:" \
+            $errorInfo \
+            "================================================="]
+
+        puts stderr [join $errorLog "\n"]
+        return -options $errOpts -code error $errMsg
+    }
+}

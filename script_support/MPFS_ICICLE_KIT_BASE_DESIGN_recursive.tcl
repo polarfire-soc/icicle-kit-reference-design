@@ -39,7 +39,6 @@ source components/FIC_3_0x4xxx_xxxx.tcl
 source components/FIC_3_ADDRESS_GENERATION.tcl 
 source components/GPIO.tcl 
 source components/MIV_IHC_C0.tcl
-source components/RECONFIGURATION_INTERFACE.tcl 
 source components/corepwm_C0.tcl 
 source components/FIC_3_PERIPHERALS.tcl 
 source components/MSS_WRAPPER.tcl 

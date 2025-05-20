@@ -402,18 +402,14 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"DM" "MSS_WRAPPER_1:DM" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DQ" "MSS_WRAPPER_1:DQ" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DQS" "MSS_WRAPPER_1:DQS" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DQS_N" "MSS_WRAPPER_1:DQS_N" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:PSTRB" "MSS_WRAPPER_1:FIC_3_APB_M_PSTRB" }
 
 # Add bus interface net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLKS_TO_XCVR" "FIC_1_PERIPHERALS_1:TX_PLL_CLKS" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_0_PERIPHERALS_1:AXI4mmaster0" "MSS_WRAPPER_1:FIC_0_AXI4_INITIATOR" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_0_PERIPHERALS_1:AXI4mslave0" "MSS_WRAPPER_1:FIC_0_AXI4_TARGET" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_1_PERIPHERALS_1:APB_SLAVE" "FIC_3_PERIPHERALS_1:FIC_3_0x43xx_xxxx_0x48xx_xxxx" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_1_PERIPHERALS_1:AXI4mmaster0" "MSS_WRAPPER_1:FIC_1_AXI4_INITIATOR" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_1_PERIPHERALS_1:AXI4mslave0" "MSS_WRAPPER_1:FIC_1_AXI4_TARGET" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_1_PERIPHERALS_1:Q0_LANE0_DRI_SLAVE" "FIC_3_PERIPHERALS_1:Q0_LANE0_DRI" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_1_PERIPHERALS_1:Q0_LANE1_DRI_SLAVE" "FIC_3_PERIPHERALS_1:Q0_LANE1_DRI" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_1_PERIPHERALS_1:Q0_LANE2_DRI_SLAVE" "FIC_3_PERIPHERALS_1:Q0_LANE2_DRI" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_1_PERIPHERALS_1:Q0_LANE3_DRI_SLAVE" "FIC_3_PERIPHERALS_1:Q0_LANE3_DRI" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_PERIPHERALS_1:APB_MMASTER" "MSS_WRAPPER_1:FIC_3_APB_INITIATOR" }
 
 # Re-enable auto promotion of pins of type 'pad'

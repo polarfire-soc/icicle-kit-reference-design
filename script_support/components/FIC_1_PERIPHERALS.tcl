@@ -1,4 +1,4 @@
-# Creating SmartDesign FIC_1_PERIPHERALS
+# Creating SmartDesign "FIC_1_PERIPHERALS"
 set sd_name {FIC_1_PERIPHERALS}
 create_smartdesign -sd_name ${sd_name}
 
@@ -23,14 +23,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {AXI4mslave0_SLAVE0_WREADY}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {CLKS_FROM_TXPLL_TO_PCIE_1_PCIE_1_TX_BIT_CLK} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {CLKS_FROM_TXPLL_TO_PCIE_1_PCIE_1_TX_PLL_LOCK} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {CLKS_FROM_TXPLL_TO_PCIE_1_PCIE_1_TX_PLL_REF_CLK} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE0_DRI_SLAVE_PCIESS_LANE0_DRI_ARST_N} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE0_DRI_SLAVE_PCIESS_LANE0_DRI_CLK} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE1_DRI_SLAVE_PCIESS_LANE1_DRI_ARST_N} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE1_DRI_SLAVE_PCIESS_LANE1_DRI_CLK} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE2_DRI_SLAVE_PCIESS_LANE2_DRI_ARST_N} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE2_DRI_SLAVE_PCIESS_LANE2_DRI_CLK} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE3_DRI_SLAVE_PCIESS_LANE3_DRI_ARST_N} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE3_DRI_SLAVE_PCIESS_LANE3_DRI_CLK} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_RXD0_N} -port_direction {IN} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_RXD0_P} -port_direction {IN} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_RXD1_N} -port_direction {IN} -port_is_pad {1}
@@ -60,10 +52,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {AXI4mslave0_SLAVE0_BREADY}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {AXI4mslave0_SLAVE0_RREADY} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {AXI4mslave0_SLAVE0_WLAST} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {AXI4mslave0_SLAVE0_WVALID} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE0_DRI_SLAVE_PCIESS_LANE0_DRI_INTERRUPT} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE1_DRI_SLAVE_PCIESS_LANE1_DRI_INTERRUPT} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE2_DRI_SLAVE_PCIESS_LANE2_DRI_INTERRUPT} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE3_DRI_SLAVE_PCIESS_LANE3_DRI_INTERRUPT} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD0_N} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD0_P} -port_direction {OUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCIESS_LANE_TXD1_N} -port_direction {OUT} -port_is_pad {1}
@@ -111,14 +99,6 @@ sd_create_bus_port -sd_name ${sd_name} -port_name {AXI4mslave0_SLAVE0_RDATA} -po
 sd_create_bus_port -sd_name ${sd_name} -port_name {AXI4mslave0_SLAVE0_RID} -port_direction {IN} -port_range {[4:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {AXI4mslave0_SLAVE0_RRESP} -port_direction {IN} -port_range {[1:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {AXI4mslave0_SLAVE0_RUSER} -port_direction {IN} -port_range {[0:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PCIESS_LANE0_DRI_SLAVE_PCIESS_LANE0_DRI_CTRL} -port_direction {IN} -port_range {[10:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PCIESS_LANE0_DRI_SLAVE_PCIESS_LANE0_DRI_WDATA} -port_direction {IN} -port_range {[32:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PCIESS_LANE1_DRI_SLAVE_PCIESS_LANE1_DRI_CTRL} -port_direction {IN} -port_range {[10:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PCIESS_LANE1_DRI_SLAVE_PCIESS_LANE1_DRI_WDATA} -port_direction {IN} -port_range {[32:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PCIESS_LANE2_DRI_SLAVE_PCIESS_LANE2_DRI_CTRL} -port_direction {IN} -port_range {[10:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PCIESS_LANE2_DRI_SLAVE_PCIESS_LANE2_DRI_WDATA} -port_direction {IN} -port_range {[32:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PCIESS_LANE3_DRI_SLAVE_PCIESS_LANE3_DRI_CTRL} -port_direction {IN} -port_range {[10:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PCIESS_LANE3_DRI_SLAVE_PCIESS_LANE3_DRI_WDATA} -port_direction {IN} -port_range {[32:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {PCIE_APB_SLAVE_APB_S_PADDR} -port_direction {IN} -port_range {[25:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {PCIE_APB_SLAVE_APB_S_PWDATA} -port_direction {IN} -port_range {[31:0]}
 
@@ -154,10 +134,6 @@ sd_create_bus_port -sd_name ${sd_name} -port_name {AXI4mslave0_SLAVE0_AWUSER} -p
 sd_create_bus_port -sd_name ${sd_name} -port_name {AXI4mslave0_SLAVE0_WDATA} -port_direction {OUT} -port_range {[63:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {AXI4mslave0_SLAVE0_WSTRB} -port_direction {OUT} -port_range {[7:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {AXI4mslave0_SLAVE0_WUSER} -port_direction {OUT} -port_range {[0:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PCIESS_LANE0_DRI_SLAVE_PCIESS_LANE0_DRI_RDATA} -port_direction {OUT} -port_range {[32:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PCIESS_LANE1_DRI_SLAVE_PCIESS_LANE1_DRI_RDATA} -port_direction {OUT} -port_range {[32:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PCIESS_LANE2_DRI_SLAVE_PCIESS_LANE2_DRI_RDATA} -port_direction {OUT} -port_range {[32:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PCIESS_LANE3_DRI_SLAVE_PCIESS_LANE3_DRI_RDATA} -port_direction {OUT} -port_range {[32:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {PCIE_APB_SLAVE_APB_S_PRDATA} -port_direction {OUT} -port_range {[31:0]}
 
 
@@ -254,38 +230,6 @@ sd_create_bif_port -sd_name ${sd_name} -port_name {AXI4mslave0} -port_bif_vlnv {
 "ARUSER:AXI4mslave0_SLAVE0_ARUSER" \
 "RUSER:AXI4mslave0_SLAVE0_RUSER" } 
 
-sd_create_bif_port -sd_name ${sd_name} -port_name {Q0_LANE0_DRI_SLAVE} -port_bif_vlnv {Actel:busdef.dri:PF_DRI:1.0} -port_bif_role {slave} -port_bif_mapping {\
-"DRI_CLK:PCIESS_LANE0_DRI_SLAVE_PCIESS_LANE0_DRI_CLK" \
-"DRI_ARST_N:PCIESS_LANE0_DRI_SLAVE_PCIESS_LANE0_DRI_ARST_N" \
-"DRI_CTRL:PCIESS_LANE0_DRI_SLAVE_PCIESS_LANE0_DRI_CTRL" \
-"DRI_RDATA:PCIESS_LANE0_DRI_SLAVE_PCIESS_LANE0_DRI_RDATA" \
-"DRI_WDATA:PCIESS_LANE0_DRI_SLAVE_PCIESS_LANE0_DRI_WDATA" \
-"DRI_INTERRUPT:PCIESS_LANE0_DRI_SLAVE_PCIESS_LANE0_DRI_INTERRUPT" } 
-
-sd_create_bif_port -sd_name ${sd_name} -port_name {Q0_LANE1_DRI_SLAVE} -port_bif_vlnv {Actel:busdef.dri:PF_DRI:1.0} -port_bif_role {slave} -port_bif_mapping {\
-"DRI_CLK:PCIESS_LANE1_DRI_SLAVE_PCIESS_LANE1_DRI_CLK" \
-"DRI_ARST_N:PCIESS_LANE1_DRI_SLAVE_PCIESS_LANE1_DRI_ARST_N" \
-"DRI_CTRL:PCIESS_LANE1_DRI_SLAVE_PCIESS_LANE1_DRI_CTRL" \
-"DRI_RDATA:PCIESS_LANE1_DRI_SLAVE_PCIESS_LANE1_DRI_RDATA" \
-"DRI_WDATA:PCIESS_LANE1_DRI_SLAVE_PCIESS_LANE1_DRI_WDATA" \
-"DRI_INTERRUPT:PCIESS_LANE1_DRI_SLAVE_PCIESS_LANE1_DRI_INTERRUPT" } 
-
-sd_create_bif_port -sd_name ${sd_name} -port_name {Q0_LANE2_DRI_SLAVE} -port_bif_vlnv {Actel:busdef.dri:PF_DRI:1.0} -port_bif_role {slave} -port_bif_mapping {\
-"DRI_CLK:PCIESS_LANE2_DRI_SLAVE_PCIESS_LANE2_DRI_CLK" \
-"DRI_ARST_N:PCIESS_LANE2_DRI_SLAVE_PCIESS_LANE2_DRI_ARST_N" \
-"DRI_CTRL:PCIESS_LANE2_DRI_SLAVE_PCIESS_LANE2_DRI_CTRL" \
-"DRI_RDATA:PCIESS_LANE2_DRI_SLAVE_PCIESS_LANE2_DRI_RDATA" \
-"DRI_WDATA:PCIESS_LANE2_DRI_SLAVE_PCIESS_LANE2_DRI_WDATA" \
-"DRI_INTERRUPT:PCIESS_LANE2_DRI_SLAVE_PCIESS_LANE2_DRI_INTERRUPT" } 
-
-sd_create_bif_port -sd_name ${sd_name} -port_name {Q0_LANE3_DRI_SLAVE} -port_bif_vlnv {Actel:busdef.dri:PF_DRI:1.0} -port_bif_role {slave} -port_bif_mapping {\
-"DRI_CLK:PCIESS_LANE3_DRI_SLAVE_PCIESS_LANE3_DRI_CLK" \
-"DRI_ARST_N:PCIESS_LANE3_DRI_SLAVE_PCIESS_LANE3_DRI_ARST_N" \
-"DRI_CTRL:PCIESS_LANE3_DRI_SLAVE_PCIESS_LANE3_DRI_CTRL" \
-"DRI_RDATA:PCIESS_LANE3_DRI_SLAVE_PCIESS_LANE3_DRI_RDATA" \
-"DRI_WDATA:PCIESS_LANE3_DRI_SLAVE_PCIESS_LANE3_DRI_WDATA" \
-"DRI_INTERRUPT:PCIESS_LANE3_DRI_SLAVE_PCIESS_LANE3_DRI_INTERRUPT" } 
-
 sd_create_bif_port -sd_name ${sd_name} -port_name {APB_SLAVE} -port_bif_vlnv {AMBA:AMBA2:APB:r0p0} -port_bif_role {slave} -port_bif_mapping {\
 "PADDR:PCIE_APB_SLAVE_APB_S_PADDR" \
 "PSELx:PCIE_APB_SLAVE_APB_S_PSEL" \
@@ -313,11 +257,6 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {FIC_1_INITIATOR} -
 
 # Add PCIE instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {PF_PCIE_C0} -instance_name {PCIE}
-#sd_create_pin_group -sd_name ${sd_name} -group_name {PADs_IN} -instance_name {PCIE} -pin_names {"PCIESS_LANE_RXD0_P" "PCIESS_LANE_RXD0_N" "PCIESS_LANE_RXD1_P" "PCIESS_LANE_RXD1_N" "PCIESS_LANE_RXD2_P" "PCIESS_LANE_RXD2_N" "PCIESS_LANE_RXD3_P" "PCIESS_LANE_RXD3_N" }
-#sd_create_pin_group -sd_name ${sd_name} -group_name {PADs_OUT} -instance_name {PCIE} -pin_names {"PCIESS_LANE_TXD0_P" "PCIESS_LANE_TXD0_N" "PCIESS_LANE_TXD1_P" "PCIESS_LANE_TXD1_N" "PCIESS_LANE_TXD2_P" "PCIESS_LANE_TXD2_N" "PCIESS_LANE_TXD3_P" "PCIESS_LANE_TXD3_N" }
-#sd_create_pin_group -sd_name ${sd_name} -group_name {CLK_IN} -instance_name {PCIE} -pin_names {"PCIESS_LANE0_CDR_REF_CLK_0" "AXI_CLK" "AXI_CLK_STABLE" "PCIESS_LANE1_CDR_REF_CLK_0" "PCIESS_LANE2_CDR_REF_CLK_0" "PCIESS_LANE3_CDR_REF_CLK_0" "PCIE_1_TL_CLK_125MHz" }
-#sd_create_pin_group -sd_name ${sd_name} -group_name {PCIE_IN} -instance_name {PCIE} -pin_names {"PCIE_1_INTERRUPT" "PCIE_1_M_RDERR" "PCIE_1_S_WDERR" }
-#sd_create_pin_group -sd_name ${sd_name} -group_name {PCIE_OUT} -instance_name {PCIE} -pin_names {"PCIE_1_LTSSM" "PCIE_1_INTERRUPT_OUT" "PCIE_1_PERST_OUT_N" "PCIE_1_M_WDERR" "PCIE_1_S_RDERR" "PCIE_1_HOT_RST_EXIT" "PCIE_1_DLUP_EXIT" }
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE:PCIE_1_INTERRUPT} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE:PCIE_1_M_RDERR} -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {PCIE:PCIE_1_S_WDERR} -value {GND}
@@ -370,14 +309,10 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"AXI_ADDRESS_SHIM_0:AXI4_INITIAT
 sd_connect_pins -sd_name ${sd_name} -pin_names {"AXI_ADDRESS_SHIM_0:AXI4_TARGET" "PCIE:AXI_1_MASTER" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_1_INITIATOR_0:AXI4mslave0" "PCIE:AXI_1_SLAVE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:CLKS_FROM_TXPLL_TO_PCIE_1" "TX_PLL_CLKS" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE0_DRI_SLAVE" "Q0_LANE0_DRI_SLAVE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE1_DRI_SLAVE" "Q0_LANE1_DRI_SLAVE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE2_DRI_SLAVE" "Q0_LANE2_DRI_SLAVE" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PCIE:PCIESS_LANE3_DRI_SLAVE" "Q0_LANE3_DRI_SLAVE" }
 
 # Re-enable auto promotion of pins of type 'pad'
 auto_promote_pad_pins -promote_all 1
-# Save the smartDesign
+# Save the SmartDesign 
 save_smartdesign -sd_name ${sd_name}
-# Generate SmartDesign FIC_1_PERIPHERALS
+# Generate SmartDesign "FIC_1_PERIPHERALS"
 generate_component -component_name ${sd_name}

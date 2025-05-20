@@ -10,18 +10,18 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {APB_MMASTER_in_penable} -p
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APB_MMASTER_in_psel} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APB_MMASTER_in_pwrite} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {CoreUARTapb_RX} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PREADYS16} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PSLVERRS16} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCLK} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {PLL0_SW_DRI_INTERRUPT} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PRESETN} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {Q0_LANE0_DRI_INTERRUPT} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {Q0_LANE1_DRI_INTERRUPT} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {Q0_LANE2_DRI_INTERRUPT} -port_direction {IN}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {Q0_LANE3_DRI_INTERRUPT} -port_direction {IN}
 
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APB_MMASTER_in_pready} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APB_MMASTER_in_pslverr} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {CORE_I2C_C0_INT} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {CoreUARTapb_TX} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PENABLES} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PSELS16} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PWRITES} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {FRAMING_ERR} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {OVERFLOW} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PARITY_ERR} -port_direction {OUT}
@@ -37,8 +37,6 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {IHC_MP_APP_U54_2_IRQ} -por
 sd_create_scalar_port -sd_name ${sd_name} -port_name {IHC_MP_APP_U54_3_IRQ} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {IHC_MP_APP_U54_4_IRQ} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PWM_0} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {Q0_LANE0_DRI_DRI_ARST_N} -port_direction {OUT}
-sd_create_scalar_port -sd_name ${sd_name} -port_name {Q0_LANE0_DRI_DRI_CLK} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPI_ID_I2C_IRQ} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {fabric_sd_emmc_demux_select_out} -port_direction {OUT}
 
@@ -50,63 +48,14 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_ID_SD} -port_direction
 # Create top level Bus Ports
 sd_create_bus_port -sd_name ${sd_name} -port_name {APB_MMASTER_in_paddr} -port_direction {IN} -port_range {[31:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {APB_MMASTER_in_pwdata} -port_direction {IN} -port_range {[31:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PLL0_SW_DRI_RDATA} -port_direction {IN} -port_range {[32:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PSTRB} -port_direction {IN} -port_range {[3:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {Q0_LANE0_DRI_RDATA} -port_direction {IN} -port_range {[32:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {Q0_LANE1_DRI_RDATA} -port_direction {IN} -port_range {[32:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {Q0_LANE2_DRI_RDATA} -port_direction {IN} -port_range {[32:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {Q0_LANE3_DRI_RDATA} -port_direction {IN} -port_range {[32:0]}
+sd_create_bus_port -sd_name ${sd_name} -port_name {FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PRDATAS16} -port_direction {IN} -port_range {[31:0]}
 
 sd_create_bus_port -sd_name ${sd_name} -port_name {APB_MMASTER_in_prdata} -port_direction {OUT} -port_range {[31:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {PLL0_SW_DRI_CTRL} -port_direction {OUT} -port_range {[10:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {Q0_LANE0_DRI_CTRL} -port_direction {OUT} -port_range {[10:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {Q0_LANE0_DRI_DRI_WDATA} -port_direction {OUT} -port_range {[32:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {Q0_LANE1_DRI_CTRL} -port_direction {OUT} -port_range {[10:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {Q0_LANE2_DRI_CTRL} -port_direction {OUT} -port_range {[10:0]}
-sd_create_bus_port -sd_name ${sd_name} -port_name {Q0_LANE3_DRI_CTRL} -port_direction {OUT} -port_range {[10:0]}
+sd_create_bus_port -sd_name ${sd_name} -port_name {FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PADDRS} -port_direction {OUT} -port_range {[31:0]}
+sd_create_bus_port -sd_name ${sd_name} -port_name {FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PWDATAS} -port_direction {OUT} -port_range {[31:0]}
 
 
 # Create top level Bus interface Ports
-sd_create_bif_port -sd_name ${sd_name} -port_name {Q0_LANE0_DRI} -port_bif_vlnv {Actel:busdef.dri:PF_DRI:1.0} -port_bif_role {mirroredSlave} -port_bif_mapping {\
-"DRI_CLK:Q0_LANE0_DRI_DRI_CLK" \
-"DRI_ARST_N:Q0_LANE0_DRI_DRI_ARST_N" \
-"DRI_CTRL:Q0_LANE0_DRI_CTRL" \
-"DRI_RDATA:Q0_LANE0_DRI_RDATA" \
-"DRI_WDATA:Q0_LANE0_DRI_DRI_WDATA" \
-"DRI_INTERRUPT:Q0_LANE0_DRI_INTERRUPT" } 
-
-sd_create_bif_port -sd_name ${sd_name} -port_name {Q0_LANE1_DRI} -port_bif_vlnv {Actel:busdef.dri:PF_DRI:1.0} -port_bif_role {mirroredSlave} -port_bif_mapping {\
-"DRI_CLK:Q0_LANE0_DRI_DRI_CLK" \
-"DRI_ARST_N:Q0_LANE0_DRI_DRI_ARST_N" \
-"DRI_CTRL:Q0_LANE1_DRI_CTRL" \
-"DRI_RDATA:Q0_LANE1_DRI_RDATA" \
-"DRI_WDATA:Q0_LANE0_DRI_DRI_WDATA" \
-"DRI_INTERRUPT:Q0_LANE1_DRI_INTERRUPT" } 
-
-sd_create_bif_port -sd_name ${sd_name} -port_name {Q0_LANE2_DRI} -port_bif_vlnv {Actel:busdef.dri:PF_DRI:1.0} -port_bif_role {mirroredSlave} -port_bif_mapping {\
-"DRI_CLK:Q0_LANE0_DRI_DRI_CLK" \
-"DRI_ARST_N:Q0_LANE0_DRI_DRI_ARST_N" \
-"DRI_CTRL:Q0_LANE2_DRI_CTRL" \
-"DRI_RDATA:Q0_LANE2_DRI_RDATA" \
-"DRI_WDATA:Q0_LANE0_DRI_DRI_WDATA" \
-"DRI_INTERRUPT:Q0_LANE2_DRI_INTERRUPT" } 
-
-sd_create_bif_port -sd_name ${sd_name} -port_name {Q0_LANE3_DRI} -port_bif_vlnv {Actel:busdef.dri:PF_DRI:1.0} -port_bif_role {mirroredSlave} -port_bif_mapping {\
-"DRI_CLK:Q0_LANE0_DRI_DRI_CLK" \
-"DRI_ARST_N:Q0_LANE0_DRI_DRI_ARST_N" \
-"DRI_CTRL:Q0_LANE3_DRI_CTRL" \
-"DRI_RDATA:Q0_LANE3_DRI_RDATA" \
-"DRI_WDATA:Q0_LANE0_DRI_DRI_WDATA" \
-"DRI_INTERRUPT:Q0_LANE3_DRI_INTERRUPT" } 
-
-sd_create_bif_port -sd_name ${sd_name} -port_name {PLL0_SW_DRI} -port_bif_vlnv {Actel:busdef.dri:PF_DRI:1.0} -port_bif_role {mirroredSlave} -port_bif_mapping {\
-"DRI_CLK:Q0_LANE0_DRI_DRI_CLK" \
-"DRI_ARST_N:Q0_LANE0_DRI_DRI_ARST_N" \
-"DRI_CTRL:PLL0_SW_DRI_CTRL" \
-"DRI_RDATA:PLL0_SW_DRI_RDATA" \
-"DRI_WDATA:Q0_LANE0_DRI_DRI_WDATA" \
-"DRI_INTERRUPT:PLL0_SW_DRI_INTERRUPT" } 
-
 sd_create_bif_port -sd_name ${sd_name} -port_name {APB_MMASTER} -port_bif_vlnv {AMBA:AMBA2:APB:r0p0} -port_bif_role {mirroredMaster} -port_bif_mapping {\
 "PADDR:APB_MMASTER_in_paddr" \
 "PSELx:APB_MMASTER_in_psel" \
@@ -116,6 +65,16 @@ sd_create_bif_port -sd_name ${sd_name} -port_name {APB_MMASTER} -port_bif_vlnv {
 "PWDATA:APB_MMASTER_in_pwdata" \
 "PREADY:APB_MMASTER_in_pready" \
 "PSLVERR:APB_MMASTER_in_pslverr" } 
+
+sd_create_bif_port -sd_name ${sd_name} -port_name {FIC_3_0x43xx_xxxx_0x48xx_xxxx} -port_bif_vlnv {AMBA:AMBA2:APB:r0p0} -port_bif_role {mirroredSlave} -port_bif_mapping {\
+"PADDR:FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PADDRS" \
+"PSELx:FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PSELS16" \
+"PENABLE:FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PENABLES" \
+"PWRITE:FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PWRITES" \
+"PRDATA:FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PRDATAS16" \
+"PWDATA:FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PWDATAS" \
+"PREADY:FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PREADYS16" \
+"PSLVERR:FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PSLVERRS16" } 
 
 # Add CORE_I2C_C0_0_WRAPPER_1 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {CORE_I2C_C0_0_WRAPPER} -instance_name {CORE_I2C_C0_0_WRAPPER_1}
@@ -159,14 +118,6 @@ sd_create_pin_slices -sd_name ${sd_name} -pin_name {PWM:PWM} -pin_slices {[0:0]}
 
 
 
-# Add RECONFIGURATION_INTERFACE_0 instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {RECONFIGURATION_INTERFACE} -instance_name {RECONFIGURATION_INTERFACE_0}
-sd_mark_pins_unused -sd_name ${sd_name} -pin_names {RECONFIGURATION_INTERFACE_0:PINTERRUPT}
-sd_mark_pins_unused -sd_name ${sd_name} -pin_names {RECONFIGURATION_INTERFACE_0:PTIMEOUT}
-sd_mark_pins_unused -sd_name ${sd_name} -pin_names {RECONFIGURATION_INTERFACE_0:BUSERROR}
-
-
-
 # Add RPi_ID_I2C instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {CORE_I2C_C0_0_WRAPPER} -instance_name {RPi_ID_I2C}
 
@@ -177,18 +128,18 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[0:0]" "GPI
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[1:1]" "GPIO_OUT_1" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[2:2]" "GPIO_OUT_2" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:GPIO_OUT[3:3]" "GPIO_OUT_3" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:PCLK" "CORE_I2C_C0_0_WRAPPER_1:PCLK" "CoreUARTapb_C0_0:PCLK" "MIV_IHC_C0_0:APB_0_PCLK" "MIV_IHC_C0_0:CORE_CLK" "PCLK" "PWM:PCLK" "RECONFIGURATION_INTERFACE_0:PCLK" "RPi_ID_I2C:PCLK" "fabric_sd_emmc_demux_select_0:pclk" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:PRESETN" "CORE_I2C_C0_0_WRAPPER_1:PRESETN" "CoreUARTapb_C0_0:PRESETN" "MIV_IHC_C0_0:APB_0_PRESETN" "MIV_IHC_C0_0:CORE_RESETN" "PRESETN" "PWM:PRESETN" "RECONFIGURATION_INTERFACE_0:PRESETN" "RPi_ID_I2C:PRESETN" "fabric_sd_emmc_demux_select_0:presetn" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:PCLK" "CORE_I2C_C0_0_WRAPPER_1:PCLK" "CoreUARTapb_C0_0:PCLK" "MIV_IHC_C0_0:APB_0_PCLK" "MIV_IHC_C0_0:CORE_CLK" "PCLK" "PWM:PCLK" "RPi_ID_I2C:PCLK" "fabric_sd_emmc_demux_select_0:pclk" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:PRESETN" "CORE_I2C_C0_0_WRAPPER_1:PRESETN" "CoreUARTapb_C0_0:PRESETN" "MIV_IHC_C0_0:APB_0_PRESETN" "MIV_IHC_C0_0:CORE_RESETN" "PRESETN" "PWM:PRESETN" "RPi_ID_I2C:PRESETN" "fabric_sd_emmc_demux_select_0:presetn" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_SCL" "CORE_I2C_C0_0_WRAPPER_1:COREI2C_C0_SCL" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREI2C_C0_SDA" "CORE_I2C_C0_0_WRAPPER_1:COREI2C_C0_SDA" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CORE_I2C_C0_0_WRAPPER_1:INT" "CORE_I2C_C0_INT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:FRAMING_ERR" "FRAMING_ERR" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:OVERFLOW" "OVERFLOW" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:PARITY_ERR" "PARITY_ERR" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:RXRDY" "RXRDY" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:TXRDY" "TXRDY" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:RX" "CoreUARTapb_RX" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:RXRDY" "RXRDY" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:TX" "CoreUARTapb_TX" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:TXRDY" "TXRDY" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_MP_APP_E51_IRQ" "MIV_IHC_C0_0:APP_IRQ_H0" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_MP_APP_U54_1_IRQ" "MIV_IHC_C0_0:APP_IRQ_H1" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"IHC_MP_APP_U54_2_IRQ" "MIV_IHC_C0_0:APP_IRQ_H2" }
@@ -200,24 +151,17 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"RPi_ID_I2C:COREI2C_C0_SCL" "RPi
 sd_connect_pins -sd_name ${sd_name} -pin_names {"RPi_ID_I2C:COREI2C_C0_SDA" "RPi_ID_SC" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"fabric_sd_emmc_demux_select_0:fabric_sd_emmc_demux_select_out" "fabric_sd_emmc_demux_select_out" }
 
-# Add bus net connections
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PSTRB" "RECONFIGURATION_INTERFACE_0:PSTRB" }
 
 # Add bus interface net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"APB_MMASTER" "FIC_3_ADDRESS_GENERATION_1:APB_MMASTER" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"COREGPIO_C0:APB_bif" "FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_01xx" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CORE_I2C_C0_0_WRAPPER_1:APBslave" "FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_02xx" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:APB_bif" "FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_03xx" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_0x43xx_xxxx_0x48xx_xxxx" "FIC_3_ADDRESS_GENERATION_1:FIC_3_0x43xx_xxxx_0x48xx_xxxx" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_00xx" "PWM:APBslave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_04xx" "RPi_ID_I2C:APBslave" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x43xx_xxxx_0x48xx_xxxx" "RECONFIGURATION_INTERFACE_0:APBS_SLAVE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4FFF_FFxx" "fabric_sd_emmc_demux_select_0:APBslave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x5xxx_xxxx" "MIV_IHC_C0_0:APB_0_M_INITIATOR" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"PLL0_SW_DRI" "RECONFIGURATION_INTERFACE_0:PLL0_SW_DRI" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"Q0_LANE0_DRI" "RECONFIGURATION_INTERFACE_0:Q0_LANE0_DRI" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"Q0_LANE1_DRI" "RECONFIGURATION_INTERFACE_0:Q0_LANE1_DRI" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"Q0_LANE2_DRI" "RECONFIGURATION_INTERFACE_0:Q0_LANE2_DRI" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"Q0_LANE3_DRI" "RECONFIGURATION_INTERFACE_0:Q0_LANE3_DRI" }
 
 # Re-enable auto promotion of pins of type 'pad'
 auto_promote_pad_pins -promote_all 1

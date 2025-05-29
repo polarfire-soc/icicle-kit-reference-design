@@ -1,3 +1,33 @@
+delete_component -component_name {FIC_3_ADDRESS_GENERATION} 
+
+# Add updated FIC_3_ADDRESS_GENERATION instance
+delete_component -component_name {FIC_3_0x4xxx_xxxx} 
+source ./script_support/additional_configurations/DRI_CCC_DEMO/DRI_FIC_3_0x4xxx_xxxx.tcl
+
+source ./script_support/additional_configurations/DRI_CCC_DEMO/DRI_FIC_3_ADDRESS_GENERATION.tcl
+#sd_update_instance -sd_name {FIC_3_PERIPHERALS} -instance_name {FIC_3_ADDRESS_GENERATION_1} 
+sd_replace_component -sd_name {FIC_3_PERIPHERALS} -instance_name {FIC_3_ADDRESS_GENERATION_1} -new_component_name {FIC_3_ADDRESS_GENERATION} -replace_all_instances 1 
+#set sd_name {FIC_3_PERIPHERALS}
+
+source ./script_support/additional_configurations/DRI_CCC_DEMO/RECONFIGURATION_INTERFACE.tcl
+
+sd_instantiate_component -sd_name {FIC_3_PERIPHERALS} -component_name {RECONFIGURATION_INTERFACE} -instance_name {} 
+sd_connect_pins -sd_name {FIC_3_PERIPHERALS} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4100_xxxx_0x41FF_xxxx" "RECONFIGURATION_INTERFACE_0:APBS_SLAVE"}
+sd_connect_pin_to_port -sd_name {FIC_3_PERIPHERALS} -pin_name {RECONFIGURATION_INTERFACE_0:PLL0_SW_DRI} -port_name {} 
+sd_connect_pins -sd_name {FIC_3_PERIPHERALS} -pin_names {"PCLK" "RECONFIGURATION_INTERFACE_0:PCLK"} 
+sd_connect_pins -sd_name {FIC_3_PERIPHERALS} -pin_names {"PRESETN" "RECONFIGURATION_INTERFACE_0:PRESETN"} 
+sd_connect_pin_to_port -sd_name {FIC_3_PERIPHERALS} -pin_name {RECONFIGURATION_INTERFACE_0:PINTERRUPT} -port_name {} 
+sd_connect_pin_to_port -sd_name {FIC_3_PERIPHERALS} -pin_name {RECONFIGURATION_INTERFACE_0:PTIMEOUT} -port_name {} 
+sd_connect_pin_to_port -sd_name {FIC_3_PERIPHERALS} -pin_name {RECONFIGURATION_INTERFACE_0:BUSERROR} -port_name {} 
+sd_create_bus_port -sd_name {FIC_3_PERIPHERALS} -port_name {PSTRB} -port_direction {IN} -port_range {[3:0]}
+sd_connect_pins -sd_name {FIC_3_PERIPHERALS} -pin_names {"PSTRB" "RECONFIGURATION_INTERFACE_0:PSTRB" }
+generate_component -component_name {FIC_3_PERIPHERALS} -recursive 1
+
+open_smartdesign -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} 
+build_design_hierarchy 
+sd_update_instance -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -instance_name {FIC_3_PERIPHERALS_1} 
+sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"FIC_3_PERIPHERALS_1:PSTRB" "MSS_WRAPPER_1:FIC_3_APB_M_PSTRB" }
+
 # Update CLOCKS_AND_RESETS to add in the additional CCC and export pins
 
 set sd_name {CLOCKS_AND_RESETS}

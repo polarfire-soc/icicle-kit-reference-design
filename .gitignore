@@ -1,5 +1,5 @@
 MPFS_ICICLE*/
-soc/
+soc*/
 script_support/additional_configurations/smarthls/**/hls_output
 script_support/additional_configurations/smarthls/**/component
 script_support/Unsupported_Cores_List.txt

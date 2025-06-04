@@ -60,6 +60,14 @@ if { ![file exists "$bash_path"] } {
 set ::env(LEGUP_ROOT_DIR) [file dirname $shls_path]/..
 
 #
+# Calling SmartHLS to setup the environment.
+#
+puts "Running shls (cleaning-step)..."
+set fid_pre [open "| $bash_path --login -c \"cd $hlsModuleDir ; $shls_path clean \"" r]
+while {[gets $fid_pre line] != -1} { puts $line }
+close $fid_pre
+
+#
 # Call SmartHLS.
 #
 # - The "soc_sw_compile_accel" target will generate and compile not just 

@@ -1,4 +1,4 @@
-NAME = invert_and_threshold
+#NAME = invert_and_threshold
 
 #-------------------------------------------------
 # Select the souce
@@ -21,7 +21,7 @@ LOCAL_CONFIG = -legup-config=config.tcl
 # Additional compilation settings
 #-------------------------------------------------
 # To include the bmp.h header
-USER_CXX_FLAG = -I./
+USER_CXX_FLAG += -I./
 
 #-------------------------------------------------
 # Runtime settings

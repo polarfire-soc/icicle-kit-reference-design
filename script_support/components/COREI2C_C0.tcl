@@ -2,7 +2,7 @@
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
 # Create and Configure the core component COREI2C_C0
-create_and_configure_core -core_vlnv {Actel:DirectCore:COREI2C:7.2.101} -component_name {COREI2C_C0} -params {\
+create_and_configure_core -download_core -core_vlnv {Actel:DirectCore:COREI2C:*} -component_name {COREI2C_C0} -params {\
 "ADD_SLAVE1_ADDRESS_EN:false"  \
 "BAUD_RATE_FIXED:false"  \
 "BAUD_RATE_VALUE:0"  \

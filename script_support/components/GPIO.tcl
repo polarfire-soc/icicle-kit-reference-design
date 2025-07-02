@@ -2,7 +2,7 @@
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
 # Create and Configure the core component GPIO
-create_and_configure_core -core_vlnv {Actel:DirectCore:CoreGPIO:3.2.102} -component_name {GPIO} -params {\
+create_and_configure_core -download_core -core_vlnv {Actel:DirectCore:CoreGPIO:*} -component_name {GPIO} -params {\
 "APB_WIDTH:32"  \
 "FIXED_CONFIG_0:true"  \
 "FIXED_CONFIG_1:true"  \

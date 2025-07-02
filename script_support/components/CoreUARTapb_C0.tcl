@@ -2,7 +2,7 @@
 # Family: PolarFireSoC
 # Part Number: MPFS250T_ES-FCVG484E
 # Create and Configure the core component CoreUARTapb_C0
-create_and_configure_core -core_vlnv {Actel:DirectCore:CoreUARTapb:5.7.100} -component_name {CoreUARTapb_C0} -params {\
+create_and_configure_core -download_core -core_vlnv {Actel:DirectCore:CoreUARTapb:*} -component_name {CoreUARTapb_C0} -params {\
 "BAUD_VAL_FRCTN:0"  \
 "BAUD_VAL_FRCTN_EN:false"  \
 "BAUD_VALUE:1"  \

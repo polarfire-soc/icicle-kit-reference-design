@@ -48,6 +48,13 @@ set mss_config_loc "$install_loc/bin64/pfsoc_mss"
 set local_dir [pwd]
 set constraint_path ./script_support/constraints
 
+if {[info exists DESIGN_VERSION]} {
+    set design_version "$DESIGN_VERSION"
+} else {
+    set design_version "0"
+}
+puts "DESIGN_VERSION: $design_version"
+
 if {[info exists I2C_LOOPBACK]} {
     set project_name "MPFS_ICICLE_I2C_LOOPBACK"
     set project_dir "$local_dir/MPFS_ICICLE_I2C_LOOPBACK"
@@ -399,6 +406,12 @@ if {[info exists SMARTHLS]} {
 
 build_design_hierarchy
 derive_constraints_sdc 
+
+configure_tool \
+         -name {CONFIGURE_PROG_OPTIONS} \
+         -params {back_level_version:0} \
+         -params design_version:$design_version \
+         -params silicon_signature:1C1C1E
 
 #
 # // Run the design flow and add eNVM clients if required

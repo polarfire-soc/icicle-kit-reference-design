@@ -102,6 +102,17 @@ puts "DIE: $die"
 puts "Project name: $project_name"
 puts "Project directory: $project_dir"
 
+
+if {[info exists SILICON_SIGNATURE]} {
+    set silicon_signature "$SILICON_SIGNATURE"
+} elseif { $die == "MPFS250T_ES" } {
+    set silicon_signature "1c1c1ee5"
+} elseif { $die == "MPFS250T" } {
+    set silicon_signature "1c1c1e"
+}
+puts "SILICON_SIGNATURE: $silicon_signature"
+
+
 if {[info exists MSS_LINUX]} {
 
 } elseif {[info exists MSS_BAREMETAL]} {
@@ -411,7 +422,7 @@ configure_tool \
          -name {CONFIGURE_PROG_OPTIONS} \
          -params {back_level_version:0} \
          -params design_version:$design_version \
-         -params silicon_signature:1C1C1E
+         -params silicon_signature:$silicon_signature
 
 #
 # // Run the design flow and add eNVM clients if required

@@ -182,7 +182,7 @@ The Icicle Kit has 2GB of LPDDR4 on board and the PolarFire SoC MSS Configurator
 | MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | RPi_ID_I2C                  | N/A                     | J26 (Raspberry Pi connector) | 0x4000_0400 -> 0x4000_04FF       |
 | MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | RECONFIGURATION_INTERFACE   | N/A                     | N/A                          | 0x4300_0000 -> 0x43FF_FFFF       |
 | MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | RECONFIGURATION_INTERFACE   | N/A                     | N/A                          | 0x4800_0000 -> 0x48FF_FFFF       |
-| MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | fabric_sd_emmc_demux_select | U29 & U44 (SDIO de-mux) | N/A                          | 0x4FFF_FF00 -> 0x4FFF_FFFF       |
+| MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | fabric_sd_emmc_demux_select | U29 & U44 (SDIO de-mux) | N/A                          | 0x4F00_0000 -> 0x4FFF_FFFF       |
 | MSS: FIC3      | FIC_3_ADDRESS_GENERATION | MIV_IHC      | N/A                     | N/A                          | 0x5000_0000 -> 0x500F_FFFF       |
 | PF_PCIE_C0_0   | PCIE_INITIATOR             | MSS: FIC1                   | N/A                     | N/A                          | 0x10_0000_0000 -> 0x10_FFFF_FFFF |
 | DMA_CONTROLLER | DMA_INITIATOR              | MSS: FIC0                   | N/A                     | N/A                          | 0x0000_0000 -> 0xFFFF_FFFF       |

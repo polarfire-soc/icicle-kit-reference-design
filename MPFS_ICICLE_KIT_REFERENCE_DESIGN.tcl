@@ -75,6 +75,9 @@ if {[info exists I2C_LOOPBACK]} {
 } elseif {[info exists BFM_SIMULATION]} {
     set project_name "MPFS_ICICLE_BFM_SIMULATION"
     set project_dir "$local_dir/MPFS_ICICLE_BFM_SIMULATION"
+} elseif {[info exists MSS_BAREMETAL]} {
+    set project_name "MPFS_ICICLE_MSS_BAREMETAL"
+    set project_dir "$local_dir/MPFS_ICICLE_MSS_BAREMETAL"
 } else {
     set project_name "MPFS_ICICLE"
     set project_dir "$local_dir/MPFS_ICICLE"

@@ -80,11 +80,9 @@ if {[info exists I2C_LOOPBACK]} {
     set project_dir "$local_dir/MPFS_ICICLE"
 }
 
-# ES for Engineering Silicon, PS for Production Silicon
+# ES for Engineering Silicon
 if {[info exists MPFS250T]} {
     set die "MPFS250T"
-    set project_name "${project_name}_PS"
-    set project_dir "${project_dir}_PS"
 } else {
     set die "MPFS250T_ES"
     set project_name "${project_name}_ES"
@@ -92,6 +90,7 @@ if {[info exists MPFS250T]} {
 }
 puts "DIE: $die"
 puts "Project name: $project_name"
+puts "Project directory: $project_dir"
 puts "Project directory: $project_dir"
 
 if {[info exists MSS_LINUX]} {
@@ -188,13 +187,13 @@ if { [file exists $project_dir/$project_name.prjx] } {
 
     if {[info exists MSS_LINUX]} {
         if { $die == "MPFS250T" } {
-            exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/mss_cfg_files/$die/MPFS_ICICLE_MSS_linux_PS.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
+            exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/mss_cfg_files/$die/MPFS_ICICLE_MSS_linux.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
         } else {
             exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/mss_cfg_files/$die/MPFS_ICICLE_MSS_linux_ES.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
         }
     } else {
         if { $die == "MPFS250T" } {
-            exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/mss_cfg_files/$die/MPFS_ICICLE_MSS_baremetal_PS.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
+            exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/mss_cfg_files/$die/MPFS_ICICLE_MSS_baremetal.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
         } else {
             exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/mss_cfg_files/$die/MPFS_ICICLE_MSS_baremetal_ES.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
         }

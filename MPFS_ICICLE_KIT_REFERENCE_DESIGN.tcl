@@ -94,7 +94,6 @@ if {[info exists MPFS250T]} {
 puts "DIE: $die"
 puts "Project name: $project_name"
 puts "Project directory: $project_dir"
-puts "Project directory: $project_dir"
 
 if {[info exists MSS_LINUX]} {
 

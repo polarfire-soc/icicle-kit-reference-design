@@ -27,6 +27,7 @@
     - [Boot mode 1](#boot-mode-1)
       - [Boot mode 1: SoftConsole](#boot-mode-1-softconsole)
       - [Boot mode 1: Libero SoC](#boot-mode-1-libero-soc)
+  - [Known Issues and Limitations](#known-issues-and-limitations)
 
 <a name="description"></a>
 ## Description
@@ -74,6 +75,7 @@ Some bare metal examples and tutorials require a specific fabric configuration w
 | MICRON_QSPI    | This argument can be used to re-route the MSS QSPI pins to be used with a Micron QSPI flash device on the Raspberry Pi interface, the default configuration supports a Winbond QSPI device on a Flash5 Click Board using a PI3 Click Shield adapter. This has been tested using a Pmod SF3 Board and a Pmod HAT Adapter on the RPi interface. The QSPI device should be connected to JA of the adapter board.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | VECTORBLOX     | This argument will add the Vectorblox CNN to the FPGA fabric and connect it to the FIC 0 domain for control register access and FIC 2 for data transfers from the CNN. Note: a special add on Libero license may be required to use the Vectorblox CNN, for more information check the [product page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/vectorblox) and the [Vectorblox GitHub](https://github.com/Microchip-Vectorblox).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | MPFS250T   | This argument will add the MPFS250T die to the project as opposed to the MPFS250T_ES which is added by default.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+
 Arguments in the table above can only be used exclusively - i.e you cannot pass "I2C_LOOPBACK" and "BFM_SIMULATION" as arguments.
 
 The MSS_BAREMETAL argument is an exception to this rule and can be passed with other arguments.
@@ -319,6 +321,19 @@ To set the PolarFire SoC boot mode to 1 and program and eNVM client in Libero:
 4. Navigate to the binary file to be used as a client and select ok
 5. Save and add the client
 6. Run the remainder of the Libero SoC design flow and program the device
+
+<a name="known-issues-and-limitations"></a>
+#### Known issues and limitations
+
+*Note for Ubuntu users:*
+To fix certificate issues with a Libero installation, it may be necessary to run the following commands:
+
+```bash
+sudo mkdir -p /etc/pki/tls/certs/
+sudo ln -s /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
+```
+
+More info is detailed in the [Libero SoC Design Suite Release Notes](https://onlinedocs.microchip.com/oxy/GUID-D6BA99C6-E1C8-44EB-9669-702FBBAA3897-en-US-18/GUID-3BBCD8D7-FA67-4AFA-981E-893D9FD54B51.html#GUID-3BBCD8D7-FA67-4AFA-981E-893D9FD54B51).
 
 Linux® is the registered trademark of Linus Torvalds in the U.S. and other countries.
 Raspberry Pi is a trademark of the Raspberry Pi Foundation.

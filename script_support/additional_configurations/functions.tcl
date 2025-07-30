@@ -1,3 +1,42 @@
+proc getHlsPaths { } {
+    set install_loc [defvar_get -name ACTEL_SW_DIR]
+    set OS [lindex $::tcl_platform(os) 0]
+    set liberoRelease [string trim [string range [get_libero_release] 0 end] "*v" ]
+
+    # set base_path ""
+    if {![info exists shls_path]} {catch {set shls_path [exec which shls]}}
+
+    if {[info exists shls_path]} {
+        set base_path [string trimright $shls_path bin/shls]
+    } else {
+        global shls_path
+        if { $OS == "Linux" } {
+            set base_path [string cat [string trimright $install_loc Libero]/SmartHLS {/SmartHLS}]
+            set ::env(PATH) [string cat $::env(PATH) ":" $base_path {/bin}]
+            set shls_path [string cat $base_path {/bin/shls}]
+        } else {
+            set base_path [string cat [string trimright $install_loc Designer]../SmartHLS {/SmartHLS}]
+            set base_path [file normalize $base_path]
+            set drive [string range $install_loc 0 0]
+            set shls_path "$base_path/bin/shls.bat"
+            set shls_path [file normalize $shls_path]
+            set ::env(PATH) [string cat $::env(PATH) ";" $base_path {bin}]
+        }
+    }
+    puts "base_path: $base_path"
+    puts "shls_path: $shls_path"
+
+    if {![file exists "$shls_path"]} {
+        puts stderr "Error: Cannot find SmartHLS (shls)."
+        puts stderr "Please specify a full path to SmartHLS (shls file) using \"shls_path\" parameter in the \"script_args\"."
+        puts stderr "For example: script_args:shls_path:C:/Microchip/SmartHLS-20XX.Y.Z/SmartHLS/bin/shls"
+        exit 1
+    }
+
+    #return the list of paths
+    set pathList [list $base_path $shls_path]
+}
+
 proc create_config {current_config updated_config} {
     set def_config [open $current_config]
     set def_config_data [read $def_config]

@@ -325,7 +325,7 @@ To set the PolarFire SoC boot mode to 1 and program and eNVM client in Libero:
 <a name="known-issues-and-limitations"></a>
 #### Known issues and limitations
 
-*Note for Ubuntu users:*
+1. *Note for Ubuntu users:*
 To fix certificate issues with a Libero installation, it may be necessary to run the following commands:
 
 ```bash
@@ -334,6 +334,8 @@ sudo ln -s /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
 ```
 
 More info is detailed in the [Libero SoC Design Suite Release Notes](https://onlinedocs.microchip.com/oxy/GUID-D6BA99C6-E1C8-44EB-9669-702FBBAA3897-en-US-18/GUID-3BBCD8D7-FA67-4AFA-981E-893D9FD54B51.html#GUID-3BBCD8D7-FA67-4AFA-981E-893D9FD54B51).
+
+2. Please note the [Memory Map Generation DRC](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-16/GUID-71A40FE9-5444-4D55-8C40-D01D9205C0B5.html?hl=memory%2Cmap%2Cdrc) feature is downgraded in this reference design.
 
 Linux® is the registered trademark of Linus Torvalds in the U.S. and other countries.
 Raspberry Pi is a trademark of the Raspberry Pi Foundation.

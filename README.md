@@ -182,6 +182,7 @@ The Icicle Kit has 2GB of LPDDR4 on board and the PolarFire SoC MSS Configurator
 | MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | CoreI2C                     | N/A                     | J26 (Raspberry Pi connector) | 0x4000_0200 -> 0x4000_02FF       |
 | MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | CoreUART                    | N/A                     | J26 (Raspberry Pi connector) | 0x4000_0300 -> 0x4000_03FF       |
 | MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | RPi_ID_I2C                  | N/A                     | J26 (Raspberry Pi connector) | 0x4000_0400 -> 0x4000_04FF       |
+| MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | MSS_reset_counter           | N/A                     | SW4 & J19                    | 0x4000_0500 -> 0x4000_05FF       |
 | MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | RECONFIGURATION_INTERFACE   | N/A                     | N/A                          | 0x4300_0000 -> 0x43FF_FFFF       |
 | MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | RECONFIGURATION_INTERFACE   | N/A                     | N/A                          | 0x4800_0000 -> 0x48FF_FFFF       |
 | MSS: FIC3      | FIC_3_ADDRESS_GENERATION   | fabric_sd_emmc_demux_select | U29 & U44 (SDIO de-mux) | N/A                          | 0x4F00_0000 -> 0x4FFF_FFFF       |

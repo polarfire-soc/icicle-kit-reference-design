@@ -14,6 +14,8 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {FIC_3_0x43xx_xxxx_0x48xx_x
 sd_create_scalar_port -sd_name ${sd_name} -port_name {FIC_3_0x43xx_xxxx_0x48xx_xxxx_APBmslave16_PSLVERRS16} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PCLK} -port_direction {IN}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {PRESETN} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {MSS_RESET_N} -port_direction {IN}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {POR_RESET_N} -port_direction {IN}
 
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APB_MMASTER_in_pready} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {APB_MMASTER_in_pslverr} -port_direction {OUT}
@@ -121,6 +123,8 @@ sd_create_pin_slices -sd_name ${sd_name} -pin_name {PWM:PWM} -pin_slices {[0:0]}
 # Add RPi_ID_I2C instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {CORE_I2C_C0_0_WRAPPER} -instance_name {RPi_ID_I2C}
 
+# Add MSS reset counter instance
+sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {MSS_reset_counter} -instance_name {MSS_reset_counter_0}
 
 
 # Add scalar net connections
@@ -150,6 +154,10 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"RPI_ID_I2C_IRQ" "RPi_ID_I2C:INT
 sd_connect_pins -sd_name ${sd_name} -pin_names {"RPi_ID_I2C:COREI2C_C0_SCL" "RPi_ID_SD" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"RPi_ID_I2C:COREI2C_C0_SDA" "RPi_ID_SC" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"fabric_sd_emmc_demux_select_0:fabric_sd_emmc_demux_select_out" "fabric_sd_emmc_demux_select_out" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PCLK" "MSS_reset_counter_0:pclk"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"PRESETN" "MSS_reset_counter_0:presetn"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_RESET_N" "MSS_reset_counter_0:mss_resetn"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"POR_RESET_N" "MSS_reset_counter_0:por_resetn"}
 
 
 # Add bus interface net connections
@@ -160,6 +168,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"CoreUARTapb_C0_0:APB_bif" "FIC_
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_0x43xx_xxxx_0x48xx_xxxx" "FIC_3_ADDRESS_GENERATION_1:FIC_3_0x43xx_xxxx_0x48xx_xxxx" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_00xx" "PWM:APBslave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_04xx" "RPi_ID_I2C:APBslave" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4000_05xx" "MSS_reset_counter_0:APBslave"}
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x4FFF_FFxx" "fabric_sd_emmc_demux_select_0:APBslave" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_3_ADDRESS_GENERATION_1:FIC_3_0x5xxx_xxxx" "MIV_IHC_C0_0:APB_0_M_INITIATOR" }
 

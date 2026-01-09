@@ -26,6 +26,7 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {RESETN_FIC2_CLK} -port_dir
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RESETN_FIC_0_CLK} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RESETN_FIC_1_CLK} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RESETN_FIC_3_CLK} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {FABRIC_POR_N} -port_direction {OUT}
 
 
 
@@ -168,6 +169,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"RESETN_FIC2_CLK" "RESET_FIC_2_C
 sd_connect_pins -sd_name ${sd_name} -pin_names {"RESETN_FIC_0_CLK" "RESET_FIC_0_CLK:FABRIC_RESET_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"RESETN_FIC_1_CLK" "RESET_FIC_1_CLK:FABRIC_RESET_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"RESETN_FIC_3_CLK" "RESET_FIC_3_CLK:FABRIC_RESET_N" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"FABRIC_POR_N" "INIT_MONITOR_0:FABRIC_POR_N"}
 
 
 # Add bus interface net connections

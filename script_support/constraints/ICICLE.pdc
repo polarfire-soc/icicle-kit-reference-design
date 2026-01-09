@@ -21,6 +21,8 @@ set_io -port_name SW3 \
 set_io -port_name SW4 \
     -pin_name W18 \
     -fixed true \
+    -RES_PULL Up \
+    -SCHMITT_TRIGGER ON \
     -DIRECTION INPUT
 
 set_io -port_name LED0 \

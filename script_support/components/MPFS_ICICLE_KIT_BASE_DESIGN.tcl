@@ -239,6 +239,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"CK" "MSS_WRAPPER_1:CK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CKE" "MSS_WRAPPER_1:CKE" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CK_N" "MSS_WRAPPER_1:CK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:EXT_RST_N" "MSS_WRAPPER_1:MSS_RESET_N_M2F" "USB_ULPI_RESET" "VSC_8662_RESETN" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:FABRIC_POR_N" "FIC_3_PERIPHERALS_1:POR_RESET_N"}
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:FIC_0_CLK" "FIC_0_PERIPHERALS_1:ACLK" "MSS_WRAPPER_1:FIC_0_ACLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:FIC_1_CLK" "FIC_1_PERIPHERALS_1:ACLK" "MSS_WRAPPER_1:FIC_1_ACLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:FIC_2_CLK" "MSS_WRAPPER_1:FIC_2_ACLK" }
@@ -328,7 +329,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:MMUART_4_RXD_F2M"
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:MMUART_4_TXD_M2F" "mBUS_UART_TX" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:MSS_INT_F2M_0" "SW1_OR_GPIO_2_28:Y" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:MSS_INT_F2M_3" "mBUS_INT" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:MSS_RESET_N_F2M" "SW4" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:MSS_RESET_N_F2M" "SW4" "FIC_3_PERIPHERALS_1:MSS_RESET_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:ODT" "ODT" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:QSPI_CLK" "QSPI_CLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:QSPI_DATA_0" "QSPI_DATA_0" }

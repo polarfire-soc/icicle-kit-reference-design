@@ -9,6 +9,7 @@ source components/AXI_ADDRESS_SHIM.tcl
 source components/APB_ARBITER.tcl 
 source components/APB_PASS_THROUGH.tcl 
 source components/fabric_sd_emmc_demux_select.tcl 
+source components/mss_reset_counter.tcl
 build_design_hierarchy
 
 #Sourcing the Tcl files for creating individual components under the top level

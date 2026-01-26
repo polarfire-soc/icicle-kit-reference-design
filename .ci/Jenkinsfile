@@ -1,2 +1,2 @@
-@Library('dev-shared-library') _
-pipelineReferenceDesign()
+@Library('feat-libero-build') _
+pipelineLiberoReferenceDesign()

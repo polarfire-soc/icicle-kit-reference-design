@@ -1,8 +1,8 @@
-# PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2025.1+
+# PolarFire&reg; SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero&reg; SoC v2025.2+
 
 ## Table of Contents
 
-- [PolarFire® SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero® SoC v2025.1+](#polarfire-soc-icicle-kit-reference-design-generation-tcl-scripts---libero-soc-v20251)
+- [PolarFire® SoC Icicle Kit Reference Design Generation Tcl Scripts - Libero® SoC v2025.2+](#polarfire-soc-icicle-kit-reference-design-generation-tcl-scripts---libero-soc-v20252)
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
   - [Using the reference design generation Tcl script](#using-the-reference-design-generation-tcl-script)
@@ -36,7 +36,7 @@ This repository can be used to generate a reference design for the PolarFire SoC
 
 A Libero SoC Tcl script is provided to generate the reference design using Libero SoC along with device specific I/O constraints. For Tcl scripts supporting previous versions of Libero SoC see [Releases](https://mi-v-ecosystem.github.io/redirects/releases-icicle-kit-reference-design).
 
-This repository supports Libero SoC v2025.1 and above, which is available for download [here](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions#Documents%20and%20Downloads). The release notes will note the version(s) of Libero that these scripts have been tested on.
+This repository supports Libero SoC v2025.2 and above, which is available for download [here](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions#Documents%20and%20Downloads). The release notes will note the version(s) of Libero that these scripts have been tested on.
 
 <a name="using-the-reference-design-generation-tcl-script"></a>
 ## Using the reference design generation Tcl script
@@ -261,7 +261,7 @@ This software tool takes user inputs and generates an MSS configuration file (.x
 The XML file is used by the PolarFire SoC Configuration Generator to generate configuration header files for bare metal applications.
 The MSS component file can be imported into a Libero SoC design and used in the FPGA design flow.
 
-A saved configuration for the PolarFire SoC MSS Configurator is available in the "script_support/mss_cfg_files/[die selected]" folder and can be opened by the PolarFire SoC MSS Configurator. These configurations will match the MSS configuration used in the design and can be used to regenerate XML and a Libero component. These .cfg files were generated using the 2025.1 version of the PolarFireSoC MSS Configurator. For argument based designs, MSS configuration files will be generated in the script_support/additional_configurations/[configuration name] directory when a design is generated.
+A saved configuration for the PolarFire SoC MSS Configurator is available in the "script_support/mss_cfg_files/[die selected]" folder and can be opened by the PolarFire SoC MSS Configurator. These configurations will match the MSS configuration used in the design and can be used to regenerate XML and a Libero component. These .cfg files were generated using the 2025.2 version of the PolarFireSoC MSS Configurator. For argument based designs, MSS configuration files will be generated in the script_support/additional_configurations/[configuration name] directory when a design is generated.
 
 <a name="xml"></a>
 ## XML

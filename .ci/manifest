@@ -1,51 +1,22 @@
 {
-    "libero":"2022_2_0_10_veer",    
-    "tests":
-    [
-        {
-            "name":"base",
-            "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
-            "script_args":"EXPORT_FPE+HSS_UPDATE+BFM_SIMULATION"
-        },
-        {
-            "name":"spi_loopback",
-            "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
-            "script_args":"EXPORT_FPE+HSS_UPDATE+SPI_LOOPBACK"
-        },
-        {
-            "name":"i2c_loopback",
-            "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
-            "script_args":"EXPORT_FPE+HSS_UPDATE+I2C_LOOPBACK"
-        },
-        {
-            "name":"axi4_stream_demo",
-            "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
-            "script_args":"EXPORT_FPE+HSS_UPDATE+AXI4_STREAM_DEMO"
-        },
-        {
-            "name":"axi4_stream_demo_bfm",
-            "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
-            "script_args":"AXI4_STREAM_DEMO+BFM_SIMULATION"
-        },
-        {
-            "name":"dri_demo",
-            "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
-            "script_args":"EXPORT_FPE+HSS_UPDATE+DRI_CCC_DEMO"
-        },
-        {
-            "name":"vectorblox",
-            "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
-            "script_args":"EXPORT_FPE+HSS_UPDATE+VECTORBLOX"
-        },
-		{
-            "name":"micron_qspi",
-            "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
-            "script_args":"EXPORT_FPE+HSS_UPDATE+MICRON_QSPI"
-        },
-        {
-            "name":"smarthls",
-            "tcl_script":"MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
-            "script_args":"SMARTHLS:./script_support/additional_configurations/smarthls/invert_and_threshold+EXPORT_FPE:./soc+HSS_UPDATE:1"
-        }
+    "libero_version": "2025.2",
+    "asset_version": "2026_02_27",
+    "design_version": "26020",
+    "tcl_script": "MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
+    "designs": [
+        { "name": "AXI4_STREAM_DEMO_ES",   "script_args": "AXI4_STREAM_DEMO HSS_UPDATE" },
+        { "name": "BASE_DESIGN_ES",        "script_args": "" },
+        { "name": "DRI_CCC_DEMO_ES",       "script_args": "DRI_CCC_DEMO HSS_UPDATE" },
+        { "name": "I2C_LOOPBACK_ES",       "script_args": "I2C_LOOPBACK HSS_UPDATE" },
+        { "name": "MICRON_QSPI_ES",        "script_args": "MICRON_QSPI HSS_UPDATE" },
+        { "name": "SMARTHLS_ES",           "script_args": "SMARTHLS:./script_support/additional_configurations/smarthls/invert_and_threshold HSS_UPDATE:1" },
+        { "name": "SPI_LOOPBACK_ES",       "script_args": "SPI_LOOPBACK HSS_UPDATE" },
+        { "name": "AXI4_STREAM_DEMO",      "script_args": "AXI4_STREAM_DEMO HSS_UPDATE MPFS250T" },
+        { "name": "BASE_DESIGN",           "script_args": "MPFS250T" },
+        { "name": "DRI_CCC_DEMO",          "script_args": "DRI_CCC_DEMO HSS_UPDATE MPFS250T" },
+        { "name": "I2C_LOOPBACK",          "script_args": "I2C_LOOPBACK HSS_UPDATE MPFS250T" },
+        { "name": "MICRON_QSPI",           "script_args": "MICRON_QSPI HSS_UPDATE MPFS250T" },
+        { "name": "SMARTHLS",              "script_args": "SMARTHLS:./script_support/additional_configurations/smarthls/invert_and_threshold HSS_UPDATE:1 MPFS250T" },
+        { "name": "SPI_LOOPBACK",          "script_args": "SPI_LOOPBACK HSS_UPDATE MPFS250T" }
     ]
 }

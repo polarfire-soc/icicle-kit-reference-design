@@ -1,37 +1,76 @@
 proc getHlsPaths { } {
     set install_loc [defvar_get -name ACTEL_SW_DIR]
     set OS [lindex $::tcl_platform(os) 0]
-    set liberoRelease [string trim [string range [get_libero_release] 0 end] "*v" ]
 
-    # set base_path ""
-    if {![info exists shls_path]} {catch {set shls_path [exec which shls]}}
+    # Resolve SmartHLS executable across different layouts (including mounted layouts)
+    set found_shls ""
 
-    if {[info exists shls_path]} {
-        set base_path [string trimright $shls_path bin/shls]
-    } else {
-        global shls_path
-        if { $OS == "Linux" } {
-            set base_path [string cat [string trimright $install_loc Libero]/SmartHLS {/SmartHLS}]
-            set ::env(PATH) [string cat $::env(PATH) ":" $base_path {/bin}]
-            set shls_path [string cat $base_path {/bin/shls}]
-        } else {
-            set base_path [string cat [string trimright $install_loc Designer]../SmartHLS {/SmartHLS}]
-            set base_path [file normalize $base_path]
-            set drive [string range $install_loc 0 0]
-            set shls_path "$base_path/bin/shls.bat"
-            set shls_path [file normalize $shls_path]
-            set ::env(PATH) [string cat $::env(PATH) ";" $base_path {bin}]
+    # 1) Accept shls_path argument when provided.
+    if {[info exists shls_path] && [string length [string trim $shls_path]] > 0} {
+        set candidate [file normalize [string trim $shls_path]]
+        if {[file exists $candidate]} {
+            set found_shls $candidate
         }
     }
-    puts "base_path: $base_path"
-    puts "shls_path: $shls_path"
 
-    if {![file exists "$shls_path"]} {
+    # 2) Try shls in PATH if no shls_path provided
+    if {$found_shls eq ""} {
+        if {![catch {set which_shls [exec which shls]}]} {
+            set candidate [file normalize [string trim $which_shls]]
+            if {[file exists $candidate]} {
+                set found_shls $candidate
+            }
+        }
+    }
+
+    # 3) Probe install-relative candidates for Linux and Windows layouts.
+    if {$found_shls eq ""} {
+        set roots [list [file normalize $install_loc]]
+        set current [file normalize $install_loc]
+        for {set i 0} {$i < 4} {incr i} {
+            set current [file dirname $current]
+            lappend roots $current
+        }
+
+        set candidates [list]
+        foreach root $roots {
+            if {$OS == "Linux"} {
+                lappend candidates [file join $root SmartHLS SmartHLS bin shls]
+                lappend candidates [file join $root SmartHLS bin shls]
+            } else {
+                lappend candidates [file join $root SmartHLS SmartHLS bin shls.bat]
+                lappend candidates [file join $root SmartHLS bin shls.bat]
+            }
+        }
+
+        foreach c $candidates {
+            set normalized [file normalize $c]
+            if {[file exists $normalized]} {
+                set found_shls $normalized
+                break
+            }
+        }
+    }
+
+    if {$found_shls eq ""} {
         puts stderr "Error: Cannot find SmartHLS (shls)."
+        puts stderr "install_loc: $install_loc"
         puts stderr "Please specify a full path to SmartHLS (shls file) using \"shls_path\" parameter in the \"script_args\"."
-        puts stderr "For example: script_args:shls_path:C:/Microchip/SmartHLS-20XX.Y.Z/SmartHLS/bin/shls"
+        puts stderr "For example: script_args:"shls_path:C:/Microchip/SmartHLS-20XX.Y.Z/SmartHLS/bin/shls""
         exit 1
     }
+
+    set shls_path $found_shls
+    set base_path [file normalize [file join [file dirname $shls_path] ..]]
+
+    if {$OS == "Linux"} {
+        set ::env(PATH) [string cat $::env(PATH) ":" [file join $base_path bin]]
+    } else {
+        set ::env(PATH) [string cat $::env(PATH) ";" [file join $base_path bin]]
+    }
+
+    puts "base_path: $base_path"
+    puts "shls_path: $shls_path"
 
     #return the list of paths
     set pathList [list $base_path $shls_path]

@@ -125,13 +125,26 @@ auto_promote_pad_pins -promote_all 1
 save_smartdesign -sd_name ${sd_name}
 generate_component -component_name ${sd_name}
 
-import_files -convert_EDN_to_HDL 0 -fp_pdc "${constraint_path}/CCC.pdc"
+import_files -convert_EDN_to_HDL 0 -fp_pdc "${constraint_path}/DRI_CCC_DEMO.pdc"
 
 organize_tool_files \
     -tool {PLACEROUTE} \
-    -file "${project_dir}/constraint/fp/CCC.pdc" \
-    -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
-    -input_type {constraint}
+	-file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_USB.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_MAC.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
+	-file "${project_dir}/constraint/io/ICICLE_RPi.pdc" \
+	-file "${project_dir}/constraint/fp/DRI_CCC_DEMO.pdc" \
+	-file "${project_dir}/constraint/fic_clocks.sdc" \
+	-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+	-input_type {constraint}
 
 build_design_hierarchy
 derive_constraints_sdc 

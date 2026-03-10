@@ -1,5 +1,13 @@
-MPFS_ICICLE*/
+I2C_LOOPBACK_*/
+VECTORBLOX_*/
+SPI_LOOPBACK_*/
+DRI_CCC_DEMO_*/
+MICRON_QSPI_*/
 soc*/
+AXI4_STREAM_DEMO_*/
+BFM_SIMULATION_*/
+MSS_BAREMETAL_*/
+BASE_DESIGN_*/
 script_support/additional_configurations/smarthls/**/hls_output
 script_support/additional_configurations/smarthls/**/component
 script_support/Unsupported_Cores_List.txt

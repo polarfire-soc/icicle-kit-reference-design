@@ -23,10 +23,10 @@ sd_create_bus_port -sd_name {FIC_3_PERIPHERALS} -port_name {PSTRB} -port_directi
 sd_connect_pins -sd_name {FIC_3_PERIPHERALS} -pin_names {"PSTRB" "RECONFIGURATION_INTERFACE_0:PSTRB" }
 generate_component -component_name {FIC_3_PERIPHERALS} -recursive 1
 
-open_smartdesign -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} 
+open_smartdesign -sd_name ${top_level_name}
 build_design_hierarchy 
-sd_update_instance -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -instance_name {FIC_3_PERIPHERALS_1} 
-sd_connect_pins -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN} -pin_names {"FIC_3_PERIPHERALS_1:PSTRB" "MSS_WRAPPER_1:FIC_3_APB_M_PSTRB" }
+sd_update_instance -sd_name ${top_level_name} -instance_name {FIC_3_PERIPHERALS_1}
+sd_connect_pins -sd_name ${top_level_name} -pin_names {"FIC_3_PERIPHERALS_1:PSTRB" "MSS_WRAPPER_1:FIC_3_APB_M_PSTRB" }
 
 # Update CLOCKS_AND_RESETS to add in the additional CCC and export pins
 
@@ -99,9 +99,9 @@ auto_promote_pad_pins -promote_all 1
 save_smartdesign -sd_name ${sd_name}
 generate_component -component_name ${sd_name}
 
-# Update the MPFS_ICICLE_KIT_BASE_DESIGN to connect the DRI and GPIO outputs
+# Update the top level to connect the DRI and GPIO outputs
 
-set sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
+set sd_name ${top_level_name}
 open_smartdesign -sd_name ${sd_name}
 
 sd_update_instance -sd_name ${sd_name} -instance_name {CLOCKS_AND_RESETS} 
@@ -143,7 +143,7 @@ organize_tool_files \
 	-file "${project_dir}/constraint/io/ICICLE_RPi.pdc" \
 	-file "${project_dir}/constraint/fp/DRI_CCC_DEMO.pdc" \
 	-file "${project_dir}/constraint/fic_clocks.sdc" \
-	-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+	-module ${top_level_name}::work \
 	-input_type {constraint}
 
 build_design_hierarchy

@@ -23,7 +23,7 @@ auto_promote_pad_pins -promote_all 1
 save_smartdesign -sd_name ${sd_name}
 generate_component -component_name ${sd_name}
 
-set sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
+set sd_name ${top_level_name}
 open_smartdesign -sd_name ${sd_name}
 
 sd_update_instance -sd_name ${sd_name} -instance_name {MSS_WRAPPER_1} 
@@ -49,5 +49,5 @@ organize_tool_files \
 	-file "${project_dir}/constraint/io/ICICLE_I2C_LOOPBACK.pdc" \
 	-file "${project_dir}/constraint/fp/NW_PLL.pdc" \
 	-file "${project_dir}/constraint/fic_clocks.sdc" \
-	-module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+	-module ${top_level_name}::work \
 	-input_type {constraint} 

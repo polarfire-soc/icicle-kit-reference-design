@@ -56,38 +56,38 @@ if {[info exists DESIGN_VERSION]} {
 puts "DESIGN_VERSION: $design_version"
 
 if {[info exists I2C_LOOPBACK]} {
-    set project_name "MPFS_ICICLE_I2C_LOOPBACK"
-    set project_dir "$local_dir/MPFS_ICICLE_I2C_LOOPBACK"
+    set project_name "I2C_LOOPBACK"
+    set project_dir "$local_dir/I2C_LOOPBACK"
 } elseif {[info exists VECTORBLOX]} {
-    set project_name "MPFS_ICICLE_Vectorblox"
-    set project_dir "$local_dir/MPFS_ICICLE_Vectorblox"
+    set project_name "Vectorblox"
+    set project_dir "$local_dir/Vectorblox"
 } elseif {[info exists SPI_LOOPBACK]} {
-    set project_name "MPFS_ICICLE_SPI_LOOPBACK"
-    set project_dir "$local_dir/MPFS_ICICLE_SPI_LOOPBACK"
+    set project_name "SPI_LOOPBACK"
+    set project_dir "$local_dir/SPI_LOOPBACK"
 } elseif {[info exists DRI_CCC_DEMO]} {
-    set project_name "MPFS_ICICLE_DRI_CCC_DEMO"
-    set project_dir "$local_dir/MPFS_ICICLE_DRI_CCC_DEMO"
+    set project_name "DRI_CCC_DEMO"
+    set project_dir "$local_dir/DRI_CCC_DEMO"
 } elseif {[info exists MICRON_QSPI]} {
-    set project_name "MPFS_ICICLE_MICRON_QSPI"
-    set project_dir "$local_dir/MPFS_ICICLE_MICRON_QSPI"
+    set project_name "MICRON_QSPI"
+    set project_dir "$local_dir/MICRON_QSPI"
 } elseif {[info exists SMARTHLS]} {
     set project_name "Icicle_SoC"
     set project_dir "$local_dir/soc"
 } elseif {[info exists BFM_SIMULATION] && [info exists AXI4_STREAM_DEMO]} {
-    set project_name "MPFS_ICICLE_AXI4_STREAM_DEMO_BFM"
-    set project_dir "$local_dir/MPFS_ICICLE_AXI4_STREAM_DEMO_BFM"
+    set project_name "AXI4_STREAM_DEMO_BFM"
+    set project_dir "$local_dir/AXI4_STREAM_DEMO_BFM"
 } elseif {[info exists AXI4_STREAM_DEMO]} {
-    set project_name "MPFS_ICICLE_AXI4_STREAM_DEMO"
-    set project_dir "$local_dir/MPFS_ICICLE_AXI4_STREAM_DEMO"
+    set project_name "AXI4_STREAM_DEMO"
+    set project_dir "$local_dir/AXI4_STREAM_DEMO"
 } elseif {[info exists BFM_SIMULATION]} {
-    set project_name "MPFS_ICICLE_BFM_SIMULATION"
-    set project_dir "$local_dir/MPFS_ICICLE_BFM_SIMULATION"
+    set project_name "BFM_SIMULATION"
+    set project_dir "$local_dir/BFM_SIMULATION"
 } elseif {[info exists MSS_BAREMETAL]} {
-    set project_name "MPFS_ICICLE_MSS_BAREMETAL"
-    set project_dir "$local_dir/MPFS_ICICLE_MSS_BAREMETAL"
+    set project_name "MSS_BAREMETAL"
+    set project_dir "$local_dir/MSS_BAREMETAL"
 } else {
-    set project_name "MPFS_ICICLE"
-    set project_dir "$local_dir/MPFS_ICICLE"
+    set project_name "BASE_DESIGN"
+    set project_dir "$local_dir/BASE_DESIGN"
 }
 
 # ES for Engineering Silicon
@@ -99,6 +99,21 @@ if {[info exists MPFS250T]} {
     set project_dir "${project_dir}_ES"
 }
 puts "DIE: $die"
+
+set git_command_success [catch {exec git rev-parse HEAD} git_hash]
+if {$git_command_success != 0} {
+    puts "Warning: Could not get git hash. Using 'UNKNOWN'."
+    set git_hash "UNKNOWN"
+}
+set git_hash [string toupper $git_hash]
+
+set project_name_base $project_name
+set project_dir_base  $project_dir
+
+set short_hash [string range $git_hash 0 7]
+set project_name "${project_name_base}_$short_hash"
+set project_dir  "${project_dir_base}_$short_hash"
+
 puts "Project name: $project_name"
 puts "Project directory: $project_dir"
 
@@ -121,6 +136,19 @@ if {[info exists MSS_LINUX]} {
     set MSS_LINUX 1
 }
 
+if {[info exists TOP_LEVEL_NAME]} {
+    set top_level_name $TOP_LEVEL_NAME
+} else {
+    set base "${project_name_base}_"
+    set max_len 30
+    set remaining [expr {$max_len - [string length $base]}]
+    if {$remaining < 0} {
+        set remaining 0
+    }
+    set hash_part [string range $git_hash 0 [expr {$remaining - 1}]]
+    set top_level_name "${base}${hash_part}"
+}
+
 source ./script_support/additional_configurations/functions.tcl
 
 #
@@ -129,7 +157,7 @@ source ./script_support/additional_configurations/functions.tcl
 if { [file exists $project_dir/$project_name.prjx] } {
     puts "Open existing project"
     open_project -file $project_dir/$project_name.prjx
-    open_smartdesign -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
+    open_smartdesign -sd_name ${top_level_name}
     set isNewProject 0
 } else {
     puts "Creating a new project"
@@ -200,7 +228,7 @@ if { [file exists $project_dir/$project_name.prjx] } {
     cd ./script_support/
     safe_source MPFS_ICICLE_KIT_BASE_DESIGN_recursive.tcl
     cd ../
-    set_root -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} 
+    set_root -module ${top_level_name}::work
 
     #
     # // Import I/O constraints
@@ -233,7 +261,7 @@ if { [file exists $project_dir/$project_name.prjx] } {
     organize_tool_files \
         -tool {SYNTHESIZE} \
         -file "${project_dir}/constraint/fic_clocks.sdc" \
-        -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+        -module ${top_level_name}::work \
         -input_type {constraint} 
 
     if {[info exists MICRON_QSPI]} {
@@ -253,7 +281,7 @@ if { [file exists $project_dir/$project_name.prjx] } {
             -file "${project_dir}/constraint/io/ICICLE_RPi_MICRON_QSPI.pdc" \
             -file "${project_dir}/constraint/fp/NW_PLL.pdc" \
             -file "${project_dir}/constraint/fic_clocks.sdc" \
-            -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+            -module ${top_level_name}::work \
             -input_type {constraint}
     } else {
 	    organize_tool_files \
@@ -272,14 +300,14 @@ if { [file exists $project_dir/$project_name.prjx] } {
             -file "${project_dir}/constraint/io/ICICLE_RPi.pdc" \
             -file "${project_dir}/constraint/fp/NW_PLL.pdc" \
             -file "${project_dir}/constraint/fic_clocks.sdc" \
-            -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+            -module ${top_level_name}::work \
             -input_type {constraint}
 	}
 	
     organize_tool_files \
         -tool {VERIFYTIMING} \
         -file "${project_dir}/constraint/fic_clocks.sdc" \
-        -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+        -module ${top_level_name}::work \
         -input_type {constraint} 
         
         
@@ -362,8 +390,8 @@ if { [file exists $project_dir/$project_name.prjx] } {
     save_smartdesign -sd_name {FIC_3_PERIPHERALS}
     sd_reset_layout -sd_name {MSS_WRAPPER}
     save_smartdesign -sd_name {MSS_WRAPPER}
-    sd_reset_layout -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
-    save_smartdesign -sd_name {MPFS_ICICLE_KIT_BASE_DESIGN}
+    sd_reset_layout -sd_name ${top_level_name}
+    save_smartdesign -sd_name ${top_level_name}
 } ; # // Create new project
 
 
@@ -437,7 +465,7 @@ if {[info exists GENERATE_PROGRAMMING_DATA]} {
 } elseif {[info exists EXPORT_FPE]} {   
     set gUseSPI 0
     if {[info exists SMARTHLS]} {
-        set gUseSPI [update_snvm_to_spi_ram_cfg $project_dir/designer/MPFS_ICICLE_KIT_BASE_DESIGN/MPFS_ICICLE_KIT_BASE_DESIGN_RAM.cfg ]
+        set gUseSPI [update_snvm_to_spi_ram_cfg $project_dir/designer/${top_level_name}/${top_level_name}_RAM.cfg ]
         generate_design_initialization_data
     }
     
@@ -447,8 +475,8 @@ if {[info exists GENERATE_PROGRAMMING_DATA]} {
     set components "FABRIC_SNVM"
     if {[info exists HSS_UPDATE]} { set components "$components ENVM" }
 
-    puts "export_fpe_job $project_name $jobPath $components $gUseSPI"
-    export_fpe_job $project_name $jobPath $components $gUseSPI
+    puts "export_fpe_job $top_level_name $jobPath $components $gUseSPI"
+    export_fpe_job $top_level_name $jobPath $components $gUseSPI
 }
 
 save_project 

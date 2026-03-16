@@ -19,3 +19,4 @@ script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cf
 *.hex
 *.job
 *.digest
+*.spi

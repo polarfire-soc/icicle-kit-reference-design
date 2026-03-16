@@ -1,22 +1,22 @@
 {
     "libero_version": "2025.2",
-    "asset_version": "2026_03_02",
+    "asset_version": "2026_03",
     "design_version": "26030",
     "tcl_script": "MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
     "designs": [
+        { "name": "BASE_DESIGN",           "script_args": "MPFS250T HSS_UPDATE AUTO_UPDATE GOLDEN_IMAGE" },
+        { "name": "BASE_DESIGN_ES",        "script_args": "HSS_UPDATE" },
+        { "name": "MICRON_QSPI",           "script_args": "MICRON_QSPI MPFS250T" },
+        { "name": "MICRON_QSPI_ES",        "script_args": "MICRON_QSPI" },
         { "name": "AXI4_STREAM_DEMO_ES",   "script_args": "AXI4_STREAM_DEMO HSS_UPDATE" },
-        { "name": "BASE_DESIGN_ES",        "script_args": "" },
         { "name": "DRI_CCC_DEMO_ES",       "script_args": "DRI_CCC_DEMO HSS_UPDATE" },
-        { "name": "I2C_LOOPBACK_ES",       "script_args": "I2C_LOOPBACK HSS_UPDATE" },
-        { "name": "MICRON_QSPI_ES",        "script_args": "MICRON_QSPI HSS_UPDATE" },
+        { "name": "I2C_LOOPBACK_ES",       "script_args": "I2C_LOOPBACK " },
         { "name": "SMARTHLS_ES",           "script_args": "SMARTHLS:./script_support/additional_configurations/smarthls/invert_and_threshold HSS_UPDATE:1" },
-        { "name": "SPI_LOOPBACK_ES",       "script_args": "SPI_LOOPBACK HSS_UPDATE" },
+        { "name": "SPI_LOOPBACK_ES",       "script_args": "SPI_LOOPBACK" },
         { "name": "AXI4_STREAM_DEMO",      "script_args": "AXI4_STREAM_DEMO HSS_UPDATE MPFS250T" },
-        { "name": "BASE_DESIGN",           "script_args": "MPFS250T" },
         { "name": "DRI_CCC_DEMO",          "script_args": "DRI_CCC_DEMO HSS_UPDATE MPFS250T" },
-        { "name": "I2C_LOOPBACK",          "script_args": "I2C_LOOPBACK HSS_UPDATE MPFS250T" },
-        { "name": "MICRON_QSPI",           "script_args": "MICRON_QSPI HSS_UPDATE MPFS250T" },
+        { "name": "I2C_LOOPBACK",          "script_args": "I2C_LOOPBACK MPFS250T" },
         { "name": "SMARTHLS",              "script_args": "SMARTHLS:./script_support/additional_configurations/smarthls/invert_and_threshold HSS_UPDATE:1 MPFS250T" },
-        { "name": "SPI_LOOPBACK",          "script_args": "SPI_LOOPBACK HSS_UPDATE MPFS250T" }
+        { "name": "SPI_LOOPBACK",          "script_args": "SPI_LOOPBACK MPFS250T" }
     ]
 }

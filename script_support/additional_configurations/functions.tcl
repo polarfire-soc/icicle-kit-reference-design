@@ -161,7 +161,7 @@ proc create_eNVM_config {config client} {
     close $envm_config
 }
 
-proc export_fpe_job {name directory components use_spi} {
+proc export_fpe_job {name directory components use_design use_spi} {
     export_prog_job \
         -job_file_name $name \
         -export_dir $directory \
@@ -169,7 +169,7 @@ proc export_fpe_job {name directory components use_spi} {
         -bitstream_file_components $components \
         -zeroization_likenew_action 0 \
         -zeroization_unrecoverable_action 0 \
-        -program_design 1 \
+        -program_design $use_design \
         -program_spi_flash $use_spi \
         -include_plaintext_passkey 0 \
         -design_bitstream_format {PPD} \
@@ -177,6 +177,70 @@ proc export_fpe_job {name directory components use_spi} {
         -skip_recommended_procedures {} \
         -sanitize_snvm 0 \
         -sanitize_envm 0
+}
+
+# Export a SPI or other format bitstream file
+proc proc_export_bitstream_file {name directory format} {
+    if {$format eq "SPI"} {
+        set tf_components {FABRIC SNVM}
+    } else {
+        set tf_components {FABRIC SNVM ENVM}
+    }
+    export_bitstream_file \
+        -file_name $name \
+        -export_dir $directory \
+        -format $format \
+        -for_ihp 0 \
+        -limit_SVF_file_size 0 \
+        -limit_SVF_file_by_max_filesize_or_vectors {} \
+        -svf_max_filesize {} \
+        -svf_max_vectors {} \
+        -master_file 0 \
+        -master_file_components {} \
+        -encrypted_uek1_file 0 \
+        -encrypted_uek1_file_components {} \
+        -encrypted_uek2_file 0 \
+        -encrypted_uek2_file_components {} \
+        -trusted_facility_file 1 \
+        -trusted_facility_file_components $tf_components \
+        -zeroization_likenew_action 0 \
+        -zeroization_unrecoverable_action 0 \
+        -master_backlevel_bypass 0 \
+        -uek1_backlevel_bypass 0 \
+        -uek2_backlevel_bypass 0 \
+        -master_include_plaintext_passkey 0 \
+        -uek1_include_plaintext_passkey 0 \
+        -uek2_include_plaintext_passkey 0 \
+        -sanitize_snvm 0 \
+        -sanitize_envm 0 \
+        -trusted_facility_keep_fabric_operational 0 \
+        -trusted_facility_skip_startup_seq 0 \
+        -trusted_facility_mss_keep_alive 0 \
+        -uek1_keep_fabric_operational 0 \
+        -uek1_skip_startup_seq 0 \
+        -uek1_mss_keep_alive 0 \
+        -uek1_high_water_mark {} \
+        -uek2_keep_fabric_operational 0 \
+        -uek2_skip_startup_seq 0 \
+        -uek2_mss_keep_alive 0 \
+        -uek2_high_water_mark {}
+}
+
+# Generate a SPI flash config pointing at a previously exported .spi file
+proc create_spi_cfg {config_path spi_file start_address client_size name type} {
+    set fh [open $config_path w]
+    puts $fh "set_auto_update_mode {1}"
+    puts $fh "set_spi_flash_memory_size {134217728}"
+    puts $fh "set_client \\"
+    puts $fh "    -client_name    {$name} \\"
+    puts $fh "    -client_type    {$type} \\"
+    puts $fh "    -content_type   {MEMORY_FILE} \\"
+    puts $fh "    -content_file   {$spi_file} \\"
+    puts $fh "    -start_address  {$start_address} \\"
+    puts $fh "    -client_size    {$client_size} \\"
+    puts $fh "    -program        {1}"
+    close $fh
+    puts "Created $type SPI flash config: $config_path"
 }
 
 proc safe_source {script} {
@@ -221,5 +285,16 @@ proc safe_source {script} {
 
         puts stderr [join $errorLog "\n"]
         return -options $errOpts -code error $errMsg
+    }
+}
+
+proc generate_temp_file {keep} {
+    set chan [file tempfile filename]
+    if {!$keep} {
+        file delete $filename
+        close $chan
+        return $filename
+    } else {
+        return $chan
     }
 }

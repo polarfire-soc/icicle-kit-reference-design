@@ -462,8 +462,7 @@ if {[info exists GENERATE_PROGRAMMING_DATA]} {
     run_tool -name {GENERATEPROGRAMMINGDATA}
 }  elseif {[info exists PROGRAM]} {
     run_tool -name {PROGRAMDEVICE}
-} elseif {[info exists EXPORT_FPE]} {   
-    set gUseSPI 0
+} elseif {[info exists EXPORT_FPE]} {
     if {[info exists SMARTHLS]} {
         set gUseSPI [update_snvm_to_spi_ram_cfg $project_dir/designer/${top_level_name}/${top_level_name}_RAM.cfg ]
         generate_design_initialization_data
@@ -474,9 +473,30 @@ if {[info exists GENERATE_PROGRAMMING_DATA]} {
 
     set components "FABRIC_SNVM"
     if {[info exists HSS_UPDATE]} { set components "$components ENVM" }
+    if {[info exists AUTO_UPDATE] || [info exists GOLDEN_IMAGE]} {
+        # configure_spiflash must be set before GENERATEPROGRAMMINGDATA runs
+        configure_spiflash -cfg_file {./script_support/spi_flash_cfg_files/auto_update_spiflash.cfg}
 
-    puts "export_fpe_job $top_level_name $jobPath $components $gUseSPI"
-    export_fpe_job $top_level_name $jobPath $components $gUseSPI
+        if {![info exists HSS_UPDATE]} {
+            run_tool -name {GENERATEPROGRAMMINGDATA}
+        }
+
+        proc_export_bitstream_file "${project_name}_AUTO_UPDATE" $jobPath {SPI}
+
+        if {[info exists GOLDEN_IMAGE]} {
+            set spi_file [file normalize "$jobPath/${project_name}_AUTO_UPDATE.spi"]
+            set golden_spi_flash_cfg [generate_temp_file 0]
+            create_spi_cfg $golden_spi_flash_cfg $spi_file 1049600 15885072 "${project_name}_AUTO_UPDATE" "FILE_SPI_GOLDEN"
+            configure_spiflash -cfg_file $golden_spi_flash_cfg
+            run_tool -name {GENERATEPROGRAMMINGFILE}
+            puts [list export_fpe_job "${project_name}_SPI_GOLDEN" $jobPath $components 0 1]
+            export_fpe_job "${project_name}_SPI_GOLDEN" $jobPath $components 0 1
+        }
+    }
+
+    # Always export a regular design FlashPro Express job
+    puts [list export_fpe_job $top_level_name $jobPath $components 1 0]
+    export_fpe_job $top_level_name $jobPath $components 1 0
 }
 
 save_project 

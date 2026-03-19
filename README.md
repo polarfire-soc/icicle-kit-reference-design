@@ -222,6 +222,7 @@ The Icicle Kit has 2GB of LPDDR4 on board and the PolarFire SoC MSS Configurator
 
 | Bit | Direction | Source / sink | Notes         |
 | :-- | :-------- | :------------ | :------------ |
+| 1   | I/O       | RPi_GPIO7     |               |
 | 2   | I/O       | RPi_GPIO12    |               |
 | 3   | I/O       | RPi_GPIO13    |               |
 | 4   | I/O       | RPi_GPIO16    |               |

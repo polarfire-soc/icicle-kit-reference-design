@@ -129,6 +129,7 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO26} -port_directio
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO27} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_ID_SC} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_ID_SD} -port_direction {INOUT} -port_is_pad {1}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {RPi_GPIO7_SPI_CE1_N} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_CMD_EMMC_CMD} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA0_EMMC_DATA0} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {SD_DATA1_EMMC_DATA1} -port_direction {INOUT} -port_is_pad {1}
@@ -340,6 +341,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:QSPI_SEL" "QSPI_S
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:REFCLK" "REFCLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:REFCLK_N" "REFCLK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:RESET_N" "RESET_N" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:GPIO_2_M2F_1" "RPi_GPIO7_SPI_CE1_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:RPi_GPIO12" "RPi_GPIO12" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:RPi_GPIO13" "RPi_GPIO13" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS_WRAPPER_1:RPi_GPIO16" "RPi_GPIO16" }

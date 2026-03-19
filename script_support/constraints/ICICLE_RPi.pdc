@@ -162,3 +162,8 @@ set_io -port_name RPi_GPIO27  \
     -DIRECTION INOUT
 
 
+set_io -port_name RPi_GPIO7_SPI_CE1_N  \
+    -pin_name H13             \
+    -fixed true               \
+    -io_std LVCMOS33          \
+    -DIRECTION INOUT

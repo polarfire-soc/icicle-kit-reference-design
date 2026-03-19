@@ -132,6 +132,7 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {FIC_2_AXI4_TARGET_FIC_2_AX
 sd_create_scalar_port -sd_name ${sd_name} -port_name {FIC_3_APB_INITIATOR_FIC_3_APB_M_PENABLE} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {FIC_3_APB_INITIATOR_FIC_3_APB_M_PSEL} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {FIC_3_APB_INITIATOR_FIC_3_APB_M_PWRITE} -port_direction {OUT}
+sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_1} -port_direction {INOUT} -port_is_pad {1}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_16} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_17} -port_direction {OUT}
 sd_create_scalar_port -sd_name ${sd_name} -port_name {GPIO_2_M2F_18} -port_direction {OUT}
@@ -669,10 +670,8 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:SPI_0_DO_OE_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:SPI_0_CLK_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:SPI_0_CLK_OE_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:GPIO_2_M2F_6}
-sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:GPIO_2_M2F_1}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:GPIO_2_M2F_0}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:GPIO_2_OE_M2F_6}
-sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:GPIO_2_OE_M2F_1}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:GPIO_2_OE_M2F_0}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:PLL_CPU_LOCK_M2F}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {ICICLE_MSS:PLL_DDR_LOCK_M2F}
@@ -731,6 +730,10 @@ sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {QSP
 sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {QSPI_SEL_BIBUF}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {QSPI_SEL_BIBUF:Y}
 
+
+# Add GPIO_2_M2F_1_BIBUF instance for chip select 2
+sd_instantiate_macro -sd_name ${sd_name} -macro_name {BIBUF} -instance_name {GPIO_2_M2F_1_BIBUF}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {GPIO_2_M2F_1_BIBUF:Y}
 
 
 # Add scalar net connections
@@ -871,6 +874,8 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA_OE_M2F[2:2
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_DATA_OE_M2F[3:3]" "QSPI_DATA_3_BIBUF:E" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_SEL_M2F" "QSPI_SEL_BIBUF:D" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:QSPI_SEL_OE_M2F" "QSPI_SEL_BIBUF:E" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:GPIO_2_M2F_1" "GPIO_2_M2F_1_BIBUF:D" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:GPIO_2_OE_M2F_1" "GPIO_2_M2F_1_BIBUF:E" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:REFCLK" "REFCLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:REFCLK_N" "REFCLK_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ICICLE_MSS:RESET_N" "RESET_N" }
@@ -918,6 +923,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA_1" "QSPI_DATA_1_BIBUF
 sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA_2" "QSPI_DATA_2_BIBUF:PAD" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_DATA_3" "QSPI_DATA_3_BIBUF:PAD" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"QSPI_SEL" "QSPI_SEL_BIBUF:PAD" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"GPIO_2_M2F_1" "GPIO_2_M2F_1_BIBUF:PAD" }
 
 # Add bus net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"CA" "ICICLE_MSS:CA" }

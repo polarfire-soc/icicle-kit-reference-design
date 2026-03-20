@@ -22,6 +22,10 @@ configure_core -component_name {DMA_INITIATOR} -params {"ADDR_WIDTH:32" "CROSSBA
 sd_update_instance -sd_name {FIC_0_PERIPHERALS} -instance_name {DMA_INITIATOR} 
 
 		 
+sd_disconnect_pins -sd_name {FIC_0_PERIPHERALS} -pin_names {"DMA_CONTROLLER_IRQ"}
+sd_create_pin_slices -sd_name {FIC_0_PERIPHERALS} -pin_name {DMA_CONTROLLER:INTERRUPT} -pin_slices {"[0:0]"}
+sd_connect_pins -sd_name {FIC_0_PERIPHERALS} -pin_names {"DMA_CONTROLLER:INTERRUPT[0:0]" "DMA_CONTROLLER_IRQ"}
+
 #	updating the FIC3_INITATOR to add in a new ABP slave slot
 delete_component -component_name {FIC_3_0x4000_0xxx} 
 source {./script_support/additional_configurations/AXI4_STREAM_DATA_GENERATOR/FIC_3_0x4000_0xxx_AXI_STREAM.tcl}

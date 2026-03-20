@@ -199,7 +199,6 @@ sd_create_bif_port -sd_name ${sd_name} -port_name {AXI4mslave0} -port_bif_vlnv {
 
 # Add DMA_CONTROLLER instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {DMA_CONTROLLER} -instance_name {DMA_CONTROLLER}
-sd_create_pin_slices -sd_name ${sd_name} -pin_name {DMA_CONTROLLER:INTERRUPT} -pin_slices {[0:0]}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {DMA_CONTROLLER:STRTDMAOP} -value {GND}
 
 
@@ -222,7 +221,7 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {MSS_LSRAM} -instan
 # Add scalar net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ACLK" "DMA_CONTROLLER:CLOCK" "DMA_INITIATOR:ACLK" "FIC0_INITIATOR:ACLK" "MSS_LSRAM:ACLK" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"ARESETN" "DMA_CONTROLLER:RESETN" "DMA_INITIATOR:ARESETN" "FIC0_INITIATOR:ARESETN" "MSS_LSRAM:ARESETN" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_CONTROLLER:INTERRUPT[0:0]" "DMA_CONTROLLER_IRQ" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"DMA_CONTROLLER:INTERRUPT" "DMA_CONTROLLER_IRQ" }
 
 
 # Add bus interface net connections

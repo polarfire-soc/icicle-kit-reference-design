@@ -1,7 +1,7 @@
 {
     "libero_version": "2025.2",
-    "asset_version": "2026_03",
-    "design_version": "26030",
+    "asset_version": "2026_04",
+    "design_version": "26040",
     "tcl_script": "MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl",
     "designs": [
         { "name": "BASE_DESIGN",           "script_args": "MPFS250T HSS_UPDATE AUTO_UPDATE GOLDEN_IMAGE" },

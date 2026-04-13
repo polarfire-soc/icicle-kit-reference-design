@@ -17,6 +17,7 @@
     - [Fabric memory map](#fabric-memory-map)
     - [Interrupt map](#interrupt-map)
     - [GPIO2 connections](#gpio2-connections)
+    - [RPi Header](#rpi-header)
   - [Programming the FPGA](#programming-the-fpga)
   - [Board configuration](#board-configuration)
   - [MSS Configuration](#mss-configuration)
@@ -247,6 +248,35 @@ The Icicle Kit has 2GB of LPDDR4 on board and the PolarFire SoC MSS Configurator
 | 28  | Out       | MSS INT F2M 0 | OR'd with SW1 |
 | 30  | In        | GPIO2 bit 26  |               |
 | 31  | In        | GPIO2 bit 27  |               |
+
+<a name="rpi-header"></a>
+### RPi Header
+
+The 40-pin Raspberry Pi compatible header (J26) has the following connections. Pin numbers follow the standard RPi physical header numbering (odd pins on the left, even pins on the right).
+
+| Pin (odd) | Design Port name | Design Connection                        | Pin (even)    | Design Port name     | Design Connection                        |
+| :-------- | :--------------- | :--------------------------------------- | :-------------| :--------------------| :--------------------------------------- |
+| 1  (3V3)  | —                | Power                                    | 2  (5V)       | —                    | Power                                    |
+| 3         | `COREI2C_C0_SDA` | Fabric CoreI2C SDA (addr 0x4000_0200)    | 4  (5V)       | —                    | Power                                    |
+| 5         | `COREI2C_C0_SCL` | Fabric CoreI2C SCL (addr 0x4000_0200)    | 6  (GND)      | —                    | Ground                                   |
+| 7         | —                | Not connected                            | 8             | `COREUART_TX`        | Fabric CoreUART TX (addr 0x4000_0300)    |
+| 9  (GND)  | —                | Ground                                   | 10            | `COREUART_RX`        | Fabric CoreUART RX (addr 0x4000_0300)    |
+| 11        | `RPi_GPIO17`     | MSS GPIO2 bit 5 (I/O)                    | 12            | `QSPI_DATA_3`        | MSS QSPI DATA[3] (I/O)                   |
+| 13        | `RPi_GPIO27`     | MSS GPIO2 bit 15 (I/O)                   | 14 (GND)      | —                    | Ground                                   |
+| 15        | `RPi_GPIO22`     | MSS GPIO2 bit 10 (I/O)                   | 16            | `RPi_GPIO23`         | MSS GPIO2 bit 11 (I/O)                   |
+| 17 (3V3)  | —                | Power                                    | 18            | `RPi_GPIO24`         | MSS GPIO2 bit 12 (I/O)                   |
+| 19        | `QSPI_DATA_0`    | MSS QSPI DATA[0] (I/O)                   | 20 (GND)      | —                    | Ground                                   |
+| 21        | `QSPI_DATA_1`    | MSS QSPI DATA[1] (I/O)                   | 22            | `RPi_GPIO25`         | MSS GPIO2 bit 13 (I/O)                   |
+| 23        | `QSPI_CLK`       | MSS QSPI CLK (I/O)                       | 24            | `QSPI_SEL`           | MSS QSPI SEL (I/O)                       |
+| 25 (GND)  | —                | Ground                                   | 26            | `RPi_GPIO7_SPI_CE1_N`| MSS GPIO2 bit 1 (I/O)                    |
+| 27        | `RPi_ID_SD`      | Fabric RPi_ID_I2C SDA (addr 0x4000_0400) | 28            | `RPi_ID_SC`          | Fabric RPi_ID_I2C SCL (addr 0x4000_0400) |
+| 29        | `QSPI_DATA_2`    | MSS QSPI DATA[2] (I/O)                   | 30 (GND)      | —                    | Ground                                   |
+| 31        | —                | Not connected                            | 32            | `RPi_GPIO12`         | MSS GPIO2 bit 2 (I/O)                    |
+| 33        | `RPi_GPIO13`     | MSS GPIO2 bit 3 (I/O)                    | 34 (GND)      | —                    | Ground                                   |
+| 35        | `RPi_GPIO19`     | MSS GPIO2 bit 7 (I/O)                    | 36            | `RPi_GPIO16`         | MSS GPIO2 bit 4 (I/O)                    |
+| 37        | `RPi_GPIO26`     | MSS GPIO2 bit 14 (I/O)                   | 38            | `RPi_GPIO20`         | MSS GPIO2 bit 8 (I/O)                    |
+| 39 (GND)  | —                | Ground                                   | 40            | `RPi_GPIO21`         | MSS GPIO2 bit 9 (I/O)                    |
+
 
 <a name="programming-the-fpga"></a>
 ## Programming the FPGA

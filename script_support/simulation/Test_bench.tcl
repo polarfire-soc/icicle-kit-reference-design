@@ -77,6 +77,7 @@ sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names "${top_level_name_
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names "${top_level_name_0}:QSPI_CLK" -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names "${top_level_name_0}:RPi_ID_SC" -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names "${top_level_name_0}:RPi_ID_SD" -value {GND}
+sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names "${top_level_name_0}:GPIO_2_M2F_20_AN" -value {GND}
 
 # Promote pins to top level
 sd_connect_pin_to_port -sd_name ${sd_tb_name} -pin_name "${top_level_name_0}:SDIO_SW_SEL1" -port_name {}
@@ -165,6 +166,8 @@ sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names "${top_level_name_0}:COREU
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names "${top_level_name_0}:mBUS_PWM"
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names "${top_level_name_0}:SPI_1_DO"
 sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names "${top_level_name_0}:PCIE_1_PERST_N"
+sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names "${top_level_name_0}:RPi_GPIO7_SPI_CE1_N"
+sd_mark_pins_unused -sd_name ${sd_tb_name} -pin_names "${top_level_name_0}:GPIO_2_M2F_21_RST"
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names "${top_level_name_0}:SD_CD_EMMC_STRB" -value {GND}
 sd_connect_pins_to_constant -sd_name ${sd_tb_name} -pin_names "${top_level_name_0}:SD_WP_EMMC_RSTN" -value {GND}
 

@@ -144,7 +144,7 @@ proc create_eNVM_config {config client} {
     
     puts $envm_config "set_plain_text_client \\"
     puts $envm_config "-client_name {BOOT_MODE_1_ENVM_CLIENT} \\"
-    puts $envm_config "-number_of_bytes 117248 \\"
+    puts $envm_config "-number_of_bytes 131072 \\"
     puts $envm_config "-content_type {MEMORY_FILE} \\"
     puts $envm_config "-content_file_format {Intel-Hex} \\"
     puts $envm_config "-content_file {$client} \\"

@@ -179,7 +179,7 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {vectorblox_axi_res
 
 # Add scalar net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"core_vectorblox_C0_0:clk_2x" "PF_CCC_C1_0:OUT1_FABCLK_0" "vectorblox_axi_resize_0:ACLK" "fast_reset:CLK" "aclk" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"core_vectorblox_C0_0:clk" "slow_reset:CLK" "PF_CCC_C1_0:OUT0_FABCLK_0" "vectorblox_axi_resize_0:M_CLK0" "aclk_control" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"core_vectorblox_C0_0:clk" "core_vectorblox_C0_0:clk_cnn" "slow_reset:CLK" "PF_CCC_C1_0:OUT0_FABCLK_0" "vectorblox_axi_resize_0:M_CLK0" "aclk_control" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"slow_reset:EXT_RST_N" "fast_reset:EXT_RST_N" "EXT_RST_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"vectorblox_axi_resize_0:ARESETN" "fast_reset:FABRIC_RESET_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"slow_reset:INIT_DONE" "fast_reset:INIT_DONE" "INIT_DONE" }
@@ -190,7 +190,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"core_vectorblox_C0_0:resetn" "s
 
 # Add bus interface net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"vectorblox_axi_resize_0:AXI4mslave0" "AXIM" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"vectorblox_axi_resize_0:AXI4mmaster0" "core_vectorblox_C0_0:M_AXI" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"vectorblox_axi_resize_0:AXI4mmaster0" "core_vectorblox_C0_0:M0_AXI" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"S_control" "core_vectorblox_C0_0:S_control" }
 
 # Re-enable auto promotion of pins of type 'pad'

@@ -181,11 +181,6 @@ proc export_fpe_job {name directory components use_design use_spi} {
 
 # Export a SPI or other format bitstream file
 proc proc_export_bitstream_file {name directory format} {
-    if {$format eq "SPI"} {
-        set tf_components {FABRIC SNVM}
-    } else {
-        set tf_components {FABRIC SNVM ENVM}
-    }
     export_bitstream_file \
         -file_name $name \
         -export_dir $directory \
@@ -202,7 +197,7 @@ proc proc_export_bitstream_file {name directory format} {
         -encrypted_uek2_file 0 \
         -encrypted_uek2_file_components {} \
         -trusted_facility_file 1 \
-        -trusted_facility_file_components $tf_components \
+        -trusted_facility_file_components {FABRIC SNVM ENVM} \
         -zeroization_likenew_action 0 \
         -zeroization_unrecoverable_action 0 \
         -master_backlevel_bypass 0 \
